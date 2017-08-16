@@ -19,19 +19,19 @@ import ErrorCode from './model/ErrorCode';
 import ErrorError from './model/ErrorError';
 import ErrorStatus from './model/ErrorStatus';
 import InlineResponse200 from './model/InlineResponse200';
-import InlineResponse2001 from './model/InlineResponse2001';
-import InlineResponse2002 from './model/InlineResponse2002';
-import InlineResponse2002Storages from './model/InlineResponse2002Storages';
 import InlineResponse200Servers from './model/InlineResponse200Servers';
 import IpAddress from './model/IpAddress';
 import Server from './model/Server';
 import ServerIpAddresses from './model/ServerIpAddresses';
+import ServerListResponse from './model/ServerListResponse';
 import ServerStorageDevices from './model/ServerStorageDevices';
 import ServerTags from './model/ServerTags';
 import Storage from './model/Storage';
 import StorageBackups from './model/StorageBackups';
 import StorageDevice from './model/StorageDevice';
 import StorageServers from './model/StorageServers';
+import SuccessStoragesResponse from './model/SuccessStoragesResponse';
+import SuccessStoragesResponseStorages from './model/SuccessStoragesResponseStorages';
 import ServerApi from './api/ServerApi';
 import StorageApi from './api/StorageApi';
 
@@ -111,24 +111,6 @@ export {
     InlineResponse200,
 
     /**
-     * The InlineResponse2001 model constructor.
-     * @property {module:model/InlineResponse2001}
-     */
-    InlineResponse2001,
-
-    /**
-     * The InlineResponse2002 model constructor.
-     * @property {module:model/InlineResponse2002}
-     */
-    InlineResponse2002,
-
-    /**
-     * The InlineResponse2002Storages model constructor.
-     * @property {module:model/InlineResponse2002Storages}
-     */
-    InlineResponse2002Storages,
-
-    /**
      * The InlineResponse200Servers model constructor.
      * @property {module:model/InlineResponse200Servers}
      */
@@ -151,6 +133,12 @@ export {
      * @property {module:model/ServerIpAddresses}
      */
     ServerIpAddresses,
+
+    /**
+     * The ServerListResponse model constructor.
+     * @property {module:model/ServerListResponse}
+     */
+    ServerListResponse,
 
     /**
      * The ServerStorageDevices model constructor.
@@ -187,6 +175,18 @@ export {
      * @property {module:model/StorageServers}
      */
     StorageServers,
+
+    /**
+     * The SuccessStoragesResponse model constructor.
+     * @property {module:model/SuccessStoragesResponse}
+     */
+    SuccessStoragesResponse,
+
+    /**
+     * The SuccessStoragesResponseStorages model constructor.
+     * @property {module:model/SuccessStoragesResponseStorages}
+     */
+    SuccessStoragesResponseStorages,
 
     /**
     * The ServerApi service constructor.

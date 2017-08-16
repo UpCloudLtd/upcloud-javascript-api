@@ -109,19 +109,19 @@ Class | Method | HTTP request | Description
  - [UpcloudApi.ErrorError](docs/ErrorError.md)
  - [UpcloudApi.ErrorStatus](docs/ErrorStatus.md)
  - [UpcloudApi.InlineResponse200](docs/InlineResponse200.md)
- - [UpcloudApi.InlineResponse2001](docs/InlineResponse2001.md)
- - [UpcloudApi.InlineResponse2002](docs/InlineResponse2002.md)
- - [UpcloudApi.InlineResponse2002Storages](docs/InlineResponse2002Storages.md)
  - [UpcloudApi.InlineResponse200Servers](docs/InlineResponse200Servers.md)
  - [UpcloudApi.IpAddress](docs/IpAddress.md)
  - [UpcloudApi.Server](docs/Server.md)
  - [UpcloudApi.ServerIpAddresses](docs/ServerIpAddresses.md)
+ - [UpcloudApi.ServerListResponse](docs/ServerListResponse.md)
  - [UpcloudApi.ServerStorageDevices](docs/ServerStorageDevices.md)
  - [UpcloudApi.ServerTags](docs/ServerTags.md)
  - [UpcloudApi.Storage](docs/Storage.md)
  - [UpcloudApi.StorageBackups](docs/StorageBackups.md)
  - [UpcloudApi.StorageDevice](docs/StorageDevice.md)
  - [UpcloudApi.StorageServers](docs/StorageServers.md)
+ - [UpcloudApi.SuccessStoragesResponse](docs/SuccessStoragesResponse.md)
+ - [UpcloudApi.SuccessStoragesResponseStorages](docs/SuccessStoragesResponseStorages.md)
 
 
 ## Documentation for Authorization

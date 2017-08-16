@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="createServer"></a>
 # **createServer**
-> InlineResponse2001 createServer(opts)
+> ServerListResponse createServer(opts)
 
 Create server
 
@@ -44,7 +44,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**ServerListResponse**](ServerListResponse.md)
 
 ### Authorization
 
@@ -139,7 +139,7 @@ No authorization required
 
 <a name="serverDetails"></a>
 # **serverDetails**
-> InlineResponse2001 serverDetails(serverId)
+> ServerListResponse serverDetails(serverId)
 
 Server details
 
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**ServerListResponse**](ServerListResponse.md)
 
 ### Authorization
 
@@ -182,7 +182,7 @@ No authorization required
 
 <a name="updateServer"></a>
 # **updateServer**
-> InlineResponse2001 updateServer(serverId, opts)
+> ServerListResponse updateServer(serverId, opts)
 
 Modify server
 
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**ServerListResponse**](ServerListResponse.md)
 
 ### Authorization
 

@@ -15,8 +15,8 @@
 import ApiClient from "../ApiClient";
 import Error from '../model/Error';
 import InlineResponse200 from '../model/InlineResponse200';
-import InlineResponse2001 from '../model/InlineResponse2001';
 import Server from '../model/Server';
+import ServerListResponse from '../model/ServerListResponse';
 
 /**
 * Server service.
@@ -41,7 +41,7 @@ export default class ServerApi {
      * Callback function to receive the result of the createServer operation.
      * @callback module:api/ServerApi~createServerCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2001} data The data returned by the service call.
+     * @param {module:model/ServerListResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -50,7 +50,7 @@ export default class ServerApi {
      * @param {Object} opts Optional parameters
      * @param {module:model/Server} opts.server 
      * @param {module:api/ServerApi~createServerCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2001}
+     * data is of type: {@link module:model/ServerListResponse}
      */
     createServer(opts, callback) {
       opts = opts || {};
@@ -69,7 +69,7 @@ export default class ServerApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = InlineResponse2001;
+      let returnType = ServerListResponse;
 
       return this.apiClient.callApi(
         '/server', 'POST',
@@ -165,7 +165,7 @@ export default class ServerApi {
      * Callback function to receive the result of the serverDetails operation.
      * @callback module:api/ServerApi~serverDetailsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2001} data The data returned by the service call.
+     * @param {module:model/ServerListResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -173,7 +173,7 @@ export default class ServerApi {
      * Server details
      * @param {String} serverId Id of server to return
      * @param {module:api/ServerApi~serverDetailsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2001}
+     * data is of type: {@link module:model/ServerListResponse}
      */
     serverDetails(serverId, callback) {
       let postBody = null;
@@ -197,7 +197,7 @@ export default class ServerApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse2001;
+      let returnType = ServerListResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}', 'GET',
@@ -210,7 +210,7 @@ export default class ServerApi {
      * Callback function to receive the result of the updateServer operation.
      * @callback module:api/ServerApi~updateServerCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2001} data The data returned by the service call.
+     * @param {module:model/ServerListResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -220,7 +220,7 @@ export default class ServerApi {
      * @param {Object} opts Optional parameters
      * @param {module:model/Server} opts.server 
      * @param {module:api/ServerApi~updateServerCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2001}
+     * data is of type: {@link module:model/ServerListResponse}
      */
     updateServer(serverId, opts, callback) {
       opts = opts || {};
@@ -245,7 +245,7 @@ export default class ServerApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = InlineResponse2001;
+      let returnType = ServerListResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}', 'PUT',

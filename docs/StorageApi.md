@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="listStorages"></a>
 # **listStorages**
-> InlineResponse2002 listStorages()
+> SuccessStoragesResponse listStorages()
 
 List of storages
 
@@ -33,7 +33,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**SuccessStoragesResponse**](SuccessStoragesResponse.md)
 
 ### Authorization
 

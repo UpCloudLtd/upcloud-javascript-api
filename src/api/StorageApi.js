@@ -13,7 +13,7 @@
 
 
 import ApiClient from "../ApiClient";
-import InlineResponse2002 from '../model/InlineResponse2002';
+import SuccessStoragesResponse from '../model/SuccessStoragesResponse';
 
 /**
 * Storage service.
@@ -38,14 +38,14 @@ export default class StorageApi {
      * Callback function to receive the result of the listStorages operation.
      * @callback module:api/StorageApi~listStoragesCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2002} data The data returned by the service call.
+     * @param {module:model/SuccessStoragesResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * List of storages
      * @param {module:api/StorageApi~listStoragesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2002}
+     * data is of type: {@link module:model/SuccessStoragesResponse}
      */
     listStorages(callback) {
       let postBody = null;
@@ -63,7 +63,7 @@ export default class StorageApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse2002;
+      let returnType = SuccessStoragesResponse;
 
       return this.apiClient.callApi(
         '/storage', 'GET',
