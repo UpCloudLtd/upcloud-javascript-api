@@ -35,8 +35,8 @@ export default class StorageApi {
 
 
     /**
-     * Callback function to receive the result of the storageGet operation.
-     * @callback module:api/StorageApi~storageGetCallback
+     * Callback function to receive the result of the listStorages operation.
+     * @callback module:api/StorageApi~listStoragesCallback
      * @param {String} error Error message, if any.
      * @param {module:model/InlineResponse2002} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -44,10 +44,10 @@ export default class StorageApi {
 
     /**
      * List of storages
-     * @param {module:api/StorageApi~storageGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/StorageApi~listStoragesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/InlineResponse2002}
      */
-    storageGet(callback) {
+    listStorages(callback) {
       let postBody = null;
 
 

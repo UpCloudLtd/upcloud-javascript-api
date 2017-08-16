@@ -38,46 +38,8 @@ export default class ServerApi {
 
 
     /**
-     * Callback function to receive the result of the serverGet operation.
-     * @callback module:api/ServerApi~serverGetCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse200} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * List of servers
-     * @param {module:api/ServerApi~serverGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse200}
-     */
-    serverGet(callback) {
-      let postBody = null;
-
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = [];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = InlineResponse200;
-
-      return this.apiClient.callApi(
-        '/server', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the serverPost operation.
-     * @callback module:api/ServerApi~serverPostCallback
+     * Callback function to receive the result of the createServer operation.
+     * @callback module:api/ServerApi~createServerCallback
      * @param {String} error Error message, if any.
      * @param {module:model/InlineResponse2001} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -87,10 +49,10 @@ export default class ServerApi {
      * Create server
      * @param {Object} opts Optional parameters
      * @param {module:model/Server} opts.server 
-     * @param {module:api/ServerApi~serverPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/ServerApi~createServerCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/InlineResponse2001}
      */
-    serverPost(opts, callback) {
+    createServer(opts, callback) {
       opts = opts || {};
       let postBody = opts['server'];
 
@@ -117,8 +79,8 @@ export default class ServerApi {
     }
 
     /**
-     * Callback function to receive the result of the serverServerIdDelete operation.
-     * @callback module:api/ServerApi~serverServerIdDeleteCallback
+     * Callback function to receive the result of the deleteServer operation.
+     * @callback module:api/ServerApi~deleteServerCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -127,14 +89,14 @@ export default class ServerApi {
     /**
      * Delete server
      * @param {String} serverId Id of server to delete
-     * @param {module:api/ServerApi~serverServerIdDeleteCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/ServerApi~deleteServerCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    serverServerIdDelete(serverId, callback) {
+    deleteServer(serverId, callback) {
       let postBody = null;
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverServerIdDelete");
+        throw new Error("Missing the required parameter 'serverId' when calling deleteServer");
       }
 
 
@@ -161,8 +123,47 @@ export default class ServerApi {
     }
 
     /**
-     * Callback function to receive the result of the serverServerIdGet operation.
-     * @callback module:api/ServerApi~serverServerIdGetCallback
+     * Callback function to receive the result of the listServers operation.
+     * @callback module:api/ServerApi~listServersCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/InlineResponse200} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * List of servers
+     * List servers
+     * @param {module:api/ServerApi~listServersCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/InlineResponse200}
+     */
+    listServers(callback) {
+      let postBody = null;
+
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = InlineResponse200;
+
+      return this.apiClient.callApi(
+        '/server', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the serverDetails operation.
+     * @callback module:api/ServerApi~serverDetailsCallback
      * @param {String} error Error message, if any.
      * @param {module:model/InlineResponse2001} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -171,15 +172,15 @@ export default class ServerApi {
     /**
      * Server details
      * @param {String} serverId Id of server to return
-     * @param {module:api/ServerApi~serverServerIdGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/ServerApi~serverDetailsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/InlineResponse2001}
      */
-    serverServerIdGet(serverId, callback) {
+    serverDetails(serverId, callback) {
       let postBody = null;
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverServerIdGet");
+        throw new Error("Missing the required parameter 'serverId' when calling serverDetails");
       }
 
 
@@ -206,8 +207,8 @@ export default class ServerApi {
     }
 
     /**
-     * Callback function to receive the result of the serverServerIdPut operation.
-     * @callback module:api/ServerApi~serverServerIdPutCallback
+     * Callback function to receive the result of the updateServer operation.
+     * @callback module:api/ServerApi~updateServerCallback
      * @param {String} error Error message, if any.
      * @param {module:model/InlineResponse2001} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -218,16 +219,16 @@ export default class ServerApi {
      * @param {String} serverId Id of server to modify
      * @param {Object} opts Optional parameters
      * @param {module:model/Server} opts.server 
-     * @param {module:api/ServerApi~serverServerIdPutCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/ServerApi~updateServerCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/InlineResponse2001}
      */
-    serverServerIdPut(serverId, opts, callback) {
+    updateServer(serverId, opts, callback) {
       opts = opts || {};
       let postBody = opts['server'];
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverServerIdPut");
+        throw new Error("Missing the required parameter 'serverId' when calling updateServer");
       }
 
 

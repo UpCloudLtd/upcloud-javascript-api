@@ -72,6 +72,10 @@ var UpcloudApi = require('upcloud_api');
 
 var api = new UpcloudApi.ServerApi()
 
+var opts = { 
+  'server': new UpcloudApi.Server() // {Server} 
+};
+
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -79,7 +83,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.serverGet(callback);
+api.createServer(opts, callback);
 
 ```
 
@@ -89,12 +93,12 @@ All URIs are relative to *http://localhost/1.2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*UpcloudApi.ServerApi* | [**serverGet**](docs/ServerApi.md#serverGet) | **GET** /server | List of servers
-*UpcloudApi.ServerApi* | [**serverPost**](docs/ServerApi.md#serverPost) | **POST** /server | Create server
-*UpcloudApi.ServerApi* | [**serverServerIdDelete**](docs/ServerApi.md#serverServerIdDelete) | **DELETE** /server/{serverId} | Delete server
-*UpcloudApi.ServerApi* | [**serverServerIdGet**](docs/ServerApi.md#serverServerIdGet) | **GET** /server/{serverId} | Server details
-*UpcloudApi.ServerApi* | [**serverServerIdPut**](docs/ServerApi.md#serverServerIdPut) | **PUT** /server/{serverId} | Modify server
-*UpcloudApi.StorageApi* | [**storageGet**](docs/StorageApi.md#storageGet) | **GET** /storage | List of storages
+*UpcloudApi.ServerApi* | [**createServer**](docs/ServerApi.md#createServer) | **POST** /server | Create server
+*UpcloudApi.ServerApi* | [**deleteServer**](docs/ServerApi.md#deleteServer) | **DELETE** /server/{serverId} | Delete server
+*UpcloudApi.ServerApi* | [**listServers**](docs/ServerApi.md#listServers) | **GET** /server | List of servers
+*UpcloudApi.ServerApi* | [**serverDetails**](docs/ServerApi.md#serverDetails) | **GET** /server/{serverId} | Server details
+*UpcloudApi.ServerApi* | [**updateServer**](docs/ServerApi.md#updateServer) | **PUT** /server/{serverId} | Modify server
+*UpcloudApi.StorageApi* | [**listStorages**](docs/StorageApi.md#listStorages) | **GET** /storage | List of storages
 
 
 ## Documentation for Models

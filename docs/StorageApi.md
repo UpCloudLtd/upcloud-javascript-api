@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost/1.2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**storageGet**](StorageApi.md#storageGet) | **GET** /storage | List of storages
+[**listStorages**](StorageApi.md#listStorages) | **GET** /storage | List of storages
 
 
-<a name="storageGet"></a>
-# **storageGet**
-> InlineResponse2002 storageGet()
+<a name="listStorages"></a>
+# **listStorages**
+> InlineResponse2002 listStorages()
 
 List of storages
 
@@ -19,7 +19,7 @@ import UpcloudApi from 'upcloud_api';
 
 let apiInstance = new UpcloudApi.StorageApi();
 
-apiInstance.storageGet((error, data, response) => {
+apiInstance.listStorages((error, data, response) => {
   if (error) {
     console.error(error);
   } else {

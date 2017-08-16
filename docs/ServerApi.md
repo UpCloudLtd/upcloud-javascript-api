@@ -4,53 +4,16 @@ All URIs are relative to *http://localhost/1.2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**serverGet**](ServerApi.md#serverGet) | **GET** /server | List of servers
-[**serverPost**](ServerApi.md#serverPost) | **POST** /server | Create server
-[**serverServerIdDelete**](ServerApi.md#serverServerIdDelete) | **DELETE** /server/{serverId} | Delete server
-[**serverServerIdGet**](ServerApi.md#serverServerIdGet) | **GET** /server/{serverId} | Server details
-[**serverServerIdPut**](ServerApi.md#serverServerIdPut) | **PUT** /server/{serverId} | Modify server
+[**createServer**](ServerApi.md#createServer) | **POST** /server | Create server
+[**deleteServer**](ServerApi.md#deleteServer) | **DELETE** /server/{serverId} | Delete server
+[**listServers**](ServerApi.md#listServers) | **GET** /server | List of servers
+[**serverDetails**](ServerApi.md#serverDetails) | **GET** /server/{serverId} | Server details
+[**updateServer**](ServerApi.md#updateServer) | **PUT** /server/{serverId} | Modify server
 
 
-<a name="serverGet"></a>
-# **serverGet**
-> InlineResponse200 serverGet()
-
-List of servers
-
-### Example
-```javascript
-import UpcloudApi from 'upcloud_api';
-
-let apiInstance = new UpcloudApi.ServerApi();
-
-apiInstance.serverGet((error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**InlineResponse200**](InlineResponse200.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="serverPost"></a>
-# **serverPost**
-> InlineResponse2001 serverPost(opts)
+<a name="createServer"></a>
+# **createServer**
+> InlineResponse2001 createServer(opts)
 
 Create server
 
@@ -64,7 +27,7 @@ let opts = {
   'server': new UpcloudApi.Server() // Server | 
 };
 
-apiInstance.serverPost(opts, (error, data, response) => {
+apiInstance.createServer(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -92,9 +55,9 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="serverServerIdDelete"></a>
-# **serverServerIdDelete**
-> serverServerIdDelete(serverId)
+<a name="deleteServer"></a>
+# **deleteServer**
+> deleteServer(serverId)
 
 Delete server
 
@@ -107,7 +70,7 @@ let apiInstance = new UpcloudApi.ServerApi();
 let serverId = "serverId_example"; // String | Id of server to delete
 
 
-apiInstance.serverServerIdDelete(serverId, (error, data, response) => {
+apiInstance.deleteServer(serverId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -135,9 +98,48 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-<a name="serverServerIdGet"></a>
-# **serverServerIdGet**
-> InlineResponse2001 serverServerIdGet(serverId)
+<a name="listServers"></a>
+# **listServers**
+> InlineResponse200 listServers()
+
+List of servers
+
+List servers
+
+### Example
+```javascript
+import UpcloudApi from 'upcloud_api';
+
+let apiInstance = new UpcloudApi.ServerApi();
+
+apiInstance.listServers((error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**InlineResponse200**](InlineResponse200.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="serverDetails"></a>
+# **serverDetails**
+> InlineResponse2001 serverDetails(serverId)
 
 Server details
 
@@ -150,7 +152,7 @@ let apiInstance = new UpcloudApi.ServerApi();
 let serverId = "serverId_example"; // String | Id of server to return
 
 
-apiInstance.serverServerIdGet(serverId, (error, data, response) => {
+apiInstance.serverDetails(serverId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -178,9 +180,9 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-<a name="serverServerIdPut"></a>
-# **serverServerIdPut**
-> InlineResponse2001 serverServerIdPut(serverId, opts)
+<a name="updateServer"></a>
+# **updateServer**
+> InlineResponse2001 updateServer(serverId, opts)
 
 Modify server
 
@@ -196,7 +198,7 @@ let opts = {
   'server': new UpcloudApi.Server() // Server | 
 };
 
-apiInstance.serverServerIdPut(serverId, opts, (error, data, response) => {
+apiInstance.updateServer(serverId, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
