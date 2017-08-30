@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**storages** | [**InlineResponse2002Storages**](InlineResponse2002Storages.md) |  | [optional] 
+**timezones** | [**InlineResponse2002Timezones**](InlineResponse2002Timezones.md) |  | [optional] 
 
 

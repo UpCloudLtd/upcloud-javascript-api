@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**access** | **String** |  | [optional] 
-**address** | **String** |  | [optional] 
-**family** | **String** |  | [optional] 
+**access** | **String** | Is address for private or public network. | [optional] 
+**family** | **String** | The address family of new IP address. | [optional] 
+**server** | **String** | Server id | [optional] 
 
 
 <a name="AccessEnum"></a>

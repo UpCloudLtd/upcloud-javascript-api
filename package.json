@@ -1,7 +1,7 @@
 {
   "name": "upcloud_api",
-  "version": "1.0.0",
-  "description": "Upcloud_api_specification",
+  "version": "1.2.0",
+  "description": "The_UpCloud_API_consists_of_operations_used_to_control_resources_on_UpCloud__The_API_is_a_web_service_interface__HTTPS_is_used_to_connect_to_the_API__The_API_follows_the_principles_of_a_RESTful_web_service_wherever_possible__The_base_URL_for_all_API_operations_is__httpsapi_upcloud_com__All_API_operations_require_authentication_",
   "license": "Unlicense",
   "main": "src/index.js",
   "scripts": {

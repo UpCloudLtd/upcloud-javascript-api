@@ -3,28 +3,28 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bootOrder** | **String** |  | [optional] 
-**coreNumber** | **Number** |  | [optional] 
-**firewall** | **String** |  | [optional] 
+**bootOrder** | **String** | The storage device boot order. | [optional] 
+**coreNumber** | **Number** | The number of CPU cores dedicated to the server. See List server configurations. | [optional] 
+**firewall** | **String** | The state of the server firewall rules. | [optional] [default to &#39;on&#39;]
 **host** | **Number** |  | [optional] 
-**hostname** | **String** |  | [optional] 
-**ipAddresses** | [**ServerIpAddresses**](ServerIpAddresses.md) |  | [optional] 
+**hostname** | **String** | A valid hostname, e.g. host.example.com. The maximum length is 128 characters. | [optional] 
+**ipAddresses** | [**InlineResponse2006IpAddresses**](InlineResponse2006IpAddresses.md) |  | [optional] 
 **license** | **Number** |  | [optional] 
-**memoryAmount** | **Number** |  | [optional] 
-**nicModel** | **String** |  | [optional] 
-**plan** | **String** |  | [optional] 
+**memoryAmount** | **Number** | The amount of main memory in megabytes. See List server configurations. | [optional] 
+**nicModel** | **String** | The model of the server&#39;s network interfaces. | [optional] [default to &#39;e1000&#39;]
+**plan** | **String** | The pricing plan used. If a plan is selected, the core_number and  memory_amount must match the plan if they are present. | [optional] [default to &#39;custom&#39;]
 **planIpv4Bytes** | **Number** |  | [optional] 
 **planIpv6Bytes** | **Number** |  | [optional] 
-**state** | **String** |  | [optional] 
+**state** | [**ServerState**](ServerState.md) |  | [optional] 
 **storageDevices** | [**ServerStorageDevices**](ServerStorageDevices.md) |  | [optional] 
 **tags** | [**ServerTags**](ServerTags.md) |  | [optional] 
-**timezone** | **String** |  | [optional] 
-**title** | **String** |  | [optional] 
+**timezone** | [**Timezone**](Timezone.md) | A timezone identifier, e.g. Europe/Helsinki. See Timezones. | [optional] 
+**title** | **String** | A short description. | [optional] 
 **uuid** | **String** |  | [optional] 
-**videoModel** | **String** |  | [optional] 
-**vnc** | **String** |  | [optional] 
+**videoModel** | **String** | The model of the server&#39;s video interface. | [optional] [default to &#39;vga&#39;]
+**vnc** | **String** | The state of the VNC remote access service. | [optional] [default to &#39;off&#39;]
 **vncHost** | **String** |  | [optional] 
-**vncPassword** | **String** |  | [optional] 
+**vncPassword** | **String** | The VNC remote access password. | [optional] 
 **vncPort** | **String** |  | [optional] 
 **zone** | **String** |  | [optional] 
 
@@ -51,21 +51,6 @@ Name | Type | Description | Notes
 * `on` (value: `"on"`)
 
 * `off` (value: `"off"`)
-
-
-
-
-<a name="StateEnum"></a>
-## Enum: StateEnum
-
-
-* `started` (value: `"started"`)
-
-* `stopped` (value: `"stopped"`)
-
-* `maintenance` (value: `"maintenance"`)
-
-* `error` (value: `"error"`)
 
 
 
