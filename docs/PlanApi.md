@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost/1.2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**planGet**](PlanApi.md#planGet) | **GET** /plan | List available plans
+[**listPlans**](PlanApi.md#listPlans) | **GET** /plan | List available plans
 
 
-<a name="planGet"></a>
-# **planGet**
-> InlineResponse2003 planGet()
+<a name="listPlans"></a>
+# **listPlans**
+> InlineResponse2003 listPlans()
 
 List available plans
 
@@ -21,7 +21,7 @@ import UpcloudApi from 'upcloud_api';
 
 let apiInstance = new UpcloudApi.PlanApi();
 
-apiInstance.planGet((error, data, response) => {
+apiInstance.listPlans((error, data, response) => {
   if (error) {
     console.error(error);
   } else {

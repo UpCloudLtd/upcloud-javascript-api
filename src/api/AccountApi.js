@@ -35,8 +35,8 @@ export default class AccountApi {
 
 
     /**
-     * Callback function to receive the result of the accountGet operation.
-     * @callback module:api/AccountApi~accountGetCallback
+     * Callback function to receive the result of the getAccount operation.
+     * @callback module:api/AccountApi~getAccountCallback
      * @param {String} error Error message, if any.
      * @param {module:model/Account} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -45,10 +45,10 @@ export default class AccountApi {
     /**
      * Account information
      * Returns information on the user&#39;s account.
-     * @param {module:api/AccountApi~accountGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/AccountApi~getAccountCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Account}
      */
-    accountGet(callback) {
+    getAccount(callback) {
       let postBody = null;
 
 

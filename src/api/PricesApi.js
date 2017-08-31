@@ -35,8 +35,8 @@ export default class PricesApi {
 
 
     /**
-     * Callback function to receive the result of the priceGet operation.
-     * @callback module:api/PricesApi~priceGetCallback
+     * Callback function to receive the result of the listPrices operation.
+     * @callback module:api/PricesApi~listPricesCallback
      * @param {String} error Error message, if any.
      * @param {module:model/InlineResponse200} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -45,10 +45,10 @@ export default class PricesApi {
     /**
      * List prices
      * Returns a list resource prices.
-     * @param {module:api/PricesApi~priceGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/PricesApi~listPricesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/InlineResponse200}
      */
-    priceGet(callback) {
+    listPrices(callback) {
       let postBody = null;
 
 

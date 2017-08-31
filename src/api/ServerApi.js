@@ -46,6 +46,162 @@ export default class ServerApi {
 
 
     /**
+     * Callback function to receive the result of the assignTag operation.
+     * @callback module:api/ServerApi~assignTagCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServerListResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Assign tag to a server
+     * Servers can be tagged with one or more tags. The tags used must exist
+     * @param {String} serverId Server id
+     * @param {String} tagList List of tags
+     * @param {module:api/ServerApi~assignTagCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServerListResponse}
+     */
+    assignTag(serverId, tagList, callback) {
+      let postBody = null;
+
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling assignTag");
+      }
+
+      // verify the required parameter 'tagList' is set
+      if (tagList === undefined || tagList === null) {
+        throw new Error("Missing the required parameter 'tagList' when calling assignTag");
+      }
+
+
+      let pathParams = {
+        'serverId': serverId,
+        'tagList': tagList
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = ServerListResponse;
+
+      return this.apiClient.callApi(
+        '/server/{serverId}/tag/{tagList}', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the attachStorage operation.
+     * @callback module:api/ServerApi~attachStorageCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServerListResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Attach storage
+     * Attaches a storage as a device to a server.
+     * @param {String} serverId Server id
+     * @param {module:model/StorageDevice} storageDevice 
+     * @param {module:api/ServerApi~attachStorageCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServerListResponse}
+     */
+    attachStorage(serverId, storageDevice, callback) {
+      let postBody = storageDevice;
+
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling attachStorage");
+      }
+
+      // verify the required parameter 'storageDevice' is set
+      if (storageDevice === undefined || storageDevice === null) {
+        throw new Error("Missing the required parameter 'storageDevice' when calling attachStorage");
+      }
+
+
+      let pathParams = {
+        'serverId': serverId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = ServerListResponse;
+
+      return this.apiClient.callApi(
+        '/server/{serverId}/storage/attach', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the createFirewallRule operation.
+     * @callback module:api/ServerApi~createFirewallRuleCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Create firewall rule
+     * Creates a new firewall rule
+     * @param {String} serverId Server id
+     * @param {module:model/FirewallRule} firewallRule 
+     * @param {module:api/ServerApi~createFirewallRuleCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    createFirewallRule(serverId, firewallRule, callback) {
+      let postBody = firewallRule;
+
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling createFirewallRule");
+      }
+
+      // verify the required parameter 'firewallRule' is set
+      if (firewallRule === undefined || firewallRule === null) {
+        throw new Error("Missing the required parameter 'firewallRule' when calling createFirewallRule");
+      }
+
+
+      let pathParams = {
+        'serverId': serverId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = null;
+
+      return this.apiClient.callApi(
+        '/server/{serverId}/firewall_rule', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the createServer operation.
      * @callback module:api/ServerApi~createServerCallback
      * @param {String} error Error message, if any.
@@ -82,6 +238,58 @@ export default class ServerApi {
 
       return this.apiClient.callApi(
         '/server', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the deleteFirewallRule operation.
+     * @callback module:api/ServerApi~deleteFirewallRuleCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Remove firewall rule
+     * Removes a firewall rule from a server. Firewall rules must be removed individually. The positions of remaining firewall rules will be adjusted after a rule is removed.
+     * @param {String} serverId Server id
+     * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
+     * @param {module:api/ServerApi~deleteFirewallRuleCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    deleteFirewallRule(serverId, firewallRuleNumber, callback) {
+      let postBody = null;
+
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling deleteFirewallRule");
+      }
+
+      // verify the required parameter 'firewallRuleNumber' is set
+      if (firewallRuleNumber === undefined || firewallRuleNumber === null) {
+        throw new Error("Missing the required parameter 'firewallRuleNumber' when calling deleteFirewallRule");
+      }
+
+
+      let pathParams = {
+        'serverId': serverId,
+        'firewallRuleNumber': firewallRuleNumber
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = null;
+
+      return this.apiClient.callApi(
+        '/server/{serverId}/firewall_rule/{firewallRuleNumber}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -132,6 +340,196 @@ export default class ServerApi {
     }
 
     /**
+     * Callback function to receive the result of the detachStorage operation.
+     * @callback module:api/ServerApi~detachStorageCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServerListResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Detach storage
+     * Detaches a storage resource from a server.
+     * @param {String} serverId Server id
+     * @param {module:model/StorageDevice} storageDevice 
+     * @param {module:api/ServerApi~detachStorageCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServerListResponse}
+     */
+    detachStorage(serverId, storageDevice, callback) {
+      let postBody = storageDevice;
+
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling detachStorage");
+      }
+
+      // verify the required parameter 'storageDevice' is set
+      if (storageDevice === undefined || storageDevice === null) {
+        throw new Error("Missing the required parameter 'storageDevice' when calling detachStorage");
+      }
+
+
+      let pathParams = {
+        'serverId': serverId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = ServerListResponse;
+
+      return this.apiClient.callApi(
+        '/server/{serverId}/storage/detach', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the ejectCdrom operation.
+     * @callback module:api/ServerApi~ejectCdromCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServerListResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Eject CD-ROM
+     * Ejects the storage from the CD-ROM device of a server.
+     * @param {String} serverId Server id
+     * @param {module:api/ServerApi~ejectCdromCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServerListResponse}
+     */
+    ejectCdrom(serverId, callback) {
+      let postBody = null;
+
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling ejectCdrom");
+      }
+
+
+      let pathParams = {
+        'serverId': serverId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = ServerListResponse;
+
+      return this.apiClient.callApi(
+        '/server/{serverId}/storage/cdrom/eject', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getFirewallRule operation.
+     * @callback module:api/ServerApi~getFirewallRuleCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/InlineResponse2008} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get firewall rule details
+     * Returns detailed information about a specific firewall rule
+     * @param {String} serverId Server id
+     * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
+     * @param {module:api/ServerApi~getFirewallRuleCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/InlineResponse2008}
+     */
+    getFirewallRule(serverId, firewallRuleNumber, callback) {
+      let postBody = null;
+
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling getFirewallRule");
+      }
+
+      // verify the required parameter 'firewallRuleNumber' is set
+      if (firewallRuleNumber === undefined || firewallRuleNumber === null) {
+        throw new Error("Missing the required parameter 'firewallRuleNumber' when calling getFirewallRule");
+      }
+
+
+      let pathParams = {
+        'serverId': serverId,
+        'firewallRuleNumber': firewallRuleNumber
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = InlineResponse2008;
+
+      return this.apiClient.callApi(
+        '/server/{serverId}/firewall_rule/{firewallRuleNumber}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the listServerConfigurations operation.
+     * @callback module:api/ServerApi~listServerConfigurationsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/InlineResponse2004} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * List server configurations
+     * Returns a list of available server configurations. A server configuration consists of a combination of CPU core count and main memory amount. All servers are created using these configurations.
+     * @param {module:api/ServerApi~listServerConfigurationsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/InlineResponse2004}
+     */
+    listServerConfigurations(callback) {
+      let postBody = null;
+
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = InlineResponse2004;
+
+      return this.apiClient.callApi(
+        '/server_size', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the listServers operation.
      * @callback module:api/ServerApi~listServersCallback
      * @param {String} error Error message, if any.
@@ -165,6 +563,155 @@ export default class ServerApi {
 
       return this.apiClient.callApi(
         '/server', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the loadCdrom operation.
+     * @callback module:api/ServerApi~loadCdromCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServerListResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Load CD-ROM
+     * Loads a storage as a CD-ROM in the CD-ROM device of a server.
+     * @param {String} serverId Server id
+     * @param {Object} opts Optional parameters
+     * @param {module:model/StorageDevice1} opts.storageDevice 
+     * @param {module:api/ServerApi~loadCdromCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServerListResponse}
+     */
+    loadCdrom(serverId, opts, callback) {
+      opts = opts || {};
+      let postBody = opts['storageDevice'];
+
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling loadCdrom");
+      }
+
+
+      let pathParams = {
+        'serverId': serverId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = ServerListResponse;
+
+      return this.apiClient.callApi(
+        '/server/{serverId}/storage/cdrom/load', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the modifyServer operation.
+     * @callback module:api/ServerApi~modifyServerCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServerListResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Modify server
+     * @param {String} serverId Id of server to modify
+     * @param {Object} opts Optional parameters
+     * @param {module:model/Server} opts.server 
+     * @param {module:api/ServerApi~modifyServerCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServerListResponse}
+     */
+    modifyServer(serverId, opts, callback) {
+      opts = opts || {};
+      let postBody = opts['server'];
+
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling modifyServer");
+      }
+
+
+      let pathParams = {
+        'serverId': serverId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = ServerListResponse;
+
+      return this.apiClient.callApi(
+        '/server/{serverId}', 'PUT',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the restartServer operation.
+     * @callback module:api/ServerApi~restartServerCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServerListResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Restart server
+     * Stops and starts a server. The server state must be &#x60;started&#x60;.
+     * @param {String} serverId Id of server to restart
+     * @param {module:model/RestartServer} restartServer 
+     * @param {module:api/ServerApi~restartServerCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServerListResponse}
+     */
+    restartServer(serverId, restartServer, callback) {
+      let postBody = restartServer;
+
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling restartServer");
+      }
+
+      // verify the required parameter 'restartServer' is set
+      if (restartServer === undefined || restartServer === null) {
+        throw new Error("Missing the required parameter 'restartServer' when calling restartServer");
+      }
+
+
+      let pathParams = {
+        'serverId': serverId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ServerListResponse;
+
+      return this.apiClient.callApi(
+        '/server/{serverId}/restart', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -217,111 +764,6 @@ export default class ServerApi {
     }
 
     /**
-     * Callback function to receive the result of the serverServerIdFirewallRuleFirewallRuleNumberDelete operation.
-     * @callback module:api/ServerApi~serverServerIdFirewallRuleFirewallRuleNumberDeleteCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Remove firewall rule
-     * Removes a firewall rule from a server. Firewall rules must be removed individually. The positions of remaining firewall rules will be adjusted after a rule is removed.
-     * @param {String} serverId Server id
-     * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
-     * @param {module:api/ServerApi~serverServerIdFirewallRuleFirewallRuleNumberDeleteCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    serverServerIdFirewallRuleFirewallRuleNumberDelete(serverId, firewallRuleNumber, callback) {
-      let postBody = null;
-
-      // verify the required parameter 'serverId' is set
-      if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverServerIdFirewallRuleFirewallRuleNumberDelete");
-      }
-
-      // verify the required parameter 'firewallRuleNumber' is set
-      if (firewallRuleNumber === undefined || firewallRuleNumber === null) {
-        throw new Error("Missing the required parameter 'firewallRuleNumber' when calling serverServerIdFirewallRuleFirewallRuleNumberDelete");
-      }
-
-
-      let pathParams = {
-        'serverId': serverId,
-        'firewallRuleNumber': firewallRuleNumber
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = [];
-      let contentTypes = [];
-      let accepts = [];
-      let returnType = null;
-
-      return this.apiClient.callApi(
-        '/server/{serverId}/firewall_rule/{firewallRuleNumber}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the serverServerIdFirewallRuleFirewallRuleNumberGet operation.
-     * @callback module:api/ServerApi~serverServerIdFirewallRuleFirewallRuleNumberGetCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2008} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get firewall rule details
-     * Returns detailed information about a specific firewall rule
-     * @param {String} serverId Server id
-     * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
-     * @param {module:api/ServerApi~serverServerIdFirewallRuleFirewallRuleNumberGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2008}
-     */
-    serverServerIdFirewallRuleFirewallRuleNumberGet(serverId, firewallRuleNumber, callback) {
-      let postBody = null;
-
-      // verify the required parameter 'serverId' is set
-      if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverServerIdFirewallRuleFirewallRuleNumberGet");
-      }
-
-      // verify the required parameter 'firewallRuleNumber' is set
-      if (firewallRuleNumber === undefined || firewallRuleNumber === null) {
-        throw new Error("Missing the required parameter 'firewallRuleNumber' when calling serverServerIdFirewallRuleFirewallRuleNumberGet");
-      }
-
-
-      let pathParams = {
-        'serverId': serverId,
-        'firewallRuleNumber': firewallRuleNumber
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = [];
-      let contentTypes = [];
-      let accepts = [];
-      let returnType = InlineResponse2008;
-
-      return this.apiClient.callApi(
-        '/server/{serverId}/firewall_rule/{firewallRuleNumber}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the serverServerIdFirewallRuleGet operation.
      * @callback module:api/ServerApi~serverServerIdFirewallRuleGetCallback
      * @param {String} error Error message, if any.
@@ -368,111 +810,8 @@ export default class ServerApi {
     }
 
     /**
-     * Callback function to receive the result of the serverServerIdFirewallRulePost operation.
-     * @callback module:api/ServerApi~serverServerIdFirewallRulePostCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Create firewall rule
-     * Creates a new firewall rule
-     * @param {String} serverId Server id
-     * @param {module:model/FirewallRule} firewallRule 
-     * @param {module:api/ServerApi~serverServerIdFirewallRulePostCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    serverServerIdFirewallRulePost(serverId, firewallRule, callback) {
-      let postBody = firewallRule;
-
-      // verify the required parameter 'serverId' is set
-      if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverServerIdFirewallRulePost");
-      }
-
-      // verify the required parameter 'firewallRule' is set
-      if (firewallRule === undefined || firewallRule === null) {
-        throw new Error("Missing the required parameter 'firewallRule' when calling serverServerIdFirewallRulePost");
-      }
-
-
-      let pathParams = {
-        'serverId': serverId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = [];
-      let contentTypes = [];
-      let accepts = [];
-      let returnType = null;
-
-      return this.apiClient.callApi(
-        '/server/{serverId}/firewall_rule', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the serverServerIdRestartPost operation.
-     * @callback module:api/ServerApi~serverServerIdRestartPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Restart server
-     * Stops and starts a server. The server state must be &#x60;started&#x60;.
-     * @param {String} serverId Id of server to restart
-     * @param {module:model/RestartServer} restartServer 
-     * @param {module:api/ServerApi~serverServerIdRestartPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
-     */
-    serverServerIdRestartPost(serverId, restartServer, callback) {
-      let postBody = restartServer;
-
-      // verify the required parameter 'serverId' is set
-      if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverServerIdRestartPost");
-      }
-
-      // verify the required parameter 'restartServer' is set
-      if (restartServer === undefined || restartServer === null) {
-        throw new Error("Missing the required parameter 'restartServer' when calling serverServerIdRestartPost");
-      }
-
-
-      let pathParams = {
-        'serverId': serverId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = [];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = ServerListResponse;
-
-      return this.apiClient.callApi(
-        '/server/{serverId}/restart', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the serverServerIdStartPost operation.
-     * @callback module:api/ServerApi~serverServerIdStartPostCallback
+     * Callback function to receive the result of the startServer operation.
+     * @callback module:api/ServerApi~startServerCallback
      * @param {String} error Error message, if any.
      * @param {module:model/ServerListResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -482,15 +821,15 @@ export default class ServerApi {
      * Start server
      * Starts a stopped server. The server state must be &#x60;stopped&#x60;.
      * @param {String} serverId Id of server to start
-     * @param {module:api/ServerApi~serverServerIdStartPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/ServerApi~startServerCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ServerListResponse}
      */
-    serverServerIdStartPost(serverId, callback) {
+    startServer(serverId, callback) {
       let postBody = null;
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverServerIdStartPost");
+        throw new Error("Missing the required parameter 'serverId' when calling startServer");
       }
 
 
@@ -517,8 +856,8 @@ export default class ServerApi {
     }
 
     /**
-     * Callback function to receive the result of the serverServerIdStopPost operation.
-     * @callback module:api/ServerApi~serverServerIdStopPostCallback
+     * Callback function to receive the result of the stopServer operation.
+     * @callback module:api/ServerApi~stopServerCallback
      * @param {String} error Error message, if any.
      * @param {module:model/ServerListResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -529,20 +868,20 @@ export default class ServerApi {
      * Stops a started server. The server state must be &#x60;started&#x60;.
      * @param {String} serverId Id of server to stop
      * @param {module:model/StopServer} stopServer 
-     * @param {module:api/ServerApi~serverServerIdStopPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/ServerApi~stopServerCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ServerListResponse}
      */
-    serverServerIdStopPost(serverId, stopServer, callback) {
+    stopServer(serverId, stopServer, callback) {
       let postBody = stopServer;
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverServerIdStopPost");
+        throw new Error("Missing the required parameter 'serverId' when calling stopServer");
       }
 
       // verify the required parameter 'stopServer' is set
       if (stopServer === undefined || stopServer === null) {
-        throw new Error("Missing the required parameter 'stopServer' when calling serverServerIdStopPost");
+        throw new Error("Missing the required parameter 'stopServer' when calling stopServer");
       }
 
 
@@ -569,260 +908,8 @@ export default class ServerApi {
     }
 
     /**
-     * Callback function to receive the result of the serverServerIdStorageAttachPost operation.
-     * @callback module:api/ServerApi~serverServerIdStorageAttachPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Attach storage
-     * Attaches a storage as a device to a server.
-     * @param {String} serverId Server id
-     * @param {module:model/StorageDevice} storageDevice 
-     * @param {module:api/ServerApi~serverServerIdStorageAttachPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
-     */
-    serverServerIdStorageAttachPost(serverId, storageDevice, callback) {
-      let postBody = storageDevice;
-
-      // verify the required parameter 'serverId' is set
-      if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverServerIdStorageAttachPost");
-      }
-
-      // verify the required parameter 'storageDevice' is set
-      if (storageDevice === undefined || storageDevice === null) {
-        throw new Error("Missing the required parameter 'storageDevice' when calling serverServerIdStorageAttachPost");
-      }
-
-
-      let pathParams = {
-        'serverId': serverId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = [];
-      let contentTypes = [];
-      let accepts = [];
-      let returnType = ServerListResponse;
-
-      return this.apiClient.callApi(
-        '/server/{serverId}/storage/attach', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the serverServerIdStorageCdromEjectPost operation.
-     * @callback module:api/ServerApi~serverServerIdStorageCdromEjectPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Eject CD-ROM
-     * Ejects the storage from the CD-ROM device of a server.
-     * @param {String} serverId Server id
-     * @param {module:api/ServerApi~serverServerIdStorageCdromEjectPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
-     */
-    serverServerIdStorageCdromEjectPost(serverId, callback) {
-      let postBody = null;
-
-      // verify the required parameter 'serverId' is set
-      if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverServerIdStorageCdromEjectPost");
-      }
-
-
-      let pathParams = {
-        'serverId': serverId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = [];
-      let contentTypes = [];
-      let accepts = [];
-      let returnType = ServerListResponse;
-
-      return this.apiClient.callApi(
-        '/server/{serverId}/storage/cdrom/eject', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the serverServerIdStorageCdromLoadPost operation.
-     * @callback module:api/ServerApi~serverServerIdStorageCdromLoadPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Load CD-ROM
-     * Loads a storage as a CD-ROM in the CD-ROM device of a server.
-     * @param {String} serverId Server id
-     * @param {Object} opts Optional parameters
-     * @param {module:model/StorageDevice1} opts.storageDevice 
-     * @param {module:api/ServerApi~serverServerIdStorageCdromLoadPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
-     */
-    serverServerIdStorageCdromLoadPost(serverId, opts, callback) {
-      opts = opts || {};
-      let postBody = opts['storageDevice'];
-
-      // verify the required parameter 'serverId' is set
-      if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverServerIdStorageCdromLoadPost");
-      }
-
-
-      let pathParams = {
-        'serverId': serverId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = [];
-      let contentTypes = [];
-      let accepts = [];
-      let returnType = ServerListResponse;
-
-      return this.apiClient.callApi(
-        '/server/{serverId}/storage/cdrom/load', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the serverServerIdStorageDetachPost operation.
-     * @callback module:api/ServerApi~serverServerIdStorageDetachPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Detach storage
-     * Detaches a storage resource from a server.
-     * @param {String} serverId Server id
-     * @param {module:model/StorageDevice} storageDevice 
-     * @param {module:api/ServerApi~serverServerIdStorageDetachPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
-     */
-    serverServerIdStorageDetachPost(serverId, storageDevice, callback) {
-      let postBody = storageDevice;
-
-      // verify the required parameter 'serverId' is set
-      if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverServerIdStorageDetachPost");
-      }
-
-      // verify the required parameter 'storageDevice' is set
-      if (storageDevice === undefined || storageDevice === null) {
-        throw new Error("Missing the required parameter 'storageDevice' when calling serverServerIdStorageDetachPost");
-      }
-
-
-      let pathParams = {
-        'serverId': serverId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = [];
-      let contentTypes = [];
-      let accepts = [];
-      let returnType = ServerListResponse;
-
-      return this.apiClient.callApi(
-        '/server/{serverId}/storage/detach', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the serverServerIdTagTagListPost operation.
-     * @callback module:api/ServerApi~serverServerIdTagTagListPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Assign tag to a server
-     * Servers can be tagged with one or more tags. The tags used must exist
-     * @param {String} serverId Server id
-     * @param {String} tagList List of tags
-     * @param {module:api/ServerApi~serverServerIdTagTagListPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
-     */
-    serverServerIdTagTagListPost(serverId, tagList, callback) {
-      let postBody = null;
-
-      // verify the required parameter 'serverId' is set
-      if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverServerIdTagTagListPost");
-      }
-
-      // verify the required parameter 'tagList' is set
-      if (tagList === undefined || tagList === null) {
-        throw new Error("Missing the required parameter 'tagList' when calling serverServerIdTagTagListPost");
-      }
-
-
-      let pathParams = {
-        'serverId': serverId,
-        'tagList': tagList
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = [];
-      let contentTypes = [];
-      let accepts = [];
-      let returnType = ServerListResponse;
-
-      return this.apiClient.callApi(
-        '/server/{serverId}/tag/{tagList}', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the serverServerIdUntagTagNamePost operation.
-     * @callback module:api/ServerApi~serverServerIdUntagTagNamePostCallback
+     * Callback function to receive the result of the untag operation.
+     * @callback module:api/ServerApi~untagCallback
      * @param {String} error Error message, if any.
      * @param {module:model/ServerListResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -833,20 +920,20 @@ export default class ServerApi {
      * Untags tags from given server. The tag(s) must exist
      * @param {String} serverId Server id
      * @param {String} tagName Tag name
-     * @param {module:api/ServerApi~serverServerIdUntagTagNamePostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/ServerApi~untagCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ServerListResponse}
      */
-    serverServerIdUntagTagNamePost(serverId, tagName, callback) {
+    untag(serverId, tagName, callback) {
       let postBody = null;
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverServerIdUntagTagNamePost");
+        throw new Error("Missing the required parameter 'serverId' when calling untag");
       }
 
       // verify the required parameter 'tagName' is set
       if (tagName === undefined || tagName === null) {
-        throw new Error("Missing the required parameter 'tagName' when calling serverServerIdUntagTagNamePost");
+        throw new Error("Missing the required parameter 'tagName' when calling untag");
       }
 
 
@@ -868,93 +955,6 @@ export default class ServerApi {
 
       return this.apiClient.callApi(
         '/server/{serverId}/untag/{tagName}', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the serverSizeGet operation.
-     * @callback module:api/ServerApi~serverSizeGetCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2004} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * List server configurations
-     * Returns a list of available server configurations. A server configuration consists of a combination of CPU core count and main memory amount. All servers are created using these configurations.
-     * @param {module:api/ServerApi~serverSizeGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2004}
-     */
-    serverSizeGet(callback) {
-      let postBody = null;
-
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = [];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = InlineResponse2004;
-
-      return this.apiClient.callApi(
-        '/server_size', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the updateServer operation.
-     * @callback module:api/ServerApi~updateServerCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Modify server
-     * @param {String} serverId Id of server to modify
-     * @param {Object} opts Optional parameters
-     * @param {module:model/Server} opts.server 
-     * @param {module:api/ServerApi~updateServerCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
-     */
-    updateServer(serverId, opts, callback) {
-      opts = opts || {};
-      let postBody = opts['server'];
-
-      // verify the required parameter 'serverId' is set
-      if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling updateServer");
-      }
-
-
-      let pathParams = {
-        'serverId': serverId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = [];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = ServerListResponse;
-
-      return this.apiClient.callApi(
-        '/server/{serverId}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

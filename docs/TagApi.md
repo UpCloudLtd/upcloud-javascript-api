@@ -4,17 +4,17 @@ All URIs are relative to *http://localhost/1.2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**serverServerIdTagTagListPost**](TagApi.md#serverServerIdTagTagListPost) | **POST** /server/{serverId}/tag/{tagList} | Assign tag to a server
-[**serverServerIdUntagTagNamePost**](TagApi.md#serverServerIdUntagTagNamePost) | **POST** /server/{serverId}/untag/{tagName} | Remove tag from server
-[**tagGet**](TagApi.md#tagGet) | **GET** /tag | List existing tags
-[**tagPost**](TagApi.md#tagPost) | **POST** /tag | Create a new tag
-[**tagTagNameDelete**](TagApi.md#tagTagNameDelete) | **DELETE** /tag/{tagName} | Delete tag
-[**tagTagNamePut**](TagApi.md#tagTagNamePut) | **PUT** /tag/{tagName} | Modify existing tag
+[**assignTag**](TagApi.md#assignTag) | **POST** /server/{serverId}/tag/{tagList} | Assign tag to a server
+[**createTag**](TagApi.md#createTag) | **POST** /tag | Create a new tag
+[**deleteTag**](TagApi.md#deleteTag) | **DELETE** /tag/{tagName} | Delete tag
+[**listTags**](TagApi.md#listTags) | **GET** /tag | List existing tags
+[**modifyTag**](TagApi.md#modifyTag) | **PUT** /tag/{tagName} | Modify existing tag
+[**untag**](TagApi.md#untag) | **POST** /server/{serverId}/untag/{tagName} | Remove tag from server
 
 
-<a name="serverServerIdTagTagListPost"></a>
-# **serverServerIdTagTagListPost**
-> ServerListResponse serverServerIdTagTagListPost(serverId, tagList)
+<a name="assignTag"></a>
+# **assignTag**
+> ServerListResponse assignTag(serverId, tagList)
 
 Assign tag to a server
 
@@ -31,7 +31,7 @@ let serverId = "serverId_example"; // String | Server id
 let tagList = "tagList_example"; // String | List of tags
 
 
-apiInstance.serverServerIdTagTagListPost(serverId, tagList, (error, data, response) => {
+apiInstance.assignTag(serverId, tagList, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -60,96 +60,9 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-<a name="serverServerIdUntagTagNamePost"></a>
-# **serverServerIdUntagTagNamePost**
-> ServerListResponse serverServerIdUntagTagNamePost(serverId, tagName)
-
-Remove tag from server
-
-Untags tags from given server. The tag(s) must exist
-
-### Example
-```javascript
-import UpcloudApi from 'upcloud_api';
-
-let apiInstance = new UpcloudApi.TagApi();
-
-let serverId = "serverId_example"; // String | Server id
-
-let tagName = "tagName_example"; // String | Tag name
-
-
-apiInstance.serverServerIdUntagTagNamePost(serverId, tagName, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **serverId** | **String**| Server id | 
- **tagName** | **String**| Tag name | 
-
-### Return type
-
-[**ServerListResponse**](ServerListResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-<a name="tagGet"></a>
-# **tagGet**
-> InlineResponse2009 tagGet()
-
-List existing tags
-
-Returns all existing tags with their properties and servers tagged
-
-### Example
-```javascript
-import UpcloudApi from 'upcloud_api';
-
-let apiInstance = new UpcloudApi.TagApi();
-
-apiInstance.tagGet((error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**InlineResponse2009**](InlineResponse2009.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-<a name="tagPost"></a>
-# **tagPost**
-> InlineResponse20010 tagPost(tag)
+<a name="createTag"></a>
+# **createTag**
+> InlineResponse20010 createTag(tag)
 
 Create a new tag
 
@@ -164,7 +77,7 @@ let apiInstance = new UpcloudApi.TagApi();
 let tag = new UpcloudApi.Tag(); // Tag | 
 
 
-apiInstance.tagPost(tag, (error, data, response) => {
+apiInstance.createTag(tag, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -192,9 +105,9 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-<a name="tagTagNameDelete"></a>
-# **tagTagNameDelete**
-> tagTagNameDelete(tagName)
+<a name="deleteTag"></a>
+# **deleteTag**
+> deleteTag(tagName)
 
 Delete tag
 
@@ -209,7 +122,7 @@ let apiInstance = new UpcloudApi.TagApi();
 let tagName = "tagName_example"; // String | Tag name
 
 
-apiInstance.tagTagNameDelete(tagName, (error, data, response) => {
+apiInstance.deleteTag(tagName, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -237,9 +150,48 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-<a name="tagTagNamePut"></a>
-# **tagTagNamePut**
-> InlineResponse20010 tagTagNamePut(tagNametag)
+<a name="listTags"></a>
+# **listTags**
+> InlineResponse2009 listTags()
+
+List existing tags
+
+Returns all existing tags with their properties and servers tagged
+
+### Example
+```javascript
+import UpcloudApi from 'upcloud_api';
+
+let apiInstance = new UpcloudApi.TagApi();
+
+apiInstance.listTags((error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**InlineResponse2009**](InlineResponse2009.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+<a name="modifyTag"></a>
+# **modifyTag**
+> InlineResponse20010 modifyTag(tagNametag)
 
 Modify existing tag
 
@@ -256,7 +208,7 @@ let tagName = "tagName_example"; // String | Tag name
 let tag = new UpcloudApi.Tag1(); // Tag1 | 
 
 
-apiInstance.tagTagNamePut(tagNametag, (error, data, response) => {
+apiInstance.modifyTag(tagNametag, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -275,6 +227,54 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InlineResponse20010**](InlineResponse20010.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+<a name="untag"></a>
+# **untag**
+> ServerListResponse untag(serverId, tagName)
+
+Remove tag from server
+
+Untags tags from given server. The tag(s) must exist
+
+### Example
+```javascript
+import UpcloudApi from 'upcloud_api';
+
+let apiInstance = new UpcloudApi.TagApi();
+
+let serverId = "serverId_example"; // String | Server id
+
+let tagName = "tagName_example"; // String | Tag name
+
+
+apiInstance.untag(serverId, tagName, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **serverId** | **String**| Server id | 
+ **tagName** | **String**| Tag name | 
+
+### Return type
+
+[**ServerListResponse**](ServerListResponse.md)
 
 ### Authorization
 

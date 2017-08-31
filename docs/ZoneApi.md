@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost/1.2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**zoneGet**](ZoneApi.md#zoneGet) | **GET** /zone | List available zones
+[**listZones**](ZoneApi.md#listZones) | **GET** /zone | List available zones
 
 
-<a name="zoneGet"></a>
-# **zoneGet**
-> InlineResponse2001 zoneGet()
+<a name="listZones"></a>
+# **listZones**
+> InlineResponse2001 listZones()
 
 List available zones
 
@@ -21,7 +21,7 @@ import UpcloudApi from 'upcloud_api';
 
 let apiInstance = new UpcloudApi.ZoneApi();
 
-apiInstance.zoneGet((error, data, response) => {
+apiInstance.listZones((error, data, response) => {
   if (error) {
     console.error(error);
   } else {

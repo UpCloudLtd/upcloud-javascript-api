@@ -35,8 +35,8 @@ export default class ZoneApi {
 
 
     /**
-     * Callback function to receive the result of the zoneGet operation.
-     * @callback module:api/ZoneApi~zoneGetCallback
+     * Callback function to receive the result of the listZones operation.
+     * @callback module:api/ZoneApi~listZonesCallback
      * @param {String} error Error message, if any.
      * @param {module:model/InlineResponse2001} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -45,10 +45,10 @@ export default class ZoneApi {
     /**
      * List available zones
      * Returns a list of available zones.
-     * @param {module:api/ZoneApi~zoneGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/ZoneApi~listZonesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/InlineResponse2001}
      */
-    zoneGet(callback) {
+    listZones(callback) {
       let postBody = null;
 
 

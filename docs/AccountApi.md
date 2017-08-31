@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost/1.2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**accountGet**](AccountApi.md#accountGet) | **GET** /account | Account information
+[**getAccount**](AccountApi.md#getAccount) | **GET** /account | Account information
 
 
-<a name="accountGet"></a>
-# **accountGet**
-> Account accountGet()
+<a name="getAccount"></a>
+# **getAccount**
+> Account getAccount()
 
 Account information
 
@@ -21,7 +21,7 @@ import UpcloudApi from 'upcloud_api';
 
 let apiInstance = new UpcloudApi.AccountApi();
 
-apiInstance.accountGet((error, data, response) => {
+apiInstance.getAccount((error, data, response) => {
   if (error) {
     console.error(error);
   } else {

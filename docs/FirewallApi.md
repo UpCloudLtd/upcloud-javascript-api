@@ -4,15 +4,63 @@ All URIs are relative to *http://localhost/1.2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**serverServerIdFirewallRuleFirewallRuleNumberDelete**](FirewallApi.md#serverServerIdFirewallRuleFirewallRuleNumberDelete) | **DELETE** /server/{serverId}/firewall_rule/{firewallRuleNumber} | Remove firewall rule
-[**serverServerIdFirewallRuleFirewallRuleNumberGet**](FirewallApi.md#serverServerIdFirewallRuleFirewallRuleNumberGet) | **GET** /server/{serverId}/firewall_rule/{firewallRuleNumber} | Get firewall rule details
+[**createFirewallRule**](FirewallApi.md#createFirewallRule) | **POST** /server/{serverId}/firewall_rule | Create firewall rule
+[**deleteFirewallRule**](FirewallApi.md#deleteFirewallRule) | **DELETE** /server/{serverId}/firewall_rule/{firewallRuleNumber} | Remove firewall rule
+[**getFirewallRule**](FirewallApi.md#getFirewallRule) | **GET** /server/{serverId}/firewall_rule/{firewallRuleNumber} | Get firewall rule details
 [**serverServerIdFirewallRuleGet**](FirewallApi.md#serverServerIdFirewallRuleGet) | **GET** /server/{serverId}/firewall_rule | List firewall rules
-[**serverServerIdFirewallRulePost**](FirewallApi.md#serverServerIdFirewallRulePost) | **POST** /server/{serverId}/firewall_rule | Create firewall rule
 
 
-<a name="serverServerIdFirewallRuleFirewallRuleNumberDelete"></a>
-# **serverServerIdFirewallRuleFirewallRuleNumberDelete**
-> serverServerIdFirewallRuleFirewallRuleNumberDelete(serverId, firewallRuleNumber)
+<a name="createFirewallRule"></a>
+# **createFirewallRule**
+> createFirewallRule(serverId, firewallRule)
+
+Create firewall rule
+
+Creates a new firewall rule
+
+### Example
+```javascript
+import UpcloudApi from 'upcloud_api';
+
+let apiInstance = new UpcloudApi.FirewallApi();
+
+let serverId = "serverId_example"; // String | Server id
+
+let firewallRule = new UpcloudApi.FirewallRule(); // FirewallRule | 
+
+
+apiInstance.createFirewallRule(serverId, firewallRule, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **serverId** | **String**| Server id | 
+ **firewallRule** | [**FirewallRule**](FirewallRule.md)|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+<a name="deleteFirewallRule"></a>
+# **deleteFirewallRule**
+> deleteFirewallRule(serverId, firewallRuleNumber)
 
 Remove firewall rule
 
@@ -29,7 +77,7 @@ let serverId = "serverId_example"; // String | Server id
 let firewallRuleNumber = "firewallRuleNumber_example"; // String | Denotes the index of the firewall rule in the server's firewall rule list
 
 
-apiInstance.serverServerIdFirewallRuleFirewallRuleNumberDelete(serverId, firewallRuleNumber, (error, data, response) => {
+apiInstance.deleteFirewallRule(serverId, firewallRuleNumber, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -58,9 +106,9 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-<a name="serverServerIdFirewallRuleFirewallRuleNumberGet"></a>
-# **serverServerIdFirewallRuleFirewallRuleNumberGet**
-> InlineResponse2008 serverServerIdFirewallRuleFirewallRuleNumberGet(serverId, firewallRuleNumber)
+<a name="getFirewallRule"></a>
+# **getFirewallRule**
+> InlineResponse2008 getFirewallRule(serverId, firewallRuleNumber)
 
 Get firewall rule details
 
@@ -77,7 +125,7 @@ let serverId = "serverId_example"; // String | Server id
 let firewallRuleNumber = "firewallRuleNumber_example"; // String | Denotes the index of the firewall rule in the server's firewall rule list
 
 
-apiInstance.serverServerIdFirewallRuleFirewallRuleNumberGet(serverId, firewallRuleNumber, (error, data, response) => {
+apiInstance.getFirewallRule(serverId, firewallRuleNumber, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -141,54 +189,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InlineResponse2007**](InlineResponse2007.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-<a name="serverServerIdFirewallRulePost"></a>
-# **serverServerIdFirewallRulePost**
-> serverServerIdFirewallRulePost(serverId, firewallRule)
-
-Create firewall rule
-
-Creates a new firewall rule
-
-### Example
-```javascript
-import UpcloudApi from 'upcloud_api';
-
-let apiInstance = new UpcloudApi.FirewallApi();
-
-let serverId = "serverId_example"; // String | Server id
-
-let firewallRule = new UpcloudApi.FirewallRule(); // FirewallRule | 
-
-
-apiInstance.serverServerIdFirewallRulePost(serverId, firewallRule, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-});
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **serverId** | **String**| Server id | 
- **firewallRule** | [**FirewallRule**](FirewallRule.md)|  | 
-
-### Return type
-
-null (empty response body)
 
 ### Authorization
 

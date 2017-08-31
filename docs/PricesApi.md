@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost/1.2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**priceGet**](PricesApi.md#priceGet) | **GET** /price | List prices
+[**listPrices**](PricesApi.md#listPrices) | **GET** /price | List prices
 
 
-<a name="priceGet"></a>
-# **priceGet**
-> InlineResponse200 priceGet()
+<a name="listPrices"></a>
+# **listPrices**
+> InlineResponse200 listPrices()
 
 List prices
 
@@ -21,7 +21,7 @@ import UpcloudApi from 'upcloud_api';
 
 let apiInstance = new UpcloudApi.PricesApi();
 
-apiInstance.priceGet((error, data, response) => {
+apiInstance.listPrices((error, data, response) => {
   if (error) {
     console.error(error);
   } else {

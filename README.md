@@ -79,7 +79,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.accountGet(callback);
+api.getAccount(callback);
 
 ```
 
@@ -89,62 +89,62 @@ All URIs are relative to *http://localhost/1.2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*UpcloudApi.AccountApi* | [**accountGet**](docs/AccountApi.md#accountGet) | **GET** /account | Account information
-*UpcloudApi.FirewallApi* | [**serverServerIdFirewallRuleFirewallRuleNumberDelete**](docs/FirewallApi.md#serverServerIdFirewallRuleFirewallRuleNumberDelete) | **DELETE** /server/{serverId}/firewall_rule/{firewallRuleNumber} | Remove firewall rule
-*UpcloudApi.FirewallApi* | [**serverServerIdFirewallRuleFirewallRuleNumberGet**](docs/FirewallApi.md#serverServerIdFirewallRuleFirewallRuleNumberGet) | **GET** /server/{serverId}/firewall_rule/{firewallRuleNumber} | Get firewall rule details
+*UpcloudApi.AccountApi* | [**getAccount**](docs/AccountApi.md#getAccount) | **GET** /account | Account information
+*UpcloudApi.FirewallApi* | [**createFirewallRule**](docs/FirewallApi.md#createFirewallRule) | **POST** /server/{serverId}/firewall_rule | Create firewall rule
+*UpcloudApi.FirewallApi* | [**deleteFirewallRule**](docs/FirewallApi.md#deleteFirewallRule) | **DELETE** /server/{serverId}/firewall_rule/{firewallRuleNumber} | Remove firewall rule
+*UpcloudApi.FirewallApi* | [**getFirewallRule**](docs/FirewallApi.md#getFirewallRule) | **GET** /server/{serverId}/firewall_rule/{firewallRuleNumber} | Get firewall rule details
 *UpcloudApi.FirewallApi* | [**serverServerIdFirewallRuleGet**](docs/FirewallApi.md#serverServerIdFirewallRuleGet) | **GET** /server/{serverId}/firewall_rule | List firewall rules
-*UpcloudApi.FirewallApi* | [**serverServerIdFirewallRulePost**](docs/FirewallApi.md#serverServerIdFirewallRulePost) | **POST** /server/{serverId}/firewall_rule | Create firewall rule
-*UpcloudApi.IPAddressApi* | [**ipAddressGet**](docs/IPAddressApi.md#ipAddressGet) | **GET** /ip_address | List IP addresses
-*UpcloudApi.IPAddressApi* | [**ipAddressIpDelete**](docs/IPAddressApi.md#ipAddressIpDelete) | **DELETE** /ip_address/{ip} | Release IP address
-*UpcloudApi.IPAddressApi* | [**ipAddressIpGet**](docs/IPAddressApi.md#ipAddressIpGet) | **GET** /ip_address/{ip} | Get IP address details
-*UpcloudApi.IPAddressApi* | [**ipAddressIpPut**](docs/IPAddressApi.md#ipAddressIpPut) | **PUT** /ip_address/{ip} | Modify IP address
-*UpcloudApi.IPAddressApi* | [**ipAddressPost**](docs/IPAddressApi.md#ipAddressPost) | **POST** /ip_address | Assign IP address
-*UpcloudApi.PlanApi* | [**planGet**](docs/PlanApi.md#planGet) | **GET** /plan | List available plans
-*UpcloudApi.PricesApi* | [**priceGet**](docs/PricesApi.md#priceGet) | **GET** /price | List prices
+*UpcloudApi.IPAddressApi* | [**addIp**](docs/IPAddressApi.md#addIp) | **POST** /ip_address | Assign IP address
+*UpcloudApi.IPAddressApi* | [**deleteIp**](docs/IPAddressApi.md#deleteIp) | **DELETE** /ip_address/{ip} | Release IP address
+*UpcloudApi.IPAddressApi* | [**getDetails**](docs/IPAddressApi.md#getDetails) | **GET** /ip_address/{ip} | Get IP address details
+*UpcloudApi.IPAddressApi* | [**listIps**](docs/IPAddressApi.md#listIps) | **GET** /ip_address | List IP addresses
+*UpcloudApi.IPAddressApi* | [**modifyIp**](docs/IPAddressApi.md#modifyIp) | **PUT** /ip_address/{ip} | Modify IP address
+*UpcloudApi.PlanApi* | [**listPlans**](docs/PlanApi.md#listPlans) | **GET** /plan | List available plans
+*UpcloudApi.PricesApi* | [**listPrices**](docs/PricesApi.md#listPrices) | **GET** /price | List prices
+*UpcloudApi.ServerApi* | [**assignTag**](docs/ServerApi.md#assignTag) | **POST** /server/{serverId}/tag/{tagList} | Assign tag to a server
+*UpcloudApi.ServerApi* | [**attachStorage**](docs/ServerApi.md#attachStorage) | **POST** /server/{serverId}/storage/attach | Attach storage
+*UpcloudApi.ServerApi* | [**createFirewallRule**](docs/ServerApi.md#createFirewallRule) | **POST** /server/{serverId}/firewall_rule | Create firewall rule
 *UpcloudApi.ServerApi* | [**createServer**](docs/ServerApi.md#createServer) | **POST** /server | Create server
+*UpcloudApi.ServerApi* | [**deleteFirewallRule**](docs/ServerApi.md#deleteFirewallRule) | **DELETE** /server/{serverId}/firewall_rule/{firewallRuleNumber} | Remove firewall rule
 *UpcloudApi.ServerApi* | [**deleteServer**](docs/ServerApi.md#deleteServer) | **DELETE** /server/{serverId} | Delete server
+*UpcloudApi.ServerApi* | [**detachStorage**](docs/ServerApi.md#detachStorage) | **POST** /server/{serverId}/storage/detach | Detach storage
+*UpcloudApi.ServerApi* | [**ejectCdrom**](docs/ServerApi.md#ejectCdrom) | **POST** /server/{serverId}/storage/cdrom/eject | Eject CD-ROM
+*UpcloudApi.ServerApi* | [**getFirewallRule**](docs/ServerApi.md#getFirewallRule) | **GET** /server/{serverId}/firewall_rule/{firewallRuleNumber} | Get firewall rule details
+*UpcloudApi.ServerApi* | [**listServerConfigurations**](docs/ServerApi.md#listServerConfigurations) | **GET** /server_size | List server configurations
 *UpcloudApi.ServerApi* | [**listServers**](docs/ServerApi.md#listServers) | **GET** /server | List of servers
+*UpcloudApi.ServerApi* | [**loadCdrom**](docs/ServerApi.md#loadCdrom) | **POST** /server/{serverId}/storage/cdrom/load | Load CD-ROM
+*UpcloudApi.ServerApi* | [**modifyServer**](docs/ServerApi.md#modifyServer) | **PUT** /server/{serverId} | Modify server
+*UpcloudApi.ServerApi* | [**restartServer**](docs/ServerApi.md#restartServer) | **POST** /server/{serverId}/restart | Restart server
 *UpcloudApi.ServerApi* | [**serverDetails**](docs/ServerApi.md#serverDetails) | **GET** /server/{serverId} | Get server details
-*UpcloudApi.ServerApi* | [**serverServerIdFirewallRuleFirewallRuleNumberDelete**](docs/ServerApi.md#serverServerIdFirewallRuleFirewallRuleNumberDelete) | **DELETE** /server/{serverId}/firewall_rule/{firewallRuleNumber} | Remove firewall rule
-*UpcloudApi.ServerApi* | [**serverServerIdFirewallRuleFirewallRuleNumberGet**](docs/ServerApi.md#serverServerIdFirewallRuleFirewallRuleNumberGet) | **GET** /server/{serverId}/firewall_rule/{firewallRuleNumber} | Get firewall rule details
 *UpcloudApi.ServerApi* | [**serverServerIdFirewallRuleGet**](docs/ServerApi.md#serverServerIdFirewallRuleGet) | **GET** /server/{serverId}/firewall_rule | List firewall rules
-*UpcloudApi.ServerApi* | [**serverServerIdFirewallRulePost**](docs/ServerApi.md#serverServerIdFirewallRulePost) | **POST** /server/{serverId}/firewall_rule | Create firewall rule
-*UpcloudApi.ServerApi* | [**serverServerIdRestartPost**](docs/ServerApi.md#serverServerIdRestartPost) | **POST** /server/{serverId}/restart | Restart server
-*UpcloudApi.ServerApi* | [**serverServerIdStartPost**](docs/ServerApi.md#serverServerIdStartPost) | **POST** /server/{serverId}/start | Start server
-*UpcloudApi.ServerApi* | [**serverServerIdStopPost**](docs/ServerApi.md#serverServerIdStopPost) | **POST** /server/{serverId}/stop | Stop server
-*UpcloudApi.ServerApi* | [**serverServerIdStorageAttachPost**](docs/ServerApi.md#serverServerIdStorageAttachPost) | **POST** /server/{serverId}/storage/attach | Attach storage
-*UpcloudApi.ServerApi* | [**serverServerIdStorageCdromEjectPost**](docs/ServerApi.md#serverServerIdStorageCdromEjectPost) | **POST** /server/{serverId}/storage/cdrom/eject | Eject CD-ROM
-*UpcloudApi.ServerApi* | [**serverServerIdStorageCdromLoadPost**](docs/ServerApi.md#serverServerIdStorageCdromLoadPost) | **POST** /server/{serverId}/storage/cdrom/load | Load CD-ROM
-*UpcloudApi.ServerApi* | [**serverServerIdStorageDetachPost**](docs/ServerApi.md#serverServerIdStorageDetachPost) | **POST** /server/{serverId}/storage/detach | Detach storage
-*UpcloudApi.ServerApi* | [**serverServerIdTagTagListPost**](docs/ServerApi.md#serverServerIdTagTagListPost) | **POST** /server/{serverId}/tag/{tagList} | Assign tag to a server
-*UpcloudApi.ServerApi* | [**serverServerIdUntagTagNamePost**](docs/ServerApi.md#serverServerIdUntagTagNamePost) | **POST** /server/{serverId}/untag/{tagName} | Remove tag from server
-*UpcloudApi.ServerApi* | [**serverSizeGet**](docs/ServerApi.md#serverSizeGet) | **GET** /server_size | List server configurations
-*UpcloudApi.ServerApi* | [**updateServer**](docs/ServerApi.md#updateServer) | **PUT** /server/{serverId} | Modify server
+*UpcloudApi.ServerApi* | [**startServer**](docs/ServerApi.md#startServer) | **POST** /server/{serverId}/start | Start server
+*UpcloudApi.ServerApi* | [**stopServer**](docs/ServerApi.md#stopServer) | **POST** /server/{serverId}/stop | Stop server
+*UpcloudApi.ServerApi* | [**untag**](docs/ServerApi.md#untag) | **POST** /server/{serverId}/untag/{tagName} | Remove tag from server
+*UpcloudApi.StorageApi* | [**attachStorage**](docs/StorageApi.md#attachStorage) | **POST** /server/{serverId}/storage/attach | Attach storage
+*UpcloudApi.StorageApi* | [**backupStorage**](docs/StorageApi.md#backupStorage) | **POST** /storage/{storageId}/backup | Create backup
+*UpcloudApi.StorageApi* | [**cancelOperation**](docs/StorageApi.md#cancelOperation) | **POST** /storage/{storageId}/cancel | Cancel storage operation
+*UpcloudApi.StorageApi* | [**cloneStorage**](docs/StorageApi.md#cloneStorage) | **POST** /storage/{storageId}/clone | Clone storage
+*UpcloudApi.StorageApi* | [**createStorage**](docs/StorageApi.md#createStorage) | **POST** /storage | Create storage
+*UpcloudApi.StorageApi* | [**deleteStorage**](docs/StorageApi.md#deleteStorage) | **DELETE** /storage/{storageId} | Delete storage
+*UpcloudApi.StorageApi* | [**detachStorage**](docs/StorageApi.md#detachStorage) | **POST** /server/{serverId}/storage/detach | Detach storage
+*UpcloudApi.StorageApi* | [**ejectCdrom**](docs/StorageApi.md#ejectCdrom) | **POST** /server/{serverId}/storage/cdrom/eject | Eject CD-ROM
+*UpcloudApi.StorageApi* | [**favoriteStorage**](docs/StorageApi.md#favoriteStorage) | **POST** /storage/{storageId}/favorite | Add storage to favorites
+*UpcloudApi.StorageApi* | [**getStorageDetails**](docs/StorageApi.md#getStorageDetails) | **GET** /storage/{storageId} | Get storage details
+*UpcloudApi.StorageApi* | [**listStorageTypes**](docs/StorageApi.md#listStorageTypes) | **GET** /storage/{type} | List of storages by type
 *UpcloudApi.StorageApi* | [**listStorages**](docs/StorageApi.md#listStorages) | **GET** /storage | List of storages
-*UpcloudApi.StorageApi* | [**listStorages_0**](docs/StorageApi.md#listStorages_0) | **GET** /storage/{type} | List of storages by type
-*UpcloudApi.StorageApi* | [**serverServerIdStorageAttachPost**](docs/StorageApi.md#serverServerIdStorageAttachPost) | **POST** /server/{serverId}/storage/attach | Attach storage
-*UpcloudApi.StorageApi* | [**serverServerIdStorageCdromEjectPost**](docs/StorageApi.md#serverServerIdStorageCdromEjectPost) | **POST** /server/{serverId}/storage/cdrom/eject | Eject CD-ROM
-*UpcloudApi.StorageApi* | [**serverServerIdStorageCdromLoadPost**](docs/StorageApi.md#serverServerIdStorageCdromLoadPost) | **POST** /server/{serverId}/storage/cdrom/load | Load CD-ROM
-*UpcloudApi.StorageApi* | [**serverServerIdStorageDetachPost**](docs/StorageApi.md#serverServerIdStorageDetachPost) | **POST** /server/{serverId}/storage/detach | Detach storage
-*UpcloudApi.StorageApi* | [**storagePost**](docs/StorageApi.md#storagePost) | **POST** /storage | Create storage
-*UpcloudApi.StorageApi* | [**storageStorageIdBackupPost**](docs/StorageApi.md#storageStorageIdBackupPost) | **POST** /storage/{storageId}/backup | Create backup
-*UpcloudApi.StorageApi* | [**storageStorageIdCancelPost**](docs/StorageApi.md#storageStorageIdCancelPost) | **POST** /storage/{storageId}/cancel | Cancel storage operation
-*UpcloudApi.StorageApi* | [**storageStorageIdClonePost**](docs/StorageApi.md#storageStorageIdClonePost) | **POST** /storage/{storageId}/clone | Clone storage
-*UpcloudApi.StorageApi* | [**storageStorageIdDelete**](docs/StorageApi.md#storageStorageIdDelete) | **DELETE** /storage/{storageId} | Delete storage
-*UpcloudApi.StorageApi* | [**storageStorageIdFavoriteDelete**](docs/StorageApi.md#storageStorageIdFavoriteDelete) | **DELETE** /storage/{storageId}/favorite | Remove storage from favorites
-*UpcloudApi.StorageApi* | [**storageStorageIdFavoritePost**](docs/StorageApi.md#storageStorageIdFavoritePost) | **POST** /storage/{storageId}/favorite | Add storage to favorites
-*UpcloudApi.StorageApi* | [**storageStorageIdGet**](docs/StorageApi.md#storageStorageIdGet) | **GET** /storage/{storageId} | Get storage details
-*UpcloudApi.StorageApi* | [**storageStorageIdPut**](docs/StorageApi.md#storageStorageIdPut) | **PUT** /storage/{storageId} | Modify storage
-*UpcloudApi.StorageApi* | [**storageStorageIdRestorePost**](docs/StorageApi.md#storageStorageIdRestorePost) | **POST** /storage/{storageId}/restore | Restore backup
-*UpcloudApi.StorageApi* | [**storageStorageIdTemplatizePost**](docs/StorageApi.md#storageStorageIdTemplatizePost) | **POST** /storage/{storageId}/templatize | Templatize storage
-*UpcloudApi.TagApi* | [**serverServerIdTagTagListPost**](docs/TagApi.md#serverServerIdTagTagListPost) | **POST** /server/{serverId}/tag/{tagList} | Assign tag to a server
-*UpcloudApi.TagApi* | [**serverServerIdUntagTagNamePost**](docs/TagApi.md#serverServerIdUntagTagNamePost) | **POST** /server/{serverId}/untag/{tagName} | Remove tag from server
-*UpcloudApi.TagApi* | [**tagGet**](docs/TagApi.md#tagGet) | **GET** /tag | List existing tags
-*UpcloudApi.TagApi* | [**tagPost**](docs/TagApi.md#tagPost) | **POST** /tag | Create a new tag
-*UpcloudApi.TagApi* | [**tagTagNameDelete**](docs/TagApi.md#tagTagNameDelete) | **DELETE** /tag/{tagName} | Delete tag
-*UpcloudApi.TagApi* | [**tagTagNamePut**](docs/TagApi.md#tagTagNamePut) | **PUT** /tag/{tagName} | Modify existing tag
-*UpcloudApi.TimezoneApi* | [**timezoneGet**](docs/TimezoneApi.md#timezoneGet) | **GET** /timezone | List timezones
-*UpcloudApi.ZoneApi* | [**zoneGet**](docs/ZoneApi.md#zoneGet) | **GET** /zone | List available zones
+*UpcloudApi.StorageApi* | [**loadCdrom**](docs/StorageApi.md#loadCdrom) | **POST** /server/{serverId}/storage/cdrom/load | Load CD-ROM
+*UpcloudApi.StorageApi* | [**modifyStorage**](docs/StorageApi.md#modifyStorage) | **PUT** /storage/{storageId} | Modify storage
+*UpcloudApi.StorageApi* | [**restoreStorage**](docs/StorageApi.md#restoreStorage) | **POST** /storage/{storageId}/restore | Restore backup
+*UpcloudApi.StorageApi* | [**templatizeStorage**](docs/StorageApi.md#templatizeStorage) | **POST** /storage/{storageId}/templatize | Templatize storage
+*UpcloudApi.StorageApi* | [**unfavoriteStorage**](docs/StorageApi.md#unfavoriteStorage) | **DELETE** /storage/{storageId}/favorite | Remove storage from favorites
+*UpcloudApi.TagApi* | [**assignTag**](docs/TagApi.md#assignTag) | **POST** /server/{serverId}/tag/{tagList} | Assign tag to a server
+*UpcloudApi.TagApi* | [**createTag**](docs/TagApi.md#createTag) | **POST** /tag | Create a new tag
+*UpcloudApi.TagApi* | [**deleteTag**](docs/TagApi.md#deleteTag) | **DELETE** /tag/{tagName} | Delete tag
+*UpcloudApi.TagApi* | [**listTags**](docs/TagApi.md#listTags) | **GET** /tag | List existing tags
+*UpcloudApi.TagApi* | [**modifyTag**](docs/TagApi.md#modifyTag) | **PUT** /tag/{tagName} | Modify existing tag
+*UpcloudApi.TagApi* | [**untag**](docs/TagApi.md#untag) | **POST** /server/{serverId}/untag/{tagName} | Remove tag from server
+*UpcloudApi.TimezoneApi* | [**listTimezones**](docs/TimezoneApi.md#listTimezones) | **GET** /timezone | List timezones
+*UpcloudApi.ZoneApi* | [**listZones**](docs/ZoneApi.md#listZones) | **GET** /zone | List available zones
 
 
 ## Documentation for Models

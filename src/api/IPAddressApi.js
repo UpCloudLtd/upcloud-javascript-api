@@ -39,21 +39,24 @@ export default class IPAddressApi {
 
 
     /**
-     * Callback function to receive the result of the ipAddressGet operation.
-     * @callback module:api/IPAddressApi~ipAddressGetCallback
+     * Callback function to receive the result of the addIp operation.
+     * @callback module:api/IPAddressApi~addIpCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2006} data The data returned by the service call.
+     * @param {module:model/InlineResponse2011} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * List IP addresses
-     * Returns a list of all IP addresses assigned to servers on the current user account.
-     * @param {module:api/IPAddressApi~ipAddressGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2006}
+     * Assign IP address
+     * Assigns a new IP address to a server.
+     * @param {Object} opts Optional parameters
+     * @param {module:model/IpAddress} opts.ipAddress 
+     * @param {module:api/IPAddressApi~addIpCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/InlineResponse2011}
      */
-    ipAddressGet(callback) {
-      let postBody = null;
+    addIp(opts, callback) {
+      opts = opts || {};
+      let postBody = opts['ipAddress'];
 
 
       let pathParams = {
@@ -68,18 +71,18 @@ export default class IPAddressApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse2006;
+      let returnType = InlineResponse2011;
 
       return this.apiClient.callApi(
-        '/ip_address', 'GET',
+        '/ip_address', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the ipAddressIpDelete operation.
-     * @callback module:api/IPAddressApi~ipAddressIpDeleteCallback
+     * Callback function to receive the result of the deleteIp operation.
+     * @callback module:api/IPAddressApi~deleteIpCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -89,14 +92,14 @@ export default class IPAddressApi {
      * Release IP address
      * Removes an IP address from a server.
      * @param {String} ip Ip address
-     * @param {module:api/IPAddressApi~ipAddressIpDeleteCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/IPAddressApi~deleteIpCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    ipAddressIpDelete(ip, callback) {
+    deleteIp(ip, callback) {
       let postBody = null;
 
       // verify the required parameter 'ip' is set
       if (ip === undefined || ip === null) {
-        throw new Error("Missing the required parameter 'ip' when calling ipAddressIpDelete");
+        throw new Error("Missing the required parameter 'ip' when calling deleteIp");
       }
 
 
@@ -123,8 +126,8 @@ export default class IPAddressApi {
     }
 
     /**
-     * Callback function to receive the result of the ipAddressIpGet operation.
-     * @callback module:api/IPAddressApi~ipAddressIpGetCallback
+     * Callback function to receive the result of the getDetails operation.
+     * @callback module:api/IPAddressApi~getDetailsCallback
      * @param {String} error Error message, if any.
      * @param {module:model/InlineResponse2011} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -134,15 +137,15 @@ export default class IPAddressApi {
      * Get IP address details
      * Returns detailed information about a specific IP address.
      * @param {String} ip Ip address
-     * @param {module:api/IPAddressApi~ipAddressIpGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/IPAddressApi~getDetailsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/InlineResponse2011}
      */
-    ipAddressIpGet(ip, callback) {
+    getDetails(ip, callback) {
       let postBody = null;
 
       // verify the required parameter 'ip' is set
       if (ip === undefined || ip === null) {
-        throw new Error("Missing the required parameter 'ip' when calling ipAddressIpGet");
+        throw new Error("Missing the required parameter 'ip' when calling getDetails");
       }
 
 
@@ -169,8 +172,47 @@ export default class IPAddressApi {
     }
 
     /**
-     * Callback function to receive the result of the ipAddressIpPut operation.
-     * @callback module:api/IPAddressApi~ipAddressIpPutCallback
+     * Callback function to receive the result of the listIps operation.
+     * @callback module:api/IPAddressApi~listIpsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/InlineResponse2006} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * List IP addresses
+     * Returns a list of all IP addresses assigned to servers on the current user account.
+     * @param {module:api/IPAddressApi~listIpsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/InlineResponse2006}
+     */
+    listIps(callback) {
+      let postBody = null;
+
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = InlineResponse2006;
+
+      return this.apiClient.callApi(
+        '/ip_address', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the modifyIp operation.
+     * @callback module:api/IPAddressApi~modifyIpCallback
      * @param {String} error Error message, if any.
      * @param {module:model/InlineResponse2011} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -182,16 +224,16 @@ export default class IPAddressApi {
      * @param {String} ip Ip address
      * @param {Object} opts Optional parameters
      * @param {module:model/IpAddress1} opts.ipAddress 
-     * @param {module:api/IPAddressApi~ipAddressIpPutCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/IPAddressApi~modifyIpCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/InlineResponse2011}
      */
-    ipAddressIpPut(ip, opts, callback) {
+    modifyIp(ip, opts, callback) {
       opts = opts || {};
       let postBody = opts['ipAddress'];
 
       // verify the required parameter 'ip' is set
       if (ip === undefined || ip === null) {
-        throw new Error("Missing the required parameter 'ip' when calling ipAddressIpPut");
+        throw new Error("Missing the required parameter 'ip' when calling modifyIp");
       }
 
 
@@ -212,48 +254,6 @@ export default class IPAddressApi {
 
       return this.apiClient.callApi(
         '/ip_address/{ip}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the ipAddressPost operation.
-     * @callback module:api/IPAddressApi~ipAddressPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2011} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Assign IP address
-     * Assigns a new IP address to a server.
-     * @param {Object} opts Optional parameters
-     * @param {module:model/IpAddress} opts.ipAddress 
-     * @param {module:api/IPAddressApi~ipAddressPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2011}
-     */
-    ipAddressPost(opts, callback) {
-      opts = opts || {};
-      let postBody = opts['ipAddress'];
-
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = [];
-      let contentTypes = [];
-      let accepts = [];
-      let returnType = InlineResponse2011;
-
-      return this.apiClient.callApi(
-        '/ip_address', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

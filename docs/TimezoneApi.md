@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost/1.2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**timezoneGet**](TimezoneApi.md#timezoneGet) | **GET** /timezone | List timezones
+[**listTimezones**](TimezoneApi.md#listTimezones) | **GET** /timezone | List timezones
 
 
-<a name="timezoneGet"></a>
-# **timezoneGet**
-> InlineResponse2002 timezoneGet()
+<a name="listTimezones"></a>
+# **listTimezones**
+> InlineResponse2002 listTimezones()
 
 List timezones
 
@@ -21,7 +21,7 @@ import UpcloudApi from 'upcloud_api';
 
 let apiInstance = new UpcloudApi.TimezoneApi();
 
-apiInstance.timezoneGet((error, data, response) => {
+apiInstance.listTimezones((error, data, response) => {
   if (error) {
     console.error(error);
   } else {

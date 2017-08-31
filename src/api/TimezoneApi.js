@@ -35,8 +35,8 @@ export default class TimezoneApi {
 
 
     /**
-     * Callback function to receive the result of the timezoneGet operation.
-     * @callback module:api/TimezoneApi~timezoneGetCallback
+     * Callback function to receive the result of the listTimezones operation.
+     * @callback module:api/TimezoneApi~listTimezonesCallback
      * @param {String} error Error message, if any.
      * @param {module:model/InlineResponse2002} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -45,10 +45,10 @@ export default class TimezoneApi {
     /**
      * List timezones
      * Returns a list of available timezones. Timezones are used to set the hardware clock for servers.
-     * @param {module:api/TimezoneApi~timezoneGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/TimezoneApi~listTimezonesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/InlineResponse2002}
      */
-    timezoneGet(callback) {
+    listTimezones(callback) {
       let postBody = null;
 
 

@@ -35,8 +35,8 @@ export default class PlanApi {
 
 
     /**
-     * Callback function to receive the result of the planGet operation.
-     * @callback module:api/PlanApi~planGetCallback
+     * Callback function to receive the result of the listPlans operation.
+     * @callback module:api/PlanApi~listPlansCallback
      * @param {String} error Error message, if any.
      * @param {module:model/InlineResponse2003} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -45,10 +45,10 @@ export default class PlanApi {
     /**
      * List available plans
      * Returns a list of available plans.
-     * @param {module:api/PlanApi~planGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/PlanApi~listPlansCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/InlineResponse2003}
      */
-    planGet(callback) {
+    listPlans(callback) {
       let postBody = null;
 
 

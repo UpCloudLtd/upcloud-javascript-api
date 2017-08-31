@@ -38,8 +38,59 @@ export default class FirewallApi {
 
 
     /**
-     * Callback function to receive the result of the serverServerIdFirewallRuleFirewallRuleNumberDelete operation.
-     * @callback module:api/FirewallApi~serverServerIdFirewallRuleFirewallRuleNumberDeleteCallback
+     * Callback function to receive the result of the createFirewallRule operation.
+     * @callback module:api/FirewallApi~createFirewallRuleCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Create firewall rule
+     * Creates a new firewall rule
+     * @param {String} serverId Server id
+     * @param {module:model/FirewallRule} firewallRule 
+     * @param {module:api/FirewallApi~createFirewallRuleCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    createFirewallRule(serverId, firewallRule, callback) {
+      let postBody = firewallRule;
+
+      // verify the required parameter 'serverId' is set
+      if (serverId === undefined || serverId === null) {
+        throw new Error("Missing the required parameter 'serverId' when calling createFirewallRule");
+      }
+
+      // verify the required parameter 'firewallRule' is set
+      if (firewallRule === undefined || firewallRule === null) {
+        throw new Error("Missing the required parameter 'firewallRule' when calling createFirewallRule");
+      }
+
+
+      let pathParams = {
+        'serverId': serverId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = null;
+
+      return this.apiClient.callApi(
+        '/server/{serverId}/firewall_rule', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the deleteFirewallRule operation.
+     * @callback module:api/FirewallApi~deleteFirewallRuleCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -50,19 +101,19 @@ export default class FirewallApi {
      * Removes a firewall rule from a server. Firewall rules must be removed individually. The positions of remaining firewall rules will be adjusted after a rule is removed.
      * @param {String} serverId Server id
      * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
-     * @param {module:api/FirewallApi~serverServerIdFirewallRuleFirewallRuleNumberDeleteCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/FirewallApi~deleteFirewallRuleCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    serverServerIdFirewallRuleFirewallRuleNumberDelete(serverId, firewallRuleNumber, callback) {
+    deleteFirewallRule(serverId, firewallRuleNumber, callback) {
       let postBody = null;
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverServerIdFirewallRuleFirewallRuleNumberDelete");
+        throw new Error("Missing the required parameter 'serverId' when calling deleteFirewallRule");
       }
 
       // verify the required parameter 'firewallRuleNumber' is set
       if (firewallRuleNumber === undefined || firewallRuleNumber === null) {
-        throw new Error("Missing the required parameter 'firewallRuleNumber' when calling serverServerIdFirewallRuleFirewallRuleNumberDelete");
+        throw new Error("Missing the required parameter 'firewallRuleNumber' when calling deleteFirewallRule");
       }
 
 
@@ -90,8 +141,8 @@ export default class FirewallApi {
     }
 
     /**
-     * Callback function to receive the result of the serverServerIdFirewallRuleFirewallRuleNumberGet operation.
-     * @callback module:api/FirewallApi~serverServerIdFirewallRuleFirewallRuleNumberGetCallback
+     * Callback function to receive the result of the getFirewallRule operation.
+     * @callback module:api/FirewallApi~getFirewallRuleCallback
      * @param {String} error Error message, if any.
      * @param {module:model/InlineResponse2008} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -102,20 +153,20 @@ export default class FirewallApi {
      * Returns detailed information about a specific firewall rule
      * @param {String} serverId Server id
      * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
-     * @param {module:api/FirewallApi~serverServerIdFirewallRuleFirewallRuleNumberGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/FirewallApi~getFirewallRuleCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/InlineResponse2008}
      */
-    serverServerIdFirewallRuleFirewallRuleNumberGet(serverId, firewallRuleNumber, callback) {
+    getFirewallRule(serverId, firewallRuleNumber, callback) {
       let postBody = null;
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverServerIdFirewallRuleFirewallRuleNumberGet");
+        throw new Error("Missing the required parameter 'serverId' when calling getFirewallRule");
       }
 
       // verify the required parameter 'firewallRuleNumber' is set
       if (firewallRuleNumber === undefined || firewallRuleNumber === null) {
-        throw new Error("Missing the required parameter 'firewallRuleNumber' when calling serverServerIdFirewallRuleFirewallRuleNumberGet");
+        throw new Error("Missing the required parameter 'firewallRuleNumber' when calling getFirewallRule");
       }
 
 
@@ -183,57 +234,6 @@ export default class FirewallApi {
 
       return this.apiClient.callApi(
         '/server/{serverId}/firewall_rule', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the serverServerIdFirewallRulePost operation.
-     * @callback module:api/FirewallApi~serverServerIdFirewallRulePostCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Create firewall rule
-     * Creates a new firewall rule
-     * @param {String} serverId Server id
-     * @param {module:model/FirewallRule} firewallRule 
-     * @param {module:api/FirewallApi~serverServerIdFirewallRulePostCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    serverServerIdFirewallRulePost(serverId, firewallRule, callback) {
-      let postBody = firewallRule;
-
-      // verify the required parameter 'serverId' is set
-      if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverServerIdFirewallRulePost");
-      }
-
-      // verify the required parameter 'firewallRule' is set
-      if (firewallRule === undefined || firewallRule === null) {
-        throw new Error("Missing the required parameter 'firewallRule' when calling serverServerIdFirewallRulePost");
-      }
-
-
-      let pathParams = {
-        'serverId': serverId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = [];
-      let contentTypes = [];
-      let accepts = [];
-      let returnType = null;
-
-      return this.apiClient.callApi(
-        '/server/{serverId}/firewall_rule', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
