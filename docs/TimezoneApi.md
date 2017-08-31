@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="listTimezones"></a>
 # **listTimezones**
-> InlineResponse2002 listTimezones()
+> TimezoneListResponse listTimezones()
 
 List timezones
 
@@ -35,7 +35,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**TimezoneListResponse**](TimezoneListResponse.md)
 
 ### Authorization
 

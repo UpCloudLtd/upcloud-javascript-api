@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="listPrices"></a>
 # **listPrices**
-> InlineResponse200 listPrices()
+> PriceListResponse listPrices()
 
 List prices
 
@@ -35,7 +35,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**PriceListResponse**](PriceListResponse.md)
 
 ### Authorization
 

@@ -15,8 +15,8 @@
 import ApiClient from "../ApiClient";
 import Error from '../model/Error';
 import FirewallRule from '../model/FirewallRule';
-import InlineResponse2007 from '../model/InlineResponse2007';
-import InlineResponse2008 from '../model/InlineResponse2008';
+import FirewallRuleDetailsResponse from '../model/FirewallRuleDetailsResponse';
+import FirewallRuleListResponse from '../model/FirewallRuleListResponse';
 
 /**
 * Firewall service.
@@ -144,7 +144,7 @@ export default class FirewallApi {
      * Callback function to receive the result of the getFirewallRule operation.
      * @callback module:api/FirewallApi~getFirewallRuleCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2008} data The data returned by the service call.
+     * @param {module:model/FirewallRuleDetailsResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -154,7 +154,7 @@ export default class FirewallApi {
      * @param {String} serverId Server id
      * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
      * @param {module:api/FirewallApi~getFirewallRuleCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2008}
+     * data is of type: {@link module:model/FirewallRuleDetailsResponse}
      */
     getFirewallRule(serverId, firewallRuleNumber, callback) {
       let postBody = null;
@@ -184,7 +184,7 @@ export default class FirewallApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse2008;
+      let returnType = FirewallRuleDetailsResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/firewall_rule/{firewallRuleNumber}', 'GET',
@@ -197,7 +197,7 @@ export default class FirewallApi {
      * Callback function to receive the result of the serverServerIdFirewallRuleGet operation.
      * @callback module:api/FirewallApi~serverServerIdFirewallRuleGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2007} data The data returned by the service call.
+     * @param {module:model/FirewallRuleListResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -206,7 +206,7 @@ export default class FirewallApi {
      * Returns a list of firewall rules for a specific server.
      * @param {String} serverId Server id
      * @param {module:api/FirewallApi~serverServerIdFirewallRuleGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2007}
+     * data is of type: {@link module:model/FirewallRuleListResponse}
      */
     serverServerIdFirewallRuleGet(serverId, callback) {
       let postBody = null;
@@ -230,7 +230,7 @@ export default class FirewallApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse2007;
+      let returnType = FirewallRuleListResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/firewall_rule', 'GET',

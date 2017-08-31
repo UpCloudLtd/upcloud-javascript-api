@@ -13,7 +13,7 @@
 
 
 import ApiClient from "../ApiClient";
-import InlineResponse200 from '../model/InlineResponse200';
+import PriceListResponse from '../model/PriceListResponse';
 
 /**
 * Prices service.
@@ -38,7 +38,7 @@ export default class PricesApi {
      * Callback function to receive the result of the listPrices operation.
      * @callback module:api/PricesApi~listPricesCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse200} data The data returned by the service call.
+     * @param {module:model/PriceListResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -46,7 +46,7 @@ export default class PricesApi {
      * List prices
      * Returns a list resource prices.
      * @param {module:api/PricesApi~listPricesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse200}
+     * data is of type: {@link module:model/PriceListResponse}
      */
     listPrices(callback) {
       let postBody = null;
@@ -64,7 +64,7 @@ export default class PricesApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse200;
+      let returnType = PriceListResponse;
 
       return this.apiClient.callApi(
         '/price', 'GET',

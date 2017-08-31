@@ -108,7 +108,7 @@ No authorization required
 
 <a name="getFirewallRule"></a>
 # **getFirewallRule**
-> InlineResponse2008 getFirewallRule(serverId, firewallRuleNumber)
+> FirewallRuleDetailsResponse getFirewallRule(serverId, firewallRuleNumber)
 
 Get firewall rule details
 
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**FirewallRuleDetailsResponse**](FirewallRuleDetailsResponse.md)
 
 ### Authorization
 
@@ -156,7 +156,7 @@ No authorization required
 
 <a name="serverServerIdFirewallRuleGet"></a>
 # **serverServerIdFirewallRuleGet**
-> InlineResponse2007 serverServerIdFirewallRuleGet(serverId, )
+> FirewallRuleListResponse serverServerIdFirewallRuleGet(serverId, )
 
 List firewall rules
 
@@ -188,7 +188,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**FirewallRuleListResponse**](FirewallRuleListResponse.md)
 
 ### Authorization
 

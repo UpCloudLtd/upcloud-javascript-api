@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="listZones"></a>
 # **listZones**
-> InlineResponse2001 listZones()
+> ZoneListResponse listZones()
 
 List available zones
 
@@ -35,7 +35,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**ZoneListResponse**](ZoneListResponse.md)
 
 ### Authorization
 

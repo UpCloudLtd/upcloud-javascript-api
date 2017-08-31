@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="listPlans"></a>
 # **listPlans**
-> InlineResponse2003 listPlans()
+> AvailablePlanListResponse listPlans()
 
 List available plans
 
@@ -35,7 +35,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**AvailablePlanListResponse**](AvailablePlanListResponse.md)
 
 ### Authorization
 

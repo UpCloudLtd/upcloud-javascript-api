@@ -15,42 +15,35 @@
 import ApiClient from './ApiClient';
 import Account from './model/Account';
 import AddressFamily from './model/AddressFamily';
+import AssignIpResponse from './model/AssignIpResponse';
+import AvailablePlanListResponse from './model/AvailablePlanListResponse';
+import AvailablePlanListResponsePlans from './model/AvailablePlanListResponsePlans';
 import BackupRule from './model/BackupRule';
+import ConfigurationListResponse from './model/ConfigurationListResponse';
+import ConfigurationListResponseServerSizes from './model/ConfigurationListResponseServerSizes';
+import CreateNewTagResponse from './model/CreateNewTagResponse';
+import CreateStorageResponse from './model/CreateStorageResponse';
 import Error from './model/Error';
 import ErrorCode from './model/ErrorCode';
 import ErrorError from './model/ErrorError';
 import ErrorStatus from './model/ErrorStatus';
 import FirewallRule from './model/FirewallRule';
-import InlineResponse200 from './model/InlineResponse200';
-import InlineResponse2001 from './model/InlineResponse2001';
-import InlineResponse20010 from './model/InlineResponse20010';
-import InlineResponse2001Zones from './model/InlineResponse2001Zones';
-import InlineResponse2002 from './model/InlineResponse2002';
-import InlineResponse2002Timezones from './model/InlineResponse2002Timezones';
-import InlineResponse2003 from './model/InlineResponse2003';
-import InlineResponse2003Plans from './model/InlineResponse2003Plans';
-import InlineResponse2004 from './model/InlineResponse2004';
-import InlineResponse2004ServerSizes from './model/InlineResponse2004ServerSizes';
-import InlineResponse2005 from './model/InlineResponse2005';
-import InlineResponse2005Servers from './model/InlineResponse2005Servers';
-import InlineResponse2006 from './model/InlineResponse2006';
-import InlineResponse2006IpAddresses from './model/InlineResponse2006IpAddresses';
-import InlineResponse2007 from './model/InlineResponse2007';
-import InlineResponse2007FirewallRules from './model/InlineResponse2007FirewallRules';
-import InlineResponse2008 from './model/InlineResponse2008';
-import InlineResponse2009 from './model/InlineResponse2009';
-import InlineResponse2009Tags from './model/InlineResponse2009Tags';
-import InlineResponse200Price from './model/InlineResponse200Price';
-import InlineResponse201 from './model/InlineResponse201';
-import InlineResponse2011 from './model/InlineResponse2011';
+import FirewallRuleDetailsResponse from './model/FirewallRuleDetailsResponse';
+import FirewallRuleListResponse from './model/FirewallRuleListResponse';
+import FirewallRuleListResponseFirewallRules from './model/FirewallRuleListResponseFirewallRules';
 import IpAddress from './model/IpAddress';
 import IpAddress1 from './model/IpAddress1';
+import IpAddressListResponse from './model/IpAddressListResponse';
+import IpAddressListResponseIpAddresses from './model/IpAddressListResponseIpAddresses';
 import Plan from './model/Plan';
 import Price from './model/Price';
+import PriceListResponse from './model/PriceListResponse';
+import PriceListResponsePrice from './model/PriceListResponsePrice';
 import PriceZone from './model/PriceZone';
 import RestartServer from './model/RestartServer';
 import Server from './model/Server';
 import ServerListResponse from './model/ServerListResponse';
+import ServerListResponseServers from './model/ServerListResponseServers';
 import ServerSize from './model/ServerSize';
 import ServerState from './model/ServerState';
 import ServerStorageDevices from './model/ServerStorageDevices';
@@ -73,9 +66,15 @@ import SuccessStoragesResponse from './model/SuccessStoragesResponse';
 import SuccessStoragesResponseStorages from './model/SuccessStoragesResponseStorages';
 import Tag from './model/Tag';
 import Tag1 from './model/Tag1';
+import TagListResponse from './model/TagListResponse';
+import TagListResponseTags from './model/TagListResponseTags';
 import TagServers from './model/TagServers';
 import Timezone from './model/Timezone';
+import TimezoneListResponse from './model/TimezoneListResponse';
+import TimezoneListResponseTimezones from './model/TimezoneListResponseTimezones';
 import Zone from './model/Zone';
+import ZoneListResponse from './model/ZoneListResponse';
+import ZoneListResponseZones from './model/ZoneListResponseZones';
 import AccountApi from './api/AccountApi';
 import FirewallApi from './api/FirewallApi';
 import IPAddressApi from './api/IPAddressApi';
@@ -139,10 +138,52 @@ export {
     AddressFamily,
 
     /**
+     * The AssignIpResponse model constructor.
+     * @property {module:model/AssignIpResponse}
+     */
+    AssignIpResponse,
+
+    /**
+     * The AvailablePlanListResponse model constructor.
+     * @property {module:model/AvailablePlanListResponse}
+     */
+    AvailablePlanListResponse,
+
+    /**
+     * The AvailablePlanListResponsePlans model constructor.
+     * @property {module:model/AvailablePlanListResponsePlans}
+     */
+    AvailablePlanListResponsePlans,
+
+    /**
      * The BackupRule model constructor.
      * @property {module:model/BackupRule}
      */
     BackupRule,
+
+    /**
+     * The ConfigurationListResponse model constructor.
+     * @property {module:model/ConfigurationListResponse}
+     */
+    ConfigurationListResponse,
+
+    /**
+     * The ConfigurationListResponseServerSizes model constructor.
+     * @property {module:model/ConfigurationListResponseServerSizes}
+     */
+    ConfigurationListResponseServerSizes,
+
+    /**
+     * The CreateNewTagResponse model constructor.
+     * @property {module:model/CreateNewTagResponse}
+     */
+    CreateNewTagResponse,
+
+    /**
+     * The CreateStorageResponse model constructor.
+     * @property {module:model/CreateStorageResponse}
+     */
+    CreateStorageResponse,
 
     /**
      * The Error model constructor.
@@ -175,136 +216,22 @@ export {
     FirewallRule,
 
     /**
-     * The InlineResponse200 model constructor.
-     * @property {module:model/InlineResponse200}
+     * The FirewallRuleDetailsResponse model constructor.
+     * @property {module:model/FirewallRuleDetailsResponse}
      */
-    InlineResponse200,
+    FirewallRuleDetailsResponse,
 
     /**
-     * The InlineResponse2001 model constructor.
-     * @property {module:model/InlineResponse2001}
+     * The FirewallRuleListResponse model constructor.
+     * @property {module:model/FirewallRuleListResponse}
      */
-    InlineResponse2001,
+    FirewallRuleListResponse,
 
     /**
-     * The InlineResponse20010 model constructor.
-     * @property {module:model/InlineResponse20010}
+     * The FirewallRuleListResponseFirewallRules model constructor.
+     * @property {module:model/FirewallRuleListResponseFirewallRules}
      */
-    InlineResponse20010,
-
-    /**
-     * The InlineResponse2001Zones model constructor.
-     * @property {module:model/InlineResponse2001Zones}
-     */
-    InlineResponse2001Zones,
-
-    /**
-     * The InlineResponse2002 model constructor.
-     * @property {module:model/InlineResponse2002}
-     */
-    InlineResponse2002,
-
-    /**
-     * The InlineResponse2002Timezones model constructor.
-     * @property {module:model/InlineResponse2002Timezones}
-     */
-    InlineResponse2002Timezones,
-
-    /**
-     * The InlineResponse2003 model constructor.
-     * @property {module:model/InlineResponse2003}
-     */
-    InlineResponse2003,
-
-    /**
-     * The InlineResponse2003Plans model constructor.
-     * @property {module:model/InlineResponse2003Plans}
-     */
-    InlineResponse2003Plans,
-
-    /**
-     * The InlineResponse2004 model constructor.
-     * @property {module:model/InlineResponse2004}
-     */
-    InlineResponse2004,
-
-    /**
-     * The InlineResponse2004ServerSizes model constructor.
-     * @property {module:model/InlineResponse2004ServerSizes}
-     */
-    InlineResponse2004ServerSizes,
-
-    /**
-     * The InlineResponse2005 model constructor.
-     * @property {module:model/InlineResponse2005}
-     */
-    InlineResponse2005,
-
-    /**
-     * The InlineResponse2005Servers model constructor.
-     * @property {module:model/InlineResponse2005Servers}
-     */
-    InlineResponse2005Servers,
-
-    /**
-     * The InlineResponse2006 model constructor.
-     * @property {module:model/InlineResponse2006}
-     */
-    InlineResponse2006,
-
-    /**
-     * The InlineResponse2006IpAddresses model constructor.
-     * @property {module:model/InlineResponse2006IpAddresses}
-     */
-    InlineResponse2006IpAddresses,
-
-    /**
-     * The InlineResponse2007 model constructor.
-     * @property {module:model/InlineResponse2007}
-     */
-    InlineResponse2007,
-
-    /**
-     * The InlineResponse2007FirewallRules model constructor.
-     * @property {module:model/InlineResponse2007FirewallRules}
-     */
-    InlineResponse2007FirewallRules,
-
-    /**
-     * The InlineResponse2008 model constructor.
-     * @property {module:model/InlineResponse2008}
-     */
-    InlineResponse2008,
-
-    /**
-     * The InlineResponse2009 model constructor.
-     * @property {module:model/InlineResponse2009}
-     */
-    InlineResponse2009,
-
-    /**
-     * The InlineResponse2009Tags model constructor.
-     * @property {module:model/InlineResponse2009Tags}
-     */
-    InlineResponse2009Tags,
-
-    /**
-     * The InlineResponse200Price model constructor.
-     * @property {module:model/InlineResponse200Price}
-     */
-    InlineResponse200Price,
-
-    /**
-     * The InlineResponse201 model constructor.
-     * @property {module:model/InlineResponse201}
-     */
-    InlineResponse201,
-
-    /**
-     * The InlineResponse2011 model constructor.
-     * @property {module:model/InlineResponse2011}
-     */
-    InlineResponse2011,
+    FirewallRuleListResponseFirewallRules,
 
     /**
      * The IpAddress model constructor.
@@ -319,6 +246,18 @@ export {
     IpAddress1,
 
     /**
+     * The IpAddressListResponse model constructor.
+     * @property {module:model/IpAddressListResponse}
+     */
+    IpAddressListResponse,
+
+    /**
+     * The IpAddressListResponseIpAddresses model constructor.
+     * @property {module:model/IpAddressListResponseIpAddresses}
+     */
+    IpAddressListResponseIpAddresses,
+
+    /**
      * The Plan model constructor.
      * @property {module:model/Plan}
      */
@@ -329,6 +268,18 @@ export {
      * @property {module:model/Price}
      */
     Price,
+
+    /**
+     * The PriceListResponse model constructor.
+     * @property {module:model/PriceListResponse}
+     */
+    PriceListResponse,
+
+    /**
+     * The PriceListResponsePrice model constructor.
+     * @property {module:model/PriceListResponsePrice}
+     */
+    PriceListResponsePrice,
 
     /**
      * The PriceZone model constructor.
@@ -353,6 +304,12 @@ export {
      * @property {module:model/ServerListResponse}
      */
     ServerListResponse,
+
+    /**
+     * The ServerListResponseServers model constructor.
+     * @property {module:model/ServerListResponseServers}
+     */
+    ServerListResponseServers,
 
     /**
      * The ServerSize model constructor.
@@ -487,6 +444,18 @@ export {
     Tag1,
 
     /**
+     * The TagListResponse model constructor.
+     * @property {module:model/TagListResponse}
+     */
+    TagListResponse,
+
+    /**
+     * The TagListResponseTags model constructor.
+     * @property {module:model/TagListResponseTags}
+     */
+    TagListResponseTags,
+
+    /**
      * The TagServers model constructor.
      * @property {module:model/TagServers}
      */
@@ -499,10 +468,34 @@ export {
     Timezone,
 
     /**
+     * The TimezoneListResponse model constructor.
+     * @property {module:model/TimezoneListResponse}
+     */
+    TimezoneListResponse,
+
+    /**
+     * The TimezoneListResponseTimezones model constructor.
+     * @property {module:model/TimezoneListResponseTimezones}
+     */
+    TimezoneListResponseTimezones,
+
+    /**
      * The Zone model constructor.
      * @property {module:model/Zone}
      */
     Zone,
+
+    /**
+     * The ZoneListResponse model constructor.
+     * @property {module:model/ZoneListResponse}
+     */
+    ZoneListResponse,
+
+    /**
+     * The ZoneListResponseZones model constructor.
+     * @property {module:model/ZoneListResponseZones}
+     */
+    ZoneListResponseZones,
 
     /**
     * The AccountApi service constructor.

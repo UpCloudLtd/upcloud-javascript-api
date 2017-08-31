@@ -73,7 +73,7 @@ No authorization required
 
 <a name="backupStorage"></a>
 # **backupStorage**
-> InlineResponse201 backupStorage(storageId, opts)
+> CreateStorageResponse backupStorage(storageId, opts)
 
 Create backup
 
@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse201**](InlineResponse201.md)
+[**CreateStorageResponse**](CreateStorageResponse.md)
 
 ### Authorization
 
@@ -167,7 +167,7 @@ No authorization required
 
 <a name="cloneStorage"></a>
 # **cloneStorage**
-> InlineResponse201 cloneStorage(storageId, opts)
+> CreateStorageResponse cloneStorage(storageId, opts)
 
 Clone storage
 
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse201**](InlineResponse201.md)
+[**CreateStorageResponse**](CreateStorageResponse.md)
 
 ### Authorization
 
@@ -216,7 +216,7 @@ No authorization required
 
 <a name="createStorage"></a>
 # **createStorage**
-> InlineResponse201 createStorage(storage)
+> CreateStorageResponse createStorage(storage)
 
 Create storage
 
@@ -248,7 +248,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse201**](InlineResponse201.md)
+[**CreateStorageResponse**](CreateStorageResponse.md)
 
 ### Authorization
 
@@ -444,7 +444,7 @@ No authorization required
 
 <a name="getStorageDetails"></a>
 # **getStorageDetails**
-> InlineResponse201 getStorageDetails(storageId)
+> CreateStorageResponse getStorageDetails(storageId)
 
 Get storage details
 
@@ -476,7 +476,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse201**](InlineResponse201.md)
+[**CreateStorageResponse**](CreateStorageResponse.md)
 
 ### Authorization
 
@@ -618,7 +618,7 @@ No authorization required
 
 <a name="modifyStorage"></a>
 # **modifyStorage**
-> InlineResponse201 modifyStorage(storageIdstorage)
+> CreateStorageResponse modifyStorage(storageIdstorage)
 
 Modify storage
 
@@ -653,7 +653,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse201**](InlineResponse201.md)
+[**CreateStorageResponse**](CreateStorageResponse.md)
 
 ### Authorization
 
@@ -711,7 +711,7 @@ No authorization required
 
 <a name="templatizeStorage"></a>
 # **templatizeStorage**
-> InlineResponse201 templatizeStorage(storageId, opts)
+> CreateStorageResponse templatizeStorage(storageId, opts)
 
 Templatize storage
 
@@ -747,7 +747,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse201**](InlineResponse201.md)
+[**CreateStorageResponse**](CreateStorageResponse.md)
 
 ### Authorization
 

@@ -62,7 +62,7 @@ No authorization required
 
 <a name="createTag"></a>
 # **createTag**
-> InlineResponse20010 createTag(tag)
+> CreateNewTagResponse createTag(tag)
 
 Create a new tag
 
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20010**](InlineResponse20010.md)
+[**CreateNewTagResponse**](CreateNewTagResponse.md)
 
 ### Authorization
 
@@ -152,7 +152,7 @@ No authorization required
 
 <a name="listTags"></a>
 # **listTags**
-> InlineResponse2009 listTags()
+> TagListResponse listTags()
 
 List existing tags
 
@@ -178,7 +178,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2009**](InlineResponse2009.md)
+[**TagListResponse**](TagListResponse.md)
 
 ### Authorization
 
@@ -191,7 +191,7 @@ No authorization required
 
 <a name="modifyTag"></a>
 # **modifyTag**
-> InlineResponse20010 modifyTag(tagNametag)
+> CreateNewTagResponse modifyTag(tagNametag)
 
 Modify existing tag
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20010**](InlineResponse20010.md)
+[**CreateNewTagResponse**](CreateNewTagResponse.md)
 
 ### Authorization
 

@@ -13,12 +13,12 @@
 
 
 import ApiClient from "../ApiClient";
+import CreateNewTagResponse from '../model/CreateNewTagResponse';
 import Error from '../model/Error';
-import InlineResponse20010 from '../model/InlineResponse20010';
-import InlineResponse2009 from '../model/InlineResponse2009';
 import ServerListResponse from '../model/ServerListResponse';
 import Tag from '../model/Tag';
 import Tag1 from '../model/Tag1';
+import TagListResponse from '../model/TagListResponse';
 
 /**
 * Tag service.
@@ -96,7 +96,7 @@ export default class TagApi {
      * Callback function to receive the result of the createTag operation.
      * @callback module:api/TagApi~createTagCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse20010} data The data returned by the service call.
+     * @param {module:model/CreateNewTagResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -105,7 +105,7 @@ export default class TagApi {
      * Creates a new tag. Existing servers can be tagged in same request
      * @param {module:model/Tag} tag 
      * @param {module:api/TagApi~createTagCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse20010}
+     * data is of type: {@link module:model/CreateNewTagResponse}
      */
     createTag(tag, callback) {
       let postBody = tag;
@@ -128,7 +128,7 @@ export default class TagApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse20010;
+      let returnType = CreateNewTagResponse;
 
       return this.apiClient.callApi(
         '/tag', 'POST',
@@ -186,7 +186,7 @@ export default class TagApi {
      * Callback function to receive the result of the listTags operation.
      * @callback module:api/TagApi~listTagsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2009} data The data returned by the service call.
+     * @param {module:model/TagListResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -194,7 +194,7 @@ export default class TagApi {
      * List existing tags
      * Returns all existing tags with their properties and servers tagged
      * @param {module:api/TagApi~listTagsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2009}
+     * data is of type: {@link module:model/TagListResponse}
      */
     listTags(callback) {
       let postBody = null;
@@ -212,7 +212,7 @@ export default class TagApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse2009;
+      let returnType = TagListResponse;
 
       return this.apiClient.callApi(
         '/tag', 'GET',
@@ -225,7 +225,7 @@ export default class TagApi {
      * Callback function to receive the result of the modifyTag operation.
      * @callback module:api/TagApi~modifyTagCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse20010} data The data returned by the service call.
+     * @param {module:model/CreateNewTagResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -235,7 +235,7 @@ export default class TagApi {
      * @param {String} tagName Tag name
      * @param {module:model/Tag1} tag 
      * @param {module:api/TagApi~modifyTagCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse20010}
+     * data is of type: {@link module:model/CreateNewTagResponse}
      */
     modifyTag(tagName, tag, callback) {
       let postBody = tag;
@@ -264,7 +264,7 @@ export default class TagApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse20010;
+      let returnType = CreateNewTagResponse;
 
       return this.apiClient.callApi(
         '/tag/{tagName}', 'PUT',

@@ -13,8 +13,8 @@
 
 
 import ApiClient from "../ApiClient";
+import CreateStorageResponse from '../model/CreateStorageResponse';
 import Error from '../model/Error';
-import InlineResponse201 from '../model/InlineResponse201';
 import ServerListResponse from '../model/ServerListResponse';
 import Storage from '../model/Storage';
 import Storage1 from '../model/Storage1';
@@ -100,7 +100,7 @@ export default class StorageApi {
      * Callback function to receive the result of the backupStorage operation.
      * @callback module:api/StorageApi~backupStorageCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse201} data The data returned by the service call.
+     * @param {module:model/CreateStorageResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -111,7 +111,7 @@ export default class StorageApi {
      * @param {Object} opts Optional parameters
      * @param {module:model/Storage4} opts.storage 
      * @param {module:api/StorageApi~backupStorageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse201}
+     * data is of type: {@link module:model/CreateStorageResponse}
      */
     backupStorage(storageId, opts, callback) {
       opts = opts || {};
@@ -136,7 +136,7 @@ export default class StorageApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse201;
+      let returnType = CreateStorageResponse;
 
       return this.apiClient.callApi(
         '/storage/{storageId}/backup', 'POST',
@@ -194,7 +194,7 @@ export default class StorageApi {
      * Callback function to receive the result of the cloneStorage operation.
      * @callback module:api/StorageApi~cloneStorageCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse201} data The data returned by the service call.
+     * @param {module:model/CreateStorageResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -205,7 +205,7 @@ export default class StorageApi {
      * @param {Object} opts Optional parameters
      * @param {module:model/Storage2} opts.storage 
      * @param {module:api/StorageApi~cloneStorageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse201}
+     * data is of type: {@link module:model/CreateStorageResponse}
      */
     cloneStorage(storageId, opts, callback) {
       opts = opts || {};
@@ -230,7 +230,7 @@ export default class StorageApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse201;
+      let returnType = CreateStorageResponse;
 
       return this.apiClient.callApi(
         '/storage/{storageId}/clone', 'POST',
@@ -243,7 +243,7 @@ export default class StorageApi {
      * Callback function to receive the result of the createStorage operation.
      * @callback module:api/StorageApi~createStorageCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse201} data The data returned by the service call.
+     * @param {module:model/CreateStorageResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -252,7 +252,7 @@ export default class StorageApi {
      * Creates a new storage resource.
      * @param {module:model/Storage} storage 
      * @param {module:api/StorageApi~createStorageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse201}
+     * data is of type: {@link module:model/CreateStorageResponse}
      */
     createStorage(storage, callback) {
       let postBody = storage;
@@ -275,7 +275,7 @@ export default class StorageApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse201;
+      let returnType = CreateStorageResponse;
 
       return this.apiClient.callApi(
         '/storage', 'POST',
@@ -476,7 +476,7 @@ export default class StorageApi {
      * Callback function to receive the result of the getStorageDetails operation.
      * @callback module:api/StorageApi~getStorageDetailsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse201} data The data returned by the service call.
+     * @param {module:model/CreateStorageResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -485,7 +485,7 @@ export default class StorageApi {
      * Returns detailed information about a specific storage resource.
      * @param {String} storageId 
      * @param {module:api/StorageApi~getStorageDetailsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse201}
+     * data is of type: {@link module:model/CreateStorageResponse}
      */
     getStorageDetails(storageId, callback) {
       let postBody = null;
@@ -509,7 +509,7 @@ export default class StorageApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse201;
+      let returnType = CreateStorageResponse;
 
       return this.apiClient.callApi(
         '/storage/{storageId}', 'GET',
@@ -654,7 +654,7 @@ export default class StorageApi {
      * Callback function to receive the result of the modifyStorage operation.
      * @callback module:api/StorageApi~modifyStorageCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse201} data The data returned by the service call.
+     * @param {module:model/CreateStorageResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -664,7 +664,7 @@ export default class StorageApi {
      * @param {String} storageId 
      * @param {module:model/Storage1} storage 
      * @param {module:api/StorageApi~modifyStorageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse201}
+     * data is of type: {@link module:model/CreateStorageResponse}
      */
     modifyStorage(storageId, storage, callback) {
       let postBody = storage;
@@ -693,7 +693,7 @@ export default class StorageApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse201;
+      let returnType = CreateStorageResponse;
 
       return this.apiClient.callApi(
         '/storage/{storageId}', 'PUT',
@@ -751,7 +751,7 @@ export default class StorageApi {
      * Callback function to receive the result of the templatizeStorage operation.
      * @callback module:api/StorageApi~templatizeStorageCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse201} data The data returned by the service call.
+     * @param {module:model/CreateStorageResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -762,7 +762,7 @@ export default class StorageApi {
      * @param {Object} opts Optional parameters
      * @param {module:model/Storage3} opts.storage 
      * @param {module:api/StorageApi~templatizeStorageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse201}
+     * data is of type: {@link module:model/CreateStorageResponse}
      */
     templatizeStorage(storageId, opts, callback) {
       opts = opts || {};
@@ -787,7 +787,7 @@ export default class StorageApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse201;
+      let returnType = CreateStorageResponse;
 
       return this.apiClient.callApi(
         '/storage/{storageId}/templatize', 'POST',

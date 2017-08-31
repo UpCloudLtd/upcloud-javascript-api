@@ -13,7 +13,7 @@
 
 
 import ApiClient from '../ApiClient';
-import InlineResponse2006IpAddresses from './InlineResponse2006IpAddresses';
+import IpAddressListResponseIpAddresses from './IpAddressListResponseIpAddresses';
 import ServerState from './ServerState';
 import ServerStorageDevices from './ServerStorageDevices';
 import ServerTags from './ServerTags';
@@ -78,7 +78,7 @@ export default class Server {
                 obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
             }
             if (data.hasOwnProperty('ip_addresses')) {
-                obj['ip_addresses'] = InlineResponse2006IpAddresses.constructFromObject(data['ip_addresses']);
+                obj['ip_addresses'] = IpAddressListResponseIpAddresses.constructFromObject(data['ip_addresses']);
             }
             if (data.hasOwnProperty('license')) {
                 obj['license'] = ApiClient.convertToType(data['license'], 'Number');
@@ -164,7 +164,7 @@ export default class Server {
     */
     hostname = undefined;
     /**
-    * @member {module:model/InlineResponse2006IpAddresses} ip_addresses
+    * @member {module:model/IpAddressListResponseIpAddresses} ip_addresses
     */
     ip_addresses = undefined;
     /**

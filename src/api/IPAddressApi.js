@@ -13,11 +13,11 @@
 
 
 import ApiClient from "../ApiClient";
+import AssignIpResponse from '../model/AssignIpResponse';
 import Error from '../model/Error';
-import InlineResponse2006 from '../model/InlineResponse2006';
-import InlineResponse2011 from '../model/InlineResponse2011';
 import IpAddress from '../model/IpAddress';
 import IpAddress1 from '../model/IpAddress1';
+import IpAddressListResponse from '../model/IpAddressListResponse';
 
 /**
 * IPAddress service.
@@ -42,7 +42,7 @@ export default class IPAddressApi {
      * Callback function to receive the result of the addIp operation.
      * @callback module:api/IPAddressApi~addIpCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2011} data The data returned by the service call.
+     * @param {module:model/AssignIpResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -52,7 +52,7 @@ export default class IPAddressApi {
      * @param {Object} opts Optional parameters
      * @param {module:model/IpAddress} opts.ipAddress 
      * @param {module:api/IPAddressApi~addIpCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2011}
+     * data is of type: {@link module:model/AssignIpResponse}
      */
     addIp(opts, callback) {
       opts = opts || {};
@@ -71,7 +71,7 @@ export default class IPAddressApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse2011;
+      let returnType = AssignIpResponse;
 
       return this.apiClient.callApi(
         '/ip_address', 'POST',
@@ -129,7 +129,7 @@ export default class IPAddressApi {
      * Callback function to receive the result of the getDetails operation.
      * @callback module:api/IPAddressApi~getDetailsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2011} data The data returned by the service call.
+     * @param {module:model/AssignIpResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -138,7 +138,7 @@ export default class IPAddressApi {
      * Returns detailed information about a specific IP address.
      * @param {String} ip Ip address
      * @param {module:api/IPAddressApi~getDetailsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2011}
+     * data is of type: {@link module:model/AssignIpResponse}
      */
     getDetails(ip, callback) {
       let postBody = null;
@@ -162,7 +162,7 @@ export default class IPAddressApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse2011;
+      let returnType = AssignIpResponse;
 
       return this.apiClient.callApi(
         '/ip_address/{ip}', 'GET',
@@ -175,7 +175,7 @@ export default class IPAddressApi {
      * Callback function to receive the result of the listIps operation.
      * @callback module:api/IPAddressApi~listIpsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2006} data The data returned by the service call.
+     * @param {module:model/IpAddressListResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -183,7 +183,7 @@ export default class IPAddressApi {
      * List IP addresses
      * Returns a list of all IP addresses assigned to servers on the current user account.
      * @param {module:api/IPAddressApi~listIpsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2006}
+     * data is of type: {@link module:model/IpAddressListResponse}
      */
     listIps(callback) {
       let postBody = null;
@@ -201,7 +201,7 @@ export default class IPAddressApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse2006;
+      let returnType = IpAddressListResponse;
 
       return this.apiClient.callApi(
         '/ip_address', 'GET',
@@ -214,7 +214,7 @@ export default class IPAddressApi {
      * Callback function to receive the result of the modifyIp operation.
      * @callback module:api/IPAddressApi~modifyIpCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2011} data The data returned by the service call.
+     * @param {module:model/AssignIpResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -225,7 +225,7 @@ export default class IPAddressApi {
      * @param {Object} opts Optional parameters
      * @param {module:model/IpAddress1} opts.ipAddress 
      * @param {module:api/IPAddressApi~modifyIpCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2011}
+     * data is of type: {@link module:model/AssignIpResponse}
      */
     modifyIp(ip, opts, callback) {
       opts = opts || {};
@@ -250,7 +250,7 @@ export default class IPAddressApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse2011;
+      let returnType = AssignIpResponse;
 
       return this.apiClient.callApi(
         '/ip_address/{ip}', 'PUT',

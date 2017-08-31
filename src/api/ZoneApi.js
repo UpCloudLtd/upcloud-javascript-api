@@ -13,7 +13,7 @@
 
 
 import ApiClient from "../ApiClient";
-import InlineResponse2001 from '../model/InlineResponse2001';
+import ZoneListResponse from '../model/ZoneListResponse';
 
 /**
 * Zone service.
@@ -38,7 +38,7 @@ export default class ZoneApi {
      * Callback function to receive the result of the listZones operation.
      * @callback module:api/ZoneApi~listZonesCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2001} data The data returned by the service call.
+     * @param {module:model/ZoneListResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -46,7 +46,7 @@ export default class ZoneApi {
      * List available zones
      * Returns a list of available zones.
      * @param {module:api/ZoneApi~listZonesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2001}
+     * data is of type: {@link module:model/ZoneListResponse}
      */
     listZones(callback) {
       let postBody = null;
@@ -64,7 +64,7 @@ export default class ZoneApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse2001;
+      let returnType = ZoneListResponse;
 
       return this.apiClient.callApi(
         '/zone', 'GET',

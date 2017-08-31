@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="addIp"></a>
 # **addIp**
-> InlineResponse2011 addIp(opts)
+> AssignIpResponse addIp(opts)
 
 Assign IP address
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2011**](InlineResponse2011.md)
+[**AssignIpResponse**](AssignIpResponse.md)
 
 ### Authorization
 
@@ -104,7 +104,7 @@ No authorization required
 
 <a name="getDetails"></a>
 # **getDetails**
-> InlineResponse2011 getDetails(ip)
+> AssignIpResponse getDetails(ip)
 
 Get IP address details
 
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2011**](InlineResponse2011.md)
+[**AssignIpResponse**](AssignIpResponse.md)
 
 ### Authorization
 
@@ -149,7 +149,7 @@ No authorization required
 
 <a name="listIps"></a>
 # **listIps**
-> InlineResponse2006 listIps()
+> IpAddressListResponse listIps()
 
 List IP addresses
 
@@ -175,7 +175,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**IpAddressListResponse**](IpAddressListResponse.md)
 
 ### Authorization
 
@@ -188,7 +188,7 @@ No authorization required
 
 <a name="modifyIp"></a>
 # **modifyIp**
-> InlineResponse2011 modifyIp(ip, opts)
+> AssignIpResponse modifyIp(ip, opts)
 
 Modify IP address
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2011**](InlineResponse2011.md)
+[**AssignIpResponse**](AssignIpResponse.md)
 
 ### Authorization
 

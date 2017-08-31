@@ -13,12 +13,11 @@
 
 
 import ApiClient from "../ApiClient";
+import ConfigurationListResponse from '../model/ConfigurationListResponse';
 import Error from '../model/Error';
 import FirewallRule from '../model/FirewallRule';
-import InlineResponse2004 from '../model/InlineResponse2004';
-import InlineResponse2005 from '../model/InlineResponse2005';
-import InlineResponse2007 from '../model/InlineResponse2007';
-import InlineResponse2008 from '../model/InlineResponse2008';
+import FirewallRuleDetailsResponse from '../model/FirewallRuleDetailsResponse';
+import FirewallRuleListResponse from '../model/FirewallRuleListResponse';
 import RestartServer from '../model/RestartServer';
 import Server from '../model/Server';
 import ServerListResponse from '../model/ServerListResponse';
@@ -441,7 +440,7 @@ export default class ServerApi {
      * Callback function to receive the result of the getFirewallRule operation.
      * @callback module:api/ServerApi~getFirewallRuleCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2008} data The data returned by the service call.
+     * @param {module:model/FirewallRuleDetailsResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -451,7 +450,7 @@ export default class ServerApi {
      * @param {String} serverId Server id
      * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
      * @param {module:api/ServerApi~getFirewallRuleCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2008}
+     * data is of type: {@link module:model/FirewallRuleDetailsResponse}
      */
     getFirewallRule(serverId, firewallRuleNumber, callback) {
       let postBody = null;
@@ -481,7 +480,7 @@ export default class ServerApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse2008;
+      let returnType = FirewallRuleDetailsResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/firewall_rule/{firewallRuleNumber}', 'GET',
@@ -494,7 +493,7 @@ export default class ServerApi {
      * Callback function to receive the result of the listServerConfigurations operation.
      * @callback module:api/ServerApi~listServerConfigurationsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2004} data The data returned by the service call.
+     * @param {module:model/ConfigurationListResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -502,7 +501,7 @@ export default class ServerApi {
      * List server configurations
      * Returns a list of available server configurations. A server configuration consists of a combination of CPU core count and main memory amount. All servers are created using these configurations.
      * @param {module:api/ServerApi~listServerConfigurationsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2004}
+     * data is of type: {@link module:model/ConfigurationListResponse}
      */
     listServerConfigurations(callback) {
       let postBody = null;
@@ -520,7 +519,7 @@ export default class ServerApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse2004;
+      let returnType = ConfigurationListResponse;
 
       return this.apiClient.callApi(
         '/server_size', 'GET',
@@ -533,7 +532,7 @@ export default class ServerApi {
      * Callback function to receive the result of the listServers operation.
      * @callback module:api/ServerApi~listServersCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2005} data The data returned by the service call.
+     * @param {module:model/ServerListResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -541,7 +540,7 @@ export default class ServerApi {
      * List of servers
      * Returns a list of all servers associated with the current account.
      * @param {module:api/ServerApi~listServersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2005}
+     * data is of type: {@link module:model/ServerListResponse}
      */
     listServers(callback) {
       let postBody = null;
@@ -559,7 +558,7 @@ export default class ServerApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse2005;
+      let returnType = ServerListResponse;
 
       return this.apiClient.callApi(
         '/server', 'GET',
@@ -767,7 +766,7 @@ export default class ServerApi {
      * Callback function to receive the result of the serverServerIdFirewallRuleGet operation.
      * @callback module:api/ServerApi~serverServerIdFirewallRuleGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2007} data The data returned by the service call.
+     * @param {module:model/FirewallRuleListResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -776,7 +775,7 @@ export default class ServerApi {
      * Returns a list of firewall rules for a specific server.
      * @param {String} serverId Server id
      * @param {module:api/ServerApi~serverServerIdFirewallRuleGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2007}
+     * data is of type: {@link module:model/FirewallRuleListResponse}
      */
     serverServerIdFirewallRuleGet(serverId, callback) {
       let postBody = null;
@@ -800,7 +799,7 @@ export default class ServerApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      let returnType = InlineResponse2007;
+      let returnType = FirewallRuleListResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/firewall_rule', 'GET',

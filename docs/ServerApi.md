@@ -401,7 +401,7 @@ No authorization required
 
 <a name="getFirewallRule"></a>
 # **getFirewallRule**
-> InlineResponse2008 getFirewallRule(serverId, firewallRuleNumber)
+> FirewallRuleDetailsResponse getFirewallRule(serverId, firewallRuleNumber)
 
 Get firewall rule details
 
@@ -436,7 +436,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**FirewallRuleDetailsResponse**](FirewallRuleDetailsResponse.md)
 
 ### Authorization
 
@@ -449,7 +449,7 @@ No authorization required
 
 <a name="listServerConfigurations"></a>
 # **listServerConfigurations**
-> InlineResponse2004 listServerConfigurations()
+> ConfigurationListResponse listServerConfigurations()
 
 List server configurations
 
@@ -475,7 +475,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**ConfigurationListResponse**](ConfigurationListResponse.md)
 
 ### Authorization
 
@@ -488,7 +488,7 @@ No authorization required
 
 <a name="listServers"></a>
 # **listServers**
-> InlineResponse2005 listServers()
+> ServerListResponse listServers()
 
 List of servers
 
@@ -514,7 +514,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2005**](InlineResponse2005.md)
+[**ServerListResponse**](ServerListResponse.md)
 
 ### Authorization
 
@@ -716,7 +716,7 @@ No authorization required
 
 <a name="serverServerIdFirewallRuleGet"></a>
 # **serverServerIdFirewallRuleGet**
-> InlineResponse2007 serverServerIdFirewallRuleGet(serverId, )
+> FirewallRuleListResponse serverServerIdFirewallRuleGet(serverId, )
 
 List firewall rules
 
@@ -748,7 +748,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**FirewallRuleListResponse**](FirewallRuleListResponse.md)
 
 ### Authorization
 

@@ -13,7 +13,7 @@
 
 
 import ApiClient from "../ApiClient";
-import InlineResponse2003 from '../model/InlineResponse2003';
+import AvailablePlanListResponse from '../model/AvailablePlanListResponse';
 
 /**
 * Plan service.
@@ -38,7 +38,7 @@ export default class PlanApi {
      * Callback function to receive the result of the listPlans operation.
      * @callback module:api/PlanApi~listPlansCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2003} data The data returned by the service call.
+     * @param {module:model/AvailablePlanListResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -46,7 +46,7 @@ export default class PlanApi {
      * List available plans
      * Returns a list of available plans.
      * @param {module:api/PlanApi~listPlansCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2003}
+     * data is of type: {@link module:model/AvailablePlanListResponse}
      */
     listPlans(callback) {
       let postBody = null;
@@ -64,7 +64,7 @@ export default class PlanApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse2003;
+      let returnType = AvailablePlanListResponse;
 
       return this.apiClient.callApi(
         '/plan', 'GET',
