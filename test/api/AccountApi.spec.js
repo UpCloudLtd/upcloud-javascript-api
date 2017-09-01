@@ -48,10 +48,10 @@
   }
 
   describe('AccountApi', function() {
-    describe('accountGet', function() {
-      it('should call accountGet successfully', function(done) {
-        //uncomment below and update the code to test accountGet
-        //instance.accountGet(function(error) {
+    describe('getAccount', function() {
+      it('should call getAccount successfully', function(done) {
+        //uncomment below and update the code to test getAccount
+        //instance.getAccount(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

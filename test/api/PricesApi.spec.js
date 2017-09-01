@@ -48,10 +48,10 @@
   }
 
   describe('PricesApi', function() {
-    describe('priceGet', function() {
-      it('should call priceGet successfully', function(done) {
-        //uncomment below and update the code to test priceGet
-        //instance.priceGet(function(error) {
+    describe('listPrices', function() {
+      it('should call listPrices successfully', function(done) {
+        //uncomment below and update the code to test listPrices
+        //instance.listPrices(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

@@ -48,10 +48,10 @@
   }
 
   describe('ZoneApi', function() {
-    describe('zoneGet', function() {
-      it('should call zoneGet successfully', function(done) {
-        //uncomment below and update the code to test zoneGet
-        //instance.zoneGet(function(error) {
+    describe('listZones', function() {
+      it('should call listZones successfully', function(done) {
+        //uncomment below and update the code to test listZones
+        //instance.listZones(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

@@ -48,60 +48,60 @@
   }
 
   describe('TagApi', function() {
-    describe('serverServerIdTagTagListPost', function() {
-      it('should call serverServerIdTagTagListPost successfully', function(done) {
-        //uncomment below and update the code to test serverServerIdTagTagListPost
-        //instance.serverServerIdTagTagListPost(function(error) {
+    describe('assignTag', function() {
+      it('should call assignTag successfully', function(done) {
+        //uncomment below and update the code to test assignTag
+        //instance.assignTag(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('serverServerIdUntagTagNamePost', function() {
-      it('should call serverServerIdUntagTagNamePost successfully', function(done) {
-        //uncomment below and update the code to test serverServerIdUntagTagNamePost
-        //instance.serverServerIdUntagTagNamePost(function(error) {
+    describe('createTag', function() {
+      it('should call createTag successfully', function(done) {
+        //uncomment below and update the code to test createTag
+        //instance.createTag(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('tagGet', function() {
-      it('should call tagGet successfully', function(done) {
-        //uncomment below and update the code to test tagGet
-        //instance.tagGet(function(error) {
+    describe('deleteTag', function() {
+      it('should call deleteTag successfully', function(done) {
+        //uncomment below and update the code to test deleteTag
+        //instance.deleteTag(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('tagPost', function() {
-      it('should call tagPost successfully', function(done) {
-        //uncomment below and update the code to test tagPost
-        //instance.tagPost(function(error) {
+    describe('listTags', function() {
+      it('should call listTags successfully', function(done) {
+        //uncomment below and update the code to test listTags
+        //instance.listTags(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('tagTagNameDelete', function() {
-      it('should call tagTagNameDelete successfully', function(done) {
-        //uncomment below and update the code to test tagTagNameDelete
-        //instance.tagTagNameDelete(function(error) {
+    describe('modifyTag', function() {
+      it('should call modifyTag successfully', function(done) {
+        //uncomment below and update the code to test modifyTag
+        //instance.modifyTag(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('tagTagNamePut', function() {
-      it('should call tagTagNamePut successfully', function(done) {
-        //uncomment below and update the code to test tagTagNamePut
-        //instance.tagTagNamePut(function(error) {
+    describe('untag', function() {
+      it('should call untag successfully', function(done) {
+        //uncomment below and update the code to test untag
+        //instance.untag(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

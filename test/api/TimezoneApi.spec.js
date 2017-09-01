@@ -48,10 +48,10 @@
   }
 
   describe('TimezoneApi', function() {
-    describe('timezoneGet', function() {
-      it('should call timezoneGet successfully', function(done) {
-        //uncomment below and update the code to test timezoneGet
-        //instance.timezoneGet(function(error) {
+    describe('listTimezones', function() {
+      it('should call listTimezones successfully', function(done) {
+        //uncomment below and update the code to test listTimezones
+        //instance.listTimezones(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

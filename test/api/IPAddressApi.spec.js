@@ -48,50 +48,50 @@
   }
 
   describe('IPAddressApi', function() {
-    describe('ipAddressGet', function() {
-      it('should call ipAddressGet successfully', function(done) {
-        //uncomment below and update the code to test ipAddressGet
-        //instance.ipAddressGet(function(error) {
+    describe('addIp', function() {
+      it('should call addIp successfully', function(done) {
+        //uncomment below and update the code to test addIp
+        //instance.addIp(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('ipAddressIpDelete', function() {
-      it('should call ipAddressIpDelete successfully', function(done) {
-        //uncomment below and update the code to test ipAddressIpDelete
-        //instance.ipAddressIpDelete(function(error) {
+    describe('deleteIp', function() {
+      it('should call deleteIp successfully', function(done) {
+        //uncomment below and update the code to test deleteIp
+        //instance.deleteIp(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('ipAddressIpGet', function() {
-      it('should call ipAddressIpGet successfully', function(done) {
-        //uncomment below and update the code to test ipAddressIpGet
-        //instance.ipAddressIpGet(function(error) {
+    describe('getDetails', function() {
+      it('should call getDetails successfully', function(done) {
+        //uncomment below and update the code to test getDetails
+        //instance.getDetails(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('ipAddressIpPut', function() {
-      it('should call ipAddressIpPut successfully', function(done) {
-        //uncomment below and update the code to test ipAddressIpPut
-        //instance.ipAddressIpPut(function(error) {
+    describe('listIps', function() {
+      it('should call listIps successfully', function(done) {
+        //uncomment below and update the code to test listIps
+        //instance.listIps(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('ipAddressPost', function() {
-      it('should call ipAddressPost successfully', function(done) {
-        //uncomment below and update the code to test ipAddressPost
-        //instance.ipAddressPost(function(error) {
+    describe('modifyIp', function() {
+      it('should call modifyIp successfully', function(done) {
+        //uncomment below and update the code to test modifyIp
+        //instance.modifyIp(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

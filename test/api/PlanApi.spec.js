@@ -48,10 +48,10 @@
   }
 
   describe('PlanApi', function() {
-    describe('planGet', function() {
-      it('should call planGet successfully', function(done) {
-        //uncomment below and update the code to test planGet
-        //instance.planGet(function(error) {
+    describe('listPlans', function() {
+      it('should call listPlans successfully', function(done) {
+        //uncomment below and update the code to test listPlans
+        //instance.listPlans(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

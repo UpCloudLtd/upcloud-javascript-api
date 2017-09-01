@@ -48,20 +48,30 @@
   }
 
   describe('FirewallApi', function() {
-    describe('serverServerIdFirewallRuleFirewallRuleNumberDelete', function() {
-      it('should call serverServerIdFirewallRuleFirewallRuleNumberDelete successfully', function(done) {
-        //uncomment below and update the code to test serverServerIdFirewallRuleFirewallRuleNumberDelete
-        //instance.serverServerIdFirewallRuleFirewallRuleNumberDelete(function(error) {
+    describe('createFirewallRule', function() {
+      it('should call createFirewallRule successfully', function(done) {
+        //uncomment below and update the code to test createFirewallRule
+        //instance.createFirewallRule(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('serverServerIdFirewallRuleFirewallRuleNumberGet', function() {
-      it('should call serverServerIdFirewallRuleFirewallRuleNumberGet successfully', function(done) {
-        //uncomment below and update the code to test serverServerIdFirewallRuleFirewallRuleNumberGet
-        //instance.serverServerIdFirewallRuleFirewallRuleNumberGet(function(error) {
+    describe('deleteFirewallRule', function() {
+      it('should call deleteFirewallRule successfully', function(done) {
+        //uncomment below and update the code to test deleteFirewallRule
+        //instance.deleteFirewallRule(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getFirewallRule', function() {
+      it('should call getFirewallRule successfully', function(done) {
+        //uncomment below and update the code to test getFirewallRule
+        //instance.getFirewallRule(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -72,16 +82,6 @@
       it('should call serverServerIdFirewallRuleGet successfully', function(done) {
         //uncomment below and update the code to test serverServerIdFirewallRuleGet
         //instance.serverServerIdFirewallRuleGet(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('serverServerIdFirewallRulePost', function() {
-      it('should call serverServerIdFirewallRulePost successfully', function(done) {
-        //uncomment below and update the code to test serverServerIdFirewallRulePost
-        //instance.serverServerIdFirewallRulePost(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
