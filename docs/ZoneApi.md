@@ -1,6 +1,6 @@
 # UpcloudApi.ZoneApi
 
-All URIs are relative to *http://localhost/1.2*
+All URIs are relative to *http://api.upcloud.com/1.2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -44,6 +44,6 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 

@@ -69,8 +69,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = PriceListResponse;
 
       return this.apiClient.callApi(

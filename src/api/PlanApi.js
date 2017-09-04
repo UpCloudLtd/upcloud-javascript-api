@@ -69,7 +69,7 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
+      var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = AvailablePlanListResponse;
 

@@ -38,9 +38,9 @@
     /**
      * The base URL against which to resolve every API call's (relative) path.
      * @type {String}
-     * @default http://localhost/1.2
+     * @default http://api.upcloud.com/1.2
      */
-    this.basePath = 'http://localhost/1.2'.replace(/\/+$/, '');
+    this.basePath = 'http://api.upcloud.com/1.2'.replace(/\/+$/, '');
 
     /**
      * The authentication methods to be included for all API calls.

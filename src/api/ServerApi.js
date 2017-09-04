@@ -83,8 +83,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = ServerListResponse;
 
       return this.apiClient.callApi(
@@ -137,8 +137,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = ServerListResponse;
 
       return this.apiClient.callApi(
@@ -190,8 +190,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = null;
 
       return this.apiClient.callApi(
@@ -288,8 +288,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = null;
 
       return this.apiClient.callApi(
@@ -334,8 +334,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = null;
 
       return this.apiClient.callApi(
@@ -388,8 +388,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = ServerListResponse;
 
       return this.apiClient.callApi(
@@ -436,8 +436,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = ServerListResponse;
 
       return this.apiClient.callApi(
@@ -491,8 +491,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = FirewallRuleDetailsResponse;
 
       return this.apiClient.callApi(
@@ -532,7 +532,7 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
+      var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = ConfigurationListResponse;
 
@@ -573,7 +573,7 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
+      var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = ServerListResponse;
 
@@ -624,8 +624,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = ServerListResponse;
 
       return this.apiClient.callApi(
@@ -728,7 +728,7 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
+      var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = ServerListResponse;
 
@@ -776,8 +776,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = ServerListResponse;
 
       return this.apiClient.callApi(
@@ -824,8 +824,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = FirewallRuleListResponse;
 
       return this.apiClient.callApi(
@@ -872,7 +872,7 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
+      var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = ServerListResponse;
 
@@ -981,8 +981,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = ServerListResponse;
 
       return this.apiClient.callApi(

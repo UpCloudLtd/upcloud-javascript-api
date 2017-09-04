@@ -105,7 +105,7 @@ api.getAccount(callback);
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost/1.2*
+All URIs are relative to *http://api.upcloud.com/1.2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

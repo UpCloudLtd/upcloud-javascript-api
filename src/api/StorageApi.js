@@ -82,8 +82,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = ServerListResponse;
 
       return this.apiClient.callApi(
@@ -133,8 +133,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = CreateStorageResponse;
 
       return this.apiClient.callApi(
@@ -180,8 +180,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = null;
 
       return this.apiClient.callApi(
@@ -231,8 +231,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = CreateStorageResponse;
 
       return this.apiClient.callApi(
@@ -278,8 +278,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = CreateStorageResponse;
 
       return this.apiClient.callApi(
@@ -325,8 +325,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = null;
 
       return this.apiClient.callApi(
@@ -379,8 +379,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = ServerListResponse;
 
       return this.apiClient.callApi(
@@ -427,8 +427,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = ServerListResponse;
 
       return this.apiClient.callApi(
@@ -474,8 +474,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = null;
 
       return this.apiClient.callApi(
@@ -522,8 +522,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = CreateStorageResponse;
 
       return this.apiClient.callApi(
@@ -569,7 +569,7 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
+      var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = SuccessStoragesResponse;
 
@@ -609,7 +609,7 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
+      var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = SuccessStoragesResponse;
 
@@ -660,8 +660,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = ServerListResponse;
 
       return this.apiClient.callApi(
@@ -714,8 +714,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = CreateStorageResponse;
 
       return this.apiClient.callApi(
@@ -761,7 +761,7 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
+      var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = null;
 
@@ -812,8 +812,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = CreateStorageResponse;
 
       return this.apiClient.callApi(
@@ -859,8 +859,8 @@
       };
 
       var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = null;
 
       return this.apiClient.callApi(
