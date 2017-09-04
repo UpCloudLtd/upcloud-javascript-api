@@ -557,7 +557,7 @@
 
 
       var pathParams = {
-        'Type': type
+        'type': type
       };
       var queryParams = {
       };
@@ -574,7 +574,7 @@
       var returnType = SuccessStoragesResponse;
 
       return this.apiClient.callApi(
-        '/storage/{type}', 'GET',
+        '/storage/{type}/', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
