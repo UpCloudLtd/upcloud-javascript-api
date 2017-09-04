@@ -17,17 +17,18 @@ Returns a list of available plans.
 
 ### Example
 ```javascript
-import UpcloudApi from 'upcloud_api';
+var UpcloudApi = require('upcloud_api');
 
-let apiInstance = new UpcloudApi.PlanApi();
+var apiInstance = new UpcloudApi.PlanApi();
 
-apiInstance.listPlans((error, data, response) => {
+var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-});
+};
+apiInstance.listPlans(callback);
 ```
 
 ### Parameters

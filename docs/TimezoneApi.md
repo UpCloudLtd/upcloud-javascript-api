@@ -17,17 +17,18 @@ Returns a list of available timezones. Timezones are used to set the hardware cl
 
 ### Example
 ```javascript
-import UpcloudApi from 'upcloud_api';
+var UpcloudApi = require('upcloud_api');
 
-let apiInstance = new UpcloudApi.TimezoneApi();
+var apiInstance = new UpcloudApi.TimezoneApi();
 
-apiInstance.listTimezones((error, data, response) => {
+var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-});
+};
+apiInstance.listTimezones(callback);
 ```
 
 ### Parameters

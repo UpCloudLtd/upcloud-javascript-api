@@ -17,17 +17,18 @@ Returns a list resource prices.
 
 ### Example
 ```javascript
-import UpcloudApi from 'upcloud_api';
+var UpcloudApi = require('upcloud_api');
 
-let apiInstance = new UpcloudApi.PricesApi();
+var apiInstance = new UpcloudApi.PricesApi();
 
-apiInstance.listPrices((error, data, response) => {
+var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-});
+};
+apiInstance.listPrices(callback);
 ```
 
 ### Parameters

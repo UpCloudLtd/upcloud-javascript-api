@@ -20,22 +20,23 @@ Creates a new firewall rule
 
 ### Example
 ```javascript
-import UpcloudApi from 'upcloud_api';
+var UpcloudApi = require('upcloud_api');
 
-let apiInstance = new UpcloudApi.FirewallApi();
+var apiInstance = new UpcloudApi.FirewallApi();
 
-let serverId = "serverId_example"; // String | Server id
+var serverId = "serverId_example"; // String | Server id
 
-let firewallRule = new UpcloudApi.FirewallRule(); // FirewallRule | 
+var firewallRule = new UpcloudApi.FirewallRule(); // FirewallRule | 
 
 
-apiInstance.createFirewallRule(serverId, firewallRule, (error, data, response) => {
+var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-});
+};
+apiInstance.createFirewallRule(serverId, firewallRule, callback);
 ```
 
 ### Parameters
@@ -68,22 +69,23 @@ Removes a firewall rule from a server. Firewall rules must be removed individual
 
 ### Example
 ```javascript
-import UpcloudApi from 'upcloud_api';
+var UpcloudApi = require('upcloud_api');
 
-let apiInstance = new UpcloudApi.FirewallApi();
+var apiInstance = new UpcloudApi.FirewallApi();
 
-let serverId = "serverId_example"; // String | Server id
+var serverId = "serverId_example"; // String | Server id
 
-let firewallRuleNumber = "firewallRuleNumber_example"; // String | Denotes the index of the firewall rule in the server's firewall rule list
+var firewallRuleNumber = "firewallRuleNumber_example"; // String | Denotes the index of the firewall rule in the server's firewall rule list
 
 
-apiInstance.deleteFirewallRule(serverId, firewallRuleNumber, (error, data, response) => {
+var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-});
+};
+apiInstance.deleteFirewallRule(serverId, firewallRuleNumber, callback);
 ```
 
 ### Parameters
@@ -116,22 +118,23 @@ Returns detailed information about a specific firewall rule
 
 ### Example
 ```javascript
-import UpcloudApi from 'upcloud_api';
+var UpcloudApi = require('upcloud_api');
 
-let apiInstance = new UpcloudApi.FirewallApi();
+var apiInstance = new UpcloudApi.FirewallApi();
 
-let serverId = "serverId_example"; // String | Server id
+var serverId = "serverId_example"; // String | Server id
 
-let firewallRuleNumber = "firewallRuleNumber_example"; // String | Denotes the index of the firewall rule in the server's firewall rule list
+var firewallRuleNumber = "firewallRuleNumber_example"; // String | Denotes the index of the firewall rule in the server's firewall rule list
 
 
-apiInstance.getFirewallRule(serverId, firewallRuleNumber, (error, data, response) => {
+var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-});
+};
+apiInstance.getFirewallRule(serverId, firewallRuleNumber, callback);
 ```
 
 ### Parameters
@@ -164,20 +167,21 @@ Returns a list of firewall rules for a specific server.
 
 ### Example
 ```javascript
-import UpcloudApi from 'upcloud_api';
+var UpcloudApi = require('upcloud_api');
 
-let apiInstance = new UpcloudApi.FirewallApi();
+var apiInstance = new UpcloudApi.FirewallApi();
 
-let serverId = "serverId_example"; // String | Server id
+var serverId = "serverId_example"; // String | Server id
 
 
-apiInstance.serverServerIdFirewallRuleGet(serverId, , (error, data, response) => {
+var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-});
+};
+apiInstance.serverServerIdFirewallRuleGet(serverId, , callback);
 ```
 
 ### Parameters

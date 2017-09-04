@@ -22,22 +22,23 @@ Servers can be tagged with one or more tags. The tags used must exist
 
 ### Example
 ```javascript
-import UpcloudApi from 'upcloud_api';
+var UpcloudApi = require('upcloud_api');
 
-let apiInstance = new UpcloudApi.TagApi();
+var apiInstance = new UpcloudApi.TagApi();
 
-let serverId = "serverId_example"; // String | Server id
+var serverId = "serverId_example"; // String | Server id
 
-let tagList = "tagList_example"; // String | List of tags
+var tagList = "tagList_example"; // String | List of tags
 
 
-apiInstance.assignTag(serverId, tagList, (error, data, response) => {
+var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-});
+};
+apiInstance.assignTag(serverId, tagList, callback);
 ```
 
 ### Parameters
@@ -70,20 +71,21 @@ Creates a new tag. Existing servers can be tagged in same request
 
 ### Example
 ```javascript
-import UpcloudApi from 'upcloud_api';
+var UpcloudApi = require('upcloud_api');
 
-let apiInstance = new UpcloudApi.TagApi();
+var apiInstance = new UpcloudApi.TagApi();
 
-let tag = new UpcloudApi.Tag(); // Tag | 
+var tag = new UpcloudApi.Tag(); // Tag | 
 
 
-apiInstance.createTag(tag, (error, data, response) => {
+var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-});
+};
+apiInstance.createTag(tag, callback);
 ```
 
 ### Parameters
@@ -115,20 +117,21 @@ Deleting existing tag untags all servers from specified tag and deletes tag defi
 
 ### Example
 ```javascript
-import UpcloudApi from 'upcloud_api';
+var UpcloudApi = require('upcloud_api');
 
-let apiInstance = new UpcloudApi.TagApi();
+var apiInstance = new UpcloudApi.TagApi();
 
-let tagName = "tagName_example"; // String | Tag name
+var tagName = "tagName_example"; // String | Tag name
 
 
-apiInstance.deleteTag(tagName, (error, data, response) => {
+var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-});
+};
+apiInstance.deleteTag(tagName, callback);
 ```
 
 ### Parameters
@@ -160,17 +163,18 @@ Returns all existing tags with their properties and servers tagged
 
 ### Example
 ```javascript
-import UpcloudApi from 'upcloud_api';
+var UpcloudApi = require('upcloud_api');
 
-let apiInstance = new UpcloudApi.TagApi();
+var apiInstance = new UpcloudApi.TagApi();
 
-apiInstance.listTags((error, data, response) => {
+var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-});
+};
+apiInstance.listTags(callback);
 ```
 
 ### Parameters
@@ -199,22 +203,23 @@ Changes attributes of an existing tag
 
 ### Example
 ```javascript
-import UpcloudApi from 'upcloud_api';
+var UpcloudApi = require('upcloud_api');
 
-let apiInstance = new UpcloudApi.TagApi();
+var apiInstance = new UpcloudApi.TagApi();
 
-let tagName = "tagName_example"; // String | Tag name
+var tagName = "tagName_example"; // String | Tag name
 
-let tag = new UpcloudApi.Tag1(); // Tag1 | 
+var tag = new UpcloudApi.Tag1(); // Tag1 | 
 
 
-apiInstance.modifyTag(tagNametag, (error, data, response) => {
+var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-});
+};
+apiInstance.modifyTag(tagNametag, callback);
 ```
 
 ### Parameters
@@ -247,22 +252,23 @@ Untags tags from given server. The tag(s) must exist
 
 ### Example
 ```javascript
-import UpcloudApi from 'upcloud_api';
+var UpcloudApi = require('upcloud_api');
 
-let apiInstance = new UpcloudApi.TagApi();
+var apiInstance = new UpcloudApi.TagApi();
 
-let serverId = "serverId_example"; // String | Server id
+var serverId = "serverId_example"; // String | Server id
 
-let tagName = "tagName_example"; // String | Tag name
+var tagName = "tagName_example"; // String | Tag name
 
 
-apiInstance.untag(serverId, tagName, (error, data, response) => {
+var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-});
+};
+apiInstance.untag(serverId, tagName, callback);
 ```
 
 ### Parameters

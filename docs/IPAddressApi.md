@@ -21,21 +21,22 @@ Assigns a new IP address to a server.
 
 ### Example
 ```javascript
-import UpcloudApi from 'upcloud_api';
+var UpcloudApi = require('upcloud_api');
 
-let apiInstance = new UpcloudApi.IPAddressApi();
+var apiInstance = new UpcloudApi.IPAddressApi();
 
-let opts = { 
+var opts = { 
   'ipAddress': new UpcloudApi.IpAddress() // IpAddress | 
 };
 
-apiInstance.addIp(opts, (error, data, response) => {
+var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-});
+};
+apiInstance.addIp(opts, callback);
 ```
 
 ### Parameters
@@ -67,20 +68,21 @@ Removes an IP address from a server.
 
 ### Example
 ```javascript
-import UpcloudApi from 'upcloud_api';
+var UpcloudApi = require('upcloud_api');
 
-let apiInstance = new UpcloudApi.IPAddressApi();
+var apiInstance = new UpcloudApi.IPAddressApi();
 
-let ip = "ip_example"; // String | Ip address
+var ip = "ip_example"; // String | Ip address
 
 
-apiInstance.deleteIp(ip, (error, data, response) => {
+var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-});
+};
+apiInstance.deleteIp(ip, callback);
 ```
 
 ### Parameters
@@ -112,20 +114,21 @@ Returns detailed information about a specific IP address.
 
 ### Example
 ```javascript
-import UpcloudApi from 'upcloud_api';
+var UpcloudApi = require('upcloud_api');
 
-let apiInstance = new UpcloudApi.IPAddressApi();
+var apiInstance = new UpcloudApi.IPAddressApi();
 
-let ip = "ip_example"; // String | Ip address
+var ip = "ip_example"; // String | Ip address
 
 
-apiInstance.getDetails(ip, (error, data, response) => {
+var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-});
+};
+apiInstance.getDetails(ip, callback);
 ```
 
 ### Parameters
@@ -157,17 +160,18 @@ Returns a list of all IP addresses assigned to servers on the current user accou
 
 ### Example
 ```javascript
-import UpcloudApi from 'upcloud_api';
+var UpcloudApi = require('upcloud_api');
 
-let apiInstance = new UpcloudApi.IPAddressApi();
+var apiInstance = new UpcloudApi.IPAddressApi();
 
-apiInstance.listIps((error, data, response) => {
+var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-});
+};
+apiInstance.listIps(callback);
 ```
 
 ### Parameters
@@ -196,23 +200,24 @@ Modifies the reverse DNS PTR record corresponding to an IP address. The PTR reco
 
 ### Example
 ```javascript
-import UpcloudApi from 'upcloud_api';
+var UpcloudApi = require('upcloud_api');
 
-let apiInstance = new UpcloudApi.IPAddressApi();
+var apiInstance = new UpcloudApi.IPAddressApi();
 
-let ip = "ip_example"; // String | Ip address
+var ip = "ip_example"; // String | Ip address
 
-let opts = { 
+var opts = { 
   'ipAddress': new UpcloudApi.IpAddress1() // IpAddress1 | 
 };
 
-apiInstance.modifyIp(ip, opts, (error, data, response) => {
+var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-});
+};
+apiInstance.modifyIp(ip, opts, callback);
 ```
 
 ### Parameters

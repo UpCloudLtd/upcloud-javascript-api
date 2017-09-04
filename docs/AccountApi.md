@@ -17,17 +17,18 @@ Returns information on the user&#39;s account.
 
 ### Example
 ```javascript
-import UpcloudApi from 'upcloud_api';
+var UpcloudApi = require('upcloud_api');
 
-let apiInstance = new UpcloudApi.AccountApi();
+var apiInstance = new UpcloudApi.AccountApi();
 
-apiInstance.getAccount((error, data, response) => {
+var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-});
+};
+apiInstance.getAccount(callback);
 ```
 
 ### Parameters
