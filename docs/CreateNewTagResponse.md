@@ -1,4 +1,4 @@
-# UpcloudApi.CreateNewTagResponse
+# upcloud.CreateNewTagResponse
 
 ## Properties
 Name | Type | Description | Notes

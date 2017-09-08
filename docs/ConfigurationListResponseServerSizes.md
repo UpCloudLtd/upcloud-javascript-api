@@ -1,4 +1,4 @@
-# UpcloudApi.ConfigurationListResponseServerSizes
+# upcloud.ConfigurationListResponseServerSizes
 
 ## Properties
 Name | Type | Description | Notes

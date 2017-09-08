@@ -14,10 +14,10 @@
     module.exports = factory(require('superagent'), require('querystring'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.ApiClient = factory(root.superagent, root.querystring);
+    root.upcloud.ApiClient = factory(root.superagent, root.querystring);
   }
 }(this, function(superagent, querystring) {
   'use strict';

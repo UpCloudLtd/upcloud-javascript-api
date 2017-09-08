@@ -14,10 +14,10 @@
     module.exports = factory(require('../ApiClient'), require('./IpAddressListResponseIpAddresses'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.IpAddressListResponse = factory(root.UpcloudApi.ApiClient, root.UpcloudApi.IpAddressListResponseIpAddresses);
+    root.upcloud.IpAddressListResponse = factory(root.upcloud.ApiClient, root.upcloud.IpAddressListResponseIpAddresses);
   }
 }(this, function(ApiClient, IpAddressListResponseIpAddresses) {
   'use strict';

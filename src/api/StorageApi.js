@@ -14,10 +14,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/CreateStorageResponse'), require('../model/Error'), require('../model/ServerListResponse'), require('../model/Storage'), require('../model/Storage1'), require('../model/Storage2'), require('../model/Storage3'), require('../model/Storage4'), require('../model/StorageDevice'), require('../model/StorageDevice1'), require('../model/SuccessStoragesResponse'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.StorageApi = factory(root.UpcloudApi.ApiClient, root.UpcloudApi.CreateStorageResponse, root.UpcloudApi.Error, root.UpcloudApi.ServerListResponse, root.UpcloudApi.Storage, root.UpcloudApi.Storage1, root.UpcloudApi.Storage2, root.UpcloudApi.Storage3, root.UpcloudApi.Storage4, root.UpcloudApi.StorageDevice, root.UpcloudApi.StorageDevice1, root.UpcloudApi.SuccessStoragesResponse);
+    root.upcloud.StorageApi = factory(root.upcloud.ApiClient, root.upcloud.CreateStorageResponse, root.upcloud.Error, root.upcloud.ServerListResponse, root.upcloud.Storage, root.upcloud.Storage1, root.upcloud.Storage2, root.upcloud.Storage3, root.upcloud.Storage4, root.upcloud.StorageDevice, root.upcloud.StorageDevice1, root.upcloud.SuccessStoragesResponse);
   }
 }(this, function(ApiClient, CreateStorageResponse, Error, ServerListResponse, Storage, Storage1, Storage2, Storage3, Storage4, StorageDevice, StorageDevice1, SuccessStoragesResponse) {
   'use strict';

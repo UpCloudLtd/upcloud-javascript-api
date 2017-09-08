@@ -1,4 +1,4 @@
-# UpcloudApi.FirewallApi
+# upcloud.FirewallApi
 
 All URIs are relative to *http://api.upcloud.com/1.2*
 
@@ -20,13 +20,13 @@ Creates a new firewall rule
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.FirewallApi();
+var apiInstance = new upcloud.FirewallApi();
 
 var serverId = "serverId_example"; // String | Server id
 
-var firewallRule = new UpcloudApi.FirewallRule(); // FirewallRule | 
+var firewallRule = new upcloud.FirewallRule(); // FirewallRule | 
 
 
 var callback = function(error, data, response) {
@@ -69,9 +69,9 @@ Removes a firewall rule from a server. Firewall rules must be removed individual
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.FirewallApi();
+var apiInstance = new upcloud.FirewallApi();
 
 var serverId = "serverId_example"; // String | Server id
 
@@ -118,9 +118,9 @@ Returns detailed information about a specific firewall rule
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.FirewallApi();
+var apiInstance = new upcloud.FirewallApi();
 
 var serverId = "serverId_example"; // String | Server id
 
@@ -167,9 +167,9 @@ Returns a list of firewall rules for a specific server.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.FirewallApi();
+var apiInstance = new upcloud.FirewallApi();
 
 var serverId = "serverId_example"; // String | Server id
 

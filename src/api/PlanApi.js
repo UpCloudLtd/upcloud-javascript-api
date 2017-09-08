@@ -14,10 +14,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/AvailablePlanListResponse'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.PlanApi = factory(root.UpcloudApi.ApiClient, root.UpcloudApi.AvailablePlanListResponse);
+    root.upcloud.PlanApi = factory(root.upcloud.ApiClient, root.upcloud.AvailablePlanListResponse);
   }
 }(this, function(ApiClient, AvailablePlanListResponse) {
   'use strict';

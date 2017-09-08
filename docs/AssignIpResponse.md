@@ -1,4 +1,4 @@
-# UpcloudApi.AssignIpResponse
+# upcloud.AssignIpResponse
 
 ## Properties
 Name | Type | Description | Notes

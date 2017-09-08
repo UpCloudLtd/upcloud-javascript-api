@@ -14,10 +14,10 @@
     module.exports = factory(require('../ApiClient'), require('./IpAddressListResponseIpAddresses'), require('./ServerState'), require('./ServerStorageDevices'), require('./ServerTags'), require('./Timezone'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.Server = factory(root.UpcloudApi.ApiClient, root.UpcloudApi.IpAddressListResponseIpAddresses, root.UpcloudApi.ServerState, root.UpcloudApi.ServerStorageDevices, root.UpcloudApi.ServerTags, root.UpcloudApi.Timezone);
+    root.upcloud.Server = factory(root.upcloud.ApiClient, root.upcloud.IpAddressListResponseIpAddresses, root.upcloud.ServerState, root.upcloud.ServerStorageDevices, root.upcloud.ServerTags, root.upcloud.Timezone);
   }
 }(this, function(ApiClient, IpAddressListResponseIpAddresses, ServerState, ServerStorageDevices, ServerTags, Timezone) {
   'use strict';

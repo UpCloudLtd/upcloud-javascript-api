@@ -1,4 +1,4 @@
-# UpcloudApi.PricesApi
+# upcloud.PricesApi
 
 All URIs are relative to *http://api.upcloud.com/1.2*
 
@@ -17,9 +17,9 @@ Returns a list resource prices.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.PricesApi();
+var apiInstance = new upcloud.PricesApi();
 
 var callback = function(error, data, response) {
   if (error) {

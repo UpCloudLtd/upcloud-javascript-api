@@ -14,10 +14,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/ConfigurationListResponse'), require('../model/Error'), require('../model/FirewallRule'), require('../model/FirewallRuleDetailsResponse'), require('../model/FirewallRuleListResponse'), require('../model/RestartServer'), require('../model/Server'), require('../model/ServerListResponse'), require('../model/StopServer'), require('../model/StorageDevice'), require('../model/StorageDevice1'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.ServerApi = factory(root.UpcloudApi.ApiClient, root.UpcloudApi.ConfigurationListResponse, root.UpcloudApi.Error, root.UpcloudApi.FirewallRule, root.UpcloudApi.FirewallRuleDetailsResponse, root.UpcloudApi.FirewallRuleListResponse, root.UpcloudApi.RestartServer, root.UpcloudApi.Server, root.UpcloudApi.ServerListResponse, root.UpcloudApi.StopServer, root.UpcloudApi.StorageDevice, root.UpcloudApi.StorageDevice1);
+    root.upcloud.ServerApi = factory(root.upcloud.ApiClient, root.upcloud.ConfigurationListResponse, root.upcloud.Error, root.upcloud.FirewallRule, root.upcloud.FirewallRuleDetailsResponse, root.upcloud.FirewallRuleListResponse, root.upcloud.RestartServer, root.upcloud.Server, root.upcloud.ServerListResponse, root.upcloud.StopServer, root.upcloud.StorageDevice, root.upcloud.StorageDevice1);
   }
 }(this, function(ApiClient, ConfigurationListResponse, Error, FirewallRule, FirewallRuleDetailsResponse, FirewallRuleListResponse, RestartServer, Server, ServerListResponse, StopServer, StorageDevice, StorageDevice1) {
   'use strict';

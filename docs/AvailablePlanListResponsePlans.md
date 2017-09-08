@@ -1,4 +1,4 @@
-# UpcloudApi.AvailablePlanListResponsePlans
+# upcloud.AvailablePlanListResponsePlans
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UpcloudApi.AccountApi
+# upcloud.AccountApi
 
 All URIs are relative to *http://api.upcloud.com/1.2*
 
@@ -17,9 +17,9 @@ Returns information on the user&#39;s account.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.AccountApi();
+var apiInstance = new upcloud.AccountApi();
 
 var callback = function(error, data, response) {
   if (error) {

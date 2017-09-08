@@ -1,4 +1,4 @@
-# UpcloudApi.ErrorCode
+# upcloud.ErrorCode
 
 ## Enum
 

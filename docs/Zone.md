@@ -1,4 +1,4 @@
-# UpcloudApi.Zone
+# upcloud.Zone
 
 ## Properties
 Name | Type | Description | Notes

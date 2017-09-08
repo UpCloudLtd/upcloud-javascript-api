@@ -1,4 +1,4 @@
-# UpcloudApi.Tag
+# upcloud.Tag
 
 ## Properties
 Name | Type | Description | Notes

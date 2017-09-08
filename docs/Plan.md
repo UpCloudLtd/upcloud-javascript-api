@@ -1,4 +1,4 @@
-# UpcloudApi.Plan
+# upcloud.Plan
 
 ## Properties
 Name | Type | Description | Notes

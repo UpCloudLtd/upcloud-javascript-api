@@ -14,10 +14,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/CreateNewTagResponse'), require('../model/Error'), require('../model/ServerListResponse'), require('../model/Tag'), require('../model/Tag1'), require('../model/TagListResponse'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.TagApi = factory(root.UpcloudApi.ApiClient, root.UpcloudApi.CreateNewTagResponse, root.UpcloudApi.Error, root.UpcloudApi.ServerListResponse, root.UpcloudApi.Tag, root.UpcloudApi.Tag1, root.UpcloudApi.TagListResponse);
+    root.upcloud.TagApi = factory(root.upcloud.ApiClient, root.upcloud.CreateNewTagResponse, root.upcloud.Error, root.upcloud.ServerListResponse, root.upcloud.Tag, root.upcloud.Tag1, root.upcloud.TagListResponse);
   }
 }(this, function(ApiClient, CreateNewTagResponse, Error, ServerListResponse, Tag, Tag1, TagListResponse) {
   'use strict';

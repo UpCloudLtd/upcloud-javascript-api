@@ -14,10 +14,10 @@
     module.exports = factory(require('../ApiClient'), require('./ErrorError'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.Error = factory(root.UpcloudApi.ApiClient, root.UpcloudApi.ErrorError);
+    root.upcloud.Error = factory(root.upcloud.ApiClient, root.upcloud.ErrorError);
   }
 }(this, function(ApiClient, ErrorError) {
   'use strict';

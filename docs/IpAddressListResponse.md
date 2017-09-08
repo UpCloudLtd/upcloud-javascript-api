@@ -1,4 +1,4 @@
-# UpcloudApi.IpAddressListResponse
+# upcloud.IpAddressListResponse
 
 ## Properties
 Name | Type | Description | Notes

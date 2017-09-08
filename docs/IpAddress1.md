@@ -1,4 +1,4 @@
-# UpcloudApi.IpAddress1
+# upcloud.IpAddress1
 
 ## Properties
 Name | Type | Description | Notes

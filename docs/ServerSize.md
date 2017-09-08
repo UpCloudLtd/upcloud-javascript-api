@@ -1,4 +1,4 @@
-# UpcloudApi.ServerSize
+# upcloud.ServerSize
 
 ## Properties
 Name | Type | Description | Notes

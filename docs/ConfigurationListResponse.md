@@ -1,4 +1,4 @@
-# UpcloudApi.ConfigurationListResponse
+# upcloud.ConfigurationListResponse
 
 ## Properties
 Name | Type | Description | Notes

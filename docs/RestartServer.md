@@ -1,4 +1,4 @@
-# UpcloudApi.RestartServer
+# upcloud.RestartServer
 
 ## Properties
 Name | Type | Description | Notes

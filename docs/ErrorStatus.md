@@ -1,4 +1,4 @@
-# UpcloudApi.ErrorStatus
+# upcloud.ErrorStatus
 
 ## Enum
 

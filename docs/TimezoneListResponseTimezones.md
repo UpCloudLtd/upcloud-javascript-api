@@ -1,4 +1,4 @@
-# UpcloudApi.TimezoneListResponseTimezones
+# upcloud.TimezoneListResponseTimezones
 
 ## Properties
 Name | Type | Description | Notes

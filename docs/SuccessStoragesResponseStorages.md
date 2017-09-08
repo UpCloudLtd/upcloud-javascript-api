@@ -1,4 +1,4 @@
-# UpcloudApi.SuccessStoragesResponseStorages
+# upcloud.SuccessStoragesResponseStorages
 
 ## Properties
 Name | Type | Description | Notes

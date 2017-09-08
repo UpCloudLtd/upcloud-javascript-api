@@ -1,4 +1,4 @@
-# UpcloudApi.TimezoneApi
+# upcloud.TimezoneApi
 
 All URIs are relative to *http://api.upcloud.com/1.2*
 
@@ -17,9 +17,9 @@ Returns a list of available timezones. Timezones are used to set the hardware cl
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.TimezoneApi();
+var apiInstance = new upcloud.TimezoneApi();
 
 var callback = function(error, data, response) {
   if (error) {

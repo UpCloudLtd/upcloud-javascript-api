@@ -1,4 +1,4 @@
-# UpcloudApi.ServerListResponseServers
+# upcloud.ServerListResponseServers
 
 ## Properties
 Name | Type | Description | Notes

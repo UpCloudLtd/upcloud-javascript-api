@@ -14,10 +14,10 @@
     module.exports = factory(require('../ApiClient'), require('./BackupRule'), require('./StorageTier'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.Storage = factory(root.UpcloudApi.ApiClient, root.UpcloudApi.BackupRule, root.UpcloudApi.StorageTier);
+    root.upcloud.Storage = factory(root.upcloud.ApiClient, root.upcloud.BackupRule, root.upcloud.StorageTier);
   }
 }(this, function(ApiClient, BackupRule, StorageTier) {
   'use strict';

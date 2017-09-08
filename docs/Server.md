@@ -1,4 +1,4 @@
-# UpcloudApi.Server
+# upcloud.Server
 
 ## Properties
 Name | Type | Description | Notes

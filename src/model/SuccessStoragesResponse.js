@@ -14,10 +14,10 @@
     module.exports = factory(require('../ApiClient'), require('./SuccessStoragesResponseStorages'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.SuccessStoragesResponse = factory(root.UpcloudApi.ApiClient, root.UpcloudApi.SuccessStoragesResponseStorages);
+    root.upcloud.SuccessStoragesResponse = factory(root.upcloud.ApiClient, root.upcloud.SuccessStoragesResponseStorages);
   }
 }(this, function(ApiClient, SuccessStoragesResponseStorages) {
   'use strict';

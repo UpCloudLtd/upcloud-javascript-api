@@ -14,10 +14,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/Account'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.AccountApi = factory(root.UpcloudApi.ApiClient, root.UpcloudApi.Account);
+    root.upcloud.AccountApi = factory(root.upcloud.ApiClient, root.upcloud.Account);
   }
 }(this, function(ApiClient, Account) {
   'use strict';

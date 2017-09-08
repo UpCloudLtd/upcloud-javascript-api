@@ -1,4 +1,4 @@
-# UpcloudApi.Account
+# upcloud.Account
 
 ## Properties
 Name | Type | Description | Notes

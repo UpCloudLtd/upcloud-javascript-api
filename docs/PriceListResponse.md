@@ -1,4 +1,4 @@
-# UpcloudApi.PriceListResponse
+# upcloud.PriceListResponse
 
 ## Properties
 Name | Type | Description | Notes

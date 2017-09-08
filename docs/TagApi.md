@@ -1,4 +1,4 @@
-# UpcloudApi.TagApi
+# upcloud.TagApi
 
 All URIs are relative to *http://api.upcloud.com/1.2*
 
@@ -22,9 +22,9 @@ Servers can be tagged with one or more tags. The tags used must exist
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.TagApi();
+var apiInstance = new upcloud.TagApi();
 
 var serverId = "serverId_example"; // String | Server id
 
@@ -71,11 +71,11 @@ Creates a new tag. Existing servers can be tagged in same request
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.TagApi();
+var apiInstance = new upcloud.TagApi();
 
-var tag = new UpcloudApi.Tag(); // Tag | 
+var tag = new upcloud.Tag(); // Tag | 
 
 
 var callback = function(error, data, response) {
@@ -117,9 +117,9 @@ Deleting existing tag untags all servers from specified tag and deletes tag defi
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.TagApi();
+var apiInstance = new upcloud.TagApi();
 
 var tagName = "tagName_example"; // String | Tag name
 
@@ -163,9 +163,9 @@ Returns all existing tags with their properties and servers tagged
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.TagApi();
+var apiInstance = new upcloud.TagApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -203,13 +203,13 @@ Changes attributes of an existing tag
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.TagApi();
+var apiInstance = new upcloud.TagApi();
 
 var tagName = "tagName_example"; // String | Tag name
 
-var tag = new UpcloudApi.Tag1(); // Tag1 | 
+var tag = new upcloud.Tag1(); // Tag1 | 
 
 
 var callback = function(error, data, response) {
@@ -252,9 +252,9 @@ Untags tags from given server. The tag(s) must exist
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.TagApi();
+var apiInstance = new upcloud.TagApi();
 
 var serverId = "serverId_example"; // String | Server id
 

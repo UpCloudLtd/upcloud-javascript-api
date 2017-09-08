@@ -1,4 +1,4 @@
-# UpcloudApi.AddressFamily
+# upcloud.AddressFamily
 
 ## Enum
 

@@ -14,10 +14,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/PriceListResponse'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.PricesApi = factory(root.UpcloudApi.ApiClient, root.UpcloudApi.PriceListResponse);
+    root.upcloud.PricesApi = factory(root.upcloud.ApiClient, root.upcloud.PriceListResponse);
   }
 }(this, function(ApiClient, PriceListResponse) {
   'use strict';

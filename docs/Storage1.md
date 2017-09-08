@@ -1,4 +1,4 @@
-# UpcloudApi.Storage1
+# upcloud.Storage1
 
 ## Properties
 Name | Type | Description | Notes

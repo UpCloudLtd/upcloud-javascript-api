@@ -14,10 +14,10 @@
     module.exports = factory(require('../ApiClient'), require('./Storage'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.CreateStorageResponse = factory(root.UpcloudApi.ApiClient, root.UpcloudApi.Storage);
+    root.upcloud.CreateStorageResponse = factory(root.upcloud.ApiClient, root.upcloud.Storage);
   }
 }(this, function(ApiClient, Storage) {
   'use strict';

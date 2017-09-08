@@ -14,10 +14,10 @@
     module.exports = factory(require('../ApiClient'), require('./ServerSize'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.ConfigurationListResponseServerSizes = factory(root.UpcloudApi.ApiClient, root.UpcloudApi.ServerSize);
+    root.upcloud.ConfigurationListResponseServerSizes = factory(root.upcloud.ApiClient, root.upcloud.ServerSize);
   }
 }(this, function(ApiClient, ServerSize) {
   'use strict';

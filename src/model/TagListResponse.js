@@ -14,10 +14,10 @@
     module.exports = factory(require('../ApiClient'), require('./TagListResponseTags'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.TagListResponse = factory(root.UpcloudApi.ApiClient, root.UpcloudApi.TagListResponseTags);
+    root.upcloud.TagListResponse = factory(root.upcloud.ApiClient, root.upcloud.TagListResponseTags);
   }
 }(this, function(ApiClient, TagListResponseTags) {
   'use strict';

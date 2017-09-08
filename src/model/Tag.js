@@ -14,10 +14,10 @@
     module.exports = factory(require('../ApiClient'), require('./Tag'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.Tag = factory(root.UpcloudApi.ApiClient, root.UpcloudApi.Tag);
+    root.upcloud.Tag = factory(root.upcloud.ApiClient, root.upcloud.Tag);
   }
 }(this, function(ApiClient, Tag) {
   'use strict';

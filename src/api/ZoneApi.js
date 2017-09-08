@@ -14,10 +14,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/ZoneListResponse'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.ZoneApi = factory(root.UpcloudApi.ApiClient, root.UpcloudApi.ZoneListResponse);
+    root.upcloud.ZoneApi = factory(root.upcloud.ApiClient, root.upcloud.ZoneListResponse);
   }
 }(this, function(ApiClient, ZoneListResponse) {
   'use strict';

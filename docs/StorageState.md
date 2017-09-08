@@ -1,4 +1,4 @@
-# UpcloudApi.StorageState
+# upcloud.StorageState
 
 ## Enum
 

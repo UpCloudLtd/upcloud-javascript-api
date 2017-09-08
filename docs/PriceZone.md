@@ -1,4 +1,4 @@
-# UpcloudApi.PriceZone
+# upcloud.PriceZone
 
 ## Properties
 Name | Type | Description | Notes

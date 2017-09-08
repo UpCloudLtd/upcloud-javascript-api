@@ -1,4 +1,4 @@
-# UpcloudApi.ServerTags
+# upcloud.ServerTags
 
 ## Properties
 Name | Type | Description | Notes

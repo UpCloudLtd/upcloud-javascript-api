@@ -1,4 +1,4 @@
-# UpcloudApi.TagListResponse
+# upcloud.TagListResponse
 
 ## Properties
 Name | Type | Description | Notes

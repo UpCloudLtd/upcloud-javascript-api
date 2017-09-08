@@ -1,4 +1,4 @@
-# UpcloudApi.StorageType
+# upcloud.StorageType
 
 ## Enum
 

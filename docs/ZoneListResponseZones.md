@@ -1,4 +1,4 @@
-# UpcloudApi.ZoneListResponseZones
+# upcloud.ZoneListResponseZones
 
 ## Properties
 Name | Type | Description | Notes

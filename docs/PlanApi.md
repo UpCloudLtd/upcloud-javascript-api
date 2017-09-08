@@ -1,4 +1,4 @@
-# UpcloudApi.PlanApi
+# upcloud.PlanApi
 
 All URIs are relative to *http://api.upcloud.com/1.2*
 
@@ -17,9 +17,9 @@ Returns a list of available plans.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.PlanApi();
+var apiInstance = new upcloud.PlanApi();
 
 var callback = function(error, data, response) {
   if (error) {

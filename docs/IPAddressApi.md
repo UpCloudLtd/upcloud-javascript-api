@@ -1,4 +1,4 @@
-# UpcloudApi.IPAddressApi
+# upcloud.IPAddressApi
 
 All URIs are relative to *http://api.upcloud.com/1.2*
 
@@ -21,12 +21,12 @@ Assigns a new IP address to a server.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.IPAddressApi();
+var apiInstance = new upcloud.IPAddressApi();
 
 var opts = { 
-  'ipAddress': new UpcloudApi.IpAddress() // IpAddress | 
+  'ipAddress': new upcloud.IpAddress() // IpAddress | 
 };
 
 var callback = function(error, data, response) {
@@ -68,9 +68,9 @@ Removes an IP address from a server.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.IPAddressApi();
+var apiInstance = new upcloud.IPAddressApi();
 
 var ip = "ip_example"; // String | Ip address
 
@@ -114,9 +114,9 @@ Returns detailed information about a specific IP address.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.IPAddressApi();
+var apiInstance = new upcloud.IPAddressApi();
 
 var ip = "ip_example"; // String | Ip address
 
@@ -160,9 +160,9 @@ Returns a list of all IP addresses assigned to servers on the current user accou
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.IPAddressApi();
+var apiInstance = new upcloud.IPAddressApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -200,14 +200,14 @@ Modifies the reverse DNS PTR record corresponding to an IP address. The PTR reco
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.IPAddressApi();
+var apiInstance = new upcloud.IPAddressApi();
 
 var ip = "ip_example"; // String | Ip address
 
 var opts = { 
-  'ipAddress': new UpcloudApi.IpAddress1() // IpAddress1 | 
+  'ipAddress': new upcloud.IpAddress1() // IpAddress1 | 
 };
 
 var callback = function(error, data, response) {

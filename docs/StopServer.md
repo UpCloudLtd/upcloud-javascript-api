@@ -1,4 +1,4 @@
-# UpcloudApi.StopServer
+# upcloud.StopServer
 
 ## Properties
 Name | Type | Description | Notes

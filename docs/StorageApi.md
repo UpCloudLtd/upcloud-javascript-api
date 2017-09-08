@@ -1,4 +1,4 @@
-# UpcloudApi.StorageApi
+# upcloud.StorageApi
 
 All URIs are relative to *http://api.upcloud.com/1.2*
 
@@ -33,13 +33,13 @@ Attaches a storage as a device to a server.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.StorageApi();
+var apiInstance = new upcloud.StorageApi();
 
 var serverId = "serverId_example"; // String | Server id
 
-var storageDevice = new UpcloudApi.StorageDevice(); // StorageDevice | 
+var storageDevice = new upcloud.StorageDevice(); // StorageDevice | 
 
 
 var callback = function(error, data, response) {
@@ -82,14 +82,14 @@ Creates a point-in-time backup of a storage resource. For automatic, scheduled b
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.StorageApi();
+var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | Storage id
 
 var opts = { 
-  'storage': new UpcloudApi.Storage4() // Storage4 | 
+  'storage': new upcloud.Storage4() // Storage4 | 
 };
 
 var callback = function(error, data, response) {
@@ -132,9 +132,9 @@ Cancels a running cloning operation and deletes the incomplete copy.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.StorageApi();
+var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | Strage id
 
@@ -178,14 +178,14 @@ Creates an exact copy of an existing storage resource.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.StorageApi();
+var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | Storage id
 
 var opts = { 
-  'storage': new UpcloudApi.Storage2() // Storage2 | 
+  'storage': new upcloud.Storage2() // Storage2 | 
 };
 
 var callback = function(error, data, response) {
@@ -228,11 +228,11 @@ Creates a new storage resource.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.StorageApi();
+var apiInstance = new upcloud.StorageApi();
 
-var storage = new UpcloudApi.Storage(); // Storage | 
+var storage = new upcloud.Storage(); // Storage | 
 
 
 var callback = function(error, data, response) {
@@ -274,9 +274,9 @@ Deleted an existing storage resource.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.StorageApi();
+var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | 
 
@@ -320,13 +320,13 @@ Detaches a storage resource from a server.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.StorageApi();
+var apiInstance = new upcloud.StorageApi();
 
 var serverId = "serverId_example"; // String | Server id
 
-var storageDevice = new UpcloudApi.StorageDevice(); // StorageDevice | 
+var storageDevice = new upcloud.StorageDevice(); // StorageDevice | 
 
 
 var callback = function(error, data, response) {
@@ -369,9 +369,9 @@ Ejects the storage from the CD-ROM device of a server.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.StorageApi();
+var apiInstance = new upcloud.StorageApi();
 
 var serverId = "serverId_example"; // String | Server id
 
@@ -415,9 +415,9 @@ Adds a storage to the list of favorite storages. To list favorite storages, see 
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.StorageApi();
+var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | Storage id
 
@@ -461,9 +461,9 @@ Returns detailed information about a specific storage resource.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.StorageApi();
+var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | 
 
@@ -505,9 +505,9 @@ List of storages by type
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.StorageApi();
+var apiInstance = new upcloud.StorageApi();
 
 var type = "type_example"; // String | Storage's access type (`public` or `private`) or storage type (`normal`, `backup`, `cdrom` or `template`) or `favorite` status
 
@@ -549,9 +549,9 @@ List of storages
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.StorageApi();
+var apiInstance = new upcloud.StorageApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -589,14 +589,14 @@ Loads a storage as a CD-ROM in the CD-ROM device of a server.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.StorageApi();
+var apiInstance = new upcloud.StorageApi();
 
 var serverId = "serverId_example"; // String | Server id
 
 var opts = { 
-  'storageDevice': new UpcloudApi.StorageDevice1() // StorageDevice1 | 
+  'storageDevice': new upcloud.StorageDevice1() // StorageDevice1 | 
 };
 
 var callback = function(error, data, response) {
@@ -639,13 +639,13 @@ Modifies an existing storage resource. This operation is used to rename or resiz
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.StorageApi();
+var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | 
 
-var storage = new UpcloudApi.Storage1(); // Storage1 | 
+var storage = new upcloud.Storage1(); // Storage1 | 
 
 
 var callback = function(error, data, response) {
@@ -688,9 +688,9 @@ Restores the origin storage with data from the specified backup storage.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.StorageApi();
+var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | Storage id
 
@@ -734,14 +734,14 @@ Creates an exact copy of an existing storage resource which can be used as a tem
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.StorageApi();
+var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | Storage id
 
 var opts = { 
-  'storage': new UpcloudApi.Storage3() // Storage3 | 
+  'storage': new upcloud.Storage3() // Storage3 | 
 };
 
 var callback = function(error, data, response) {
@@ -784,9 +784,9 @@ Delete a storage from the list of favorite storages. To list favorite storages, 
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.StorageApi();
+var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | Storage id
 

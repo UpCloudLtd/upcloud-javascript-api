@@ -14,10 +14,10 @@
     module.exports = factory(require('../ApiClient'), require('./FirewallRule'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.FirewallRuleListResponseFirewallRules = factory(root.UpcloudApi.ApiClient, root.UpcloudApi.FirewallRule);
+    root.upcloud.FirewallRuleListResponseFirewallRules = factory(root.upcloud.ApiClient, root.upcloud.FirewallRule);
   }
 }(this, function(ApiClient, FirewallRule) {
   'use strict';

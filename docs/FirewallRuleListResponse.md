@@ -1,4 +1,4 @@
-# UpcloudApi.FirewallRuleListResponse
+# upcloud.FirewallRuleListResponse
 
 ## Properties
 Name | Type | Description | Notes

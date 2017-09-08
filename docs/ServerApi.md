@@ -1,4 +1,4 @@
-# UpcloudApi.ServerApi
+# upcloud.ServerApi
 
 All URIs are relative to *http://api.upcloud.com/1.2*
 
@@ -35,9 +35,9 @@ Servers can be tagged with one or more tags. The tags used must exist
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.ServerApi();
+var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Server id
 
@@ -84,13 +84,13 @@ Attaches a storage as a device to a server.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.ServerApi();
+var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Server id
 
-var storageDevice = new UpcloudApi.StorageDevice(); // StorageDevice | 
+var storageDevice = new upcloud.StorageDevice(); // StorageDevice | 
 
 
 var callback = function(error, data, response) {
@@ -133,13 +133,13 @@ Creates a new firewall rule
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.ServerApi();
+var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Server id
 
-var firewallRule = new UpcloudApi.FirewallRule(); // FirewallRule | 
+var firewallRule = new upcloud.FirewallRule(); // FirewallRule | 
 
 
 var callback = function(error, data, response) {
@@ -182,12 +182,12 @@ Creates a new server instance.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.ServerApi();
+var apiInstance = new upcloud.ServerApi();
 
 var opts = { 
-  'server': new UpcloudApi.Server() // Server | 
+  'server': new upcloud.Server() // Server | 
 };
 
 var callback = function(error, data, response) {
@@ -229,9 +229,9 @@ Removes a firewall rule from a server. Firewall rules must be removed individual
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.ServerApi();
+var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Server id
 
@@ -276,9 +276,9 @@ Delete server
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.ServerApi();
+var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Id of server to delete
 
@@ -322,13 +322,13 @@ Detaches a storage resource from a server.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.ServerApi();
+var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Server id
 
-var storageDevice = new UpcloudApi.StorageDevice(); // StorageDevice | 
+var storageDevice = new upcloud.StorageDevice(); // StorageDevice | 
 
 
 var callback = function(error, data, response) {
@@ -371,9 +371,9 @@ Ejects the storage from the CD-ROM device of a server.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.ServerApi();
+var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Server id
 
@@ -417,9 +417,9 @@ Returns detailed information about a specific firewall rule
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.ServerApi();
+var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Server id
 
@@ -466,9 +466,9 @@ Returns a list of available server configurations. A server configuration consis
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.ServerApi();
+var apiInstance = new upcloud.ServerApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -506,9 +506,9 @@ Returns a list of all servers associated with the current account.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.ServerApi();
+var apiInstance = new upcloud.ServerApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -546,14 +546,14 @@ Loads a storage as a CD-ROM in the CD-ROM device of a server.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.ServerApi();
+var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Server id
 
 var opts = { 
-  'storageDevice': new UpcloudApi.StorageDevice1() // StorageDevice1 | 
+  'storageDevice': new upcloud.StorageDevice1() // StorageDevice1 | 
 };
 
 var callback = function(error, data, response) {
@@ -594,14 +594,14 @@ Modify server
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.ServerApi();
+var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Id of server to modify
 
 var opts = { 
-  'server': new UpcloudApi.Server() // Server | 
+  'server': new upcloud.Server() // Server | 
 };
 
 var callback = function(error, data, response) {
@@ -644,13 +644,13 @@ Stops and starts a server. The server state must be &#x60;started&#x60;.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.ServerApi();
+var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Id of server to restart
 
-var restartServer = new UpcloudApi.RestartServer(); // RestartServer | 
+var restartServer = new upcloud.RestartServer(); // RestartServer | 
 
 
 var callback = function(error, data, response) {
@@ -693,9 +693,9 @@ Returns detailed information about a specific server.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.ServerApi();
+var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Id of server to return
 
@@ -739,9 +739,9 @@ Returns a list of firewall rules for a specific server.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.ServerApi();
+var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Server id
 
@@ -785,9 +785,9 @@ Starts a stopped server. The server state must be &#x60;stopped&#x60;.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.ServerApi();
+var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Id of server to start
 
@@ -831,13 +831,13 @@ Stops a started server. The server state must be &#x60;started&#x60;.
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.ServerApi();
+var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Id of server to stop
 
-var stopServer = new UpcloudApi.StopServer(); // StopServer | 
+var stopServer = new upcloud.StopServer(); // StopServer | 
 
 
 var callback = function(error, data, response) {
@@ -880,9 +880,9 @@ Untags tags from given server. The tag(s) must exist
 
 ### Example
 ```javascript
-var UpcloudApi = require('upcloud_api');
+var upcloud = require('upcloud');
 
-var apiInstance = new UpcloudApi.ServerApi();
+var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Server id
 

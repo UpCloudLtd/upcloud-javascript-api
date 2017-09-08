@@ -14,10 +14,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/TimezoneListResponse'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.TimezoneApi = factory(root.UpcloudApi.ApiClient, root.UpcloudApi.TimezoneListResponse);
+    root.upcloud.TimezoneApi = factory(root.upcloud.ApiClient, root.upcloud.TimezoneListResponse);
   }
 }(this, function(ApiClient, TimezoneListResponse) {
   'use strict';

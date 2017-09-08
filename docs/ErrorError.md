@@ -1,4 +1,4 @@
-# UpcloudApi.ErrorError
+# upcloud.ErrorError
 
 ## Properties
 Name | Type | Description | Notes

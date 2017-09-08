@@ -1,4 +1,4 @@
-# UpcloudApi.BackupRule
+# upcloud.BackupRule
 
 ## Properties
 Name | Type | Description | Notes

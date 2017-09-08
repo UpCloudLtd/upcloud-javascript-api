@@ -1,4 +1,4 @@
-# UpcloudApi.StorageDevice
+# upcloud.StorageDevice
 
 ## Properties
 Name | Type | Description | Notes

@@ -14,10 +14,10 @@
     module.exports = factory(require('../ApiClient'), require('./StorageDevice'));
   } else {
     // Browser globals (root is window)
-    if (!root.UpcloudApi) {
-      root.UpcloudApi = {};
+    if (!root.upcloud) {
+      root.upcloud = {};
     }
-    root.UpcloudApi.ServerStorageDevices = factory(root.UpcloudApi.ApiClient, root.UpcloudApi.StorageDevice);
+    root.upcloud.ServerStorageDevices = factory(root.upcloud.ApiClient, root.upcloud.StorageDevice);
   }
 }(this, function(ApiClient, StorageDevice) {
   'use strict';

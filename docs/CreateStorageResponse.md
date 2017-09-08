@@ -1,4 +1,4 @@
-# UpcloudApi.CreateStorageResponse
+# upcloud.CreateStorageResponse
 
 ## Properties
 Name | Type | Description | Notes

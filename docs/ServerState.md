@@ -1,4 +1,4 @@
-# UpcloudApi.ServerState
+# upcloud.ServerState
 
 ## Enum
 

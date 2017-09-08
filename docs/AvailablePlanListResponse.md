@@ -1,4 +1,4 @@
-# UpcloudApi.AvailablePlanListResponse
+# upcloud.AvailablePlanListResponse
 
 ## Properties
 Name | Type | Description | Notes
