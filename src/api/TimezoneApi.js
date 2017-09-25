@@ -39,21 +39,13 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
-    /**
-     * Callback function to receive the result of the listTimezones operation.
-     * @callback module:api/TimezoneApi~listTimezonesCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/TimezoneListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * List timezones
      * Returns a list of available timezones. Timezones are used to set the hardware clock for servers.
-     * @param {module:api/TimezoneApi~listTimezonesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/TimezoneListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TimezoneListResponse} and HTTP response
      */
-    this.listTimezones = function(callback) {
+    this.listTimezonesWithHttpInfo = function() {
       var postBody = null;
 
 
@@ -76,8 +68,20 @@
       return this.apiClient.callApi(
         '/timezone', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
+    }
+
+    /**
+     * List timezones
+     * Returns a list of available timezones. Timezones are used to set the hardware clock for servers.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TimezoneListResponse}
+     */
+    this.listTimezones = function() {
+      return this.listTimezonesWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
     }
   };
 

@@ -8,18 +8,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ConfigurationListResponse', 'model/Error', 'model/FirewallRule', 'model/FirewallRuleDetailsResponse', 'model/FirewallRuleListResponse', 'model/RestartServer', 'model/Server', 'model/ServerListResponse', 'model/StopServer', 'model/StorageDevice', 'model/StorageDevice1'], factory);
+    define(['ApiClient', 'model/ConfigurationListResponse', 'model/CreateServerResponse', 'model/Error', 'model/FirewallRuleCreateResponse', 'model/FirewallRuleListResponse', 'model/FirewallRuleRequest', 'model/RestartServer', 'model/Server', 'model/ServerListResponse', 'model/StopServer', 'model/StorageDevice', 'model/StorageDevice1'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ConfigurationListResponse'), require('../model/Error'), require('../model/FirewallRule'), require('../model/FirewallRuleDetailsResponse'), require('../model/FirewallRuleListResponse'), require('../model/RestartServer'), require('../model/Server'), require('../model/ServerListResponse'), require('../model/StopServer'), require('../model/StorageDevice'), require('../model/StorageDevice1'));
+    module.exports = factory(require('../ApiClient'), require('../model/ConfigurationListResponse'), require('../model/CreateServerResponse'), require('../model/Error'), require('../model/FirewallRuleCreateResponse'), require('../model/FirewallRuleListResponse'), require('../model/FirewallRuleRequest'), require('../model/RestartServer'), require('../model/Server'), require('../model/ServerListResponse'), require('../model/StopServer'), require('../model/StorageDevice'), require('../model/StorageDevice1'));
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.ServerApi = factory(root.upcloud.ApiClient, root.upcloud.ConfigurationListResponse, root.upcloud.Error, root.upcloud.FirewallRule, root.upcloud.FirewallRuleDetailsResponse, root.upcloud.FirewallRuleListResponse, root.upcloud.RestartServer, root.upcloud.Server, root.upcloud.ServerListResponse, root.upcloud.StopServer, root.upcloud.StorageDevice, root.upcloud.StorageDevice1);
+    root.upcloud.ServerApi = factory(root.upcloud.ApiClient, root.upcloud.ConfigurationListResponse, root.upcloud.CreateServerResponse, root.upcloud.Error, root.upcloud.FirewallRuleCreateResponse, root.upcloud.FirewallRuleListResponse, root.upcloud.FirewallRuleRequest, root.upcloud.RestartServer, root.upcloud.Server, root.upcloud.ServerListResponse, root.upcloud.StopServer, root.upcloud.StorageDevice, root.upcloud.StorageDevice1);
   }
-}(this, function(ApiClient, ConfigurationListResponse, Error, FirewallRule, FirewallRuleDetailsResponse, FirewallRuleListResponse, RestartServer, Server, ServerListResponse, StopServer, StorageDevice, StorageDevice1) {
+}(this, function(ApiClient, ConfigurationListResponse, CreateServerResponse, Error, FirewallRuleCreateResponse, FirewallRuleListResponse, FirewallRuleRequest, RestartServer, Server, ServerListResponse, StopServer, StorageDevice, StorageDevice1) {
   'use strict';
 
   /**
@@ -39,23 +39,15 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
-    /**
-     * Callback function to receive the result of the assignTag operation.
-     * @callback module:api/ServerApi~assignTagCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Assign tag to a server
      * Servers can be tagged with one or more tags. The tags used must exist
      * @param {String} serverId Server id
      * @param {String} tagList List of tags
-     * @param {module:api/ServerApi~assignTagCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.assignTag = function(serverId, tagList, callback) {
+    this.assignTagWithHttpInfo = function(serverId, tagList) {
       var postBody = null;
 
       // verify the required parameter 'serverId' is set
@@ -85,32 +77,38 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ServerListResponse;
+      var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/tag/{tagList}', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the attachStorage operation.
-     * @callback module:api/ServerApi~attachStorageCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Assign tag to a server
+     * Servers can be tagged with one or more tags. The tags used must exist
+     * @param {String} serverId Server id
+     * @param {String} tagList List of tags
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
+    this.assignTag = function(serverId, tagList) {
+      return this.assignTagWithHttpInfo(serverId, tagList)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Attach storage
      * Attaches a storage as a device to a server.
      * @param {String} serverId Server id
      * @param {module:model/StorageDevice} storageDevice 
-     * @param {module:api/ServerApi~attachStorageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.attachStorage = function(serverId, storageDevice, callback) {
+    this.attachStorageWithHttpInfo = function(serverId, storageDevice) {
       var postBody = storageDevice;
 
       // verify the required parameter 'serverId' is set
@@ -139,31 +137,38 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ServerListResponse;
+      var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/storage/attach', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the createFirewallRule operation.
-     * @callback module:api/ServerApi~createFirewallRuleCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * Attach storage
+     * Attaches a storage as a device to a server.
+     * @param {String} serverId Server id
+     * @param {module:model/StorageDevice} storageDevice 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
+    this.attachStorage = function(serverId, storageDevice) {
+      return this.attachStorageWithHttpInfo(serverId, storageDevice)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Create firewall rule
      * Creates a new firewall rule
      * @param {String} serverId Server id
-     * @param {module:model/FirewallRule} firewallRule 
-     * @param {module:api/ServerApi~createFirewallRuleCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:model/FirewallRuleRequest} firewallRule 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/FirewallRuleCreateResponse} and HTTP response
      */
-    this.createFirewallRule = function(serverId, firewallRule, callback) {
+    this.createFirewallRuleWithHttpInfo = function(serverId, firewallRule) {
       var postBody = firewallRule;
 
       // verify the required parameter 'serverId' is set
@@ -192,32 +197,38 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = FirewallRuleCreateResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/firewall_rule', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the createServer operation.
-     * @callback module:api/ServerApi~createServerCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Create firewall rule
+     * Creates a new firewall rule
+     * @param {String} serverId Server id
+     * @param {module:model/FirewallRuleRequest} firewallRule 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/FirewallRuleCreateResponse}
      */
+    this.createFirewallRule = function(serverId, firewallRule) {
+      return this.createFirewallRuleWithHttpInfo(serverId, firewallRule)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Create server
      * Creates a new server instance.
      * @param {Object} opts Optional parameters
      * @param {module:model/Server} opts.server 
-     * @param {module:api/ServerApi~createServerCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.createServer = function(opts, callback) {
+    this.createServerWithHttpInfo = function(opts) {
       opts = opts || {};
       var postBody = opts['server'];
 
@@ -236,31 +247,38 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ServerListResponse;
+      var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
         '/server', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the deleteFirewallRule operation.
-     * @callback module:api/ServerApi~deleteFirewallRuleCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * Create server
+     * Creates a new server instance.
+     * @param {Object} opts Optional parameters
+     * @param {module:model/Server} opts.server 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
+    this.createServer = function(opts) {
+      return this.createServerWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Remove firewall rule
      * Removes a firewall rule from a server. Firewall rules must be removed individually. The positions of remaining firewall rules will be adjusted after a rule is removed.
      * @param {String} serverId Server id
      * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
-     * @param {module:api/ServerApi~deleteFirewallRuleCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    this.deleteFirewallRule = function(serverId, firewallRuleNumber, callback) {
+    this.deleteFirewallRuleWithHttpInfo = function(serverId, firewallRuleNumber) {
       var postBody = null;
 
       // verify the required parameter 'serverId' is set
@@ -295,24 +313,31 @@
       return this.apiClient.callApi(
         '/server/{serverId}/firewall_rule/{firewallRuleNumber}', 'DELETE',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the deleteServer operation.
-     * @callback module:api/ServerApi~deleteServerCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * Remove firewall rule
+     * Removes a firewall rule from a server. Firewall rules must be removed individually. The positions of remaining firewall rules will be adjusted after a rule is removed.
+     * @param {String} serverId Server id
+     * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
+    this.deleteFirewallRule = function(serverId, firewallRuleNumber) {
+      return this.deleteFirewallRuleWithHttpInfo(serverId, firewallRuleNumber)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Delete server
      * @param {String} serverId Id of server to delete
-     * @param {module:api/ServerApi~deleteServerCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    this.deleteServer = function(serverId, callback) {
+    this.deleteServerWithHttpInfo = function(serverId) {
       var postBody = null;
 
       // verify the required parameter 'serverId' is set
@@ -341,27 +366,31 @@
       return this.apiClient.callApi(
         '/server/{serverId}', 'DELETE',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the detachStorage operation.
-     * @callback module:api/ServerApi~detachStorageCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Delete server
+     * @param {String} serverId Id of server to delete
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
+    this.deleteServer = function(serverId) {
+      return this.deleteServerWithHttpInfo(serverId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Detach storage
      * Detaches a storage resource from a server.
      * @param {String} serverId Server id
      * @param {module:model/StorageDevice} storageDevice 
-     * @param {module:api/ServerApi~detachStorageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.detachStorage = function(serverId, storageDevice, callback) {
+    this.detachStorageWithHttpInfo = function(serverId, storageDevice) {
       var postBody = storageDevice;
 
       // verify the required parameter 'serverId' is set
@@ -390,31 +419,37 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ServerListResponse;
+      var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/storage/detach', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the ejectCdrom operation.
-     * @callback module:api/ServerApi~ejectCdromCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Detach storage
+     * Detaches a storage resource from a server.
+     * @param {String} serverId Server id
+     * @param {module:model/StorageDevice} storageDevice 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
+    this.detachStorage = function(serverId, storageDevice) {
+      return this.detachStorageWithHttpInfo(serverId, storageDevice)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Eject CD-ROM
      * Ejects the storage from the CD-ROM device of a server.
      * @param {String} serverId Server id
-     * @param {module:api/ServerApi~ejectCdromCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.ejectCdrom = function(serverId, callback) {
+    this.ejectCdromWithHttpInfo = function(serverId) {
       var postBody = null;
 
       // verify the required parameter 'serverId' is set
@@ -438,32 +473,37 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ServerListResponse;
+      var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/storage/cdrom/eject', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the getFirewallRule operation.
-     * @callback module:api/ServerApi~getFirewallRuleCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/FirewallRuleDetailsResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Eject CD-ROM
+     * Ejects the storage from the CD-ROM device of a server.
+     * @param {String} serverId Server id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
+    this.ejectCdrom = function(serverId) {
+      return this.ejectCdromWithHttpInfo(serverId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Get firewall rule details
      * Returns detailed information about a specific firewall rule
      * @param {String} serverId Server id
      * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
-     * @param {module:api/ServerApi~getFirewallRuleCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/FirewallRuleDetailsResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/FirewallRuleCreateResponse} and HTTP response
      */
-    this.getFirewallRule = function(serverId, firewallRuleNumber, callback) {
+    this.getFirewallRuleWithHttpInfo = function(serverId, firewallRuleNumber) {
       var postBody = null;
 
       // verify the required parameter 'serverId' is set
@@ -493,30 +533,36 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = FirewallRuleDetailsResponse;
+      var returnType = FirewallRuleCreateResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/firewall_rule/{firewallRuleNumber}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the listServerConfigurations operation.
-     * @callback module:api/ServerApi~listServerConfigurationsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ConfigurationListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Get firewall rule details
+     * Returns detailed information about a specific firewall rule
+     * @param {String} serverId Server id
+     * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/FirewallRuleCreateResponse}
      */
+    this.getFirewallRule = function(serverId, firewallRuleNumber) {
+      return this.getFirewallRuleWithHttpInfo(serverId, firewallRuleNumber)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * List server configurations
      * Returns a list of available server configurations. A server configuration consists of a combination of CPU core count and main memory amount. All servers are created using these configurations.
-     * @param {module:api/ServerApi~listServerConfigurationsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ConfigurationListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ConfigurationListResponse} and HTTP response
      */
-    this.listServerConfigurations = function(callback) {
+    this.listServerConfigurationsWithHttpInfo = function() {
       var postBody = null;
 
 
@@ -539,25 +585,29 @@
       return this.apiClient.callApi(
         '/server_size', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the listServers operation.
-     * @callback module:api/ServerApi~listServersCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * List server configurations
+     * Returns a list of available server configurations. A server configuration consists of a combination of CPU core count and main memory amount. All servers are created using these configurations.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ConfigurationListResponse}
      */
+    this.listServerConfigurations = function() {
+      return this.listServerConfigurationsWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * List of servers
      * Returns a list of all servers associated with the current account.
-     * @param {module:api/ServerApi~listServersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ServerListResponse} and HTTP response
      */
-    this.listServers = function(callback) {
+    this.listServersWithHttpInfo = function() {
       var postBody = null;
 
 
@@ -580,17 +630,22 @@
       return this.apiClient.callApi(
         '/server', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the loadCdrom operation.
-     * @callback module:api/ServerApi~loadCdromCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * List of servers
+     * Returns a list of all servers associated with the current account.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServerListResponse}
      */
+    this.listServers = function() {
+      return this.listServersWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Load CD-ROM
@@ -598,10 +653,9 @@
      * @param {String} serverId Server id
      * @param {Object} opts Optional parameters
      * @param {module:model/StorageDevice1} opts.storageDevice 
-     * @param {module:api/ServerApi~loadCdromCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.loadCdrom = function(serverId, opts, callback) {
+    this.loadCdromWithHttpInfo = function(serverId, opts) {
       opts = opts || {};
       var postBody = opts['storageDevice'];
 
@@ -626,32 +680,39 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ServerListResponse;
+      var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/storage/cdrom/load', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the modifyServer operation.
-     * @callback module:api/ServerApi~modifyServerCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Load CD-ROM
+     * Loads a storage as a CD-ROM in the CD-ROM device of a server.
+     * @param {String} serverId Server id
+     * @param {Object} opts Optional parameters
+     * @param {module:model/StorageDevice1} opts.storageDevice 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
+    this.loadCdrom = function(serverId, opts) {
+      return this.loadCdromWithHttpInfo(serverId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Modify server
      * @param {String} serverId Id of server to modify
      * @param {Object} opts Optional parameters
      * @param {module:model/Server} opts.server 
-     * @param {module:api/ServerApi~modifyServerCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.modifyServer = function(serverId, opts, callback) {
+    this.modifyServerWithHttpInfo = function(serverId, opts) {
       opts = opts || {};
       var postBody = opts['server'];
 
@@ -676,32 +737,38 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ServerListResponse;
+      var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}', 'PUT',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the restartServer operation.
-     * @callback module:api/ServerApi~restartServerCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Modify server
+     * @param {String} serverId Id of server to modify
+     * @param {Object} opts Optional parameters
+     * @param {module:model/Server} opts.server 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
+    this.modifyServer = function(serverId, opts) {
+      return this.modifyServerWithHttpInfo(serverId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Restart server
      * Stops and starts a server. The server state must be &#x60;started&#x60;.
      * @param {String} serverId Id of server to restart
      * @param {module:model/RestartServer} restartServer 
-     * @param {module:api/ServerApi~restartServerCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.restartServer = function(serverId, restartServer, callback) {
+    this.restartServerWithHttpInfo = function(serverId, restartServer) {
       var postBody = restartServer;
 
       // verify the required parameter 'serverId' is set
@@ -730,31 +797,37 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ServerListResponse;
+      var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/restart', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the serverDetails operation.
-     * @callback module:api/ServerApi~serverDetailsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Restart server
+     * Stops and starts a server. The server state must be &#x60;started&#x60;.
+     * @param {String} serverId Id of server to restart
+     * @param {module:model/RestartServer} restartServer 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
+    this.restartServer = function(serverId, restartServer) {
+      return this.restartServerWithHttpInfo(serverId, restartServer)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Get server details
      * Returns detailed information about a specific server.
      * @param {String} serverId Id of server to return
-     * @param {module:api/ServerApi~serverDetailsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.serverDetails = function(serverId, callback) {
+    this.serverDetailsWithHttpInfo = function(serverId) {
       var postBody = null;
 
       // verify the required parameter 'serverId' is set
@@ -778,31 +851,36 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ServerListResponse;
+      var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the serverServerIdFirewallRuleGet operation.
-     * @callback module:api/ServerApi~serverServerIdFirewallRuleGetCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/FirewallRuleListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Get server details
+     * Returns detailed information about a specific server.
+     * @param {String} serverId Id of server to return
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
+    this.serverDetails = function(serverId) {
+      return this.serverDetailsWithHttpInfo(serverId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * List firewall rules
      * Returns a list of firewall rules for a specific server.
      * @param {String} serverId Server id
-     * @param {module:api/ServerApi~serverServerIdFirewallRuleGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/FirewallRuleListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/FirewallRuleListResponse} and HTTP response
      */
-    this.serverServerIdFirewallRuleGet = function(serverId, callback) {
+    this.serverServerIdFirewallRuleGetWithHttpInfo = function(serverId) {
       var postBody = null;
 
       // verify the required parameter 'serverId' is set
@@ -831,26 +909,31 @@
       return this.apiClient.callApi(
         '/server/{serverId}/firewall_rule', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the startServer operation.
-     * @callback module:api/ServerApi~startServerCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * List firewall rules
+     * Returns a list of firewall rules for a specific server.
+     * @param {String} serverId Server id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/FirewallRuleListResponse}
      */
+    this.serverServerIdFirewallRuleGet = function(serverId) {
+      return this.serverServerIdFirewallRuleGetWithHttpInfo(serverId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Start server
      * Starts a stopped server. The server state must be &#x60;stopped&#x60;.
      * @param {String} serverId Id of server to start
-     * @param {module:api/ServerApi~startServerCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.startServer = function(serverId, callback) {
+    this.startServerWithHttpInfo = function(serverId) {
       var postBody = null;
 
       // verify the required parameter 'serverId' is set
@@ -874,32 +957,37 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ServerListResponse;
+      var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/start', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the stopServer operation.
-     * @callback module:api/ServerApi~stopServerCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Start server
+     * Starts a stopped server. The server state must be &#x60;stopped&#x60;.
+     * @param {String} serverId Id of server to start
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
+    this.startServer = function(serverId) {
+      return this.startServerWithHttpInfo(serverId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Stop server
      * Stops a started server. The server state must be &#x60;started&#x60;.
      * @param {String} serverId Id of server to stop
      * @param {module:model/StopServer} stopServer 
-     * @param {module:api/ServerApi~stopServerCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.stopServer = function(serverId, stopServer, callback) {
+    this.stopServerWithHttpInfo = function(serverId, stopServer) {
       var postBody = stopServer;
 
       // verify the required parameter 'serverId' is set
@@ -928,32 +1016,38 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ServerListResponse;
+      var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/stop', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the untag operation.
-     * @callback module:api/ServerApi~untagCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Stop server
+     * Stops a started server. The server state must be &#x60;started&#x60;.
+     * @param {String} serverId Id of server to stop
+     * @param {module:model/StopServer} stopServer 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
+    this.stopServer = function(serverId, stopServer) {
+      return this.stopServerWithHttpInfo(serverId, stopServer)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Remove tag from server
      * Untags tags from given server. The tag(s) must exist
      * @param {String} serverId Server id
      * @param {String} tagName Tag name
-     * @param {module:api/ServerApi~untagCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.untag = function(serverId, tagName, callback) {
+    this.untagWithHttpInfo = function(serverId, tagName) {
       var postBody = null;
 
       // verify the required parameter 'serverId' is set
@@ -983,13 +1077,27 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ServerListResponse;
+      var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/untag/{tagName}', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
+    }
+
+    /**
+     * Remove tag from server
+     * Untags tags from given server. The tag(s) must exist
+     * @param {String} serverId Server id
+     * @param {String} tagName Tag name
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
+     */
+    this.untag = function(serverId, tagName) {
+      return this.untagWithHttpInfo(serverId, tagName)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
     }
   };
 

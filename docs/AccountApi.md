@@ -20,15 +20,12 @@ Returns information on the user&#39;s account.
 var upcloud = require('upcloud');
 
 var apiInstance = new upcloud.AccountApi();
+apiInstance.getAccount().then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getAccount(callback);
 ```
 
 ### Parameters

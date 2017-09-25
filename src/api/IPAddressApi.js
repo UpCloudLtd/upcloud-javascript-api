@@ -39,23 +39,15 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
-    /**
-     * Callback function to receive the result of the addIp operation.
-     * @callback module:api/IPAddressApi~addIpCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/AssignIpResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Assign IP address
      * Assigns a new IP address to a server.
      * @param {Object} opts Optional parameters
      * @param {module:model/IpAddress} opts.ipAddress 
-     * @param {module:api/IPAddressApi~addIpCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/AssignIpResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/AssignIpResponse} and HTTP response
      */
-    this.addIp = function(opts, callback) {
+    this.addIpWithHttpInfo = function(opts) {
       opts = opts || {};
       var postBody = opts['ipAddress'];
 
@@ -79,25 +71,32 @@
       return this.apiClient.callApi(
         '/ip_address', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the deleteIp operation.
-     * @callback module:api/IPAddressApi~deleteIpCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * Assign IP address
+     * Assigns a new IP address to a server.
+     * @param {Object} opts Optional parameters
+     * @param {module:model/IpAddress} opts.ipAddress 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AssignIpResponse}
      */
+    this.addIp = function(opts) {
+      return this.addIpWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Release IP address
      * Removes an IP address from a server.
      * @param {String} ip Ip address
-     * @param {module:api/IPAddressApi~deleteIpCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    this.deleteIp = function(ip, callback) {
+    this.deleteIpWithHttpInfo = function(ip) {
       var postBody = null;
 
       // verify the required parameter 'ip' is set
@@ -126,26 +125,31 @@
       return this.apiClient.callApi(
         '/ip_address/{ip}', 'DELETE',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the getDetails operation.
-     * @callback module:api/IPAddressApi~getDetailsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/AssignIpResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Release IP address
+     * Removes an IP address from a server.
+     * @param {String} ip Ip address
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
+    this.deleteIp = function(ip) {
+      return this.deleteIpWithHttpInfo(ip)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Get IP address details
      * Returns detailed information about a specific IP address.
      * @param {String} ip Ip address
-     * @param {module:api/IPAddressApi~getDetailsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/AssignIpResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/AssignIpResponse} and HTTP response
      */
-    this.getDetails = function(ip, callback) {
+    this.getDetailsWithHttpInfo = function(ip) {
       var postBody = null;
 
       // verify the required parameter 'ip' is set
@@ -174,25 +178,30 @@
       return this.apiClient.callApi(
         '/ip_address/{ip}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the listIps operation.
-     * @callback module:api/IPAddressApi~listIpsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/IpAddressListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Get IP address details
+     * Returns detailed information about a specific IP address.
+     * @param {String} ip Ip address
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AssignIpResponse}
      */
+    this.getDetails = function(ip) {
+      return this.getDetailsWithHttpInfo(ip)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * List IP addresses
      * Returns a list of all IP addresses assigned to servers on the current user account.
-     * @param {module:api/IPAddressApi~listIpsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/IpAddressListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/IpAddressListResponse} and HTTP response
      */
-    this.listIps = function(callback) {
+    this.listIpsWithHttpInfo = function() {
       var postBody = null;
 
 
@@ -215,17 +224,22 @@
       return this.apiClient.callApi(
         '/ip_address', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the modifyIp operation.
-     * @callback module:api/IPAddressApi~modifyIpCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/AssignIpResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * List IP addresses
+     * Returns a list of all IP addresses assigned to servers on the current user account.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/IpAddressListResponse}
      */
+    this.listIps = function() {
+      return this.listIpsWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Modify IP address
@@ -233,10 +247,9 @@
      * @param {String} ip Ip address
      * @param {Object} opts Optional parameters
      * @param {module:model/IpAddress1} opts.ipAddress 
-     * @param {module:api/IPAddressApi~modifyIpCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/AssignIpResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/AssignIpResponse} and HTTP response
      */
-    this.modifyIp = function(ip, opts, callback) {
+    this.modifyIpWithHttpInfo = function(ip, opts) {
       opts = opts || {};
       var postBody = opts['ipAddress'];
 
@@ -266,8 +279,23 @@
       return this.apiClient.callApi(
         '/ip_address/{ip}', 'PUT',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
+    }
+
+    /**
+     * Modify IP address
+     * Modifies the reverse DNS PTR record corresponding to an IP address. The PTR record can only be set to public IP address.
+     * @param {String} ip Ip address
+     * @param {Object} opts Optional parameters
+     * @param {module:model/IpAddress1} opts.ipAddress 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AssignIpResponse}
+     */
+    this.modifyIp = function(ip, opts) {
+      return this.modifyIpWithHttpInfo(ip, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
     }
   };
 

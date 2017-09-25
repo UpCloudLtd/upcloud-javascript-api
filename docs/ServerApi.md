@@ -27,7 +27,7 @@ Method | HTTP request | Description
 
 <a name="assignTag"></a>
 # **assignTag**
-> ServerListResponse assignTag(serverId, tagList)
+> CreateServerResponse assignTag(serverId, tagList)
 
 Assign tag to a server
 
@@ -43,15 +43,12 @@ var serverId = "serverId_example"; // String | Server id
 
 var tagList = "tagList_example"; // String | List of tags
 
+apiInstance.assignTag(serverId, tagList).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.assignTag(serverId, tagList, callback);
 ```
 
 ### Parameters
@@ -63,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServerListResponse**](ServerListResponse.md)
+[**CreateServerResponse**](CreateServerResponse.md)
 
 ### Authorization
 
@@ -76,7 +73,7 @@ No authorization required
 
 <a name="attachStorage"></a>
 # **attachStorage**
-> ServerListResponse attachStorage(serverId, storageDevice)
+> CreateServerResponse attachStorage(serverId, storageDevice)
 
 Attach storage
 
@@ -92,15 +89,12 @@ var serverId = "serverId_example"; // String | Server id
 
 var storageDevice = new upcloud.StorageDevice(); // StorageDevice | 
 
+apiInstance.attachStorage(serverId, storageDevice).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.attachStorage(serverId, storageDevice, callback);
 ```
 
 ### Parameters
@@ -112,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServerListResponse**](ServerListResponse.md)
+[**CreateServerResponse**](CreateServerResponse.md)
 
 ### Authorization
 
@@ -125,7 +119,7 @@ No authorization required
 
 <a name="createFirewallRule"></a>
 # **createFirewallRule**
-> createFirewallRule(serverId, firewallRule)
+> FirewallRuleCreateResponse createFirewallRule(serverId, firewallRule)
 
 Create firewall rule
 
@@ -139,17 +133,14 @@ var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Server id
 
-var firewallRule = new upcloud.FirewallRule(); // FirewallRule | 
+var firewallRule = new upcloud.FirewallRuleRequest(); // FirewallRuleRequest | 
 
+apiInstance.createFirewallRule(serverId, firewallRule).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.createFirewallRule(serverId, firewallRule, callback);
 ```
 
 ### Parameters
@@ -157,11 +148,11 @@ apiInstance.createFirewallRule(serverId, firewallRule, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **serverId** | **String**| Server id | 
- **firewallRule** | [**FirewallRule**](FirewallRule.md)|  | 
+ **firewallRule** | [**FirewallRuleRequest**](FirewallRuleRequest.md)|  | 
 
 ### Return type
 
-null (empty response body)
+[**FirewallRuleCreateResponse**](FirewallRuleCreateResponse.md)
 
 ### Authorization
 
@@ -174,7 +165,7 @@ No authorization required
 
 <a name="createServer"></a>
 # **createServer**
-> ServerListResponse createServer(opts)
+> CreateServerResponse createServer(opts)
 
 Create server
 
@@ -189,15 +180,12 @@ var apiInstance = new upcloud.ServerApi();
 var opts = { 
   'server': new upcloud.Server() // Server | 
 };
+apiInstance.createServer(opts).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.createServer(opts, callback);
 ```
 
 ### Parameters
@@ -208,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServerListResponse**](ServerListResponse.md)
+[**CreateServerResponse**](CreateServerResponse.md)
 
 ### Authorization
 
@@ -237,15 +225,12 @@ var serverId = "serverId_example"; // String | Server id
 
 var firewallRuleNumber = "firewallRuleNumber_example"; // String | Denotes the index of the firewall rule in the server's firewall rule list
 
+apiInstance.deleteFirewallRule(serverId, firewallRuleNumber).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.deleteFirewallRule(serverId, firewallRuleNumber, callback);
 ```
 
 ### Parameters
@@ -282,15 +267,12 @@ var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Id of server to delete
 
+apiInstance.deleteServer(serverId).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.deleteServer(serverId, callback);
 ```
 
 ### Parameters
@@ -314,7 +296,7 @@ No authorization required
 
 <a name="detachStorage"></a>
 # **detachStorage**
-> ServerListResponse detachStorage(serverId, storageDevice)
+> CreateServerResponse detachStorage(serverId, storageDevice)
 
 Detach storage
 
@@ -330,15 +312,12 @@ var serverId = "serverId_example"; // String | Server id
 
 var storageDevice = new upcloud.StorageDevice(); // StorageDevice | 
 
+apiInstance.detachStorage(serverId, storageDevice).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.detachStorage(serverId, storageDevice, callback);
 ```
 
 ### Parameters
@@ -350,7 +329,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServerListResponse**](ServerListResponse.md)
+[**CreateServerResponse**](CreateServerResponse.md)
 
 ### Authorization
 
@@ -363,7 +342,7 @@ No authorization required
 
 <a name="ejectCdrom"></a>
 # **ejectCdrom**
-> ServerListResponse ejectCdrom(serverId)
+> CreateServerResponse ejectCdrom(serverId)
 
 Eject CD-ROM
 
@@ -377,15 +356,12 @@ var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Server id
 
+apiInstance.ejectCdrom(serverId).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.ejectCdrom(serverId, callback);
 ```
 
 ### Parameters
@@ -396,7 +372,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServerListResponse**](ServerListResponse.md)
+[**CreateServerResponse**](CreateServerResponse.md)
 
 ### Authorization
 
@@ -409,7 +385,7 @@ No authorization required
 
 <a name="getFirewallRule"></a>
 # **getFirewallRule**
-> FirewallRuleDetailsResponse getFirewallRule(serverId, firewallRuleNumber)
+> FirewallRuleCreateResponse getFirewallRule(serverId, firewallRuleNumber)
 
 Get firewall rule details
 
@@ -425,15 +401,12 @@ var serverId = "serverId_example"; // String | Server id
 
 var firewallRuleNumber = "firewallRuleNumber_example"; // String | Denotes the index of the firewall rule in the server's firewall rule list
 
+apiInstance.getFirewallRule(serverId, firewallRuleNumber).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getFirewallRule(serverId, firewallRuleNumber, callback);
 ```
 
 ### Parameters
@@ -445,7 +418,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FirewallRuleDetailsResponse**](FirewallRuleDetailsResponse.md)
+[**FirewallRuleCreateResponse**](FirewallRuleCreateResponse.md)
 
 ### Authorization
 
@@ -469,15 +442,12 @@ Returns a list of available server configurations. A server configuration consis
 var upcloud = require('upcloud');
 
 var apiInstance = new upcloud.ServerApi();
+apiInstance.listServerConfigurations().then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.listServerConfigurations(callback);
 ```
 
 ### Parameters
@@ -509,15 +479,12 @@ Returns a list of all servers associated with the current account.
 var upcloud = require('upcloud');
 
 var apiInstance = new upcloud.ServerApi();
+apiInstance.listServers().then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.listServers(callback);
 ```
 
 ### Parameters
@@ -538,7 +505,7 @@ No authorization required
 
 <a name="loadCdrom"></a>
 # **loadCdrom**
-> ServerListResponse loadCdrom(serverId, opts)
+> CreateServerResponse loadCdrom(serverId, opts)
 
 Load CD-ROM
 
@@ -555,15 +522,12 @@ var serverId = "serverId_example"; // String | Server id
 var opts = { 
   'storageDevice': new upcloud.StorageDevice1() // StorageDevice1 | 
 };
+apiInstance.loadCdrom(serverId, opts).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.loadCdrom(serverId, opts, callback);
 ```
 
 ### Parameters
@@ -575,7 +539,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServerListResponse**](ServerListResponse.md)
+[**CreateServerResponse**](CreateServerResponse.md)
 
 ### Authorization
 
@@ -588,7 +552,7 @@ No authorization required
 
 <a name="modifyServer"></a>
 # **modifyServer**
-> ServerListResponse modifyServer(serverId, opts)
+> CreateServerResponse modifyServer(serverId, opts)
 
 Modify server
 
@@ -603,15 +567,12 @@ var serverId = "serverId_example"; // String | Id of server to modify
 var opts = { 
   'server': new upcloud.Server() // Server | 
 };
+apiInstance.modifyServer(serverId, opts).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.modifyServer(serverId, opts, callback);
 ```
 
 ### Parameters
@@ -623,7 +584,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServerListResponse**](ServerListResponse.md)
+[**CreateServerResponse**](CreateServerResponse.md)
 
 ### Authorization
 
@@ -636,7 +597,7 @@ No authorization required
 
 <a name="restartServer"></a>
 # **restartServer**
-> ServerListResponse restartServer(serverId, restartServer)
+> CreateServerResponse restartServer(serverId, restartServer)
 
 Restart server
 
@@ -652,15 +613,12 @@ var serverId = "serverId_example"; // String | Id of server to restart
 
 var restartServer = new upcloud.RestartServer(); // RestartServer | 
 
+apiInstance.restartServer(serverId, restartServer).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.restartServer(serverId, restartServer, callback);
 ```
 
 ### Parameters
@@ -672,7 +630,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServerListResponse**](ServerListResponse.md)
+[**CreateServerResponse**](CreateServerResponse.md)
 
 ### Authorization
 
@@ -685,7 +643,7 @@ No authorization required
 
 <a name="serverDetails"></a>
 # **serverDetails**
-> ServerListResponse serverDetails(serverId)
+> CreateServerResponse serverDetails(serverId)
 
 Get server details
 
@@ -699,15 +657,12 @@ var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Id of server to return
 
+apiInstance.serverDetails(serverId).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.serverDetails(serverId, callback);
 ```
 
 ### Parameters
@@ -718,7 +673,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServerListResponse**](ServerListResponse.md)
+[**CreateServerResponse**](CreateServerResponse.md)
 
 ### Authorization
 
@@ -745,15 +700,12 @@ var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Server id
 
+apiInstance.serverServerIdFirewallRuleGet(serverId, ).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.serverServerIdFirewallRuleGet(serverId, , callback);
 ```
 
 ### Parameters
@@ -777,7 +729,7 @@ No authorization required
 
 <a name="startServer"></a>
 # **startServer**
-> ServerListResponse startServer(serverId)
+> CreateServerResponse startServer(serverId)
 
 Start server
 
@@ -791,15 +743,12 @@ var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Id of server to start
 
+apiInstance.startServer(serverId).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.startServer(serverId, callback);
 ```
 
 ### Parameters
@@ -810,7 +759,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServerListResponse**](ServerListResponse.md)
+[**CreateServerResponse**](CreateServerResponse.md)
 
 ### Authorization
 
@@ -823,7 +772,7 @@ No authorization required
 
 <a name="stopServer"></a>
 # **stopServer**
-> ServerListResponse stopServer(serverId, stopServer)
+> CreateServerResponse stopServer(serverId, stopServer)
 
 Stop server
 
@@ -839,15 +788,12 @@ var serverId = "serverId_example"; // String | Id of server to stop
 
 var stopServer = new upcloud.StopServer(); // StopServer | 
 
+apiInstance.stopServer(serverId, stopServer).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.stopServer(serverId, stopServer, callback);
 ```
 
 ### Parameters
@@ -859,7 +805,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServerListResponse**](ServerListResponse.md)
+[**CreateServerResponse**](CreateServerResponse.md)
 
 ### Authorization
 
@@ -872,7 +818,7 @@ No authorization required
 
 <a name="untag"></a>
 # **untag**
-> ServerListResponse untag(serverId, tagName)
+> CreateServerResponse untag(serverId, tagName)
 
 Remove tag from server
 
@@ -888,15 +834,12 @@ var serverId = "serverId_example"; // String | Server id
 
 var tagName = "tagName_example"; // String | Tag name
 
+apiInstance.untag(serverId, tagName).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.untag(serverId, tagName, callback);
 ```
 
 ### Parameters
@@ -908,7 +851,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServerListResponse**](ServerListResponse.md)
+[**CreateServerResponse**](CreateServerResponse.md)
 
 ### Authorization
 

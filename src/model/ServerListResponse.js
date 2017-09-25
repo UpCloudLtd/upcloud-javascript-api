@@ -8,18 +8,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Server'], factory);
+    define(['ApiClient', 'model/ServerListResponseServers'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Server'));
+    module.exports = factory(require('../ApiClient'), require('./ServerListResponseServers'));
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.ServerListResponse = factory(root.upcloud.ApiClient, root.upcloud.Server);
+    root.upcloud.ServerListResponse = factory(root.upcloud.ApiClient, root.upcloud.ServerListResponseServers);
   }
-}(this, function(ApiClient, Server) {
+}(this, function(ApiClient, ServerListResponseServers) {
   'use strict';
 
 
@@ -53,17 +53,17 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('server')) {
-        obj['server'] = Server.constructFromObject(data['server']);
+      if (data.hasOwnProperty('servers')) {
+        obj['servers'] = ServerListResponseServers.constructFromObject(data['servers']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/Server} server
+   * @member {module:model/ServerListResponseServers} servers
    */
-  exports.prototype['server'] = undefined;
+  exports.prototype['servers'] = undefined;
 
 
 

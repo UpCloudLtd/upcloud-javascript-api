@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="assignTag"></a>
 # **assignTag**
-> ServerListResponse assignTag(serverId, tagList)
+> CreateServerResponse assignTag(serverId, tagList)
 
 Assign tag to a server
 
@@ -30,15 +30,12 @@ var serverId = "serverId_example"; // String | Server id
 
 var tagList = "tagList_example"; // String | List of tags
 
+apiInstance.assignTag(serverId, tagList).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.assignTag(serverId, tagList, callback);
 ```
 
 ### Parameters
@@ -50,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServerListResponse**](ServerListResponse.md)
+[**CreateServerResponse**](CreateServerResponse.md)
 
 ### Authorization
 
@@ -77,15 +74,12 @@ var apiInstance = new upcloud.TagApi();
 
 var tag = new upcloud.Tag(); // Tag | 
 
+apiInstance.createTag(tag).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.createTag(tag, callback);
 ```
 
 ### Parameters
@@ -123,15 +117,12 @@ var apiInstance = new upcloud.TagApi();
 
 var tagName = "tagName_example"; // String | Tag name
 
+apiInstance.deleteTag(tagName).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.deleteTag(tagName, callback);
 ```
 
 ### Parameters
@@ -166,15 +157,12 @@ Returns all existing tags with their properties and servers tagged
 var upcloud = require('upcloud');
 
 var apiInstance = new upcloud.TagApi();
+apiInstance.listTags().then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.listTags(callback);
 ```
 
 ### Parameters
@@ -211,15 +199,12 @@ var tagName = "tagName_example"; // String | Tag name
 
 var tag = new upcloud.Tag1(); // Tag1 | 
 
+apiInstance.modifyTag(tagNametag).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.modifyTag(tagNametag, callback);
 ```
 
 ### Parameters
@@ -244,7 +229,7 @@ No authorization required
 
 <a name="untag"></a>
 # **untag**
-> ServerListResponse untag(serverId, tagName)
+> CreateServerResponse untag(serverId, tagName)
 
 Remove tag from server
 
@@ -260,15 +245,12 @@ var serverId = "serverId_example"; // String | Server id
 
 var tagName = "tagName_example"; // String | Tag name
 
+apiInstance.untag(serverId, tagName).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.untag(serverId, tagName, callback);
 ```
 
 ### Parameters
@@ -280,7 +262,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServerListResponse**](ServerListResponse.md)
+[**CreateServerResponse**](CreateServerResponse.md)
 
 ### Authorization
 

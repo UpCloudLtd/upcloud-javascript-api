@@ -8,18 +8,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CreateNewTagResponse', 'model/Error', 'model/ServerListResponse', 'model/Tag', 'model/Tag1', 'model/TagListResponse'], factory);
+    define(['ApiClient', 'model/CreateNewTagResponse', 'model/CreateServerResponse', 'model/Error', 'model/Tag', 'model/Tag1', 'model/TagListResponse'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/CreateNewTagResponse'), require('../model/Error'), require('../model/ServerListResponse'), require('../model/Tag'), require('../model/Tag1'), require('../model/TagListResponse'));
+    module.exports = factory(require('../ApiClient'), require('../model/CreateNewTagResponse'), require('../model/CreateServerResponse'), require('../model/Error'), require('../model/Tag'), require('../model/Tag1'), require('../model/TagListResponse'));
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.TagApi = factory(root.upcloud.ApiClient, root.upcloud.CreateNewTagResponse, root.upcloud.Error, root.upcloud.ServerListResponse, root.upcloud.Tag, root.upcloud.Tag1, root.upcloud.TagListResponse);
+    root.upcloud.TagApi = factory(root.upcloud.ApiClient, root.upcloud.CreateNewTagResponse, root.upcloud.CreateServerResponse, root.upcloud.Error, root.upcloud.Tag, root.upcloud.Tag1, root.upcloud.TagListResponse);
   }
-}(this, function(ApiClient, CreateNewTagResponse, Error, ServerListResponse, Tag, Tag1, TagListResponse) {
+}(this, function(ApiClient, CreateNewTagResponse, CreateServerResponse, Error, Tag, Tag1, TagListResponse) {
   'use strict';
 
   /**
@@ -39,23 +39,15 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
-    /**
-     * Callback function to receive the result of the assignTag operation.
-     * @callback module:api/TagApi~assignTagCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Assign tag to a server
      * Servers can be tagged with one or more tags. The tags used must exist
      * @param {String} serverId Server id
      * @param {String} tagList List of tags
-     * @param {module:api/TagApi~assignTagCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.assignTag = function(serverId, tagList, callback) {
+    this.assignTagWithHttpInfo = function(serverId, tagList) {
       var postBody = null;
 
       // verify the required parameter 'serverId' is set
@@ -85,31 +77,37 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ServerListResponse;
+      var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/tag/{tagList}', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the createTag operation.
-     * @callback module:api/TagApi~createTagCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CreateNewTagResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Assign tag to a server
+     * Servers can be tagged with one or more tags. The tags used must exist
+     * @param {String} serverId Server id
+     * @param {String} tagList List of tags
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
+    this.assignTag = function(serverId, tagList) {
+      return this.assignTagWithHttpInfo(serverId, tagList)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Create a new tag
      * Creates a new tag. Existing servers can be tagged in same request
      * @param {module:model/Tag} tag 
-     * @param {module:api/TagApi~createTagCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateNewTagResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateNewTagResponse} and HTTP response
      */
-    this.createTag = function(tag, callback) {
+    this.createTagWithHttpInfo = function(tag) {
       var postBody = tag;
 
       // verify the required parameter 'tag' is set
@@ -137,25 +135,31 @@
       return this.apiClient.callApi(
         '/tag', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the deleteTag operation.
-     * @callback module:api/TagApi~deleteTagCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * Create a new tag
+     * Creates a new tag. Existing servers can be tagged in same request
+     * @param {module:model/Tag} tag 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateNewTagResponse}
      */
+    this.createTag = function(tag) {
+      return this.createTagWithHttpInfo(tag)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Delete tag
      * Deleting existing tag untags all servers from specified tag and deletes tag definition
      * @param {String} tagName Tag name
-     * @param {module:api/TagApi~deleteTagCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    this.deleteTag = function(tagName, callback) {
+    this.deleteTagWithHttpInfo = function(tagName) {
       var postBody = null;
 
       // verify the required parameter 'tagName' is set
@@ -184,25 +188,30 @@
       return this.apiClient.callApi(
         '/tag/{tagName}', 'DELETE',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the listTags operation.
-     * @callback module:api/TagApi~listTagsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/TagListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Delete tag
+     * Deleting existing tag untags all servers from specified tag and deletes tag definition
+     * @param {String} tagName Tag name
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
+    this.deleteTag = function(tagName) {
+      return this.deleteTagWithHttpInfo(tagName)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * List existing tags
      * Returns all existing tags with their properties and servers tagged
-     * @param {module:api/TagApi~listTagsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/TagListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TagListResponse} and HTTP response
      */
-    this.listTags = function(callback) {
+    this.listTagsWithHttpInfo = function() {
       var postBody = null;
 
 
@@ -225,27 +234,31 @@
       return this.apiClient.callApi(
         '/tag', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the modifyTag operation.
-     * @callback module:api/TagApi~modifyTagCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CreateNewTagResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * List existing tags
+     * Returns all existing tags with their properties and servers tagged
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TagListResponse}
      */
+    this.listTags = function() {
+      return this.listTagsWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Modify existing tag
      * Changes attributes of an existing tag
      * @param {String} tagName Tag name
      * @param {module:model/Tag1} tag 
-     * @param {module:api/TagApi~modifyTagCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateNewTagResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateNewTagResponse} and HTTP response
      */
-    this.modifyTag = function(tagName, tag, callback) {
+    this.modifyTagWithHttpInfo = function(tagName, tag) {
       var postBody = tag;
 
       // verify the required parameter 'tagName' is set
@@ -279,27 +292,33 @@
       return this.apiClient.callApi(
         '/tag/{tagName}', 'PUT',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the untag operation.
-     * @callback module:api/TagApi~untagCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Modify existing tag
+     * Changes attributes of an existing tag
+     * @param {String} tagName Tag name
+     * @param {module:model/Tag1} tag 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateNewTagResponse}
      */
+    this.modifyTag = function(tagName, tag) {
+      return this.modifyTagWithHttpInfo(tagName, tag)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Remove tag from server
      * Untags tags from given server. The tag(s) must exist
      * @param {String} serverId Server id
      * @param {String} tagName Tag name
-     * @param {module:api/TagApi~untagCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.untag = function(serverId, tagName, callback) {
+    this.untagWithHttpInfo = function(serverId, tagName) {
       var postBody = null;
 
       // verify the required parameter 'serverId' is set
@@ -329,13 +348,27 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ServerListResponse;
+      var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/untag/{tagName}', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
+    }
+
+    /**
+     * Remove tag from server
+     * Untags tags from given server. The tag(s) must exist
+     * @param {String} serverId Server id
+     * @param {String} tagName Tag name
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
+     */
+    this.untag = function(serverId, tagName) {
+      return this.untagWithHttpInfo(serverId, tagName)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
     }
   };
 

@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 <a name="attachStorage"></a>
 # **attachStorage**
-> ServerListResponse attachStorage(serverId, storageDevice)
+> CreateServerResponse attachStorage(serverId, storageDevice)
 
 Attach storage
 
@@ -41,15 +41,12 @@ var serverId = "serverId_example"; // String | Server id
 
 var storageDevice = new upcloud.StorageDevice(); // StorageDevice | 
 
+apiInstance.attachStorage(serverId, storageDevice).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.attachStorage(serverId, storageDevice, callback);
 ```
 
 ### Parameters
@@ -61,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServerListResponse**](ServerListResponse.md)
+[**CreateServerResponse**](CreateServerResponse.md)
 
 ### Authorization
 
@@ -91,15 +88,12 @@ var storageId = "storageId_example"; // String | Storage id
 var opts = { 
   'storage': new upcloud.Storage4() // Storage4 | 
 };
+apiInstance.backupStorage(storageId, opts).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.backupStorage(storageId, opts, callback);
 ```
 
 ### Parameters
@@ -138,15 +132,12 @@ var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | Strage id
 
+apiInstance.cancelOperation(storageId).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.cancelOperation(storageId, callback);
 ```
 
 ### Parameters
@@ -187,15 +178,12 @@ var storageId = "storageId_example"; // String | Storage id
 var opts = { 
   'storage': new upcloud.Storage2() // Storage2 | 
 };
+apiInstance.cloneStorage(storageId, opts).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.cloneStorage(storageId, opts, callback);
 ```
 
 ### Parameters
@@ -234,15 +222,12 @@ var apiInstance = new upcloud.StorageApi();
 
 var storage = new upcloud.Storage(); // Storage | 
 
+apiInstance.createStorage(storage).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.createStorage(storage, callback);
 ```
 
 ### Parameters
@@ -280,15 +265,12 @@ var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | 
 
+apiInstance.deleteStorage(storageId).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.deleteStorage(storageId, callback);
 ```
 
 ### Parameters
@@ -312,7 +294,7 @@ No authorization required
 
 <a name="detachStorage"></a>
 # **detachStorage**
-> ServerListResponse detachStorage(serverId, storageDevice)
+> CreateServerResponse detachStorage(serverId, storageDevice)
 
 Detach storage
 
@@ -328,15 +310,12 @@ var serverId = "serverId_example"; // String | Server id
 
 var storageDevice = new upcloud.StorageDevice(); // StorageDevice | 
 
+apiInstance.detachStorage(serverId, storageDevice).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.detachStorage(serverId, storageDevice, callback);
 ```
 
 ### Parameters
@@ -348,7 +327,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServerListResponse**](ServerListResponse.md)
+[**CreateServerResponse**](CreateServerResponse.md)
 
 ### Authorization
 
@@ -361,7 +340,7 @@ No authorization required
 
 <a name="ejectCdrom"></a>
 # **ejectCdrom**
-> ServerListResponse ejectCdrom(serverId)
+> CreateServerResponse ejectCdrom(serverId)
 
 Eject CD-ROM
 
@@ -375,15 +354,12 @@ var apiInstance = new upcloud.StorageApi();
 
 var serverId = "serverId_example"; // String | Server id
 
+apiInstance.ejectCdrom(serverId).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.ejectCdrom(serverId, callback);
 ```
 
 ### Parameters
@@ -394,7 +370,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServerListResponse**](ServerListResponse.md)
+[**CreateServerResponse**](CreateServerResponse.md)
 
 ### Authorization
 
@@ -421,15 +397,12 @@ var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | Storage id
 
+apiInstance.favoriteStorage(storageId).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.favoriteStorage(storageId, callback);
 ```
 
 ### Parameters
@@ -467,15 +440,12 @@ var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | 
 
+apiInstance.getStorageDetails(storageId).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getStorageDetails(storageId, callback);
 ```
 
 ### Parameters
@@ -511,15 +481,12 @@ var apiInstance = new upcloud.StorageApi();
 
 var type = "type_example"; // String | Storage's access type (`public` or `private`) or storage type (`normal`, `backup`, `cdrom` or `template`) or `favorite` status
 
+apiInstance.listStorageTypes(type).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.listStorageTypes(type, callback);
 ```
 
 ### Parameters
@@ -552,15 +519,12 @@ List of storages
 var upcloud = require('upcloud');
 
 var apiInstance = new upcloud.StorageApi();
+apiInstance.listStorages().then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.listStorages(callback);
 ```
 
 ### Parameters
@@ -581,7 +545,7 @@ No authorization required
 
 <a name="loadCdrom"></a>
 # **loadCdrom**
-> ServerListResponse loadCdrom(serverId, opts)
+> CreateServerResponse loadCdrom(serverId, opts)
 
 Load CD-ROM
 
@@ -598,15 +562,12 @@ var serverId = "serverId_example"; // String | Server id
 var opts = { 
   'storageDevice': new upcloud.StorageDevice1() // StorageDevice1 | 
 };
+apiInstance.loadCdrom(serverId, opts).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.loadCdrom(serverId, opts, callback);
 ```
 
 ### Parameters
@@ -618,7 +579,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServerListResponse**](ServerListResponse.md)
+[**CreateServerResponse**](CreateServerResponse.md)
 
 ### Authorization
 
@@ -647,15 +608,12 @@ var storageId = "storageId_example"; // String |
 
 var storage = new upcloud.Storage1(); // Storage1 | 
 
+apiInstance.modifyStorage(storageIdstorage).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.modifyStorage(storageIdstorage, callback);
 ```
 
 ### Parameters
@@ -694,15 +652,12 @@ var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | Storage id
 
+apiInstance.restoreStorage(storageId).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.restoreStorage(storageId, callback);
 ```
 
 ### Parameters
@@ -743,15 +698,12 @@ var storageId = "storageId_example"; // String | Storage id
 var opts = { 
   'storage': new upcloud.Storage3() // Storage3 | 
 };
+apiInstance.templatizeStorage(storageId, opts).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.templatizeStorage(storageId, opts, callback);
 ```
 
 ### Parameters
@@ -790,15 +742,12 @@ var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | Storage id
 
+apiInstance.unfavoriteStorage(storageId).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.unfavoriteStorage(storageId, callback);
 ```
 
 ### Parameters

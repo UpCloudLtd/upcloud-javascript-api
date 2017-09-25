@@ -28,15 +28,12 @@ var apiInstance = new upcloud.IPAddressApi();
 var opts = { 
   'ipAddress': new upcloud.IpAddress() // IpAddress | 
 };
+apiInstance.addIp(opts).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.addIp(opts, callback);
 ```
 
 ### Parameters
@@ -74,15 +71,12 @@ var apiInstance = new upcloud.IPAddressApi();
 
 var ip = "ip_example"; // String | Ip address
 
+apiInstance.deleteIp(ip).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.deleteIp(ip, callback);
 ```
 
 ### Parameters
@@ -120,15 +114,12 @@ var apiInstance = new upcloud.IPAddressApi();
 
 var ip = "ip_example"; // String | Ip address
 
+apiInstance.getDetails(ip).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getDetails(ip, callback);
 ```
 
 ### Parameters
@@ -163,15 +154,12 @@ Returns a list of all IP addresses assigned to servers on the current user accou
 var upcloud = require('upcloud');
 
 var apiInstance = new upcloud.IPAddressApi();
+apiInstance.listIps().then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.listIps(callback);
 ```
 
 ### Parameters
@@ -209,15 +197,12 @@ var ip = "ip_example"; // String | Ip address
 var opts = { 
   'ipAddress': new upcloud.IpAddress1() // IpAddress1 | 
 };
+apiInstance.modifyIp(ip, opts).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.modifyIp(ip, opts, callback);
 ```
 
 ### Parameters

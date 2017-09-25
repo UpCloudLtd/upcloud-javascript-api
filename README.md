@@ -91,15 +91,12 @@ Please follow the [installation](#installation) instruction and execute the foll
 var upcloud = require('upcloud');
 
 var api = new upcloud.AccountApi()
+api.getAccount().then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.getAccount(callback);
 
 ```
 
@@ -178,15 +175,17 @@ Class | Method | HTTP request | Description
  - [upcloud.ConfigurationListResponse](docs/ConfigurationListResponse.md)
  - [upcloud.ConfigurationListResponseServerSizes](docs/ConfigurationListResponseServerSizes.md)
  - [upcloud.CreateNewTagResponse](docs/CreateNewTagResponse.md)
+ - [upcloud.CreateServerResponse](docs/CreateServerResponse.md)
  - [upcloud.CreateStorageResponse](docs/CreateStorageResponse.md)
  - [upcloud.Error](docs/Error.md)
  - [upcloud.ErrorCode](docs/ErrorCode.md)
  - [upcloud.ErrorError](docs/ErrorError.md)
  - [upcloud.ErrorStatus](docs/ErrorStatus.md)
  - [upcloud.FirewallRule](docs/FirewallRule.md)
- - [upcloud.FirewallRuleDetailsResponse](docs/FirewallRuleDetailsResponse.md)
+ - [upcloud.FirewallRuleCreateResponse](docs/FirewallRuleCreateResponse.md)
  - [upcloud.FirewallRuleListResponse](docs/FirewallRuleListResponse.md)
  - [upcloud.FirewallRuleListResponseFirewallRules](docs/FirewallRuleListResponseFirewallRules.md)
+ - [upcloud.FirewallRuleRequest](docs/FirewallRuleRequest.md)
  - [upcloud.IpAddress](docs/IpAddress.md)
  - [upcloud.IpAddress1](docs/IpAddress1.md)
  - [upcloud.IpAddressListResponse](docs/IpAddressListResponse.md)

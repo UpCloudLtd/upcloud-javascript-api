@@ -8,18 +8,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CreateStorageResponse', 'model/Error', 'model/ServerListResponse', 'model/Storage', 'model/Storage1', 'model/Storage2', 'model/Storage3', 'model/Storage4', 'model/StorageDevice', 'model/StorageDevice1', 'model/SuccessStoragesResponse'], factory);
+    define(['ApiClient', 'model/CreateServerResponse', 'model/CreateStorageResponse', 'model/Error', 'model/Storage', 'model/Storage1', 'model/Storage2', 'model/Storage3', 'model/Storage4', 'model/StorageDevice', 'model/StorageDevice1', 'model/SuccessStoragesResponse'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/CreateStorageResponse'), require('../model/Error'), require('../model/ServerListResponse'), require('../model/Storage'), require('../model/Storage1'), require('../model/Storage2'), require('../model/Storage3'), require('../model/Storage4'), require('../model/StorageDevice'), require('../model/StorageDevice1'), require('../model/SuccessStoragesResponse'));
+    module.exports = factory(require('../ApiClient'), require('../model/CreateServerResponse'), require('../model/CreateStorageResponse'), require('../model/Error'), require('../model/Storage'), require('../model/Storage1'), require('../model/Storage2'), require('../model/Storage3'), require('../model/Storage4'), require('../model/StorageDevice'), require('../model/StorageDevice1'), require('../model/SuccessStoragesResponse'));
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.StorageApi = factory(root.upcloud.ApiClient, root.upcloud.CreateStorageResponse, root.upcloud.Error, root.upcloud.ServerListResponse, root.upcloud.Storage, root.upcloud.Storage1, root.upcloud.Storage2, root.upcloud.Storage3, root.upcloud.Storage4, root.upcloud.StorageDevice, root.upcloud.StorageDevice1, root.upcloud.SuccessStoragesResponse);
+    root.upcloud.StorageApi = factory(root.upcloud.ApiClient, root.upcloud.CreateServerResponse, root.upcloud.CreateStorageResponse, root.upcloud.Error, root.upcloud.Storage, root.upcloud.Storage1, root.upcloud.Storage2, root.upcloud.Storage3, root.upcloud.Storage4, root.upcloud.StorageDevice, root.upcloud.StorageDevice1, root.upcloud.SuccessStoragesResponse);
   }
-}(this, function(ApiClient, CreateStorageResponse, Error, ServerListResponse, Storage, Storage1, Storage2, Storage3, Storage4, StorageDevice, StorageDevice1, SuccessStoragesResponse) {
+}(this, function(ApiClient, CreateServerResponse, CreateStorageResponse, Error, Storage, Storage1, Storage2, Storage3, Storage4, StorageDevice, StorageDevice1, SuccessStoragesResponse) {
   'use strict';
 
   /**
@@ -39,23 +39,15 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
-    /**
-     * Callback function to receive the result of the attachStorage operation.
-     * @callback module:api/StorageApi~attachStorageCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Attach storage
      * Attaches a storage as a device to a server.
      * @param {String} serverId Server id
      * @param {module:model/StorageDevice} storageDevice 
-     * @param {module:api/StorageApi~attachStorageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.attachStorage = function(serverId, storageDevice, callback) {
+    this.attachStorageWithHttpInfo = function(serverId, storageDevice) {
       var postBody = storageDevice;
 
       // verify the required parameter 'serverId' is set
@@ -84,22 +76,29 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ServerListResponse;
+      var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/storage/attach', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the backupStorage operation.
-     * @callback module:api/StorageApi~backupStorageCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CreateStorageResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Attach storage
+     * Attaches a storage as a device to a server.
+     * @param {String} serverId Server id
+     * @param {module:model/StorageDevice} storageDevice 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
+    this.attachStorage = function(serverId, storageDevice) {
+      return this.attachStorageWithHttpInfo(serverId, storageDevice)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Create backup
@@ -107,10 +106,9 @@
      * @param {String} storageId Storage id
      * @param {Object} opts Optional parameters
      * @param {module:model/Storage4} opts.storage 
-     * @param {module:api/StorageApi~backupStorageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateStorageResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateStorageResponse} and HTTP response
      */
-    this.backupStorage = function(storageId, opts, callback) {
+    this.backupStorageWithHttpInfo = function(storageId, opts) {
       opts = opts || {};
       var postBody = opts['storage'];
 
@@ -140,25 +138,33 @@
       return this.apiClient.callApi(
         '/storage/{storageId}/backup', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the cancelOperation operation.
-     * @callback module:api/StorageApi~cancelOperationCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * Create backup
+     * Creates a point-in-time backup of a storage resource. For automatic, scheduled backups, see  &#x60;backup_rule&#x60; in Create storage or Modify storage.
+     * @param {String} storageId Storage id
+     * @param {Object} opts Optional parameters
+     * @param {module:model/Storage4} opts.storage 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateStorageResponse}
      */
+    this.backupStorage = function(storageId, opts) {
+      return this.backupStorageWithHttpInfo(storageId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Cancel storage operation
      * Cancels a running cloning operation and deletes the incomplete copy.
      * @param {String} storageId Strage id
-     * @param {module:api/StorageApi~cancelOperationCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    this.cancelOperation = function(storageId, callback) {
+    this.cancelOperationWithHttpInfo = function(storageId) {
       var postBody = null;
 
       // verify the required parameter 'storageId' is set
@@ -187,17 +193,23 @@
       return this.apiClient.callApi(
         '/storage/{storageId}/cancel', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the cloneStorage operation.
-     * @callback module:api/StorageApi~cloneStorageCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CreateStorageResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Cancel storage operation
+     * Cancels a running cloning operation and deletes the incomplete copy.
+     * @param {String} storageId Strage id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
+    this.cancelOperation = function(storageId) {
+      return this.cancelOperationWithHttpInfo(storageId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Clone storage
@@ -205,10 +217,9 @@
      * @param {String} storageId Storage id
      * @param {Object} opts Optional parameters
      * @param {module:model/Storage2} opts.storage 
-     * @param {module:api/StorageApi~cloneStorageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateStorageResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateStorageResponse} and HTTP response
      */
-    this.cloneStorage = function(storageId, opts, callback) {
+    this.cloneStorageWithHttpInfo = function(storageId, opts) {
       opts = opts || {};
       var postBody = opts['storage'];
 
@@ -238,26 +249,33 @@
       return this.apiClient.callApi(
         '/storage/{storageId}/clone', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the createStorage operation.
-     * @callback module:api/StorageApi~createStorageCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CreateStorageResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Clone storage
+     * Creates an exact copy of an existing storage resource.
+     * @param {String} storageId Storage id
+     * @param {Object} opts Optional parameters
+     * @param {module:model/Storage2} opts.storage 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateStorageResponse}
      */
+    this.cloneStorage = function(storageId, opts) {
+      return this.cloneStorageWithHttpInfo(storageId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Create storage
      * Creates a new storage resource.
      * @param {module:model/Storage} storage 
-     * @param {module:api/StorageApi~createStorageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateStorageResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateStorageResponse} and HTTP response
      */
-    this.createStorage = function(storage, callback) {
+    this.createStorageWithHttpInfo = function(storage) {
       var postBody = storage;
 
       // verify the required parameter 'storage' is set
@@ -285,25 +303,31 @@
       return this.apiClient.callApi(
         '/storage', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the deleteStorage operation.
-     * @callback module:api/StorageApi~deleteStorageCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * Create storage
+     * Creates a new storage resource.
+     * @param {module:model/Storage} storage 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateStorageResponse}
      */
+    this.createStorage = function(storage) {
+      return this.createStorageWithHttpInfo(storage)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Delete storage
      * Deleted an existing storage resource.
      * @param {String} storageId 
-     * @param {module:api/StorageApi~deleteStorageCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    this.deleteStorage = function(storageId, callback) {
+    this.deleteStorageWithHttpInfo = function(storageId) {
       var postBody = null;
 
       // verify the required parameter 'storageId' is set
@@ -332,27 +356,32 @@
       return this.apiClient.callApi(
         '/storage/{storageId}', 'DELETE',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the detachStorage operation.
-     * @callback module:api/StorageApi~detachStorageCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Delete storage
+     * Deleted an existing storage resource.
+     * @param {String} storageId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
+    this.deleteStorage = function(storageId) {
+      return this.deleteStorageWithHttpInfo(storageId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Detach storage
      * Detaches a storage resource from a server.
      * @param {String} serverId Server id
      * @param {module:model/StorageDevice} storageDevice 
-     * @param {module:api/StorageApi~detachStorageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.detachStorage = function(serverId, storageDevice, callback) {
+    this.detachStorageWithHttpInfo = function(serverId, storageDevice) {
       var postBody = storageDevice;
 
       // verify the required parameter 'serverId' is set
@@ -381,31 +410,37 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ServerListResponse;
+      var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/storage/detach', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the ejectCdrom operation.
-     * @callback module:api/StorageApi~ejectCdromCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Detach storage
+     * Detaches a storage resource from a server.
+     * @param {String} serverId Server id
+     * @param {module:model/StorageDevice} storageDevice 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
+    this.detachStorage = function(serverId, storageDevice) {
+      return this.detachStorageWithHttpInfo(serverId, storageDevice)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Eject CD-ROM
      * Ejects the storage from the CD-ROM device of a server.
      * @param {String} serverId Server id
-     * @param {module:api/StorageApi~ejectCdromCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.ejectCdrom = function(serverId, callback) {
+    this.ejectCdromWithHttpInfo = function(serverId) {
       var postBody = null;
 
       // verify the required parameter 'serverId' is set
@@ -429,30 +464,36 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ServerListResponse;
+      var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/storage/cdrom/eject', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the favoriteStorage operation.
-     * @callback module:api/StorageApi~favoriteStorageCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * Eject CD-ROM
+     * Ejects the storage from the CD-ROM device of a server.
+     * @param {String} serverId Server id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
+    this.ejectCdrom = function(serverId) {
+      return this.ejectCdromWithHttpInfo(serverId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Add storage to favorites
      * Adds a storage to the list of favorite storages. To list favorite storages, see List storages. This operations succeeds even if the storage is already on the list of favorites.
      * @param {String} storageId Storage id
-     * @param {module:api/StorageApi~favoriteStorageCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    this.favoriteStorage = function(storageId, callback) {
+    this.favoriteStorageWithHttpInfo = function(storageId) {
       var postBody = null;
 
       // verify the required parameter 'storageId' is set
@@ -481,26 +522,31 @@
       return this.apiClient.callApi(
         '/storage/{storageId}/favorite', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the getStorageDetails operation.
-     * @callback module:api/StorageApi~getStorageDetailsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CreateStorageResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Add storage to favorites
+     * Adds a storage to the list of favorite storages. To list favorite storages, see List storages. This operations succeeds even if the storage is already on the list of favorites.
+     * @param {String} storageId Storage id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
+    this.favoriteStorage = function(storageId) {
+      return this.favoriteStorageWithHttpInfo(storageId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Get storage details
      * Returns detailed information about a specific storage resource.
      * @param {String} storageId 
-     * @param {module:api/StorageApi~getStorageDetailsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateStorageResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateStorageResponse} and HTTP response
      */
-    this.getStorageDetails = function(storageId, callback) {
+    this.getStorageDetailsWithHttpInfo = function(storageId) {
       var postBody = null;
 
       // verify the required parameter 'storageId' is set
@@ -529,25 +575,30 @@
       return this.apiClient.callApi(
         '/storage/{storageId}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the listStorageTypes operation.
-     * @callback module:api/StorageApi~listStorageTypesCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/SuccessStoragesResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Get storage details
+     * Returns detailed information about a specific storage resource.
+     * @param {String} storageId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateStorageResponse}
      */
+    this.getStorageDetails = function(storageId) {
+      return this.getStorageDetailsWithHttpInfo(storageId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * List of storages by type
      * @param {module:model/String} type Storage&#39;s access type (&#x60;public&#x60; or &#x60;private&#x60;) or storage type (&#x60;normal&#x60;, &#x60;backup&#x60;, &#x60;cdrom&#x60; or &#x60;template&#x60;) or &#x60;favorite&#x60; status
-     * @param {module:api/StorageApi~listStorageTypesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/SuccessStoragesResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SuccessStoragesResponse} and HTTP response
      */
-    this.listStorageTypes = function(type, callback) {
+    this.listStorageTypesWithHttpInfo = function(type) {
       var postBody = null;
 
       // verify the required parameter 'type' is set
@@ -576,24 +627,28 @@
       return this.apiClient.callApi(
         '/storage/{type}/', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the listStorages operation.
-     * @callback module:api/StorageApi~listStoragesCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/SuccessStoragesResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * List of storages by type
+     * @param {module:model/String} type Storage&#39;s access type (&#x60;public&#x60; or &#x60;private&#x60;) or storage type (&#x60;normal&#x60;, &#x60;backup&#x60;, &#x60;cdrom&#x60; or &#x60;template&#x60;) or &#x60;favorite&#x60; status
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SuccessStoragesResponse}
      */
+    this.listStorageTypes = function(type) {
+      return this.listStorageTypesWithHttpInfo(type)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * List of storages
-     * @param {module:api/StorageApi~listStoragesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/SuccessStoragesResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SuccessStoragesResponse} and HTTP response
      */
-    this.listStorages = function(callback) {
+    this.listStoragesWithHttpInfo = function() {
       var postBody = null;
 
 
@@ -616,17 +671,21 @@
       return this.apiClient.callApi(
         '/storage', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the loadCdrom operation.
-     * @callback module:api/StorageApi~loadCdromCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * List of storages
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SuccessStoragesResponse}
      */
+    this.listStorages = function() {
+      return this.listStoragesWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Load CD-ROM
@@ -634,10 +693,9 @@
      * @param {String} serverId Server id
      * @param {Object} opts Optional parameters
      * @param {module:model/StorageDevice1} opts.storageDevice 
-     * @param {module:api/StorageApi~loadCdromCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.loadCdrom = function(serverId, opts, callback) {
+    this.loadCdromWithHttpInfo = function(serverId, opts) {
       opts = opts || {};
       var postBody = opts['storageDevice'];
 
@@ -662,32 +720,39 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ServerListResponse;
+      var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
         '/server/{serverId}/storage/cdrom/load', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the modifyStorage operation.
-     * @callback module:api/StorageApi~modifyStorageCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CreateStorageResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Load CD-ROM
+     * Loads a storage as a CD-ROM in the CD-ROM device of a server.
+     * @param {String} serverId Server id
+     * @param {Object} opts Optional parameters
+     * @param {module:model/StorageDevice1} opts.storageDevice 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
+    this.loadCdrom = function(serverId, opts) {
+      return this.loadCdromWithHttpInfo(serverId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Modify storage
      * Modifies an existing storage resource. This operation is used to rename or resize the storage.
      * @param {String} storageId 
      * @param {module:model/Storage1} storage 
-     * @param {module:api/StorageApi~modifyStorageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateStorageResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateStorageResponse} and HTTP response
      */
-    this.modifyStorage = function(storageId, storage, callback) {
+    this.modifyStorageWithHttpInfo = function(storageId, storage) {
       var postBody = storage;
 
       // verify the required parameter 'storageId' is set
@@ -721,25 +786,32 @@
       return this.apiClient.callApi(
         '/storage/{storageId}', 'PUT',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the restoreStorage operation.
-     * @callback module:api/StorageApi~restoreStorageCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * Modify storage
+     * Modifies an existing storage resource. This operation is used to rename or resize the storage.
+     * @param {String} storageId 
+     * @param {module:model/Storage1} storage 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateStorageResponse}
      */
+    this.modifyStorage = function(storageId, storage) {
+      return this.modifyStorageWithHttpInfo(storageId, storage)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Restore backup
      * Restores the origin storage with data from the specified backup storage.
      * @param {String} storageId Storage id
-     * @param {module:api/StorageApi~restoreStorageCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    this.restoreStorage = function(storageId, callback) {
+    this.restoreStorageWithHttpInfo = function(storageId) {
       var postBody = null;
 
       // verify the required parameter 'storageId' is set
@@ -768,17 +840,23 @@
       return this.apiClient.callApi(
         '/storage/{storageId}/restore', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the templatizeStorage operation.
-     * @callback module:api/StorageApi~templatizeStorageCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CreateStorageResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Restore backup
+     * Restores the origin storage with data from the specified backup storage.
+     * @param {String} storageId Storage id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
+    this.restoreStorage = function(storageId) {
+      return this.restoreStorageWithHttpInfo(storageId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Templatize storage
@@ -786,10 +864,9 @@
      * @param {String} storageId Storage id
      * @param {Object} opts Optional parameters
      * @param {module:model/Storage3} opts.storage 
-     * @param {module:api/StorageApi~templatizeStorageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CreateStorageResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateStorageResponse} and HTTP response
      */
-    this.templatizeStorage = function(storageId, opts, callback) {
+    this.templatizeStorageWithHttpInfo = function(storageId, opts) {
       opts = opts || {};
       var postBody = opts['storage'];
 
@@ -819,25 +896,33 @@
       return this.apiClient.callApi(
         '/storage/{storageId}/templatize', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Callback function to receive the result of the unfavoriteStorage operation.
-     * @callback module:api/StorageApi~unfavoriteStorageCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * Templatize storage
+     * Creates an exact copy of an existing storage resource which can be used as a template for creating new servers.
+     * @param {String} storageId Storage id
+     * @param {Object} opts Optional parameters
+     * @param {module:model/Storage3} opts.storage 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateStorageResponse}
      */
+    this.templatizeStorage = function(storageId, opts) {
+      return this.templatizeStorageWithHttpInfo(storageId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Remove storage from favorites
      * Delete a storage from the list of favorite storages. To list favorite storages, see List storages. This operations succeeds even if the storage is already on the list of favorites.
      * @param {String} storageId Storage id
-     * @param {module:api/StorageApi~unfavoriteStorageCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    this.unfavoriteStorage = function(storageId, callback) {
+    this.unfavoriteStorageWithHttpInfo = function(storageId) {
       var postBody = null;
 
       // verify the required parameter 'storageId' is set
@@ -866,8 +951,21 @@
       return this.apiClient.callApi(
         '/storage/{storageId}/favorite', 'DELETE',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
+    }
+
+    /**
+     * Remove storage from favorites
+     * Delete a storage from the list of favorite storages. To list favorite storages, see List storages. This operations succeeds even if the storage is already on the list of favorites.
+     * @param {String} storageId Storage id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    this.unfavoriteStorage = function(storageId) {
+      return this.unfavoriteStorageWithHttpInfo(storageId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
     }
   };
 

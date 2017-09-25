@@ -20,15 +20,12 @@ Returns a list of available plans.
 var upcloud = require('upcloud');
 
 var apiInstance = new upcloud.PlanApi();
+apiInstance.listPlans().then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.listPlans(callback);
 ```
 
 ### Parameters

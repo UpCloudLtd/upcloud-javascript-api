@@ -39,21 +39,13 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
-    /**
-     * Callback function to receive the result of the getAccount operation.
-     * @callback module:api/AccountApi~getAccountCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/Account} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Account information
      * Returns information on the user&#39;s account.
-     * @param {module:api/AccountApi~getAccountCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Account}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Account} and HTTP response
      */
-    this.getAccount = function(callback) {
+    this.getAccountWithHttpInfo = function() {
       var postBody = null;
 
 
@@ -76,8 +68,20 @@
       return this.apiClient.callApi(
         '/account', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
+    }
+
+    /**
+     * Account information
+     * Returns information on the user&#39;s account.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Account}
+     */
+    this.getAccount = function() {
+      return this.getAccountWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
     }
   };
 

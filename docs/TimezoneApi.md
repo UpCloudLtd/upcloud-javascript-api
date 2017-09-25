@@ -20,15 +20,12 @@ Returns a list of available timezones. Timezones are used to set the hardware cl
 var upcloud = require('upcloud');
 
 var apiInstance = new upcloud.TimezoneApi();
+apiInstance.listTimezones().then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.listTimezones(callback);
 ```
 
 ### Parameters

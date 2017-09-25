@@ -20,15 +20,12 @@ Returns a list resource prices.
 var upcloud = require('upcloud');
 
 var apiInstance = new upcloud.PricesApi();
+apiInstance.listPrices().then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.listPrices(callback);
 ```
 
 ### Parameters

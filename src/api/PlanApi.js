@@ -39,21 +39,13 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
-    /**
-     * Callback function to receive the result of the listPlans operation.
-     * @callback module:api/PlanApi~listPlansCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/AvailablePlanListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * List available plans
      * Returns a list of available plans.
-     * @param {module:api/PlanApi~listPlansCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/AvailablePlanListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/AvailablePlanListResponse} and HTTP response
      */
-    this.listPlans = function(callback) {
+    this.listPlansWithHttpInfo = function() {
       var postBody = null;
 
 
@@ -76,8 +68,20 @@
       return this.apiClient.callApi(
         '/plan', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
+    }
+
+    /**
+     * List available plans
+     * Returns a list of available plans.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AvailablePlanListResponse}
+     */
+    this.listPlans = function() {
+      return this.listPlansWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
     }
   };
 

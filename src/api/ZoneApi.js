@@ -39,21 +39,13 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
-    /**
-     * Callback function to receive the result of the listZones operation.
-     * @callback module:api/ZoneApi~listZonesCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ZoneListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * List available zones
      * Returns a list of available zones.
-     * @param {module:api/ZoneApi~listZonesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ZoneListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ZoneListResponse} and HTTP response
      */
-    this.listZones = function(callback) {
+    this.listZonesWithHttpInfo = function() {
       var postBody = null;
 
 
@@ -76,8 +68,20 @@
       return this.apiClient.callApi(
         '/zone', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
+    }
+
+    /**
+     * List available zones
+     * Returns a list of available zones.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ZoneListResponse}
+     */
+    this.listZones = function() {
+      return this.listZonesWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
     }
   };
 

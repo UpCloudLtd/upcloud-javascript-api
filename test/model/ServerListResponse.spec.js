@@ -48,8 +48,8 @@
       //expect(instance).to.be.a(upcloud.ServerListResponse);
     });
 
-    it('should have the property server (base name: "server")', function() {
-      // uncomment below and update the code to test the property server
+    it('should have the property servers (base name: "servers")', function() {
+      // uncomment below and update the code to test the property servers
       //var instane = new upcloud.ServerListResponse();
       //expect(instance).to.be();
     });

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="createFirewallRule"></a>
 # **createFirewallRule**
-> createFirewallRule(serverId, firewallRule)
+> FirewallRuleCreateResponse createFirewallRule(serverId, firewallRule)
 
 Create firewall rule
 
@@ -26,17 +26,14 @@ var apiInstance = new upcloud.FirewallApi();
 
 var serverId = "serverId_example"; // String | Server id
 
-var firewallRule = new upcloud.FirewallRule(); // FirewallRule | 
+var firewallRule = new upcloud.FirewallRuleRequest(); // FirewallRuleRequest | 
 
+apiInstance.createFirewallRule(serverId, firewallRule).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.createFirewallRule(serverId, firewallRule, callback);
 ```
 
 ### Parameters
@@ -44,11 +41,11 @@ apiInstance.createFirewallRule(serverId, firewallRule, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **serverId** | **String**| Server id | 
- **firewallRule** | [**FirewallRule**](FirewallRule.md)|  | 
+ **firewallRule** | [**FirewallRuleRequest**](FirewallRuleRequest.md)|  | 
 
 ### Return type
 
-null (empty response body)
+[**FirewallRuleCreateResponse**](FirewallRuleCreateResponse.md)
 
 ### Authorization
 
@@ -77,15 +74,12 @@ var serverId = "serverId_example"; // String | Server id
 
 var firewallRuleNumber = "firewallRuleNumber_example"; // String | Denotes the index of the firewall rule in the server's firewall rule list
 
+apiInstance.deleteFirewallRule(serverId, firewallRuleNumber).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.deleteFirewallRule(serverId, firewallRuleNumber, callback);
 ```
 
 ### Parameters
@@ -110,7 +104,7 @@ No authorization required
 
 <a name="getFirewallRule"></a>
 # **getFirewallRule**
-> FirewallRuleDetailsResponse getFirewallRule(serverId, firewallRuleNumber)
+> FirewallRuleCreateResponse getFirewallRule(serverId, firewallRuleNumber)
 
 Get firewall rule details
 
@@ -126,15 +120,12 @@ var serverId = "serverId_example"; // String | Server id
 
 var firewallRuleNumber = "firewallRuleNumber_example"; // String | Denotes the index of the firewall rule in the server's firewall rule list
 
+apiInstance.getFirewallRule(serverId, firewallRuleNumber).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getFirewallRule(serverId, firewallRuleNumber, callback);
 ```
 
 ### Parameters
@@ -146,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FirewallRuleDetailsResponse**](FirewallRuleDetailsResponse.md)
+[**FirewallRuleCreateResponse**](FirewallRuleCreateResponse.md)
 
 ### Authorization
 
@@ -173,15 +164,12 @@ var apiInstance = new upcloud.FirewallApi();
 
 var serverId = "serverId_example"; // String | Server id
 
+apiInstance.serverServerIdFirewallRuleGet(serverId, ).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.serverServerIdFirewallRuleGet(serverId, , callback);
 ```
 
 ### Parameters

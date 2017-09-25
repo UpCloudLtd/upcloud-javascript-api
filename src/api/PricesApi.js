@@ -39,21 +39,13 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
-    /**
-     * Callback function to receive the result of the listPrices operation.
-     * @callback module:api/PricesApi~listPricesCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/PriceListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * List prices
      * Returns a list resource prices.
-     * @param {module:api/PricesApi~listPricesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/PriceListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/PriceListResponse} and HTTP response
      */
-    this.listPrices = function(callback) {
+    this.listPricesWithHttpInfo = function() {
       var postBody = null;
 
 
@@ -76,8 +68,20 @@
       return this.apiClient.callApi(
         '/price', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
+    }
+
+    /**
+     * List prices
+     * Returns a list resource prices.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PriceListResponse}
+     */
+    this.listPrices = function() {
+      return this.listPricesWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
     }
   };
 
