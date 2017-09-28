@@ -30,30 +30,30 @@
    */
   var exports = {
     /**
-     * value: 400
+     * value: "400"
      * @const
      */
-    "400": 400,
+    "400": "400",
     /**
-     * value: 402
+     * value: "402"
      * @const
      */
-    "402": 402,
+    "402": "402",
     /**
-     * value: 403
+     * value: "403"
      * @const
      */
-    "403": 403,
+    "403": "403",
     /**
-     * value: 404
+     * value: "404"
      * @const
      */
-    "404": 404,
+    "404": "404",
     /**
-     * value: 409
+     * value: "409"
      * @const
      */
-    "409": 409  };
+    "409": "409"  };
 
   /**
    * Returns a <code>ErrorStatus</code> enum value from a Javascript object name.
