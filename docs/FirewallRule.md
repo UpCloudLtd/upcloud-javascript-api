@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **position** | **Number** | Add the firewall rule to this position in the server&#39;s firewall list. | [optional] 
 **family** | [**AddressFamily**](AddressFamily.md) | if protocol is set The address family of new firewall rule | 
 **protocol** | **String** | The protocol this rule will be applied to. | [optional] 
-**icmpType** | **Number** | The ICMP type. | [optional] 
+**icmpType** | **String** | The ICMP type. | [optional] 
 **destinationAddressStart** | **String** | The destination address range starts from this address. | [optional] 
 **destinationAddressEnd** | **String** | The destination address range ends to this address. | [optional] 
 **destinationPortStart** | **Number** | The destination port range starts from this port number. | [optional] 

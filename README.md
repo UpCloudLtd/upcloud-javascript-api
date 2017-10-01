@@ -90,6 +90,13 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```javascript
 var upcloud = require('upcloud');
 
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME'
+baseAuth.password = 'YOUR PASSWORD'
+
 var api = new upcloud.AccountApi()
 api.getAccount().then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -102,7 +109,7 @@ api.getAccount().then(function(data) {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://api.upcloud.com/1.2*
+All URIs are relative to *https://api.upcloud.com/1.2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -125,7 +132,7 @@ Class | Method | HTTP request | Description
 *upcloud.ServerApi* | [**deleteFirewallRule**](docs/ServerApi.md#deleteFirewallRule) | **DELETE** /server/{serverId}/firewall_rule/{firewallRuleNumber} | Remove firewall rule
 *upcloud.ServerApi* | [**deleteServer**](docs/ServerApi.md#deleteServer) | **DELETE** /server/{serverId} | Delete server
 *upcloud.ServerApi* | [**detachStorage**](docs/ServerApi.md#detachStorage) | **POST** /server/{serverId}/storage/detach | Detach storage
-*upcloud.ServerApi* | [**ejectCdrom**](docs/ServerApi.md#ejectCdrom) | **POST** /server/{serverId}/storage/cdrom/eject | Eject CD-ROM
+*upcloud.ServerApi* | [**ejectCdrom**](docs/ServerApi.md#ejectCdrom) | **POST** /server/{serverId}/cdrom/eject | Eject CD-ROM
 *upcloud.ServerApi* | [**getFirewallRule**](docs/ServerApi.md#getFirewallRule) | **GET** /server/{serverId}/firewall_rule/{firewallRuleNumber} | Get firewall rule details
 *upcloud.ServerApi* | [**listServerConfigurations**](docs/ServerApi.md#listServerConfigurations) | **GET** /server_size | List server configurations
 *upcloud.ServerApi* | [**listServers**](docs/ServerApi.md#listServers) | **GET** /server | List of servers
@@ -144,7 +151,7 @@ Class | Method | HTTP request | Description
 *upcloud.StorageApi* | [**createStorage**](docs/StorageApi.md#createStorage) | **POST** /storage | Create storage
 *upcloud.StorageApi* | [**deleteStorage**](docs/StorageApi.md#deleteStorage) | **DELETE** /storage/{storageId} | Delete storage
 *upcloud.StorageApi* | [**detachStorage**](docs/StorageApi.md#detachStorage) | **POST** /server/{serverId}/storage/detach | Detach storage
-*upcloud.StorageApi* | [**ejectCdrom**](docs/StorageApi.md#ejectCdrom) | **POST** /server/{serverId}/storage/cdrom/eject | Eject CD-ROM
+*upcloud.StorageApi* | [**ejectCdrom**](docs/StorageApi.md#ejectCdrom) | **POST** /server/{serverId}/cdrom/eject | Eject CD-ROM
 *upcloud.StorageApi* | [**favoriteStorage**](docs/StorageApi.md#favoriteStorage) | **POST** /storage/{storageId}/favorite | Add storage to favorites
 *upcloud.StorageApi* | [**getStorageDetails**](docs/StorageApi.md#getStorageDetails) | **GET** /storage/{storageId} | Get storage details
 *upcloud.StorageApi* | [**listStorageTypes**](docs/StorageApi.md#listStorageTypes) | **GET** /storage/{type}/ | List of storages by type
@@ -167,15 +174,22 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [upcloud.Account](docs/Account.md)
+ - [upcloud.AccountResponse](docs/AccountResponse.md)
+ - [upcloud.AddIpRequest](docs/AddIpRequest.md)
  - [upcloud.AddressFamily](docs/AddressFamily.md)
  - [upcloud.AssignIpResponse](docs/AssignIpResponse.md)
+ - [upcloud.AttachStorageDeviceRequest](docs/AttachStorageDeviceRequest.md)
  - [upcloud.AvailablePlanListResponse](docs/AvailablePlanListResponse.md)
  - [upcloud.AvailablePlanListResponsePlans](docs/AvailablePlanListResponsePlans.md)
  - [upcloud.BackupRule](docs/BackupRule.md)
+ - [upcloud.CloneStorageRequest](docs/CloneStorageRequest.md)
  - [upcloud.ConfigurationListResponse](docs/ConfigurationListResponse.md)
  - [upcloud.ConfigurationListResponseServerSizes](docs/ConfigurationListResponseServerSizes.md)
+ - [upcloud.CreateBackupStorageRequest](docs/CreateBackupStorageRequest.md)
  - [upcloud.CreateNewTagResponse](docs/CreateNewTagResponse.md)
+ - [upcloud.CreateServerRequest](docs/CreateServerRequest.md)
  - [upcloud.CreateServerResponse](docs/CreateServerResponse.md)
+ - [upcloud.CreateStorageRequest](docs/CreateStorageRequest.md)
  - [upcloud.CreateStorageResponse](docs/CreateStorageResponse.md)
  - [upcloud.Error](docs/Error.md)
  - [upcloud.ErrorCode](docs/ErrorCode.md)
@@ -187,13 +201,14 @@ Class | Method | HTTP request | Description
  - [upcloud.FirewallRuleListResponseFirewallRules](docs/FirewallRuleListResponseFirewallRules.md)
  - [upcloud.FirewallRuleRequest](docs/FirewallRuleRequest.md)
  - [upcloud.IpAddress](docs/IpAddress.md)
- - [upcloud.IpAddress1](docs/IpAddress1.md)
  - [upcloud.IpAddressListResponse](docs/IpAddressListResponse.md)
- - [upcloud.IpAddressListResponseIpAddresses](docs/IpAddressListResponseIpAddresses.md)
+ - [upcloud.IpAddresses](docs/IpAddresses.md)
+ - [upcloud.ModifyIpRequest](docs/ModifyIpRequest.md)
+ - [upcloud.ModifyStorageRequest](docs/ModifyStorageRequest.md)
  - [upcloud.Plan](docs/Plan.md)
  - [upcloud.Price](docs/Price.md)
  - [upcloud.PriceListResponse](docs/PriceListResponse.md)
- - [upcloud.PriceListResponsePrice](docs/PriceListResponsePrice.md)
+ - [upcloud.PriceListResponsePrices](docs/PriceListResponsePrices.md)
  - [upcloud.PriceZone](docs/PriceZone.md)
  - [upcloud.RestartServer](docs/RestartServer.md)
  - [upcloud.Server](docs/Server.md)
@@ -204,15 +219,13 @@ Class | Method | HTTP request | Description
  - [upcloud.ServerStorageDevices](docs/ServerStorageDevices.md)
  - [upcloud.ServerTags](docs/ServerTags.md)
  - [upcloud.StopServer](docs/StopServer.md)
+ - [upcloud.StopServerRequest](docs/StopServerRequest.md)
  - [upcloud.Storage](docs/Storage.md)
- - [upcloud.Storage1](docs/Storage1.md)
- - [upcloud.Storage2](docs/Storage2.md)
- - [upcloud.Storage3](docs/Storage3.md)
- - [upcloud.Storage4](docs/Storage4.md)
  - [upcloud.StorageAccessType](docs/StorageAccessType.md)
  - [upcloud.StorageBackups](docs/StorageBackups.md)
  - [upcloud.StorageDevice](docs/StorageDevice.md)
- - [upcloud.StorageDevice1](docs/StorageDevice1.md)
+ - [upcloud.StorageDeviceDetachRequest](docs/StorageDeviceDetachRequest.md)
+ - [upcloud.StorageDeviceLoadRequest](docs/StorageDeviceLoadRequest.md)
  - [upcloud.StorageServers](docs/StorageServers.md)
  - [upcloud.StorageState](docs/StorageState.md)
  - [upcloud.StorageTier](docs/StorageTier.md)
@@ -224,6 +237,7 @@ Class | Method | HTTP request | Description
  - [upcloud.TagListResponse](docs/TagListResponse.md)
  - [upcloud.TagListResponseTags](docs/TagListResponseTags.md)
  - [upcloud.TagServers](docs/TagServers.md)
+ - [upcloud.TemplitizeStorageRequest](docs/TemplitizeStorageRequest.md)
  - [upcloud.Timezone](docs/Timezone.md)
  - [upcloud.TimezoneListResponse](docs/TimezoneListResponse.md)
  - [upcloud.TimezoneListResponseTimezones](docs/TimezoneListResponseTimezones.md)
@@ -234,5 +248,8 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Authorization
 
- All endpoints do not require authorization.
+
+### baseAuth
+
+- **Type**: HTTP basic authentication
 

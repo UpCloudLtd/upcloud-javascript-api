@@ -8,18 +8,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/IpAddressListResponseIpAddresses', 'model/ServerState', 'model/ServerStorageDevices', 'model/ServerTags', 'model/Timezone'], factory);
+    define(['ApiClient', 'model/IpAddresses', 'model/ServerState', 'model/ServerStorageDevices', 'model/ServerTags', 'model/Timezone'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./IpAddressListResponseIpAddresses'), require('./ServerState'), require('./ServerStorageDevices'), require('./ServerTags'), require('./Timezone'));
+    module.exports = factory(require('../ApiClient'), require('./IpAddresses'), require('./ServerState'), require('./ServerStorageDevices'), require('./ServerTags'), require('./Timezone'));
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.Server = factory(root.upcloud.ApiClient, root.upcloud.IpAddressListResponseIpAddresses, root.upcloud.ServerState, root.upcloud.ServerStorageDevices, root.upcloud.ServerTags, root.upcloud.Timezone);
+    root.upcloud.Server = factory(root.upcloud.ApiClient, root.upcloud.IpAddresses, root.upcloud.ServerState, root.upcloud.ServerStorageDevices, root.upcloud.ServerTags, root.upcloud.Timezone);
   }
-}(this, function(ApiClient, IpAddressListResponseIpAddresses, ServerState, ServerStorageDevices, ServerTags, Timezone) {
+}(this, function(ApiClient, IpAddresses, ServerState, ServerStorageDevices, ServerTags, Timezone) {
   'use strict';
 
 
@@ -93,7 +93,7 @@
         obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
       }
       if (data.hasOwnProperty('ip_addresses')) {
-        obj['ip_addresses'] = IpAddressListResponseIpAddresses.constructFromObject(data['ip_addresses']);
+        obj['ip_addresses'] = IpAddresses.constructFromObject(data['ip_addresses']);
       }
       if (data.hasOwnProperty('license')) {
         obj['license'] = ApiClient.convertToType(data['license'], 'Number');
@@ -179,7 +179,7 @@
    */
   exports.prototype['hostname'] = undefined;
   /**
-   * @member {module:model/IpAddressListResponseIpAddresses} ip_addresses
+   * @member {module:model/IpAddresses} ip_addresses
    */
   exports.prototype['ip_addresses'] = undefined;
   /**

@@ -42,6 +42,7 @@
 
 
 
+
   };
 
   /**
@@ -58,6 +59,9 @@
       if (data.hasOwnProperty('interval')) {
         obj['interval'] = ApiClient.convertToType(data['interval'], 'String');
       }
+      if (data.hasOwnProperty('time')) {
+        obj['time'] = ApiClient.convertToType(data['time'], 'String');
+      }
       if (data.hasOwnProperty('retention')) {
         obj['retention'] = ApiClient.convertToType(data['retention'], 'Number');
       }
@@ -69,6 +73,10 @@
    * @member {module:model/BackupRule.IntervalEnum} interval
    */
   exports.prototype['interval'] = undefined;
+  /**
+   * @member {String} time
+   */
+  exports.prototype['time'] = undefined;
   /**
    * @member {Number} retention
    */

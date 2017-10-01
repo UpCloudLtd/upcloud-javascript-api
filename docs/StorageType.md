@@ -11,4 +11,6 @@
 
 * `backup` (value: `"backup"`)
 
+* `normal` (value: `"normal"`)
+
 

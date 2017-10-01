@@ -8,18 +8,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/BackupRule', 'model/StorageTier'], factory);
+    define(['ApiClient', 'model/BackupRule', 'model/StorageAccessType', 'model/StorageBackups', 'model/StorageServers', 'model/StorageState', 'model/StorageTier', 'model/StorageType'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./BackupRule'), require('./StorageTier'));
+    module.exports = factory(require('../ApiClient'), require('./BackupRule'), require('./StorageAccessType'), require('./StorageBackups'), require('./StorageServers'), require('./StorageState'), require('./StorageTier'), require('./StorageType'));
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.Storage = factory(root.upcloud.ApiClient, root.upcloud.BackupRule, root.upcloud.StorageTier);
+    root.upcloud.Storage = factory(root.upcloud.ApiClient, root.upcloud.BackupRule, root.upcloud.StorageAccessType, root.upcloud.StorageBackups, root.upcloud.StorageServers, root.upcloud.StorageState, root.upcloud.StorageTier, root.upcloud.StorageType);
   }
-}(this, function(ApiClient, BackupRule, StorageTier) {
+}(this, function(ApiClient, BackupRule, StorageAccessType, StorageBackups, StorageServers, StorageState, StorageTier, StorageType) {
   'use strict';
 
 
@@ -44,6 +44,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
   };
 
   /**
@@ -57,8 +66,26 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('access')) {
+        obj['access'] = StorageAccessType.constructFromObject(data['access']);
+      }
+      if (data.hasOwnProperty('backup_rule')) {
+        obj['backup_rule'] = BackupRule.constructFromObject(data['backup_rule']);
+      }
+      if (data.hasOwnProperty('backups')) {
+        obj['backups'] = StorageBackups.constructFromObject(data['backups']);
+      }
+      if (data.hasOwnProperty('license')) {
+        obj['license'] = ApiClient.convertToType(data['license'], 'Number');
+      }
+      if (data.hasOwnProperty('servers')) {
+        obj['servers'] = StorageServers.constructFromObject(data['servers']);
+      }
       if (data.hasOwnProperty('size')) {
         obj['size'] = ApiClient.convertToType(data['size'], 'Number');
+      }
+      if (data.hasOwnProperty('state')) {
+        obj['state'] = StorageState.constructFromObject(data['state']);
       }
       if (data.hasOwnProperty('tier')) {
         obj['tier'] = StorageTier.constructFromObject(data['tier']);
@@ -66,39 +93,81 @@
       if (data.hasOwnProperty('title')) {
         obj['title'] = ApiClient.convertToType(data['title'], 'String');
       }
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = StorageType.constructFromObject(data['type']);
+      }
+      if (data.hasOwnProperty('uuid')) {
+        obj['uuid'] = ApiClient.convertToType(data['uuid'], 'String');
+      }
       if (data.hasOwnProperty('zone')) {
         obj['zone'] = ApiClient.convertToType(data['zone'], 'String');
       }
-      if (data.hasOwnProperty('backup_rule')) {
-        obj['backup_rule'] = BackupRule.constructFromObject(data['backup_rule']);
+      if (data.hasOwnProperty('origin')) {
+        obj['origin'] = ApiClient.convertToType(data['origin'], 'String');
+      }
+      if (data.hasOwnProperty('created')) {
+        obj['created'] = ApiClient.convertToType(data['created'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * The size of the storage in gigabytes.
+   * @member {module:model/StorageAccessType} access
+   */
+  exports.prototype['access'] = undefined;
+  /**
+   * @member {module:model/BackupRule} backup_rule
+   */
+  exports.prototype['backup_rule'] = undefined;
+  /**
+   * @member {module:model/StorageBackups} backups
+   */
+  exports.prototype['backups'] = undefined;
+  /**
+   * @member {Number} license
+   */
+  exports.prototype['license'] = undefined;
+  /**
+   * @member {module:model/StorageServers} servers
+   */
+  exports.prototype['servers'] = undefined;
+  /**
    * @member {Number} size
    */
   exports.prototype['size'] = undefined;
+  /**
+   * @member {module:model/StorageState} state
+   */
+  exports.prototype['state'] = undefined;
   /**
    * @member {module:model/StorageTier} tier
    */
   exports.prototype['tier'] = undefined;
   /**
-   * A short description.
    * @member {String} title
    */
   exports.prototype['title'] = undefined;
   /**
-   * @member {String} zone
-   * @default 'The zone in which the storage will be created, e.g. fi-hel1. See Zones.'
+   * @member {module:model/StorageType} type
    */
-  exports.prototype['zone'] = 'The zone in which the storage will be created, e.g. fi-hel1. See Zones.';
+  exports.prototype['type'] = undefined;
   /**
-   * @member {module:model/BackupRule} backup_rule
+   * @member {String} uuid
    */
-  exports.prototype['backup_rule'] = undefined;
+  exports.prototype['uuid'] = undefined;
+  /**
+   * @member {String} zone
+   */
+  exports.prototype['zone'] = undefined;
+  /**
+   * @member {String} origin
+   */
+  exports.prototype['origin'] = undefined;
+  /**
+   * @member {String} created
+   */
+  exports.prototype['created'] = undefined;
 
 
 

@@ -60,7 +60,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = ZoneListResponse;

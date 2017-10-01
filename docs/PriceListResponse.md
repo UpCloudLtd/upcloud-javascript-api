@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**price** | [**PriceListResponsePrice**](PriceListResponsePrice.md) |  | [optional] 
+**prices** | [**PriceListResponsePrices**](PriceListResponsePrices.md) |  | [optional] 
 
 

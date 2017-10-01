@@ -4,8 +4,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **access** | **String** | Is address for private or public network. | [optional] 
+**address** | **String** |  | [optional] 
 **family** | **String** | The address family of new IP address. | [optional] 
-**server** | **String** | Server id | [optional] 
+**ptrRecord** | **String** |  | [optional] 
+**server** | **String** |  | [optional] 
+**partOfPlan** | **String** |  | [optional] 
 
 
 <a name="AccessEnum"></a>
@@ -26,6 +29,17 @@ Name | Type | Description | Notes
 * `IPv4` (value: `"IPv4"`)
 
 * `IPv6` (value: `"IPv6"`)
+
+
+
+
+<a name="PartOfPlanEnum"></a>
+## Enum: PartOfPlanEnum
+
+
+* `yes` (value: `"yes"`)
+
+* `no` (value: `"no"`)
 
 
 

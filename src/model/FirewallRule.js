@@ -86,7 +86,7 @@
         obj['protocol'] = ApiClient.convertToType(data['protocol'], 'String');
       }
       if (data.hasOwnProperty('icmp_type')) {
-        obj['icmp_type'] = ApiClient.convertToType(data['icmp_type'], 'Number');
+        obj['icmp_type'] = ApiClient.convertToType(data['icmp_type'], 'String');
       }
       if (data.hasOwnProperty('destination_address_start')) {
         obj['destination_address_start'] = ApiClient.convertToType(data['destination_address_start'], 'String');
@@ -146,7 +146,7 @@
   exports.prototype['protocol'] = undefined;
   /**
    * The ICMP type.
-   * @member {Number} icmp_type
+   * @member {String} icmp_type
    */
   exports.prototype['icmp_type'] = undefined;
   /**

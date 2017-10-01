@@ -1,6 +1,6 @@
 # upcloud.ServerApi
 
-All URIs are relative to *http://api.upcloud.com/1.2*
+All URIs are relative to *https://api.upcloud.com/1.2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**deleteFirewallRule**](ServerApi.md#deleteFirewallRule) | **DELETE** /server/{serverId}/firewall_rule/{firewallRuleNumber} | Remove firewall rule
 [**deleteServer**](ServerApi.md#deleteServer) | **DELETE** /server/{serverId} | Delete server
 [**detachStorage**](ServerApi.md#detachStorage) | **POST** /server/{serverId}/storage/detach | Detach storage
-[**ejectCdrom**](ServerApi.md#ejectCdrom) | **POST** /server/{serverId}/storage/cdrom/eject | Eject CD-ROM
+[**ejectCdrom**](ServerApi.md#ejectCdrom) | **POST** /server/{serverId}/cdrom/eject | Eject CD-ROM
 [**getFirewallRule**](ServerApi.md#getFirewallRule) | **GET** /server/{serverId}/firewall_rule/{firewallRuleNumber} | Get firewall rule details
 [**listServerConfigurations**](ServerApi.md#listServerConfigurations) | **GET** /server_size | List server configurations
 [**listServers**](ServerApi.md#listServers) | **GET** /server | List of servers
@@ -82,12 +82,18 @@ Attaches a storage as a device to a server.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Server id
 
-var storageDevice = new upcloud.StorageDevice(); // StorageDevice | 
+var storageDevice = new upcloud.AttachStorageDeviceRequest(); // AttachStorageDeviceRequest | 
 
 apiInstance.attachStorage(serverId, storageDevice).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -102,7 +108,7 @@ apiInstance.attachStorage(serverId, storageDevice).then(function(data) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **serverId** | **String**| Server id | 
- **storageDevice** | [**StorageDevice**](StorageDevice.md)|  | 
+ **storageDevice** | [**AttachStorageDeviceRequest**](AttachStorageDeviceRequest.md)|  | 
 
 ### Return type
 
@@ -110,7 +116,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -128,6 +134,12 @@ Creates a new firewall rule
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.ServerApi();
 
@@ -156,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -174,11 +186,17 @@ Creates a new server instance.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.ServerApi();
 
 var opts = { 
-  'server': new upcloud.Server() // Server | 
+  'server': new upcloud.CreateServerRequest() // CreateServerRequest | 
 };
 apiInstance.createServer(opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -192,7 +210,7 @@ apiInstance.createServer(opts).then(function(data) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **server** | [**Server**](Server.md)|  | [optional] 
+ **server** | [**CreateServerRequest**](CreateServerRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -200,7 +218,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -218,12 +236,18 @@ Removes a firewall rule from a server. Firewall rules must be removed individual
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Server id
 
-var firewallRuleNumber = "firewallRuleNumber_example"; // String | Denotes the index of the firewall rule in the server's firewall rule list
+var firewallRuleNumber = 3.4; // Number | Denotes the index of the firewall rule in the server's firewall rule list
 
 apiInstance.deleteFirewallRule(serverId, firewallRuleNumber).then(function() {
   console.log('API called successfully.');
@@ -238,7 +262,7 @@ apiInstance.deleteFirewallRule(serverId, firewallRuleNumber).then(function() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **serverId** | **String**| Server id | 
- **firewallRuleNumber** | **String**| Denotes the index of the firewall rule in the server&#39;s firewall rule list | 
+ **firewallRuleNumber** | **Number**| Denotes the index of the firewall rule in the server&#39;s firewall rule list | 
 
 ### Return type
 
@@ -246,7 +270,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -262,6 +286,12 @@ Delete server
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.ServerApi();
 
@@ -287,7 +317,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -305,12 +335,18 @@ Detaches a storage resource from a server.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Server id
 
-var storageDevice = new upcloud.StorageDevice(); // StorageDevice | 
+var storageDevice = new upcloud.StorageDeviceDetachRequest(); // StorageDeviceDetachRequest | 
 
 apiInstance.detachStorage(serverId, storageDevice).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -325,7 +361,7 @@ apiInstance.detachStorage(serverId, storageDevice).then(function(data) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **serverId** | **String**| Server id | 
- **storageDevice** | [**StorageDevice**](StorageDevice.md)|  | 
+ **storageDevice** | [**StorageDeviceDetachRequest**](StorageDeviceDetachRequest.md)|  | 
 
 ### Return type
 
@@ -333,7 +369,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -342,7 +378,7 @@ No authorization required
 
 <a name="ejectCdrom"></a>
 # **ejectCdrom**
-> CreateServerResponse ejectCdrom(serverId)
+> ejectCdrom(serverId)
 
 Eject CD-ROM
 
@@ -351,13 +387,19 @@ Ejects the storage from the CD-ROM device of a server.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Server id
 
-apiInstance.ejectCdrom(serverId).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
+apiInstance.ejectCdrom(serverId).then(function() {
+  console.log('API called successfully.');
 }, function(error) {
   console.error(error);
 });
@@ -372,11 +414,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateServerResponse**](CreateServerResponse.md)
+null (empty response body)
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -394,12 +436,18 @@ Returns detailed information about a specific firewall rule
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Server id
 
-var firewallRuleNumber = "firewallRuleNumber_example"; // String | Denotes the index of the firewall rule in the server's firewall rule list
+var firewallRuleNumber = 3.4; // Number | Denotes the index of the firewall rule in the server's firewall rule list
 
 apiInstance.getFirewallRule(serverId, firewallRuleNumber).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -414,7 +462,7 @@ apiInstance.getFirewallRule(serverId, firewallRuleNumber).then(function(data) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **serverId** | **String**| Server id | 
- **firewallRuleNumber** | **String**| Denotes the index of the firewall rule in the server&#39;s firewall rule list | 
+ **firewallRuleNumber** | **Number**| Denotes the index of the firewall rule in the server&#39;s firewall rule list | 
 
 ### Return type
 
@@ -422,7 +470,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -440,6 +488,12 @@ Returns a list of available server configurations. A server configuration consis
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.ServerApi();
 apiInstance.listServerConfigurations().then(function(data) {
@@ -459,7 +513,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -477,6 +531,12 @@ Returns a list of all servers associated with the current account.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.ServerApi();
 apiInstance.listServers().then(function(data) {
@@ -496,7 +556,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -514,13 +574,19 @@ Loads a storage as a CD-ROM in the CD-ROM device of a server.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Server id
 
 var opts = { 
-  'storageDevice': new upcloud.StorageDevice1() // StorageDevice1 | 
+  'storageDevice': new upcloud.StorageDeviceLoadRequest() // StorageDeviceLoadRequest | 
 };
 apiInstance.loadCdrom(serverId, opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -535,7 +601,7 @@ apiInstance.loadCdrom(serverId, opts).then(function(data) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **serverId** | **String**| Server id | 
- **storageDevice** | [**StorageDevice1**](StorageDevice1.md)|  | [optional] 
+ **storageDevice** | [**StorageDeviceLoadRequest**](StorageDeviceLoadRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -543,7 +609,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -559,6 +625,12 @@ Modify server
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.ServerApi();
 
@@ -588,7 +660,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -652,6 +724,12 @@ Returns detailed information about a specific server.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.ServerApi();
 
@@ -677,7 +755,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -695,6 +773,12 @@ Returns a list of firewall rules for a specific server.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.ServerApi();
 
@@ -720,7 +804,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -738,6 +822,12 @@ Starts a stopped server. The server state must be &#x60;stopped&#x60;.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.ServerApi();
 
@@ -763,7 +853,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -781,6 +871,12 @@ Stops a started server. The server state must be &#x60;started&#x60;.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.ServerApi();
 
@@ -809,7 +905,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 

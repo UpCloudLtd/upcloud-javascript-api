@@ -33,11 +33,15 @@
 
   /**
    * Constructs a new <code>IpAddress</code>.
+   * The UpCloud network has public and private IP addresses.
    * @alias module:model/IpAddress
    * @class
    */
   var exports = function() {
     var _this = this;
+
+
+
 
 
 
@@ -58,11 +62,20 @@
       if (data.hasOwnProperty('access')) {
         obj['access'] = ApiClient.convertToType(data['access'], 'String');
       }
+      if (data.hasOwnProperty('address')) {
+        obj['address'] = ApiClient.convertToType(data['address'], 'String');
+      }
       if (data.hasOwnProperty('family')) {
         obj['family'] = ApiClient.convertToType(data['family'], 'String');
       }
+      if (data.hasOwnProperty('ptr_record')) {
+        obj['ptr_record'] = ApiClient.convertToType(data['ptr_record'], 'String');
+      }
       if (data.hasOwnProperty('server')) {
         obj['server'] = ApiClient.convertToType(data['server'], 'String');
+      }
+      if (data.hasOwnProperty('part_of_plan')) {
+        obj['part_of_plan'] = ApiClient.convertToType(data['part_of_plan'], 'String');
       }
     }
     return obj;
@@ -74,15 +87,26 @@
    */
   exports.prototype['access'] = undefined;
   /**
+   * @member {String} address
+   */
+  exports.prototype['address'] = undefined;
+  /**
    * The address family of new IP address.
    * @member {module:model/IpAddress.FamilyEnum} family
    */
   exports.prototype['family'] = undefined;
   /**
-   * Server id
+   * @member {String} ptr_record
+   */
+  exports.prototype['ptr_record'] = undefined;
+  /**
    * @member {String} server
    */
   exports.prototype['server'] = undefined;
+  /**
+   * @member {module:model/IpAddress.PartOfPlanEnum} part_of_plan
+   */
+  exports.prototype['part_of_plan'] = undefined;
 
 
   /**
@@ -118,6 +142,23 @@
      * @const
      */
     "IPv6": "IPv6"  };
+
+  /**
+   * Allowed values for the <code>part_of_plan</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.PartOfPlanEnum = {
+    /**
+     * value: "yes"
+     * @const
+     */
+    "yes": "yes",
+    /**
+     * value: "no"
+     * @const
+     */
+    "no": "no"  };
 
 
   return exports;

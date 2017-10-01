@@ -8,18 +8,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/PriceListResponsePrice'], factory);
+    define(['ApiClient', 'model/PriceListResponsePrices'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./PriceListResponsePrice'));
+    module.exports = factory(require('../ApiClient'), require('./PriceListResponsePrices'));
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.PriceListResponse = factory(root.upcloud.ApiClient, root.upcloud.PriceListResponsePrice);
+    root.upcloud.PriceListResponse = factory(root.upcloud.ApiClient, root.upcloud.PriceListResponsePrices);
   }
-}(this, function(ApiClient, PriceListResponsePrice) {
+}(this, function(ApiClient, PriceListResponsePrices) {
   'use strict';
 
 
@@ -53,17 +53,17 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('price')) {
-        obj['price'] = PriceListResponsePrice.constructFromObject(data['price']);
+      if (data.hasOwnProperty('prices')) {
+        obj['prices'] = PriceListResponsePrices.constructFromObject(data['prices']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/PriceListResponsePrice} price
+   * @member {module:model/PriceListResponsePrices} prices
    */
-  exports.prototype['price'] = undefined;
+  exports.prototype['prices'] = undefined;
 
 
 

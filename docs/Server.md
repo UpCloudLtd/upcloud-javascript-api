@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **firewall** | **String** | The state of the server firewall rules. | [optional] [default to &#39;on&#39;]
 **host** | **Number** |  | [optional] 
 **hostname** | **String** | A valid hostname, e.g. host.example.com. The maximum length is 128 characters. | [optional] 
-**ipAddresses** | [**IpAddressListResponseIpAddresses**](IpAddressListResponseIpAddresses.md) |  | [optional] 
+**ipAddresses** | [**IpAddresses**](IpAddresses.md) |  | [optional] 
 **license** | **Number** |  | [optional] 
 **memoryAmount** | **Number** | The amount of main memory in megabytes. See List server configurations. | [optional] 
 **nicModel** | **String** | The model of the server&#39;s network interfaces. | [optional] [default to &#39;e1000&#39;]

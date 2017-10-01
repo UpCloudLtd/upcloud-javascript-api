@@ -8,18 +8,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Account'], factory);
+    define(['ApiClient', 'model/AccountResponse'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Account'));
+    module.exports = factory(require('../ApiClient'), require('../model/AccountResponse'));
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.AccountApi = factory(root.upcloud.ApiClient, root.upcloud.Account);
+    root.upcloud.AccountApi = factory(root.upcloud.ApiClient, root.upcloud.AccountResponse);
   }
-}(this, function(ApiClient, Account) {
+}(this, function(ApiClient, AccountResponse) {
   'use strict';
 
   /**
@@ -43,7 +43,7 @@
     /**
      * Account information
      * Returns information on the user&#39;s account.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Account} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/AccountResponse} and HTTP response
      */
     this.getAccountWithHttpInfo = function() {
       var postBody = null;
@@ -60,10 +60,10 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = Account;
+      var returnType = AccountResponse;
 
       return this.apiClient.callApi(
         '/account', 'GET',
@@ -75,7 +75,7 @@
     /**
      * Account information
      * Returns information on the user&#39;s account.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Account}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AccountResponse}
      */
     this.getAccount = function() {
       return this.getAccountWithHttpInfo()

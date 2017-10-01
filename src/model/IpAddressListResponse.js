@@ -8,18 +8,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/IpAddressListResponseIpAddresses'], factory);
+    define(['ApiClient', 'model/IpAddresses'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./IpAddressListResponseIpAddresses'));
+    module.exports = factory(require('../ApiClient'), require('./IpAddresses'));
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.IpAddressListResponse = factory(root.upcloud.ApiClient, root.upcloud.IpAddressListResponseIpAddresses);
+    root.upcloud.IpAddressListResponse = factory(root.upcloud.ApiClient, root.upcloud.IpAddresses);
   }
-}(this, function(ApiClient, IpAddressListResponseIpAddresses) {
+}(this, function(ApiClient, IpAddresses) {
   'use strict';
 
 
@@ -54,14 +54,14 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('ip_addresses')) {
-        obj['ip_addresses'] = IpAddressListResponseIpAddresses.constructFromObject(data['ip_addresses']);
+        obj['ip_addresses'] = IpAddresses.constructFromObject(data['ip_addresses']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/IpAddressListResponseIpAddresses} ip_addresses
+   * @member {module:model/IpAddresses} ip_addresses
    */
   exports.prototype['ip_addresses'] = undefined;
 

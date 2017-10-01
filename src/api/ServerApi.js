@@ -8,18 +8,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ConfigurationListResponse', 'model/CreateServerResponse', 'model/Error', 'model/FirewallRuleCreateResponse', 'model/FirewallRuleListResponse', 'model/FirewallRuleRequest', 'model/RestartServer', 'model/Server', 'model/ServerListResponse', 'model/StopServer', 'model/StorageDevice', 'model/StorageDevice1'], factory);
+    define(['ApiClient', 'model/AttachStorageDeviceRequest', 'model/ConfigurationListResponse', 'model/CreateServerRequest', 'model/CreateServerResponse', 'model/Error', 'model/FirewallRuleCreateResponse', 'model/FirewallRuleListResponse', 'model/FirewallRuleRequest', 'model/RestartServer', 'model/Server', 'model/ServerListResponse', 'model/StopServer', 'model/StorageDeviceDetachRequest', 'model/StorageDeviceLoadRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ConfigurationListResponse'), require('../model/CreateServerResponse'), require('../model/Error'), require('../model/FirewallRuleCreateResponse'), require('../model/FirewallRuleListResponse'), require('../model/FirewallRuleRequest'), require('../model/RestartServer'), require('../model/Server'), require('../model/ServerListResponse'), require('../model/StopServer'), require('../model/StorageDevice'), require('../model/StorageDevice1'));
+    module.exports = factory(require('../ApiClient'), require('../model/AttachStorageDeviceRequest'), require('../model/ConfigurationListResponse'), require('../model/CreateServerRequest'), require('../model/CreateServerResponse'), require('../model/Error'), require('../model/FirewallRuleCreateResponse'), require('../model/FirewallRuleListResponse'), require('../model/FirewallRuleRequest'), require('../model/RestartServer'), require('../model/Server'), require('../model/ServerListResponse'), require('../model/StopServer'), require('../model/StorageDeviceDetachRequest'), require('../model/StorageDeviceLoadRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.ServerApi = factory(root.upcloud.ApiClient, root.upcloud.ConfigurationListResponse, root.upcloud.CreateServerResponse, root.upcloud.Error, root.upcloud.FirewallRuleCreateResponse, root.upcloud.FirewallRuleListResponse, root.upcloud.FirewallRuleRequest, root.upcloud.RestartServer, root.upcloud.Server, root.upcloud.ServerListResponse, root.upcloud.StopServer, root.upcloud.StorageDevice, root.upcloud.StorageDevice1);
+    root.upcloud.ServerApi = factory(root.upcloud.ApiClient, root.upcloud.AttachStorageDeviceRequest, root.upcloud.ConfigurationListResponse, root.upcloud.CreateServerRequest, root.upcloud.CreateServerResponse, root.upcloud.Error, root.upcloud.FirewallRuleCreateResponse, root.upcloud.FirewallRuleListResponse, root.upcloud.FirewallRuleRequest, root.upcloud.RestartServer, root.upcloud.Server, root.upcloud.ServerListResponse, root.upcloud.StopServer, root.upcloud.StorageDeviceDetachRequest, root.upcloud.StorageDeviceLoadRequest);
   }
-}(this, function(ApiClient, ConfigurationListResponse, CreateServerResponse, Error, FirewallRuleCreateResponse, FirewallRuleListResponse, FirewallRuleRequest, RestartServer, Server, ServerListResponse, StopServer, StorageDevice, StorageDevice1) {
+}(this, function(ApiClient, AttachStorageDeviceRequest, ConfigurationListResponse, CreateServerRequest, CreateServerResponse, Error, FirewallRuleCreateResponse, FirewallRuleListResponse, FirewallRuleRequest, RestartServer, Server, ServerListResponse, StopServer, StorageDeviceDetachRequest, StorageDeviceLoadRequest) {
   'use strict';
 
   /**
@@ -105,7 +105,7 @@
      * Attach storage
      * Attaches a storage as a device to a server.
      * @param {String} serverId Server id
-     * @param {module:model/StorageDevice} storageDevice 
+     * @param {module:model/AttachStorageDeviceRequest} storageDevice 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
     this.attachStorageWithHttpInfo = function(serverId, storageDevice) {
@@ -134,7 +134,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateServerResponse;
@@ -150,7 +150,7 @@
      * Attach storage
      * Attaches a storage as a device to a server.
      * @param {String} serverId Server id
-     * @param {module:model/StorageDevice} storageDevice 
+     * @param {module:model/AttachStorageDeviceRequest} storageDevice 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
     this.attachStorage = function(serverId, storageDevice) {
@@ -194,7 +194,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = FirewallRuleCreateResponse;
@@ -225,7 +225,7 @@
      * Create server
      * Creates a new server instance.
      * @param {Object} opts Optional parameters
-     * @param {module:model/Server} opts.server 
+     * @param {module:model/CreateServerRequest} opts.server 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
     this.createServerWithHttpInfo = function(opts) {
@@ -244,7 +244,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateServerResponse;
@@ -260,7 +260,7 @@
      * Create server
      * Creates a new server instance.
      * @param {Object} opts Optional parameters
-     * @param {module:model/Server} opts.server 
+     * @param {module:model/CreateServerRequest} opts.server 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
     this.createServer = function(opts) {
@@ -275,7 +275,7 @@
      * Remove firewall rule
      * Removes a firewall rule from a server. Firewall rules must be removed individually. The positions of remaining firewall rules will be adjusted after a rule is removed.
      * @param {String} serverId Server id
-     * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
+     * @param {Number} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     this.deleteFirewallRuleWithHttpInfo = function(serverId, firewallRuleNumber) {
@@ -305,7 +305,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = null;
@@ -321,7 +321,7 @@
      * Remove firewall rule
      * Removes a firewall rule from a server. Firewall rules must be removed individually. The positions of remaining firewall rules will be adjusted after a rule is removed.
      * @param {String} serverId Server id
-     * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
+     * @param {Number} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     this.deleteFirewallRule = function(serverId, firewallRuleNumber) {
@@ -358,7 +358,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = null;
@@ -387,7 +387,7 @@
      * Detach storage
      * Detaches a storage resource from a server.
      * @param {String} serverId Server id
-     * @param {module:model/StorageDevice} storageDevice 
+     * @param {module:model/StorageDeviceDetachRequest} storageDevice 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
     this.detachStorageWithHttpInfo = function(serverId, storageDevice) {
@@ -416,7 +416,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateServerResponse;
@@ -432,7 +432,7 @@
      * Detach storage
      * Detaches a storage resource from a server.
      * @param {String} serverId Server id
-     * @param {module:model/StorageDevice} storageDevice 
+     * @param {module:model/StorageDeviceDetachRequest} storageDevice 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
     this.detachStorage = function(serverId, storageDevice) {
@@ -447,7 +447,7 @@
      * Eject CD-ROM
      * Ejects the storage from the CD-ROM device of a server.
      * @param {String} serverId Server id
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     this.ejectCdromWithHttpInfo = function(serverId) {
       var postBody = null;
@@ -470,13 +470,13 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = CreateServerResponse;
+      var returnType = null;
 
       return this.apiClient.callApi(
-        '/server/{serverId}/storage/cdrom/eject', 'POST',
+        '/server/{serverId}/cdrom/eject', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -486,7 +486,7 @@
      * Eject CD-ROM
      * Ejects the storage from the CD-ROM device of a server.
      * @param {String} serverId Server id
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     this.ejectCdrom = function(serverId) {
       return this.ejectCdromWithHttpInfo(serverId)
@@ -500,7 +500,7 @@
      * Get firewall rule details
      * Returns detailed information about a specific firewall rule
      * @param {String} serverId Server id
-     * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
+     * @param {Number} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/FirewallRuleCreateResponse} and HTTP response
      */
     this.getFirewallRuleWithHttpInfo = function(serverId, firewallRuleNumber) {
@@ -530,7 +530,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = FirewallRuleCreateResponse;
@@ -546,7 +546,7 @@
      * Get firewall rule details
      * Returns detailed information about a specific firewall rule
      * @param {String} serverId Server id
-     * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
+     * @param {Number} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/FirewallRuleCreateResponse}
      */
     this.getFirewallRule = function(serverId, firewallRuleNumber) {
@@ -577,7 +577,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = ConfigurationListResponse;
@@ -622,7 +622,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = ServerListResponse;
@@ -652,7 +652,7 @@
      * Loads a storage as a CD-ROM in the CD-ROM device of a server.
      * @param {String} serverId Server id
      * @param {Object} opts Optional parameters
-     * @param {module:model/StorageDevice1} opts.storageDevice 
+     * @param {module:model/StorageDeviceLoadRequest} opts.storageDevice 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
     this.loadCdromWithHttpInfo = function(serverId, opts) {
@@ -677,7 +677,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateServerResponse;
@@ -694,7 +694,7 @@
      * Loads a storage as a CD-ROM in the CD-ROM device of a server.
      * @param {String} serverId Server id
      * @param {Object} opts Optional parameters
-     * @param {module:model/StorageDevice1} opts.storageDevice 
+     * @param {module:model/StorageDeviceLoadRequest} opts.storageDevice 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
     this.loadCdrom = function(serverId, opts) {
@@ -734,7 +734,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateServerResponse;
@@ -848,7 +848,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateServerResponse;
@@ -901,7 +901,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = FirewallRuleListResponse;
@@ -954,7 +954,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateServerResponse;
@@ -1013,7 +1013,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateServerResponse;

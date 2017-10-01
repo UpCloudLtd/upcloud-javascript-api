@@ -1,6 +1,6 @@
 # upcloud.StorageApi
 
-All URIs are relative to *http://api.upcloud.com/1.2*
+All URIs are relative to *https://api.upcloud.com/1.2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**createStorage**](StorageApi.md#createStorage) | **POST** /storage | Create storage
 [**deleteStorage**](StorageApi.md#deleteStorage) | **DELETE** /storage/{storageId} | Delete storage
 [**detachStorage**](StorageApi.md#detachStorage) | **POST** /server/{serverId}/storage/detach | Detach storage
-[**ejectCdrom**](StorageApi.md#ejectCdrom) | **POST** /server/{serverId}/storage/cdrom/eject | Eject CD-ROM
+[**ejectCdrom**](StorageApi.md#ejectCdrom) | **POST** /server/{serverId}/cdrom/eject | Eject CD-ROM
 [**favoriteStorage**](StorageApi.md#favoriteStorage) | **POST** /storage/{storageId}/favorite | Add storage to favorites
 [**getStorageDetails**](StorageApi.md#getStorageDetails) | **GET** /storage/{storageId} | Get storage details
 [**listStorageTypes**](StorageApi.md#listStorageTypes) | **GET** /storage/{type}/ | List of storages by type
@@ -34,12 +34,18 @@ Attaches a storage as a device to a server.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.StorageApi();
 
 var serverId = "serverId_example"; // String | Server id
 
-var storageDevice = new upcloud.StorageDevice(); // StorageDevice | 
+var storageDevice = new upcloud.AttachStorageDeviceRequest(); // AttachStorageDeviceRequest | 
 
 apiInstance.attachStorage(serverId, storageDevice).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -54,7 +60,7 @@ apiInstance.attachStorage(serverId, storageDevice).then(function(data) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **serverId** | **String**| Server id | 
- **storageDevice** | [**StorageDevice**](StorageDevice.md)|  | 
+ **storageDevice** | [**AttachStorageDeviceRequest**](AttachStorageDeviceRequest.md)|  | 
 
 ### Return type
 
@@ -62,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -80,13 +86,19 @@ Creates a point-in-time backup of a storage resource. For automatic, scheduled b
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | Storage id
 
 var opts = { 
-  'storage': new upcloud.Storage4() // Storage4 | 
+  'storage': new upcloud.CreateBackupStorageRequest() // CreateBackupStorageRequest | 
 };
 apiInstance.backupStorage(storageId, opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -101,7 +113,7 @@ apiInstance.backupStorage(storageId, opts).then(function(data) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **storageId** | **String**| Storage id | 
- **storage** | [**Storage4**](Storage4.md)|  | [optional] 
+ **storage** | [**CreateBackupStorageRequest**](CreateBackupStorageRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -109,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -127,6 +139,12 @@ Cancels a running cloning operation and deletes the incomplete copy.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.StorageApi();
 
@@ -152,7 +170,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -170,13 +188,19 @@ Creates an exact copy of an existing storage resource.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | Storage id
 
 var opts = { 
-  'storage': new upcloud.Storage2() // Storage2 | 
+  'storage': new upcloud.CloneStorageRequest() // CloneStorageRequest | 
 };
 apiInstance.cloneStorage(storageId, opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -191,7 +215,7 @@ apiInstance.cloneStorage(storageId, opts).then(function(data) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **storageId** | **String**| Storage id | 
- **storage** | [**Storage2**](Storage2.md)|  | [optional] 
+ **storage** | [**CloneStorageRequest**](CloneStorageRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -199,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -217,10 +241,16 @@ Creates a new storage resource.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.StorageApi();
 
-var storage = new upcloud.Storage(); // Storage | 
+var storage = new upcloud.CreateStorageRequest(); // CreateStorageRequest | 
 
 apiInstance.createStorage(storage).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -234,7 +264,7 @@ apiInstance.createStorage(storage).then(function(data) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storage** | [**Storage**](Storage.md)|  | 
+ **storage** | [**CreateStorageRequest**](CreateStorageRequest.md)|  | 
 
 ### Return type
 
@@ -242,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -260,6 +290,12 @@ Deleted an existing storage resource.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.StorageApi();
 
@@ -285,7 +321,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -303,12 +339,18 @@ Detaches a storage resource from a server.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.StorageApi();
 
 var serverId = "serverId_example"; // String | Server id
 
-var storageDevice = new upcloud.StorageDevice(); // StorageDevice | 
+var storageDevice = new upcloud.StorageDeviceDetachRequest(); // StorageDeviceDetachRequest | 
 
 apiInstance.detachStorage(serverId, storageDevice).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -323,7 +365,7 @@ apiInstance.detachStorage(serverId, storageDevice).then(function(data) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **serverId** | **String**| Server id | 
- **storageDevice** | [**StorageDevice**](StorageDevice.md)|  | 
+ **storageDevice** | [**StorageDeviceDetachRequest**](StorageDeviceDetachRequest.md)|  | 
 
 ### Return type
 
@@ -331,7 +373,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -340,7 +382,7 @@ No authorization required
 
 <a name="ejectCdrom"></a>
 # **ejectCdrom**
-> CreateServerResponse ejectCdrom(serverId)
+> ejectCdrom(serverId)
 
 Eject CD-ROM
 
@@ -349,13 +391,19 @@ Ejects the storage from the CD-ROM device of a server.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.StorageApi();
 
 var serverId = "serverId_example"; // String | Server id
 
-apiInstance.ejectCdrom(serverId).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
+apiInstance.ejectCdrom(serverId).then(function() {
+  console.log('API called successfully.');
 }, function(error) {
   console.error(error);
 });
@@ -370,11 +418,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateServerResponse**](CreateServerResponse.md)
+null (empty response body)
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -392,6 +440,12 @@ Adds a storage to the list of favorite storages. To list favorite storages, see 
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.StorageApi();
 
@@ -417,7 +471,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -435,6 +489,12 @@ Returns detailed information about a specific storage resource.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.StorageApi();
 
@@ -460,7 +520,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -476,6 +536,12 @@ List of storages by type
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.StorageApi();
 
@@ -501,7 +567,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -517,6 +583,12 @@ List of storages
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.StorageApi();
 apiInstance.listStorages().then(function(data) {
@@ -536,7 +608,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -554,13 +626,19 @@ Loads a storage as a CD-ROM in the CD-ROM device of a server.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.StorageApi();
 
 var serverId = "serverId_example"; // String | Server id
 
 var opts = { 
-  'storageDevice': new upcloud.StorageDevice1() // StorageDevice1 | 
+  'storageDevice': new upcloud.StorageDeviceLoadRequest() // StorageDeviceLoadRequest | 
 };
 apiInstance.loadCdrom(serverId, opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -575,7 +653,7 @@ apiInstance.loadCdrom(serverId, opts).then(function(data) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **serverId** | **String**| Server id | 
- **storageDevice** | [**StorageDevice1**](StorageDevice1.md)|  | [optional] 
+ **storageDevice** | [**StorageDeviceLoadRequest**](StorageDeviceLoadRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -583,7 +661,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -601,12 +679,18 @@ Modifies an existing storage resource. This operation is used to rename or resiz
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | 
 
-var storage = new upcloud.Storage1(); // Storage1 | 
+var storage = new upcloud.ModifyStorageRequest(); // ModifyStorageRequest | 
 
 apiInstance.modifyStorage(storageIdstorage).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -621,7 +705,7 @@ apiInstance.modifyStorage(storageIdstorage).then(function(data) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **storageId** | **String**|  | 
- **storage** | [**Storage1**](Storage1.md)|  | 
+ **storage** | [**ModifyStorageRequest**](ModifyStorageRequest.md)|  | 
 
 ### Return type
 
@@ -629,7 +713,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -647,6 +731,12 @@ Restores the origin storage with data from the specified backup storage.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.StorageApi();
 
@@ -672,7 +762,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -690,13 +780,19 @@ Creates an exact copy of an existing storage resource which can be used as a tem
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | Storage id
 
 var opts = { 
-  'storage': new upcloud.Storage3() // Storage3 | 
+  'storage': new upcloud.TemplitizeStorageRequest() // TemplitizeStorageRequest | 
 };
 apiInstance.templatizeStorage(storageId, opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -711,7 +807,7 @@ apiInstance.templatizeStorage(storageId, opts).then(function(data) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **storageId** | **String**| Storage id | 
- **storage** | [**Storage3**](Storage3.md)|  | [optional] 
+ **storage** | [**TemplitizeStorageRequest**](TemplitizeStorageRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -719,7 +815,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -737,6 +833,12 @@ Delete a storage from the list of favorite storages. To list favorite storages, 
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.StorageApi();
 
@@ -762,7 +864,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 

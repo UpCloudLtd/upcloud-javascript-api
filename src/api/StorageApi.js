@@ -8,18 +8,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CreateServerResponse', 'model/CreateStorageResponse', 'model/Error', 'model/Storage', 'model/Storage1', 'model/Storage2', 'model/Storage3', 'model/Storage4', 'model/StorageDevice', 'model/StorageDevice1', 'model/SuccessStoragesResponse'], factory);
+    define(['ApiClient', 'model/AttachStorageDeviceRequest', 'model/CloneStorageRequest', 'model/CreateBackupStorageRequest', 'model/CreateServerResponse', 'model/CreateStorageRequest', 'model/CreateStorageResponse', 'model/Error', 'model/ModifyStorageRequest', 'model/StorageDeviceDetachRequest', 'model/StorageDeviceLoadRequest', 'model/SuccessStoragesResponse', 'model/TemplitizeStorageRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/CreateServerResponse'), require('../model/CreateStorageResponse'), require('../model/Error'), require('../model/Storage'), require('../model/Storage1'), require('../model/Storage2'), require('../model/Storage3'), require('../model/Storage4'), require('../model/StorageDevice'), require('../model/StorageDevice1'), require('../model/SuccessStoragesResponse'));
+    module.exports = factory(require('../ApiClient'), require('../model/AttachStorageDeviceRequest'), require('../model/CloneStorageRequest'), require('../model/CreateBackupStorageRequest'), require('../model/CreateServerResponse'), require('../model/CreateStorageRequest'), require('../model/CreateStorageResponse'), require('../model/Error'), require('../model/ModifyStorageRequest'), require('../model/StorageDeviceDetachRequest'), require('../model/StorageDeviceLoadRequest'), require('../model/SuccessStoragesResponse'), require('../model/TemplitizeStorageRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.StorageApi = factory(root.upcloud.ApiClient, root.upcloud.CreateServerResponse, root.upcloud.CreateStorageResponse, root.upcloud.Error, root.upcloud.Storage, root.upcloud.Storage1, root.upcloud.Storage2, root.upcloud.Storage3, root.upcloud.Storage4, root.upcloud.StorageDevice, root.upcloud.StorageDevice1, root.upcloud.SuccessStoragesResponse);
+    root.upcloud.StorageApi = factory(root.upcloud.ApiClient, root.upcloud.AttachStorageDeviceRequest, root.upcloud.CloneStorageRequest, root.upcloud.CreateBackupStorageRequest, root.upcloud.CreateServerResponse, root.upcloud.CreateStorageRequest, root.upcloud.CreateStorageResponse, root.upcloud.Error, root.upcloud.ModifyStorageRequest, root.upcloud.StorageDeviceDetachRequest, root.upcloud.StorageDeviceLoadRequest, root.upcloud.SuccessStoragesResponse, root.upcloud.TemplitizeStorageRequest);
   }
-}(this, function(ApiClient, CreateServerResponse, CreateStorageResponse, Error, Storage, Storage1, Storage2, Storage3, Storage4, StorageDevice, StorageDevice1, SuccessStoragesResponse) {
+}(this, function(ApiClient, AttachStorageDeviceRequest, CloneStorageRequest, CreateBackupStorageRequest, CreateServerResponse, CreateStorageRequest, CreateStorageResponse, Error, ModifyStorageRequest, StorageDeviceDetachRequest, StorageDeviceLoadRequest, SuccessStoragesResponse, TemplitizeStorageRequest) {
   'use strict';
 
   /**
@@ -44,7 +44,7 @@
      * Attach storage
      * Attaches a storage as a device to a server.
      * @param {String} serverId Server id
-     * @param {module:model/StorageDevice} storageDevice 
+     * @param {module:model/AttachStorageDeviceRequest} storageDevice 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
     this.attachStorageWithHttpInfo = function(serverId, storageDevice) {
@@ -73,7 +73,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateServerResponse;
@@ -89,7 +89,7 @@
      * Attach storage
      * Attaches a storage as a device to a server.
      * @param {String} serverId Server id
-     * @param {module:model/StorageDevice} storageDevice 
+     * @param {module:model/AttachStorageDeviceRequest} storageDevice 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
     this.attachStorage = function(serverId, storageDevice) {
@@ -105,7 +105,7 @@
      * Creates a point-in-time backup of a storage resource. For automatic, scheduled backups, see  &#x60;backup_rule&#x60; in Create storage or Modify storage.
      * @param {String} storageId Storage id
      * @param {Object} opts Optional parameters
-     * @param {module:model/Storage4} opts.storage 
+     * @param {module:model/CreateBackupStorageRequest} opts.storage 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateStorageResponse} and HTTP response
      */
     this.backupStorageWithHttpInfo = function(storageId, opts) {
@@ -130,7 +130,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateStorageResponse;
@@ -147,7 +147,7 @@
      * Creates a point-in-time backup of a storage resource. For automatic, scheduled backups, see  &#x60;backup_rule&#x60; in Create storage or Modify storage.
      * @param {String} storageId Storage id
      * @param {Object} opts Optional parameters
-     * @param {module:model/Storage4} opts.storage 
+     * @param {module:model/CreateBackupStorageRequest} opts.storage 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateStorageResponse}
      */
     this.backupStorage = function(storageId, opts) {
@@ -185,7 +185,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = null;
@@ -216,7 +216,7 @@
      * Creates an exact copy of an existing storage resource.
      * @param {String} storageId Storage id
      * @param {Object} opts Optional parameters
-     * @param {module:model/Storage2} opts.storage 
+     * @param {module:model/CloneStorageRequest} opts.storage 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateStorageResponse} and HTTP response
      */
     this.cloneStorageWithHttpInfo = function(storageId, opts) {
@@ -241,7 +241,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateStorageResponse;
@@ -258,7 +258,7 @@
      * Creates an exact copy of an existing storage resource.
      * @param {String} storageId Storage id
      * @param {Object} opts Optional parameters
-     * @param {module:model/Storage2} opts.storage 
+     * @param {module:model/CloneStorageRequest} opts.storage 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateStorageResponse}
      */
     this.cloneStorage = function(storageId, opts) {
@@ -272,7 +272,7 @@
     /**
      * Create storage
      * Creates a new storage resource.
-     * @param {module:model/Storage} storage 
+     * @param {module:model/CreateStorageRequest} storage 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateStorageResponse} and HTTP response
      */
     this.createStorageWithHttpInfo = function(storage) {
@@ -295,7 +295,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateStorageResponse;
@@ -310,7 +310,7 @@
     /**
      * Create storage
      * Creates a new storage resource.
-     * @param {module:model/Storage} storage 
+     * @param {module:model/CreateStorageRequest} storage 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateStorageResponse}
      */
     this.createStorage = function(storage) {
@@ -348,7 +348,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = null;
@@ -378,7 +378,7 @@
      * Detach storage
      * Detaches a storage resource from a server.
      * @param {String} serverId Server id
-     * @param {module:model/StorageDevice} storageDevice 
+     * @param {module:model/StorageDeviceDetachRequest} storageDevice 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
     this.detachStorageWithHttpInfo = function(serverId, storageDevice) {
@@ -407,7 +407,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateServerResponse;
@@ -423,7 +423,7 @@
      * Detach storage
      * Detaches a storage resource from a server.
      * @param {String} serverId Server id
-     * @param {module:model/StorageDevice} storageDevice 
+     * @param {module:model/StorageDeviceDetachRequest} storageDevice 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
     this.detachStorage = function(serverId, storageDevice) {
@@ -438,7 +438,7 @@
      * Eject CD-ROM
      * Ejects the storage from the CD-ROM device of a server.
      * @param {String} serverId Server id
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     this.ejectCdromWithHttpInfo = function(serverId) {
       var postBody = null;
@@ -461,13 +461,13 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = CreateServerResponse;
+      var returnType = null;
 
       return this.apiClient.callApi(
-        '/server/{serverId}/storage/cdrom/eject', 'POST',
+        '/server/{serverId}/cdrom/eject', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -477,7 +477,7 @@
      * Eject CD-ROM
      * Ejects the storage from the CD-ROM device of a server.
      * @param {String} serverId Server id
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     this.ejectCdrom = function(serverId) {
       return this.ejectCdromWithHttpInfo(serverId)
@@ -514,7 +514,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = null;
@@ -567,7 +567,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateStorageResponse;
@@ -619,7 +619,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = SuccessStoragesResponse;
@@ -663,7 +663,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = SuccessStoragesResponse;
@@ -692,7 +692,7 @@
      * Loads a storage as a CD-ROM in the CD-ROM device of a server.
      * @param {String} serverId Server id
      * @param {Object} opts Optional parameters
-     * @param {module:model/StorageDevice1} opts.storageDevice 
+     * @param {module:model/StorageDeviceLoadRequest} opts.storageDevice 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
     this.loadCdromWithHttpInfo = function(serverId, opts) {
@@ -717,7 +717,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateServerResponse;
@@ -734,7 +734,7 @@
      * Loads a storage as a CD-ROM in the CD-ROM device of a server.
      * @param {String} serverId Server id
      * @param {Object} opts Optional parameters
-     * @param {module:model/StorageDevice1} opts.storageDevice 
+     * @param {module:model/StorageDeviceLoadRequest} opts.storageDevice 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
     this.loadCdrom = function(serverId, opts) {
@@ -749,7 +749,7 @@
      * Modify storage
      * Modifies an existing storage resource. This operation is used to rename or resize the storage.
      * @param {String} storageId 
-     * @param {module:model/Storage1} storage 
+     * @param {module:model/ModifyStorageRequest} storage 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateStorageResponse} and HTTP response
      */
     this.modifyStorageWithHttpInfo = function(storageId, storage) {
@@ -778,7 +778,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateStorageResponse;
@@ -794,7 +794,7 @@
      * Modify storage
      * Modifies an existing storage resource. This operation is used to rename or resize the storage.
      * @param {String} storageId 
-     * @param {module:model/Storage1} storage 
+     * @param {module:model/ModifyStorageRequest} storage 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateStorageResponse}
      */
     this.modifyStorage = function(storageId, storage) {
@@ -832,7 +832,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = null;
@@ -863,7 +863,7 @@
      * Creates an exact copy of an existing storage resource which can be used as a template for creating new servers.
      * @param {String} storageId Storage id
      * @param {Object} opts Optional parameters
-     * @param {module:model/Storage3} opts.storage 
+     * @param {module:model/TemplitizeStorageRequest} opts.storage 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateStorageResponse} and HTTP response
      */
     this.templatizeStorageWithHttpInfo = function(storageId, opts) {
@@ -888,7 +888,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateStorageResponse;
@@ -905,7 +905,7 @@
      * Creates an exact copy of an existing storage resource which can be used as a template for creating new servers.
      * @param {String} storageId Storage id
      * @param {Object} opts Optional parameters
-     * @param {module:model/Storage3} opts.storage 
+     * @param {module:model/TemplitizeStorageRequest} opts.storage 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateStorageResponse}
      */
     this.templatizeStorage = function(storageId, opts) {
@@ -943,7 +943,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = null;

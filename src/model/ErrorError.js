@@ -54,24 +54,24 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('code')) {
-        obj['code'] = ErrorCode.constructFromObject(data['code']);
+      if (data.hasOwnProperty('error_code')) {
+        obj['error_code'] = ErrorCode.constructFromObject(data['error_code']);
       }
-      if (data.hasOwnProperty('status')) {
-        obj['status'] = ErrorStatus.constructFromObject(data['status']);
+      if (data.hasOwnProperty('error_status')) {
+        obj['error_status'] = ErrorStatus.constructFromObject(data['error_status']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/ErrorCode} code
+   * @member {module:model/ErrorCode} error_code
    */
-  exports.prototype['code'] = undefined;
+  exports.prototype['error_code'] = undefined;
   /**
-   * @member {module:model/ErrorStatus} status
+   * @member {module:model/ErrorStatus} error_status
    */
-  exports.prototype['status'] = undefined;
+  exports.prototype['error_status'] = undefined;
 
 
 

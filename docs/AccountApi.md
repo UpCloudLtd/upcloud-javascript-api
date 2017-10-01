@@ -1,6 +1,6 @@
 # upcloud.AccountApi
 
-All URIs are relative to *http://api.upcloud.com/1.2*
+All URIs are relative to *https://api.upcloud.com/1.2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getAccount"></a>
 # **getAccount**
-> Account getAccount()
+> AccountResponse getAccount()
 
 Account information
 
@@ -18,6 +18,12 @@ Returns information on the user&#39;s account.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.AccountApi();
 apiInstance.getAccount().then(function(data) {
@@ -33,11 +39,11 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**Account**](Account.md)
+[**AccountResponse**](AccountResponse.md)
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 

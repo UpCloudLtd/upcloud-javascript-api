@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **interval** | **String** |  | [optional] 
+**time** | **String** |  | [optional] 
 **retention** | **Number** |  | [optional] 
 
 

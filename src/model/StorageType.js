@@ -48,7 +48,12 @@
      * value: "backup"
      * @const
      */
-    "backup": "backup"  };
+    "backup": "backup",
+    /**
+     * value: "normal"
+     * @const
+     */
+    "normal": "normal"  };
 
   /**
    * Returns a <code>StorageType</code> enum value from a Javascript object name.

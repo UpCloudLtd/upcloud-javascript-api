@@ -1,0 +1,8 @@
+# upcloud.AttachStorageDeviceRequest
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**storageDevice** | [**StorageDevice**](StorageDevice.md) |  | [optional] 
+
+

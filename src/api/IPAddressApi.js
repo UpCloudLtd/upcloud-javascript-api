@@ -8,18 +8,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AssignIpResponse', 'model/Error', 'model/IpAddress', 'model/IpAddress1', 'model/IpAddressListResponse'], factory);
+    define(['ApiClient', 'model/AddIpRequest', 'model/AssignIpResponse', 'model/Error', 'model/IpAddressListResponse', 'model/ModifyIpRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AssignIpResponse'), require('../model/Error'), require('../model/IpAddress'), require('../model/IpAddress1'), require('../model/IpAddressListResponse'));
+    module.exports = factory(require('../ApiClient'), require('../model/AddIpRequest'), require('../model/AssignIpResponse'), require('../model/Error'), require('../model/IpAddressListResponse'), require('../model/ModifyIpRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.IPAddressApi = factory(root.upcloud.ApiClient, root.upcloud.AssignIpResponse, root.upcloud.Error, root.upcloud.IpAddress, root.upcloud.IpAddress1, root.upcloud.IpAddressListResponse);
+    root.upcloud.IPAddressApi = factory(root.upcloud.ApiClient, root.upcloud.AddIpRequest, root.upcloud.AssignIpResponse, root.upcloud.Error, root.upcloud.IpAddressListResponse, root.upcloud.ModifyIpRequest);
   }
-}(this, function(ApiClient, AssignIpResponse, Error, IpAddress, IpAddress1, IpAddressListResponse) {
+}(this, function(ApiClient, AddIpRequest, AssignIpResponse, Error, IpAddressListResponse, ModifyIpRequest) {
   'use strict';
 
   /**
@@ -44,7 +44,7 @@
      * Assign IP address
      * Assigns a new IP address to a server.
      * @param {Object} opts Optional parameters
-     * @param {module:model/IpAddress} opts.ipAddress 
+     * @param {module:model/AddIpRequest} opts.ipAddress 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/AssignIpResponse} and HTTP response
      */
     this.addIpWithHttpInfo = function(opts) {
@@ -63,7 +63,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = AssignIpResponse;
@@ -79,7 +79,7 @@
      * Assign IP address
      * Assigns a new IP address to a server.
      * @param {Object} opts Optional parameters
-     * @param {module:model/IpAddress} opts.ipAddress 
+     * @param {module:model/AddIpRequest} opts.ipAddress 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AssignIpResponse}
      */
     this.addIp = function(opts) {
@@ -117,7 +117,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = null;
@@ -170,7 +170,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = AssignIpResponse;
@@ -216,7 +216,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = IpAddressListResponse;
@@ -246,7 +246,7 @@
      * Modifies the reverse DNS PTR record corresponding to an IP address. The PTR record can only be set to public IP address.
      * @param {String} ip Ip address
      * @param {Object} opts Optional parameters
-     * @param {module:model/IpAddress1} opts.ipAddress 
+     * @param {module:model/ModifyIpRequest} opts.ipAddress 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/AssignIpResponse} and HTTP response
      */
     this.modifyIpWithHttpInfo = function(ip, opts) {
@@ -271,7 +271,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = AssignIpResponse;
@@ -288,7 +288,7 @@
      * Modifies the reverse DNS PTR record corresponding to an IP address. The PTR record can only be set to public IP address.
      * @param {String} ip Ip address
      * @param {Object} opts Optional parameters
-     * @param {module:model/IpAddress1} opts.ipAddress 
+     * @param {module:model/ModifyIpRequest} opts.ipAddress 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AssignIpResponse}
      */
     this.modifyIp = function(ip, opts) {

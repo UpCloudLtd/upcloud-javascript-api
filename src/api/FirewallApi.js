@@ -73,7 +73,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = FirewallRuleCreateResponse;
@@ -104,7 +104,7 @@
      * Remove firewall rule
      * Removes a firewall rule from a server. Firewall rules must be removed individually. The positions of remaining firewall rules will be adjusted after a rule is removed.
      * @param {String} serverId Server id
-     * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
+     * @param {Number} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     this.deleteFirewallRuleWithHttpInfo = function(serverId, firewallRuleNumber) {
@@ -134,7 +134,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = null;
@@ -150,7 +150,7 @@
      * Remove firewall rule
      * Removes a firewall rule from a server. Firewall rules must be removed individually. The positions of remaining firewall rules will be adjusted after a rule is removed.
      * @param {String} serverId Server id
-     * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
+     * @param {Number} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     this.deleteFirewallRule = function(serverId, firewallRuleNumber) {
@@ -165,7 +165,7 @@
      * Get firewall rule details
      * Returns detailed information about a specific firewall rule
      * @param {String} serverId Server id
-     * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
+     * @param {Number} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/FirewallRuleCreateResponse} and HTTP response
      */
     this.getFirewallRuleWithHttpInfo = function(serverId, firewallRuleNumber) {
@@ -195,7 +195,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = FirewallRuleCreateResponse;
@@ -211,7 +211,7 @@
      * Get firewall rule details
      * Returns detailed information about a specific firewall rule
      * @param {String} serverId Server id
-     * @param {String} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
+     * @param {Number} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/FirewallRuleCreateResponse}
      */
     this.getFirewallRule = function(serverId, firewallRuleNumber) {
@@ -249,7 +249,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = FirewallRuleListResponse;

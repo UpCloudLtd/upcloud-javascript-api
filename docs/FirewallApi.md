@@ -1,6 +1,6 @@
 # upcloud.FirewallApi
 
-All URIs are relative to *http://api.upcloud.com/1.2*
+All URIs are relative to *https://api.upcloud.com/1.2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,6 +21,12 @@ Creates a new firewall rule
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.FirewallApi();
 
@@ -49,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -67,12 +73,18 @@ Removes a firewall rule from a server. Firewall rules must be removed individual
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.FirewallApi();
 
 var serverId = "serverId_example"; // String | Server id
 
-var firewallRuleNumber = "firewallRuleNumber_example"; // String | Denotes the index of the firewall rule in the server's firewall rule list
+var firewallRuleNumber = 3.4; // Number | Denotes the index of the firewall rule in the server's firewall rule list
 
 apiInstance.deleteFirewallRule(serverId, firewallRuleNumber).then(function() {
   console.log('API called successfully.');
@@ -87,7 +99,7 @@ apiInstance.deleteFirewallRule(serverId, firewallRuleNumber).then(function() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **serverId** | **String**| Server id | 
- **firewallRuleNumber** | **String**| Denotes the index of the firewall rule in the server&#39;s firewall rule list | 
+ **firewallRuleNumber** | **Number**| Denotes the index of the firewall rule in the server&#39;s firewall rule list | 
 
 ### Return type
 
@@ -95,7 +107,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -113,12 +125,18 @@ Returns detailed information about a specific firewall rule
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.FirewallApi();
 
 var serverId = "serverId_example"; // String | Server id
 
-var firewallRuleNumber = "firewallRuleNumber_example"; // String | Denotes the index of the firewall rule in the server's firewall rule list
+var firewallRuleNumber = 3.4; // Number | Denotes the index of the firewall rule in the server's firewall rule list
 
 apiInstance.getFirewallRule(serverId, firewallRuleNumber).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -133,7 +151,7 @@ apiInstance.getFirewallRule(serverId, firewallRuleNumber).then(function(data) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **serverId** | **String**| Server id | 
- **firewallRuleNumber** | **String**| Denotes the index of the firewall rule in the server&#39;s firewall rule list | 
+ **firewallRuleNumber** | **Number**| Denotes the index of the firewall rule in the server&#39;s firewall rule list | 
 
 ### Return type
 
@@ -141,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -159,6 +177,12 @@ Returns a list of firewall rules for a specific server.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.FirewallApi();
 
@@ -184,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 

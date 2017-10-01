@@ -8,18 +8,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/StopServerRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./StopServerRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.StopServer = factory(root.upcloud.ApiClient);
+    root.upcloud.StopServer = factory(root.upcloud.ApiClient, root.upcloud.StopServerRequest);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, StopServerRequest) {
   'use strict';
 
 
@@ -40,7 +40,6 @@
     var _this = this;
 
 
-
   };
 
   /**
@@ -54,45 +53,18 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('stop_type')) {
-        obj['stop_type'] = ApiClient.convertToType(data['stop_type'], 'String');
-      }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
+      if (data.hasOwnProperty('stop_server')) {
+        obj['stop_server'] = StopServerRequest.constructFromObject(data['stop_server']);
       }
     }
     return obj;
   }
 
   /**
-   * Type of stop operation performed on the server.
-   * @member {module:model/StopServer.StopTypeEnum} stop_type
-   * @default 'soft'
+   * @member {module:model/StopServerRequest} stop_server
    */
-  exports.prototype['stop_type'] = 'soft';
-  /**
-   * The stop timeout in seconds.
-   * @member {Number} timeout
-   */
-  exports.prototype['timeout'] = undefined;
+  exports.prototype['stop_server'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>stop_type</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.StopTypeEnum = {
-    /**
-     * value: "soft"
-     * @const
-     */
-    "soft": "soft",
-    /**
-     * value: "hard"
-     * @const
-     */
-    "hard": "hard"  };
 
 
   return exports;

@@ -1,6 +1,6 @@
 # upcloud.IPAddressApi
 
-All URIs are relative to *http://api.upcloud.com/1.2*
+All URIs are relative to *https://api.upcloud.com/1.2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -22,11 +22,17 @@ Assigns a new IP address to a server.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.IPAddressApi();
 
 var opts = { 
-  'ipAddress': new upcloud.IpAddress() // IpAddress | 
+  'ipAddress': new upcloud.AddIpRequest() // AddIpRequest | 
 };
 apiInstance.addIp(opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -40,7 +46,7 @@ apiInstance.addIp(opts).then(function(data) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ipAddress** | [**IpAddress**](IpAddress.md)|  | [optional] 
+ **ipAddress** | [**AddIpRequest**](AddIpRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -48,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -66,6 +72,12 @@ Removes an IP address from a server.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.IPAddressApi();
 
@@ -91,7 +103,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -109,6 +121,12 @@ Returns detailed information about a specific IP address.
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.IPAddressApi();
 
@@ -134,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -152,6 +170,12 @@ Returns a list of all IP addresses assigned to servers on the current user accou
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.IPAddressApi();
 apiInstance.listIps().then(function(data) {
@@ -171,7 +195,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -189,13 +213,19 @@ Modifies the reverse DNS PTR record corresponding to an IP address. The PTR reco
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.IPAddressApi();
 
 var ip = "ip_example"; // String | Ip address
 
 var opts = { 
-  'ipAddress': new upcloud.IpAddress1() // IpAddress1 | 
+  'ipAddress': new upcloud.ModifyIpRequest() // ModifyIpRequest | 
 };
 apiInstance.modifyIp(ip, opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -210,7 +240,7 @@ apiInstance.modifyIp(ip, opts).then(function(data) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ip** | **String**| Ip address | 
- **ipAddress** | [**IpAddress1**](IpAddress1.md)|  | [optional] 
+ **ipAddress** | [**ModifyIpRequest**](ModifyIpRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -218,7 +248,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
