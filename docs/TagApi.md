@@ -23,6 +23,12 @@ Servers can be tagged with one or more tags. The tags used must exist
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.TagApi();
 
@@ -51,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -69,10 +75,16 @@ Creates a new tag. Existing servers can be tagged in same request
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.TagApi();
 
-var tag = new upcloud.Tag(); // Tag | 
+var tag = new upcloud.TagCreateRequest(); // TagCreateRequest | 
 
 apiInstance.createTag(tag).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -86,7 +98,7 @@ apiInstance.createTag(tag).then(function(data) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tag** | [**Tag**](Tag.md)|  | 
+ **tag** | [**TagCreateRequest**](TagCreateRequest.md)|  | 
 
 ### Return type
 
@@ -94,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -112,6 +124,12 @@ Deleting existing tag untags all servers from specified tag and deletes tag defi
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.TagApi();
 
@@ -137,7 +155,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -155,6 +173,12 @@ Returns all existing tags with their properties and servers tagged
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.TagApi();
 apiInstance.listTags().then(function(data) {
@@ -174,7 +198,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -192,12 +216,18 @@ Changes attributes of an existing tag
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.TagApi();
 
 var tagName = "tagName_example"; // String | Tag name
 
-var tag = new upcloud.Tag1(); // Tag1 | 
+var tag = new upcloud.ModifyTagRequest(); // ModifyTagRequest | 
 
 apiInstance.modifyTag(tagNametag).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -212,7 +242,7 @@ apiInstance.modifyTag(tagNametag).then(function(data) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tagName** | **String**| Tag name | 
- **tag** | [**Tag1**](Tag1.md)|  | 
+ **tag** | [**ModifyTagRequest**](ModifyTagRequest.md)|  | 
 
 ### Return type
 
@@ -220,7 +250,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 
@@ -238,6 +268,12 @@ Untags tags from given server. The tag(s) must exist
 ### Example
 ```javascript
 var upcloud = require('upcloud');
+var defaultClient = upcloud.ApiClient.instance;
+
+// Configure HTTP basic authorization: baseAuth
+var baseAuth = defaultClient.authentications['baseAuth'];
+baseAuth.username = 'YOUR USERNAME';
+baseAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new upcloud.TagApi();
 
@@ -266,7 +302,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[baseAuth](../README.md#baseAuth)
 
 ### HTTP request headers
 

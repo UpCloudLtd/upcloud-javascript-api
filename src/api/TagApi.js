@@ -8,18 +8,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CreateNewTagResponse', 'model/CreateServerResponse', 'model/Error', 'model/Tag', 'model/Tag1', 'model/TagListResponse'], factory);
+    define(['ApiClient', 'model/CreateNewTagResponse', 'model/CreateServerResponse', 'model/Error', 'model/ModifyTagRequest', 'model/TagCreateRequest', 'model/TagListResponse'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/CreateNewTagResponse'), require('../model/CreateServerResponse'), require('../model/Error'), require('../model/Tag'), require('../model/Tag1'), require('../model/TagListResponse'));
+    module.exports = factory(require('../ApiClient'), require('../model/CreateNewTagResponse'), require('../model/CreateServerResponse'), require('../model/Error'), require('../model/ModifyTagRequest'), require('../model/TagCreateRequest'), require('../model/TagListResponse'));
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.TagApi = factory(root.upcloud.ApiClient, root.upcloud.CreateNewTagResponse, root.upcloud.CreateServerResponse, root.upcloud.Error, root.upcloud.Tag, root.upcloud.Tag1, root.upcloud.TagListResponse);
+    root.upcloud.TagApi = factory(root.upcloud.ApiClient, root.upcloud.CreateNewTagResponse, root.upcloud.CreateServerResponse, root.upcloud.Error, root.upcloud.ModifyTagRequest, root.upcloud.TagCreateRequest, root.upcloud.TagListResponse);
   }
-}(this, function(ApiClient, CreateNewTagResponse, CreateServerResponse, Error, Tag, Tag1, TagListResponse) {
+}(this, function(ApiClient, CreateNewTagResponse, CreateServerResponse, Error, ModifyTagRequest, TagCreateRequest, TagListResponse) {
   'use strict';
 
   /**
@@ -74,7 +74,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateServerResponse;
@@ -104,7 +104,7 @@
     /**
      * Create a new tag
      * Creates a new tag. Existing servers can be tagged in same request
-     * @param {module:model/Tag} tag 
+     * @param {module:model/TagCreateRequest} tag 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateNewTagResponse} and HTTP response
      */
     this.createTagWithHttpInfo = function(tag) {
@@ -127,7 +127,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateNewTagResponse;
@@ -142,7 +142,7 @@
     /**
      * Create a new tag
      * Creates a new tag. Existing servers can be tagged in same request
-     * @param {module:model/Tag} tag 
+     * @param {module:model/TagCreateRequest} tag 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateNewTagResponse}
      */
     this.createTag = function(tag) {
@@ -180,7 +180,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = null;
@@ -226,7 +226,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = TagListResponse;
@@ -255,7 +255,7 @@
      * Modify existing tag
      * Changes attributes of an existing tag
      * @param {String} tagName Tag name
-     * @param {module:model/Tag1} tag 
+     * @param {module:model/ModifyTagRequest} tag 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateNewTagResponse} and HTTP response
      */
     this.modifyTagWithHttpInfo = function(tagName, tag) {
@@ -284,7 +284,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateNewTagResponse;
@@ -300,7 +300,7 @@
      * Modify existing tag
      * Changes attributes of an existing tag
      * @param {String} tagName Tag name
-     * @param {module:model/Tag1} tag 
+     * @param {module:model/ModifyTagRequest} tag 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateNewTagResponse}
      */
     this.modifyTag = function(tagName, tag) {
@@ -345,7 +345,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = CreateServerResponse;

@@ -3,6 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tag** | [**Tag**](Tag.md) |  | [optional] 
+**name** | **String** | The new tag | 
+**description** | **String** | Description of the tag | [optional] 
+**servers** | [**TagServers**](TagServers.md) |  | [optional] 
 
 
