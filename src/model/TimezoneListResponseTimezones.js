@@ -8,18 +8,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Timezone'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Timezone'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.TimezoneListResponseTimezones = factory(root.upcloud.ApiClient, root.upcloud.Timezone);
+    root.upcloud.TimezoneListResponseTimezones = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient, Timezone) {
+}(this, function(ApiClient) {
   'use strict';
 
 
@@ -54,14 +54,14 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('timezone')) {
-        obj['timezone'] = ApiClient.convertToType(data['timezone'], [Timezone]);
+        obj['timezone'] = ApiClient.convertToType(data['timezone'], ['String']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {Array.<module:model/Timezone>} timezone
+   * @member {Array.<String>} timezone
    */
   exports.prototype['timezone'] = undefined;
 

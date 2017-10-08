@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**timezone** | [**[Timezone]**](Timezone.md) |  | [optional] 
+**timezone** | **[String]** |  | [optional] 
 
 
