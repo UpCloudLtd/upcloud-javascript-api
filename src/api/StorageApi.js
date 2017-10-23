@@ -104,17 +104,20 @@
      * Create backup
      * Creates a point-in-time backup of a storage resource. For automatic, scheduled backups, see  &#x60;backup_rule&#x60; in Create storage or Modify storage.
      * @param {String} storageId Storage id
-     * @param {Object} opts Optional parameters
-     * @param {module:model/CreateBackupStorageRequest} opts.storage 
+     * @param {module:model/CreateBackupStorageRequest} storage 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateStorageResponse} and HTTP response
      */
-    this.backupStorageWithHttpInfo = function(storageId, opts) {
-      opts = opts || {};
-      var postBody = opts['storage'];
+    this.backupStorageWithHttpInfo = function(storageId, storage) {
+      var postBody = storage;
 
       // verify the required parameter 'storageId' is set
       if (storageId === undefined || storageId === null) {
         throw new Error("Missing the required parameter 'storageId' when calling backupStorage");
+      }
+
+      // verify the required parameter 'storage' is set
+      if (storage === undefined || storage === null) {
+        throw new Error("Missing the required parameter 'storage' when calling backupStorage");
       }
 
 
@@ -146,12 +149,11 @@
      * Create backup
      * Creates a point-in-time backup of a storage resource. For automatic, scheduled backups, see  &#x60;backup_rule&#x60; in Create storage or Modify storage.
      * @param {String} storageId Storage id
-     * @param {Object} opts Optional parameters
-     * @param {module:model/CreateBackupStorageRequest} opts.storage 
+     * @param {module:model/CreateBackupStorageRequest} storage 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateStorageResponse}
      */
-    this.backupStorage = function(storageId, opts) {
-      return this.backupStorageWithHttpInfo(storageId, opts)
+    this.backupStorage = function(storageId, storage) {
+      return this.backupStorageWithHttpInfo(storageId, storage)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

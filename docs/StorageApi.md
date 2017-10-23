@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 <a name="backupStorage"></a>
 # **backupStorage**
-> CreateStorageResponse backupStorage(storageId, opts)
+> CreateStorageResponse backupStorage(storageId, storage)
 
 Create backup
 
@@ -97,10 +97,9 @@ var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | Storage id
 
-var opts = { 
-  'storage': new upcloud.CreateBackupStorageRequest() // CreateBackupStorageRequest | 
-};
-apiInstance.backupStorage(storageId, opts).then(function(data) {
+var storage = new upcloud.CreateBackupStorageRequest(); // CreateBackupStorageRequest | 
+
+apiInstance.backupStorage(storageId, storage).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
@@ -113,7 +112,7 @@ apiInstance.backupStorage(storageId, opts).then(function(data) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **storageId** | **String**| Storage id | 
- **storage** | [**CreateBackupStorageRequest**](CreateBackupStorageRequest.md)|  | [optional] 
+ **storage** | [**CreateBackupStorageRequest**](CreateBackupStorageRequest.md)|  | 
 
 ### Return type
 
