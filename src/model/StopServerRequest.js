@@ -33,6 +33,7 @@
 
   /**
    * Constructs a new <code>StopServerRequest</code>.
+   * stop server request
    * @alias module:model/StopServerRequest
    * @class
    */

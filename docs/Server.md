@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **state** | [**ServerState**](ServerState.md) |  | [optional] 
 **storageDevices** | [**ServerStorageDevices**](ServerStorageDevices.md) |  | [optional] 
 **tags** | [**ServerTags**](ServerTags.md) |  | [optional] 
-**timezone** | [**Timezone**](Timezone.md) | A timezone identifier, e.g. Europe/Helsinki. See Timezones. | [optional] 
+**timezone** | **String** | A timezone identifier, e.g. Europe/Helsinki. See Timezones. | [optional] 
 **title** | **String** | A short description. | [optional] 
 **uuid** | **String** |  | [optional] 
 **videoModel** | **String** | The model of the server&#39;s video interface. | [optional] [default to &#39;vga&#39;]

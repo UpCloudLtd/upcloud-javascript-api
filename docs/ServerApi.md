@@ -868,7 +868,7 @@ Name | Type | Description  | Notes
 
 <a name="stopServer"></a>
 # **stopServer**
-> CreateServerResponse stopServer(serverId, stopServer)
+> CreateServerResponse stopServer(serverId, stopServerRequest)
 
 Stop server
 
@@ -888,9 +888,9 @@ var apiInstance = new upcloud.ServerApi();
 
 var serverId = "serverId_example"; // String | Id of server to stop
 
-var stopServer = new upcloud.StopServer(); // StopServer | 
+var stopServerRequest = new upcloud.StopServer(); // StopServer | 
 
-apiInstance.stopServer(serverId, stopServer).then(function(data) {
+apiInstance.stopServer(serverId, stopServerRequest).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
@@ -903,7 +903,7 @@ apiInstance.stopServer(serverId, stopServer).then(function(data) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **serverId** | **String**| Id of server to stop | 
- **stopServer** | [**StopServer**](StopServer.md)|  | 
+ **stopServerRequest** | [**StopServer**](StopServer.md)|  | 
 
 ### Return type
 

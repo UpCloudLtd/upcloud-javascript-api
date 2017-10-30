@@ -8,18 +8,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/IpAddresses', 'model/ServerState', 'model/ServerStorageDevices', 'model/ServerTags', 'model/Timezone'], factory);
+    define(['ApiClient', 'model/IpAddresses', 'model/ServerState', 'model/ServerStorageDevices', 'model/ServerTags'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./IpAddresses'), require('./ServerState'), require('./ServerStorageDevices'), require('./ServerTags'), require('./Timezone'));
+    module.exports = factory(require('../ApiClient'), require('./IpAddresses'), require('./ServerState'), require('./ServerStorageDevices'), require('./ServerTags'));
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.Server = factory(root.upcloud.ApiClient, root.upcloud.IpAddresses, root.upcloud.ServerState, root.upcloud.ServerStorageDevices, root.upcloud.ServerTags, root.upcloud.Timezone);
+    root.upcloud.Server = factory(root.upcloud.ApiClient, root.upcloud.IpAddresses, root.upcloud.ServerState, root.upcloud.ServerStorageDevices, root.upcloud.ServerTags);
   }
-}(this, function(ApiClient, IpAddresses, ServerState, ServerStorageDevices, ServerTags, Timezone) {
+}(this, function(ApiClient, IpAddresses, ServerState, ServerStorageDevices, ServerTags) {
   'use strict';
 
 
@@ -123,7 +123,7 @@
         obj['tags'] = ServerTags.constructFromObject(data['tags']);
       }
       if (data.hasOwnProperty('timezone')) {
-        obj['timezone'] = Timezone.constructFromObject(data['timezone']);
+        obj['timezone'] = ApiClient.convertToType(data['timezone'], 'String');
       }
       if (data.hasOwnProperty('title')) {
         obj['title'] = ApiClient.convertToType(data['title'], 'String');
@@ -225,7 +225,7 @@
   exports.prototype['tags'] = undefined;
   /**
    * A timezone identifier, e.g. Europe/Helsinki. See Timezones.
-   * @member {module:model/Timezone} timezone
+   * @member {String} timezone
    */
   exports.prototype['timezone'] = undefined;
   /**

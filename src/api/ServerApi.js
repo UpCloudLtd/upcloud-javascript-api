@@ -984,20 +984,20 @@
      * Stop server
      * Stops a started server. The server state must be &#x60;started&#x60;.
      * @param {String} serverId Id of server to stop
-     * @param {module:model/StopServer} stopServer 
+     * @param {module:model/StopServer} stopServerRequest 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.stopServerWithHttpInfo = function(serverId, stopServer) {
-      var postBody = stopServer;
+    this.stopServerWithHttpInfo = function(serverId, stopServerRequest) {
+      var postBody = stopServerRequest;
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
         throw new Error("Missing the required parameter 'serverId' when calling stopServer");
       }
 
-      // verify the required parameter 'stopServer' is set
-      if (stopServer === undefined || stopServer === null) {
-        throw new Error("Missing the required parameter 'stopServer' when calling stopServer");
+      // verify the required parameter 'stopServerRequest' is set
+      if (stopServerRequest === undefined || stopServerRequest === null) {
+        throw new Error("Missing the required parameter 'stopServerRequest' when calling stopServer");
       }
 
 
@@ -1029,11 +1029,11 @@
      * Stop server
      * Stops a started server. The server state must be &#x60;started&#x60;.
      * @param {String} serverId Id of server to stop
-     * @param {module:model/StopServer} stopServer 
+     * @param {module:model/StopServer} stopServerRequest 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
-    this.stopServer = function(serverId, stopServer) {
-      return this.stopServerWithHttpInfo(serverId, stopServer)
+    this.stopServer = function(serverId, stopServerRequest) {
+      return this.stopServerWithHttpInfo(serverId, stopServerRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

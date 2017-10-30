@@ -217,17 +217,20 @@
      * Clone storage
      * Creates an exact copy of an existing storage resource.
      * @param {String} storageId Storage id
-     * @param {Object} opts Optional parameters
-     * @param {module:model/CloneStorageRequest} opts.storage 
+     * @param {module:model/CloneStorageRequest} storage 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateStorageResponse} and HTTP response
      */
-    this.cloneStorageWithHttpInfo = function(storageId, opts) {
-      opts = opts || {};
-      var postBody = opts['storage'];
+    this.cloneStorageWithHttpInfo = function(storageId, storage) {
+      var postBody = storage;
 
       // verify the required parameter 'storageId' is set
       if (storageId === undefined || storageId === null) {
         throw new Error("Missing the required parameter 'storageId' when calling cloneStorage");
+      }
+
+      // verify the required parameter 'storage' is set
+      if (storage === undefined || storage === null) {
+        throw new Error("Missing the required parameter 'storage' when calling cloneStorage");
       }
 
 
@@ -259,12 +262,11 @@
      * Clone storage
      * Creates an exact copy of an existing storage resource.
      * @param {String} storageId Storage id
-     * @param {Object} opts Optional parameters
-     * @param {module:model/CloneStorageRequest} opts.storage 
+     * @param {module:model/CloneStorageRequest} storage 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateStorageResponse}
      */
-    this.cloneStorage = function(storageId, opts) {
-      return this.cloneStorageWithHttpInfo(storageId, opts)
+    this.cloneStorage = function(storageId, storage) {
+      return this.cloneStorageWithHttpInfo(storageId, storage)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

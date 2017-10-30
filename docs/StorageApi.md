@@ -178,7 +178,7 @@ null (empty response body)
 
 <a name="cloneStorage"></a>
 # **cloneStorage**
-> CreateStorageResponse cloneStorage(storageId, opts)
+> CreateStorageResponse cloneStorage(storageId, storage)
 
 Clone storage
 
@@ -198,10 +198,9 @@ var apiInstance = new upcloud.StorageApi();
 
 var storageId = "storageId_example"; // String | Storage id
 
-var opts = { 
-  'storage': new upcloud.CloneStorageRequest() // CloneStorageRequest | 
-};
-apiInstance.cloneStorage(storageId, opts).then(function(data) {
+var storage = new upcloud.CloneStorageRequest(); // CloneStorageRequest | 
+
+apiInstance.cloneStorage(storageId, storage).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
@@ -214,7 +213,7 @@ apiInstance.cloneStorage(storageId, opts).then(function(data) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **storageId** | **String**| Storage id | 
- **storage** | [**CloneStorageRequest**](CloneStorageRequest.md)|  | [optional] 
+ **storage** | [**CloneStorageRequest**](CloneStorageRequest.md)|  | 
 
 ### Return type
 
