@@ -1,7 +1,8 @@
 language: node_js
 node_js:
-  - "6"
-  - "6.1"
-  - "5"
-  - "5.11"
-
+- '6'
+- '6.1'
+- '5'
+- '5.11'
+env:
+  secure: vl1DkTAlHlr6wKBXdpBhg+Uo3sQD+mxpCjzeUdEkHoPEAyjPmG61cqmyGpqRetTF9sok5sZyf2PrQly0tuPwMSFl5ZuC+K3VxIfzohuJ+i7vHcXp9bq6FKMaviX7xtO4oKWq40+1hsbkXxcAvBmEoPgsfdPS6dunTxa7hdKTlT8sBCRDiYcJBEESDeoChCdojNUsj9ZauLnULJz5TA1JAMLrGLVKCfvZ2Dmy5B60XwfLi1sAPjKqiR+rk6F9QuqePzAr+om6jBKmbk/IQ09lGBiLVS4O7zj3Wiy6y+tv5kvF3MuHMvTLLjVuW/1haA5qlspBHlQUIz+NVkhMCd6lihnunZfxTjfwOm7YohE0waz872FgP0NUwtry1u2OlDFmk89IJKn0uh5a0/pluaw36+RODzu+fbWpbojWSYr/b2SMUhngRKCukIqcMoZgb2EUbdLBjn5IHCAB21v1YFaOhayEujbY1qqRm1x3lpPgJz3mpgAwF6oyxxNECsG9YT1Lm7Z7HltiXqRRGmvshMy8xAuCIAPtA837hwKOgmbLKNhXNGABCkEmJ9QNJiYbnNusHeAfvD39dnMLz1kKDTTKybPHh7sTVu5viskcpV48s9dd/NeV6wV6YGJgZw0TbKEkXari2xXlSsh/0WQipgkvu/gkIIL2sCQM9GIPJBdLwRI=
