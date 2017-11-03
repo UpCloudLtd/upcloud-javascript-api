@@ -23,7 +23,10 @@
 
   beforeEach(function() {
     instance = new upcloud.AccountApi()
-    instance.apiClient.basePath = 'http://localhost:8080/1.2'
+    instance.apiClient.authentications.baseAuth.username =
+      process.env.UPCLOUD_API_TEST_USER
+    instance.apiClient.authentications.baseAuth.password =
+      process.env.UPCLOUD_API_TEST_PASSWORD
   })
 
   var getProperty = function(object, getter, property) {
@@ -42,7 +45,7 @@
     describe('getAccount', function() {
       it('should call getAccount successfully', function(done) {
         instance.getAccount().then(function(result) {
-          expect(result).to.have.key(['credits', 'username'])
+          expect(result.account).to.have.key(['credits', 'username'])
           done()
         })
       })
