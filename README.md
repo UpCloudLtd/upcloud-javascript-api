@@ -1,4 +1,4 @@
-# UpCloud JavaSCript API client library
+# UpCloud JavaScript API client library
 
 [![Build Status](https://travis-ci.org/UpCloudLtd/upcloud-javascript-api.svg?branch=master)](https://travis-ci.org/UpCloudLtd/upcloud-javascript-api)
 
