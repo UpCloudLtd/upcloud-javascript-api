@@ -2,15 +2,15 @@
 
 [![Build Status](https://travis-ci.org/UpCloudLtd/upcloud-javascript-api.svg?branch=master)](https://travis-ci.org/UpCloudLtd/upcloud-javascript-api)
 
-upcloud - JavaScript client for upcloud
-The UpCloud API consists of operations used to control resources on UpCloud. The API is a web service interface. HTTPS is used to connect to the API. The API follows the principles of a RESTful web service wherever possible. The base URL for all API operations is  https://api.upcloud.com/. All API operations require authentication.
+This is a Javascript API client library that provides integration with the UpCloud API. It allows cloud resource management on UpCloud's IaaS with easy to use functions. The API client follows the RESTful web service principles wherever possible.
+
+The base URL for all API operations is  https://api.upcloud.com/ and require basic authentication using UpCloud username and password. We recommend [creating a subaccount](https://www.upcloud.com/support/server-tags-and-group-accounts/) dedicated for the API communication for security purposes. This allows you to restrict API access by servers, storages, and tags ensuring you will never accidentally affect critical systems.
 
 ## Table of content
 * [Installation](#installation)
 * [Usage](#usage)
 * [Documentation](#documentation)
 * [Issues](#issues)
-* [Contributing](#contributing-optional)
 * [License](#license)
 
 ## Installation
@@ -104,8 +104,8 @@ var defaultClient = upcloud.ApiClient.instance;
 
 // Configure HTTP basic authorization: baseAuth
 var baseAuth = defaultClient.authentications['baseAuth'];
-baseAuth.username = 'YOUR USERNAME'
-baseAuth.password = 'YOUR PASSWORD'
+baseAuth.username = 'UPCLOUD_USERNAME'
+baseAuth.password = 'UPCLOUD_PASSWORD'
 
 var api = new upcloud.AccountApi()
 api.getAccount().then(function(data) {
@@ -181,7 +181,7 @@ Class | Method | HTTP request | Description
 *upcloud.ZoneApi* | [**listZones**](docs/ZoneApi.md#listZones) | **GET** /zone | List available zones
 
 
-## Documentation for Models
+## Documentation of the models
 
  - [upcloud.Account](docs/Account.md)
  - [upcloud.AccountResponse](docs/AccountResponse.md)
@@ -257,21 +257,21 @@ Class | Method | HTTP request | Description
  - [upcloud.ZoneListResponseZones](docs/ZoneListResponseZones.md)
 
 
-## Documentation for Authorization
+## Documentation for authorization
 
+Take care if storing usernames or passwords in files while developing API applications to avoid accidentally publishing your account credentials.
 
 ### baseAuth
 
 - **Type**: HTTP basic authentication
+- **Username**: Your UpCloud API username
+- **Password**: Your UpCloud API user's password
 
 
 ## Issues
 
-[Open a new issue here](https://github.com/UpCloudLtd/upcloud-javascript-api/issues/new).
+Found a bug, have a problem using the client, or anything else about the library you would want to mention? [Open a new issue here](https://github.com/UpCloudLtd/upcloud-javascript-api/issues/new) to get in contact.
 
-## Contributing
-
-How to contribute to the software. Forking and pull requests.
 
 ## License
 
