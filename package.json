@@ -22,7 +22,7 @@
 ],
   "main": "src/index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --recursive test/api/AccountApi.spec.js"
+    "test": "./node_modules/mocha/bin/mocha --recursive test/api"
   },
   "browser": {
     "fs": false
