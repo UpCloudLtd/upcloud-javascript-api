@@ -1,16 +1,15 @@
 const upcloud = require('../src');
 
+const usename = process.env.UPCLOUD_API_TEST_USER;
+const password = process.env.UPCLOUD_API_TEST_PASSWORD;
+
 const serverApi = new upcloud.ServerApi();
-serverApi.apiClient.authentications.baseAuth.username =
-  process.env.UPCLOUD_API_TEST_USER;
-serverApi.apiClient.authentications.baseAuth.password =
-  process.env.UPCLOUD_API_TEST_PASSWORD;
+serverApi.apiClient.authentications.baseAuth.username = username;
+serverApi.apiClient.authentications.baseAuth.password = password;
 
 const storageApi = new upcloud.StorageApi();
-storageApi.apiClient.authentications.baseAuth.username =
-  process.env.UPCLOUD_API_TEST_USER;
-storageApi.apiClient.authentications.baseAuth.password =
-  process.env.UPCLOUD_API_TEST_PASSWORD;
+storageApi.apiClient.authentications.baseAuth.username = usename;
+storageApi.apiClient.authentications.baseAuth.password = password;
 
 const TIMEOUT = process.env.UPCLOUD_API_TEST_TIMEOUT || 30000;
 
