@@ -17,13 +17,13 @@
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.SuccessStoragesResponseStorages = factory(root.upcloud.ApiClient, root.upcloud.Storage);
+    root.upcloud.SuccessStoragesResponseStorages = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.Storage,
+    );
   }
-}(this, function(ApiClient, Storage) {
+})(this, function(ApiClient, Storage) {
   'use strict';
-
-
-
 
   /**
    * The SuccessStoragesResponseStorages model module.
@@ -38,8 +38,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -58,16 +56,12 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {Array.<module:model/Storage>} storage
    */
   exports.prototype['storage'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

@@ -11,19 +11,22 @@
     define(['ApiClient', 'model/ZoneListResponseZones'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ZoneListResponseZones'));
+    module.exports = factory(
+      require('../ApiClient'),
+      require('./ZoneListResponseZones'),
+    );
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.ZoneListResponse = factory(root.upcloud.ApiClient, root.upcloud.ZoneListResponseZones);
+    root.upcloud.ZoneListResponse = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.ZoneListResponseZones,
+    );
   }
-}(this, function(ApiClient, ZoneListResponseZones) {
+})(this, function(ApiClient, ZoneListResponseZones) {
   'use strict';
-
-
-
 
   /**
    * The ZoneListResponse model module.
@@ -38,8 +41,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -58,16 +59,12 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {module:model/ZoneListResponseZones} zones
    */
   exports.prototype['zones'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

@@ -19,10 +19,11 @@
     "api",
     "babel",
     "es6"
-],
+  ],
   "main": "src/index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --recursive test/api"
+    "test": "./node_modules/mocha/bin/mocha --require babel-register --reguire babel-polyfill --recursive test/api",
+    "format": "prettier --single-quote --trailing-comma all --write \"{src,test}/**/*.js\""
   },
   "browser": {
     "fs": false
@@ -31,8 +32,12 @@
     "superagent": "3.5.2"
   },
   "devDependencies": {
-    "mocha": "~2.3.4",
-    "sinon": "1.17.3",
-    "expect.js": "~0.3.1"
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "expect.js": "~0.3.1",
+    "mocha": "~5.0.0",
+    "prettier": "^1.10.2",
+    "sinon": "4.2.0"
   }
 }

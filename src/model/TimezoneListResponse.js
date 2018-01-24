@@ -11,19 +11,22 @@
     define(['ApiClient', 'model/TimezoneListResponseTimezones'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./TimezoneListResponseTimezones'));
+    module.exports = factory(
+      require('../ApiClient'),
+      require('./TimezoneListResponseTimezones'),
+    );
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.TimezoneListResponse = factory(root.upcloud.ApiClient, root.upcloud.TimezoneListResponseTimezones);
+    root.upcloud.TimezoneListResponse = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.TimezoneListResponseTimezones,
+    );
   }
-}(this, function(ApiClient, TimezoneListResponseTimezones) {
+})(this, function(ApiClient, TimezoneListResponseTimezones) {
   'use strict';
-
-
-
 
   /**
    * The TimezoneListResponse model module.
@@ -38,8 +41,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -54,20 +55,18 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('timezones')) {
-        obj['timezones'] = TimezoneListResponseTimezones.constructFromObject(data['timezones']);
+        obj['timezones'] = TimezoneListResponseTimezones.constructFromObject(
+          data['timezones'],
+        );
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {module:model/TimezoneListResponseTimezones} timezones
    */
   exports.prototype['timezones'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

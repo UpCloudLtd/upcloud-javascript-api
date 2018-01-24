@@ -19,11 +19,8 @@
     }
     root.upcloud.BackupRule = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
-
-
 
   /**
    * The BackupRule model module.
@@ -39,10 +36,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
-
-
   };
 
   /**
@@ -67,7 +60,7 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {module:model/BackupRule.IntervalEnum} interval
@@ -82,7 +75,6 @@
    */
   exports.prototype['retention'] = undefined;
 
-
   /**
    * Allowed values for the <code>interval</code> property.
    * @enum {String}
@@ -93,45 +85,43 @@
      * value: "daily"
      * @const
      */
-    "daily": "daily",
+    daily: 'daily',
     /**
      * value: "mon"
      * @const
      */
-    "mon": "mon",
+    mon: 'mon',
     /**
      * value: "tue"
      * @const
      */
-    "tue": "tue",
+    tue: 'tue',
     /**
      * value: "wed"
      * @const
      */
-    "wed": "wed",
+    wed: 'wed',
     /**
      * value: "thu"
      * @const
      */
-    "thu": "thu",
+    thu: 'thu',
     /**
      * value: "fri"
      * @const
      */
-    "fri": "fri",
+    fri: 'fri',
     /**
      * value: "sat"
      * @const
      */
-    "sat": "sat",
+    sat: 'sat',
     /**
      * value: "sun"
      * @const
      */
-    "sun": "sun"  };
-
+    sun: 'sun',
+  };
 
   return exports;
-}));
-
-
+});

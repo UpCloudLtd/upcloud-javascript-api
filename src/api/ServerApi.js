@@ -8,18 +8,85 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AttachStorageDeviceRequest', 'model/ConfigurationListResponse', 'model/CreateServerRequest', 'model/CreateServerResponse', 'model/Error', 'model/FirewallRuleCreateResponse', 'model/FirewallRuleListResponse', 'model/FirewallRuleRequest', 'model/RestartServer', 'model/Server', 'model/ServerListResponse', 'model/StopServer', 'model/StorageDeviceDetachRequest', 'model/StorageDeviceLoadRequest'], factory);
+    define(
+      [
+        'ApiClient',
+        'model/AttachStorageDeviceRequest',
+        'model/ConfigurationListResponse',
+        'model/CreateServerRequest',
+        'model/CreateServerResponse',
+        'model/Error',
+        'model/FirewallRuleCreateResponse',
+        'model/FirewallRuleListResponse',
+        'model/FirewallRuleRequest',
+        'model/RestartServer',
+        'model/Server',
+        'model/ServerListResponse',
+        'model/StopServer',
+        'model/StorageDeviceDetachRequest',
+        'model/StorageDeviceLoadRequest',
+      ],
+      factory,
+    );
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AttachStorageDeviceRequest'), require('../model/ConfigurationListResponse'), require('../model/CreateServerRequest'), require('../model/CreateServerResponse'), require('../model/Error'), require('../model/FirewallRuleCreateResponse'), require('../model/FirewallRuleListResponse'), require('../model/FirewallRuleRequest'), require('../model/RestartServer'), require('../model/Server'), require('../model/ServerListResponse'), require('../model/StopServer'), require('../model/StorageDeviceDetachRequest'), require('../model/StorageDeviceLoadRequest'));
+    module.exports = factory(
+      require('../ApiClient'),
+      require('../model/AttachStorageDeviceRequest'),
+      require('../model/ConfigurationListResponse'),
+      require('../model/CreateServerRequest'),
+      require('../model/CreateServerResponse'),
+      require('../model/Error'),
+      require('../model/FirewallRuleCreateResponse'),
+      require('../model/FirewallRuleListResponse'),
+      require('../model/FirewallRuleRequest'),
+      require('../model/RestartServer'),
+      require('../model/Server'),
+      require('../model/ServerListResponse'),
+      require('../model/StopServer'),
+      require('../model/StorageDeviceDetachRequest'),
+      require('../model/StorageDeviceLoadRequest'),
+    );
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.ServerApi = factory(root.upcloud.ApiClient, root.upcloud.AttachStorageDeviceRequest, root.upcloud.ConfigurationListResponse, root.upcloud.CreateServerRequest, root.upcloud.CreateServerResponse, root.upcloud.Error, root.upcloud.FirewallRuleCreateResponse, root.upcloud.FirewallRuleListResponse, root.upcloud.FirewallRuleRequest, root.upcloud.RestartServer, root.upcloud.Server, root.upcloud.ServerListResponse, root.upcloud.StopServer, root.upcloud.StorageDeviceDetachRequest, root.upcloud.StorageDeviceLoadRequest);
+    root.upcloud.ServerApi = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.AttachStorageDeviceRequest,
+      root.upcloud.ConfigurationListResponse,
+      root.upcloud.CreateServerRequest,
+      root.upcloud.CreateServerResponse,
+      root.upcloud.Error,
+      root.upcloud.FirewallRuleCreateResponse,
+      root.upcloud.FirewallRuleListResponse,
+      root.upcloud.FirewallRuleRequest,
+      root.upcloud.RestartServer,
+      root.upcloud.Server,
+      root.upcloud.ServerListResponse,
+      root.upcloud.StopServer,
+      root.upcloud.StorageDeviceDetachRequest,
+      root.upcloud.StorageDeviceLoadRequest,
+    );
   }
-}(this, function(ApiClient, AttachStorageDeviceRequest, ConfigurationListResponse, CreateServerRequest, CreateServerResponse, Error, FirewallRuleCreateResponse, FirewallRuleListResponse, FirewallRuleRequest, RestartServer, Server, ServerListResponse, StopServer, StorageDeviceDetachRequest, StorageDeviceLoadRequest) {
+})(this, function(
+  ApiClient,
+  AttachStorageDeviceRequest,
+  ConfigurationListResponse,
+  CreateServerRequest,
+  CreateServerResponse,
+  Error,
+  FirewallRuleCreateResponse,
+  FirewallRuleListResponse,
+  FirewallRuleRequest,
+  RestartServer,
+  Server,
+  ServerListResponse,
+  StopServer,
+  StorageDeviceDetachRequest,
+  StorageDeviceLoadRequest,
+) {
   'use strict';
 
   /**
@@ -29,7 +96,7 @@
    */
 
   /**
-   * Constructs a new ServerApi. 
+   * Constructs a new ServerApi.
    * @alias module:api/ServerApi
    * @class
    * @param {module:ApiClient} apiClient Optional API client implementation to use,
@@ -37,8 +104,6 @@
    */
   var exports = function(apiClient) {
     this.apiClient = apiClient || ApiClient.instance;
-
-
 
     /**
      * Assign tag to a server
@@ -52,27 +117,26 @@
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling assignTag");
+        throw new Error(
+          "Missing the required parameter 'serverId' when calling assignTag",
+        );
       }
 
       // verify the required parameter 'tagList' is set
       if (tagList === undefined || tagList === null) {
-        throw new Error("Missing the required parameter 'tagList' when calling assignTag");
+        throw new Error(
+          "Missing the required parameter 'tagList' when calling assignTag",
+        );
       }
 
-
       var pathParams = {
-        'serverId': serverId,
-        'tagList': tagList
+        serverId: serverId,
+        tagList: tagList,
       };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -80,11 +144,20 @@
       var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
-        '/server/{serverId}/tag/{tagList}', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/server/{serverId}/tag/{tagList}',
+        'POST',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * Assign tag to a server
@@ -94,18 +167,18 @@
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
     this.assignTag = function(serverId, tagList) {
-      return this.assignTagWithHttpInfo(serverId, tagList)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
+      return this.assignTagWithHttpInfo(serverId, tagList).then(function(
+        response_and_data,
+      ) {
+        return response_and_data.data;
+      });
+    };
 
     /**
      * Attach storage
      * Attaches a storage as a device to a server.
      * @param {String} serverId Server id
-     * @param {module:model/AttachStorageDeviceRequest} storageDevice 
+     * @param {module:model/AttachStorageDeviceRequest} storageDevice
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
     this.attachStorageWithHttpInfo = function(serverId, storageDevice) {
@@ -113,26 +186,25 @@
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling attachStorage");
+        throw new Error(
+          "Missing the required parameter 'serverId' when calling attachStorage",
+        );
       }
 
       // verify the required parameter 'storageDevice' is set
       if (storageDevice === undefined || storageDevice === null) {
-        throw new Error("Missing the required parameter 'storageDevice' when calling attachStorage");
+        throw new Error(
+          "Missing the required parameter 'storageDevice' when calling attachStorage",
+        );
       }
 
-
       var pathParams = {
-        'serverId': serverId
+        serverId: serverId,
       };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -140,32 +212,41 @@
       var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
-        '/server/{serverId}/storage/attach', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/server/{serverId}/storage/attach',
+        'POST',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * Attach storage
      * Attaches a storage as a device to a server.
      * @param {String} serverId Server id
-     * @param {module:model/AttachStorageDeviceRequest} storageDevice 
+     * @param {module:model/AttachStorageDeviceRequest} storageDevice
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
     this.attachStorage = function(serverId, storageDevice) {
-      return this.attachStorageWithHttpInfo(serverId, storageDevice)
-        .then(function(response_and_data) {
+      return this.attachStorageWithHttpInfo(serverId, storageDevice).then(
+        function(response_and_data) {
           return response_and_data.data;
-        });
-    }
-
+        },
+      );
+    };
 
     /**
      * Create firewall rule
      * Creates a new firewall rule
      * @param {String} serverId Server id
-     * @param {module:model/FirewallRuleRequest} firewallRule 
+     * @param {module:model/FirewallRuleRequest} firewallRule
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/FirewallRuleCreateResponse} and HTTP response
      */
     this.createFirewallRuleWithHttpInfo = function(serverId, firewallRule) {
@@ -173,26 +254,25 @@
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling createFirewallRule");
+        throw new Error(
+          "Missing the required parameter 'serverId' when calling createFirewallRule",
+        );
       }
 
       // verify the required parameter 'firewallRule' is set
       if (firewallRule === undefined || firewallRule === null) {
-        throw new Error("Missing the required parameter 'firewallRule' when calling createFirewallRule");
+        throw new Error(
+          "Missing the required parameter 'firewallRule' when calling createFirewallRule",
+        );
       }
 
-
       var pathParams = {
-        'serverId': serverId
+        serverId: serverId,
       };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -200,49 +280,51 @@
       var returnType = FirewallRuleCreateResponse;
 
       return this.apiClient.callApi(
-        '/server/{serverId}/firewall_rule', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/server/{serverId}/firewall_rule',
+        'POST',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * Create firewall rule
      * Creates a new firewall rule
      * @param {String} serverId Server id
-     * @param {module:model/FirewallRuleRequest} firewallRule 
+     * @param {module:model/FirewallRuleRequest} firewallRule
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/FirewallRuleCreateResponse}
      */
     this.createFirewallRule = function(serverId, firewallRule) {
-      return this.createFirewallRuleWithHttpInfo(serverId, firewallRule)
-        .then(function(response_and_data) {
+      return this.createFirewallRuleWithHttpInfo(serverId, firewallRule).then(
+        function(response_and_data) {
           return response_and_data.data;
-        });
-    }
-
+        },
+      );
+    };
 
     /**
      * Create server
      * Creates a new server instance.
      * @param {Object} opts Optional parameters
-     * @param {module:model/CreateServerRequest} opts.server 
+     * @param {module:model/CreateServerRequest} opts.server
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.createServerWithHttpInfo = function(opts) {
-      opts = opts || {};
-      var postBody = opts['server'];
+    this.createServerWithHttpInfo = function(server) {
+      var postBody = server;
 
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var pathParams = {};
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -250,26 +332,35 @@
       var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
-        '/server', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/server',
+        'POST',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * Create server
      * Creates a new server instance.
      * @param {Object} opts Optional parameters
-     * @param {module:model/CreateServerRequest} opts.server 
+     * @param {module:model/CreateServerRequest} opts.server
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
     this.createServer = function(opts) {
-      return this.createServerWithHttpInfo(opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
+      return this.createServerWithHttpInfo(opts).then(function(
+        response_and_data,
+      ) {
+        return response_and_data.data;
+      });
+    };
 
     /**
      * Remove firewall rule
@@ -278,32 +369,34 @@
      * @param {Number} firewallRuleNumber Denotes the index of the firewall rule in the server&#39;s firewall rule list
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    this.deleteFirewallRuleWithHttpInfo = function(serverId, firewallRuleNumber) {
+    this.deleteFirewallRuleWithHttpInfo = function(
+      serverId,
+      firewallRuleNumber,
+    ) {
       var postBody = null;
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling deleteFirewallRule");
+        throw new Error(
+          "Missing the required parameter 'serverId' when calling deleteFirewallRule",
+        );
       }
 
       // verify the required parameter 'firewallRuleNumber' is set
       if (firewallRuleNumber === undefined || firewallRuleNumber === null) {
-        throw new Error("Missing the required parameter 'firewallRuleNumber' when calling deleteFirewallRule");
+        throw new Error(
+          "Missing the required parameter 'firewallRuleNumber' when calling deleteFirewallRule",
+        );
       }
 
-
       var pathParams = {
-        'serverId': serverId,
-        'firewallRuleNumber': firewallRuleNumber
+        serverId: serverId,
+        firewallRuleNumber: firewallRuleNumber,
       };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -311,11 +404,20 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/server/{serverId}/firewall_rule/{firewallRuleNumber}', 'DELETE',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/server/{serverId}/firewall_rule/{firewallRuleNumber}',
+        'DELETE',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * Remove firewall rule
@@ -325,12 +427,13 @@
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     this.deleteFirewallRule = function(serverId, firewallRuleNumber) {
-      return this.deleteFirewallRuleWithHttpInfo(serverId, firewallRuleNumber)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
+      return this.deleteFirewallRuleWithHttpInfo(
+        serverId,
+        firewallRuleNumber,
+      ).then(function(response_and_data) {
+        return response_and_data.data;
+      });
+    };
 
     /**
      * Delete server
@@ -342,21 +445,18 @@
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling deleteServer");
+        throw new Error(
+          "Missing the required parameter 'serverId' when calling deleteServer",
+        );
       }
 
-
       var pathParams = {
-        'serverId': serverId
+        serverId: serverId,
       };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -364,11 +464,20 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/server/{serverId}', 'DELETE',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/server/{serverId}',
+        'DELETE',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * Delete server
@@ -376,18 +485,18 @@
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     this.deleteServer = function(serverId) {
-      return this.deleteServerWithHttpInfo(serverId)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
+      return this.deleteServerWithHttpInfo(serverId).then(function(
+        response_and_data,
+      ) {
+        return response_and_data.data;
+      });
+    };
 
     /**
      * Detach storage
      * Detaches a storage resource from a server.
      * @param {String} serverId Server id
-     * @param {module:model/StorageDeviceDetachRequest} storageDevice 
+     * @param {module:model/StorageDeviceDetachRequest} storageDevice
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
     this.detachStorageWithHttpInfo = function(serverId, storageDevice) {
@@ -395,26 +504,25 @@
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling detachStorage");
+        throw new Error(
+          "Missing the required parameter 'serverId' when calling detachStorage",
+        );
       }
 
       // verify the required parameter 'storageDevice' is set
       if (storageDevice === undefined || storageDevice === null) {
-        throw new Error("Missing the required parameter 'storageDevice' when calling detachStorage");
+        throw new Error(
+          "Missing the required parameter 'storageDevice' when calling detachStorage",
+        );
       }
 
-
       var pathParams = {
-        'serverId': serverId
+        serverId: serverId,
       };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -422,26 +530,35 @@
       var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
-        '/server/{serverId}/storage/detach', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/server/{serverId}/storage/detach',
+        'POST',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * Detach storage
      * Detaches a storage resource from a server.
      * @param {String} serverId Server id
-     * @param {module:model/StorageDeviceDetachRequest} storageDevice 
+     * @param {module:model/StorageDeviceDetachRequest} storageDevice
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
     this.detachStorage = function(serverId, storageDevice) {
-      return this.detachStorageWithHttpInfo(serverId, storageDevice)
-        .then(function(response_and_data) {
+      return this.detachStorageWithHttpInfo(serverId, storageDevice).then(
+        function(response_and_data) {
           return response_and_data.data;
-        });
-    }
-
+        },
+      );
+    };
 
     /**
      * Eject CD-ROM
@@ -454,21 +571,18 @@
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling ejectCdrom");
+        throw new Error(
+          "Missing the required parameter 'serverId' when calling ejectCdrom",
+        );
       }
 
-
       var pathParams = {
-        'serverId': serverId
+        serverId: serverId,
       };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -476,11 +590,20 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/server/{serverId}/cdrom/eject', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/server/{serverId}/cdrom/eject',
+        'POST',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * Eject CD-ROM
@@ -489,12 +612,12 @@
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     this.ejectCdrom = function(serverId) {
-      return this.ejectCdromWithHttpInfo(serverId)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
+      return this.ejectCdromWithHttpInfo(serverId).then(function(
+        response_and_data,
+      ) {
+        return response_and_data.data;
+      });
+    };
 
     /**
      * Get firewall rule details
@@ -508,27 +631,26 @@
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling getFirewallRule");
+        throw new Error(
+          "Missing the required parameter 'serverId' when calling getFirewallRule",
+        );
       }
 
       // verify the required parameter 'firewallRuleNumber' is set
       if (firewallRuleNumber === undefined || firewallRuleNumber === null) {
-        throw new Error("Missing the required parameter 'firewallRuleNumber' when calling getFirewallRule");
+        throw new Error(
+          "Missing the required parameter 'firewallRuleNumber' when calling getFirewallRule",
+        );
       }
 
-
       var pathParams = {
-        'serverId': serverId,
-        'firewallRuleNumber': firewallRuleNumber
+        serverId: serverId,
+        firewallRuleNumber: firewallRuleNumber,
       };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -536,11 +658,20 @@
       var returnType = FirewallRuleCreateResponse;
 
       return this.apiClient.callApi(
-        '/server/{serverId}/firewall_rule/{firewallRuleNumber}', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/server/{serverId}/firewall_rule/{firewallRuleNumber}',
+        'GET',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * Get firewall rule details
@@ -550,12 +681,13 @@
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/FirewallRuleCreateResponse}
      */
     this.getFirewallRule = function(serverId, firewallRuleNumber) {
-      return this.getFirewallRuleWithHttpInfo(serverId, firewallRuleNumber)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
+      return this.getFirewallRuleWithHttpInfo(
+        serverId,
+        firewallRuleNumber,
+      ).then(function(response_and_data) {
+        return response_and_data.data;
+      });
+    };
 
     /**
      * List server configurations
@@ -565,17 +697,11 @@
     this.listServerConfigurationsWithHttpInfo = function() {
       var postBody = null;
 
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var pathParams = {};
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -583,11 +709,20 @@
       var returnType = ConfigurationListResponse;
 
       return this.apiClient.callApi(
-        '/server_size', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/server_size',
+        'GET',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * List server configurations
@@ -595,12 +730,12 @@
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ConfigurationListResponse}
      */
     this.listServerConfigurations = function() {
-      return this.listServerConfigurationsWithHttpInfo()
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
+      return this.listServerConfigurationsWithHttpInfo().then(function(
+        response_and_data,
+      ) {
+        return response_and_data.data;
+      });
+    };
 
     /**
      * List of servers
@@ -610,17 +745,11 @@
     this.listServersWithHttpInfo = function() {
       var postBody = null;
 
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var pathParams = {};
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -628,11 +757,20 @@
       var returnType = ServerListResponse;
 
       return this.apiClient.callApi(
-        '/server', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/server',
+        'GET',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * List of servers
@@ -640,42 +778,37 @@
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServerListResponse}
      */
     this.listServers = function() {
-      return this.listServersWithHttpInfo()
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
+      return this.listServersWithHttpInfo().then(function(response_and_data) {
+        return response_and_data.data;
+      });
+    };
 
     /**
      * Load CD-ROM
      * Loads a storage as a CD-ROM in the CD-ROM device of a server.
      * @param {String} serverId Server id
      * @param {Object} opts Optional parameters
-     * @param {module:model/StorageDeviceLoadRequest} opts.storageDevice 
+     * @param {module:model/StorageDeviceLoadRequest} opts.storageDevice
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.loadCdromWithHttpInfo = function(serverId, opts) {
+    this.loadCdromWithHttpInfo = function(serverId, storageDevice) {
       opts = opts || {};
-      var postBody = opts['storageDevice'];
+      var postBody = storageDevice;
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling loadCdrom");
+        throw new Error(
+          "Missing the required parameter 'serverId' when calling loadCdrom",
+        );
       }
 
-
       var pathParams = {
-        'serverId': serverId
+        serverId: serverId,
       };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -683,56 +816,62 @@
       var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
-        '/server/{serverId}/storage/cdrom/load', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/server/{serverId}/storage/cdrom/load',
+        'POST',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * Load CD-ROM
      * Loads a storage as a CD-ROM in the CD-ROM device of a server.
      * @param {String} serverId Server id
      * @param {Object} opts Optional parameters
-     * @param {module:model/StorageDeviceLoadRequest} opts.storageDevice 
+     * @param {module:model/StorageDeviceLoadRequest} opts.storageDevice
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
     this.loadCdrom = function(serverId, opts) {
-      return this.loadCdromWithHttpInfo(serverId, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
+      return this.loadCdromWithHttpInfo(serverId, opts).then(function(
+        response_and_data,
+      ) {
+        return response_and_data.data;
+      });
+    };
 
     /**
      * Modify server
      * @param {String} serverId Id of server to modify
      * @param {Object} opts Optional parameters
-     * @param {module:model/Server} opts.server 
+     * @param {module:model/Server} opts.server
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
-    this.modifyServerWithHttpInfo = function(serverId, opts) {
+    this.modifyServerWithHttpInfo = function(serverId, server) {
       opts = opts || {};
-      var postBody = opts['server'];
+      var postBody = server;
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling modifyServer");
+        throw new Error(
+          "Missing the required parameter 'serverId' when calling modifyServer",
+        );
       }
 
-
       var pathParams = {
-        'serverId': serverId
+        serverId: serverId,
       };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -740,32 +879,41 @@
       var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
-        '/server/{serverId}', 'PUT',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/server/{serverId}',
+        'PUT',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * Modify server
      * @param {String} serverId Id of server to modify
      * @param {Object} opts Optional parameters
-     * @param {module:model/Server} opts.server 
+     * @param {module:model/Server} opts.server
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
     this.modifyServer = function(serverId, opts) {
-      return this.modifyServerWithHttpInfo(serverId, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
+      return this.modifyServerWithHttpInfo(serverId, opts).then(function(
+        response_and_data,
+      ) {
+        return response_and_data.data;
+      });
+    };
 
     /**
      * Restart server
      * Stops and starts a server. The server state must be &#x60;started&#x60;.
      * @param {String} serverId Id of server to restart
-     * @param {module:model/RestartServer} restartServer 
+     * @param {module:model/RestartServer} restartServer
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
     this.restartServerWithHttpInfo = function(serverId, restartServer) {
@@ -773,26 +921,25 @@
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling restartServer");
+        throw new Error(
+          "Missing the required parameter 'serverId' when calling restartServer",
+        );
       }
 
       // verify the required parameter 'restartServer' is set
       if (restartServer === undefined || restartServer === null) {
-        throw new Error("Missing the required parameter 'restartServer' when calling restartServer");
+        throw new Error(
+          "Missing the required parameter 'restartServer' when calling restartServer",
+        );
       }
 
-
       var pathParams = {
-        'serverId': serverId
+        serverId: serverId,
       };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = [];
       var contentTypes = ['application/json'];
@@ -800,26 +947,35 @@
       var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
-        '/server/{serverId}/restart', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/server/{serverId}/restart',
+        'POST',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * Restart server
      * Stops and starts a server. The server state must be &#x60;started&#x60;.
      * @param {String} serverId Id of server to restart
-     * @param {module:model/RestartServer} restartServer 
+     * @param {module:model/RestartServer} restartServer
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
     this.restartServer = function(serverId, restartServer) {
-      return this.restartServerWithHttpInfo(serverId, restartServer)
-        .then(function(response_and_data) {
+      return this.restartServerWithHttpInfo(serverId, restartServer).then(
+        function(response_and_data) {
           return response_and_data.data;
-        });
-    }
-
+        },
+      );
+    };
 
     /**
      * Get server details
@@ -832,21 +988,18 @@
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverDetails");
+        throw new Error(
+          "Missing the required parameter 'serverId' when calling serverDetails",
+        );
       }
 
-
       var pathParams = {
-        'serverId': serverId
+        serverId: serverId,
       };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -854,11 +1007,20 @@
       var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
-        '/server/{serverId}', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/server/{serverId}',
+        'GET',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * Get server details
@@ -867,12 +1029,12 @@
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
     this.serverDetails = function(serverId) {
-      return this.serverDetailsWithHttpInfo(serverId)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
+      return this.serverDetailsWithHttpInfo(serverId).then(function(
+        response_and_data,
+      ) {
+        return response_and_data.data;
+      });
+    };
 
     /**
      * List firewall rules
@@ -885,21 +1047,18 @@
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling serverServerIdFirewallRuleGet");
+        throw new Error(
+          "Missing the required parameter 'serverId' when calling serverServerIdFirewallRuleGet",
+        );
       }
 
-
       var pathParams = {
-        'serverId': serverId
+        serverId: serverId,
       };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -907,11 +1066,20 @@
       var returnType = FirewallRuleListResponse;
 
       return this.apiClient.callApi(
-        '/server/{serverId}/firewall_rule', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/server/{serverId}/firewall_rule',
+        'GET',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * List firewall rules
@@ -920,12 +1088,12 @@
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/FirewallRuleListResponse}
      */
     this.serverServerIdFirewallRuleGet = function(serverId) {
-      return this.serverServerIdFirewallRuleGetWithHttpInfo(serverId)
-        .then(function(response_and_data) {
+      return this.serverServerIdFirewallRuleGetWithHttpInfo(serverId).then(
+        function(response_and_data) {
           return response_and_data.data;
-        });
-    }
-
+        },
+      );
+    };
 
     /**
      * Start server
@@ -938,21 +1106,18 @@
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling startServer");
+        throw new Error(
+          "Missing the required parameter 'serverId' when calling startServer",
+        );
       }
 
-
       var pathParams = {
-        'serverId': serverId
+        serverId: serverId,
       };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -960,11 +1125,20 @@
       var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
-        '/server/{serverId}/start', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/server/{serverId}/start',
+        'POST',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * Start server
@@ -973,18 +1147,18 @@
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
     this.startServer = function(serverId) {
-      return this.startServerWithHttpInfo(serverId)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
+      return this.startServerWithHttpInfo(serverId).then(function(
+        response_and_data,
+      ) {
+        return response_and_data.data;
+      });
+    };
 
     /**
      * Stop server
      * Stops a started server. The server state must be &#x60;started&#x60;.
      * @param {String} serverId Id of server to stop
-     * @param {module:model/StopServer} stopServerRequest 
+     * @param {module:model/StopServer} stopServerRequest
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateServerResponse} and HTTP response
      */
     this.stopServerWithHttpInfo = function(serverId, stopServerRequest) {
@@ -992,26 +1166,25 @@
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling stopServer");
+        throw new Error(
+          "Missing the required parameter 'serverId' when calling stopServer",
+        );
       }
 
       // verify the required parameter 'stopServerRequest' is set
       if (stopServerRequest === undefined || stopServerRequest === null) {
-        throw new Error("Missing the required parameter 'stopServerRequest' when calling stopServer");
+        throw new Error(
+          "Missing the required parameter 'stopServerRequest' when calling stopServer",
+        );
       }
 
-
       var pathParams = {
-        'serverId': serverId
+        serverId: serverId,
       };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -1019,26 +1192,35 @@
       var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
-        '/server/{serverId}/stop', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/server/{serverId}/stop',
+        'POST',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * Stop server
      * Stops a started server. The server state must be &#x60;started&#x60;.
      * @param {String} serverId Id of server to stop
-     * @param {module:model/StopServer} stopServerRequest 
+     * @param {module:model/StopServer} stopServerRequest
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
     this.stopServer = function(serverId, stopServerRequest) {
-      return this.stopServerWithHttpInfo(serverId, stopServerRequest)
-        .then(function(response_and_data) {
+      return this.stopServerWithHttpInfo(serverId, stopServerRequest).then(
+        function(response_and_data) {
           return response_and_data.data;
-        });
-    }
-
+        },
+      );
+    };
 
     /**
      * Remove tag from server
@@ -1052,27 +1234,26 @@
 
       // verify the required parameter 'serverId' is set
       if (serverId === undefined || serverId === null) {
-        throw new Error("Missing the required parameter 'serverId' when calling untag");
+        throw new Error(
+          "Missing the required parameter 'serverId' when calling untag",
+        );
       }
 
       // verify the required parameter 'tagName' is set
       if (tagName === undefined || tagName === null) {
-        throw new Error("Missing the required parameter 'tagName' when calling untag");
+        throw new Error(
+          "Missing the required parameter 'tagName' when calling untag",
+        );
       }
 
-
       var pathParams = {
-        'serverId': serverId,
-        'tagName': tagName
+        serverId: serverId,
+        tagName: tagName,
       };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -1080,11 +1261,20 @@
       var returnType = CreateServerResponse;
 
       return this.apiClient.callApi(
-        '/server/{serverId}/untag/{tagName}', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/server/{serverId}/untag/{tagName}',
+        'POST',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * Remove tag from server
@@ -1094,12 +1284,13 @@
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateServerResponse}
      */
     this.untag = function(serverId, tagName) {
-      return this.untagWithHttpInfo(serverId, tagName)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+      return this.untagWithHttpInfo(serverId, tagName).then(function(
+        response_and_data,
+      ) {
+        return response_and_data.data;
+      });
+    };
   };
 
   return exports;
-}));
+});

@@ -11,19 +11,22 @@
     define(['ApiClient', 'model/TagListResponseTags'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./TagListResponseTags'));
+    module.exports = factory(
+      require('../ApiClient'),
+      require('./TagListResponseTags'),
+    );
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.TagListResponse = factory(root.upcloud.ApiClient, root.upcloud.TagListResponseTags);
+    root.upcloud.TagListResponse = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.TagListResponseTags,
+    );
   }
-}(this, function(ApiClient, TagListResponseTags) {
+})(this, function(ApiClient, TagListResponseTags) {
   'use strict';
-
-
-
 
   /**
    * The TagListResponse model module.
@@ -38,8 +41,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -58,16 +59,12 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {module:model/TagListResponseTags} tags
    */
   exports.prototype['tags'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

@@ -8,22 +8,46 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/IpAddresses', 'model/ServerState', 'model/ServerStorageDevices', 'model/ServerTags'], factory);
+    define(
+      [
+        'ApiClient',
+        'model/IpAddresses',
+        'model/ServerState',
+        'model/ServerStorageDevices',
+        'model/ServerTags',
+      ],
+      factory,
+    );
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./IpAddresses'), require('./ServerState'), require('./ServerStorageDevices'), require('./ServerTags'));
+    module.exports = factory(
+      require('../ApiClient'),
+      require('./IpAddresses'),
+      require('./ServerState'),
+      require('./ServerStorageDevices'),
+      require('./ServerTags'),
+    );
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.Server = factory(root.upcloud.ApiClient, root.upcloud.IpAddresses, root.upcloud.ServerState, root.upcloud.ServerStorageDevices, root.upcloud.ServerTags);
+    root.upcloud.Server = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.IpAddresses,
+      root.upcloud.ServerState,
+      root.upcloud.ServerStorageDevices,
+      root.upcloud.ServerTags,
+    );
   }
-}(this, function(ApiClient, IpAddresses, ServerState, ServerStorageDevices, ServerTags) {
+})(this, function(
+  ApiClient,
+  IpAddresses,
+  ServerState,
+  ServerStorageDevices,
+  ServerTags,
+) {
   'use strict';
-
-
-
 
   /**
    * The Server model module.
@@ -39,31 +63,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   };
 
   /**
@@ -78,10 +77,16 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('boot_order')) {
-        obj['boot_order'] = ApiClient.convertToType(data['boot_order'], 'String');
+        obj['boot_order'] = ApiClient.convertToType(
+          data['boot_order'],
+          'String',
+        );
       }
       if (data.hasOwnProperty('core_number')) {
-        obj['core_number'] = ApiClient.convertToType(data['core_number'], 'Number');
+        obj['core_number'] = ApiClient.convertToType(
+          data['core_number'],
+          'Number',
+        );
       }
       if (data.hasOwnProperty('firewall')) {
         obj['firewall'] = ApiClient.convertToType(data['firewall'], 'String');
@@ -93,13 +98,18 @@
         obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
       }
       if (data.hasOwnProperty('ip_addresses')) {
-        obj['ip_addresses'] = IpAddresses.constructFromObject(data['ip_addresses']);
+        obj['ip_addresses'] = IpAddresses.constructFromObject(
+          data['ip_addresses'],
+        );
       }
       if (data.hasOwnProperty('license')) {
         obj['license'] = ApiClient.convertToType(data['license'], 'Number');
       }
       if (data.hasOwnProperty('memory_amount')) {
-        obj['memory_amount'] = ApiClient.convertToType(data['memory_amount'], 'Number');
+        obj['memory_amount'] = ApiClient.convertToType(
+          data['memory_amount'],
+          'Number',
+        );
       }
       if (data.hasOwnProperty('nic_model')) {
         obj['nic_model'] = ApiClient.convertToType(data['nic_model'], 'String');
@@ -108,16 +118,24 @@
         obj['plan'] = ApiClient.convertToType(data['plan'], 'String');
       }
       if (data.hasOwnProperty('plan_ipv4_bytes')) {
-        obj['plan_ipv4_bytes'] = ApiClient.convertToType(data['plan_ipv4_bytes'], 'Number');
+        obj['plan_ipv4_bytes'] = ApiClient.convertToType(
+          data['plan_ipv4_bytes'],
+          'Number',
+        );
       }
       if (data.hasOwnProperty('plan_ipv6_bytes')) {
-        obj['plan_ipv6_bytes'] = ApiClient.convertToType(data['plan_ipv6_bytes'], 'Number');
+        obj['plan_ipv6_bytes'] = ApiClient.convertToType(
+          data['plan_ipv6_bytes'],
+          'Number',
+        );
       }
       if (data.hasOwnProperty('state')) {
         obj['state'] = ServerState.constructFromObject(data['state']);
       }
       if (data.hasOwnProperty('storage_devices')) {
-        obj['storage_devices'] = ServerStorageDevices.constructFromObject(data['storage_devices']);
+        obj['storage_devices'] = ServerStorageDevices.constructFromObject(
+          data['storage_devices'],
+        );
       }
       if (data.hasOwnProperty('tags')) {
         obj['tags'] = ServerTags.constructFromObject(data['tags']);
@@ -132,7 +150,10 @@
         obj['uuid'] = ApiClient.convertToType(data['uuid'], 'String');
       }
       if (data.hasOwnProperty('video_model')) {
-        obj['video_model'] = ApiClient.convertToType(data['video_model'], 'String');
+        obj['video_model'] = ApiClient.convertToType(
+          data['video_model'],
+          'String',
+        );
       }
       if (data.hasOwnProperty('vnc')) {
         obj['vnc'] = ApiClient.convertToType(data['vnc'], 'String');
@@ -141,7 +162,10 @@
         obj['vnc_host'] = ApiClient.convertToType(data['vnc_host'], 'String');
       }
       if (data.hasOwnProperty('vnc_password')) {
-        obj['vnc_password'] = ApiClient.convertToType(data['vnc_password'], 'String');
+        obj['vnc_password'] = ApiClient.convertToType(
+          data['vnc_password'],
+          'String',
+        );
       }
       if (data.hasOwnProperty('vnc_port')) {
         obj['vnc_port'] = ApiClient.convertToType(data['vnc_port'], 'String');
@@ -151,7 +175,7 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * The storage device boot order.
@@ -267,7 +291,6 @@
    */
   exports.prototype['zone'] = undefined;
 
-
   /**
    * Allowed values for the <code>boot_order</code> property.
    * @enum {String}
@@ -278,22 +301,23 @@
      * value: "disk"
      * @const
      */
-    "disk": "disk",
+    disk: 'disk',
     /**
      * value: "cdrom"
      * @const
      */
-    "cdrom": "cdrom",
+    cdrom: 'cdrom',
     /**
      * value: "disk,cdrom"
      * @const
      */
-    "disk,cdrom": "disk,cdrom",
+    'disk,cdrom': 'disk,cdrom',
     /**
      * value: "cdrom,disk"
      * @const
      */
-    "cdrom,disk": "cdrom,disk"  };
+    'cdrom,disk': 'cdrom,disk',
+  };
 
   /**
    * Allowed values for the <code>firewall</code> property.
@@ -305,12 +329,13 @@
      * value: "on"
      * @const
      */
-    "on": "on",
+    on: 'on',
     /**
      * value: "off"
      * @const
      */
-    "off": "off"  };
+    off: 'off',
+  };
 
   /**
    * Allowed values for the <code>video_model</code> property.
@@ -322,12 +347,13 @@
      * value: "vga"
      * @const
      */
-    "vga": "vga",
+    vga: 'vga',
     /**
      * value: "cirrus"
      * @const
      */
-    "cirrus": "cirrus"  };
+    cirrus: 'cirrus',
+  };
 
   /**
    * Allowed values for the <code>vnc</code> property.
@@ -339,15 +365,13 @@
      * value: "on"
      * @const
      */
-    "on": "on",
+    on: 'on',
     /**
      * value: "off"
      * @const
      */
-    "off": "off"  };
-
+    off: 'off',
+  };
 
   return exports;
-}));
-
-
+});

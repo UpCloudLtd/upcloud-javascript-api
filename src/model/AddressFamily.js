@@ -19,9 +19,8 @@
     }
     root.upcloud.AddressFamily = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
 
   /**
    * Enum class AddressFamily.
@@ -33,12 +32,13 @@
      * value: "IPv4"
      * @const
      */
-    "IPv4": "IPv4",
+    IPv4: 'IPv4',
     /**
      * value: "IPv6"
      * @const
      */
-    "IPv6": "IPv6"  };
+    IPv6: 'IPv6',
+  };
 
   /**
    * Returns a <code>AddressFamily</code> enum value from a Javascript object name.
@@ -47,9 +47,7 @@
    */
   exports.constructFromObject = function(object) {
     return object;
-  }
+  };
 
   return exports;
-}));
-
-
+});

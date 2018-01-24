@@ -11,15 +11,21 @@
     define(['ApiClient', 'model/AccountResponse'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AccountResponse'));
+    module.exports = factory(
+      require('../ApiClient'),
+      require('../model/AccountResponse'),
+    );
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.AccountApi = factory(root.upcloud.ApiClient, root.upcloud.AccountResponse);
+    root.upcloud.AccountApi = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.AccountResponse,
+    );
   }
-}(this, function(ApiClient, AccountResponse) {
+})(this, function(ApiClient, AccountResponse) {
   'use strict';
 
   /**
@@ -29,7 +35,7 @@
    */
 
   /**
-   * Constructs a new AccountApi. 
+   * Constructs a new AccountApi.
    * @alias module:api/AccountApi
    * @class
    * @param {module:ApiClient} apiClient Optional API client implementation to use,
@@ -37,8 +43,6 @@
    */
   var exports = function(apiClient) {
     this.apiClient = apiClient || ApiClient.instance;
-
-
 
     /**
      * Account information
@@ -48,17 +52,11 @@
     this.getAccountWithHttpInfo = function() {
       var postBody = null;
 
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var pathParams = {};
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -66,11 +64,20 @@
       var returnType = AccountResponse;
 
       return this.apiClient.callApi(
-        '/account', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/account',
+        'GET',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * Account information
@@ -78,12 +85,11 @@
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AccountResponse}
      */
     this.getAccount = function() {
-      return this.getAccountWithHttpInfo()
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+      return this.getAccountWithHttpInfo().then(function(response_and_data) {
+        return response_and_data.data;
+      });
+    };
   };
 
   return exports;
-}));
+});

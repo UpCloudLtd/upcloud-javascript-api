@@ -11,19 +11,24 @@
     define(['ApiClient', 'model/ErrorCode', 'model/ErrorStatus'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ErrorCode'), require('./ErrorStatus'));
+    module.exports = factory(
+      require('../ApiClient'),
+      require('./ErrorCode'),
+      require('./ErrorStatus'),
+    );
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.ErrorError = factory(root.upcloud.ApiClient, root.upcloud.ErrorCode, root.upcloud.ErrorStatus);
+    root.upcloud.ErrorError = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.ErrorCode,
+      root.upcloud.ErrorStatus,
+    );
   }
-}(this, function(ApiClient, ErrorCode, ErrorStatus) {
+})(this, function(ApiClient, ErrorCode, ErrorStatus) {
   'use strict';
-
-
-
 
   /**
    * The ErrorError model module.
@@ -38,9 +43,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
-
   };
 
   /**
@@ -58,11 +60,13 @@
         obj['error_code'] = ErrorCode.constructFromObject(data['error_code']);
       }
       if (data.hasOwnProperty('error_status')) {
-        obj['error_status'] = ErrorStatus.constructFromObject(data['error_status']);
+        obj['error_status'] = ErrorStatus.constructFromObject(
+          data['error_status'],
+        );
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {module:model/ErrorCode} error_code
@@ -73,9 +77,5 @@
    */
   exports.prototype['error_status'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

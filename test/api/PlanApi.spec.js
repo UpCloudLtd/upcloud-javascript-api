@@ -16,7 +16,7 @@
     // Browser globals (root is window)
     factory(root.expect, root.upcloud);
   }
-}(this, function(expect, upcloud) {
+})(this, function(expect, upcloud) {
   'use strict';
 
   var instance;
@@ -27,31 +27,30 @@
 
   var getProperty = function(object, getter, property) {
     // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
+    if (typeof object[getter] === 'function') return object[getter]();
+    else return object[property];
+  };
 
   var setProperty = function(object, setter, property, value) {
     // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+    if (typeof object[setter] === 'function') object[setter](value);
+    else object[property] = value;
+  };
 
   describe('PlanApi', function() {
     describe('listPlans', function() {
-      it('should call listPlans successfully', function(done) {
-        //uncomment below and update the code to test listPlans
-        //instance.listPlans(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      it('should call listPlans successfully', function() {
+        instance.getPlans().then(plans => {
+          expect(plans.length).to.not.be(0);
+          const plan = plans[0];
+          expect(plan.coreNumber).to.not.be(null);
+          expect(plan.name).to.not.be(null);
+          expect(plan.memoryAmount).to.not.be(null);
+          expect(plan.publicTrafficOut).to.not.be(null);
+          expect(plan.storageSize).to.not.be(null);
+          expect(plan.storageTier).to.not.be(null);
+        });
       });
     });
   });
-
-}));
+});

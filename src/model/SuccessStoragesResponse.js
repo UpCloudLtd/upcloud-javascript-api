@@ -11,19 +11,22 @@
     define(['ApiClient', 'model/SuccessStoragesResponseStorages'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./SuccessStoragesResponseStorages'));
+    module.exports = factory(
+      require('../ApiClient'),
+      require('./SuccessStoragesResponseStorages'),
+    );
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.SuccessStoragesResponse = factory(root.upcloud.ApiClient, root.upcloud.SuccessStoragesResponseStorages);
+    root.upcloud.SuccessStoragesResponse = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.SuccessStoragesResponseStorages,
+    );
   }
-}(this, function(ApiClient, SuccessStoragesResponseStorages) {
+})(this, function(ApiClient, SuccessStoragesResponseStorages) {
   'use strict';
-
-
-
 
   /**
    * The SuccessStoragesResponse model module.
@@ -38,8 +41,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -54,20 +55,18 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('storages')) {
-        obj['storages'] = SuccessStoragesResponseStorages.constructFromObject(data['storages']);
+        obj['storages'] = SuccessStoragesResponseStorages.constructFromObject(
+          data['storages'],
+        );
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {module:model/SuccessStoragesResponseStorages} storages
    */
   exports.prototype['storages'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

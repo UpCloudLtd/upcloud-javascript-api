@@ -8,22 +8,28 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ConfigurationListResponseServerSizes'], factory);
+    define(
+      ['ApiClient', 'model/ConfigurationListResponseServerSizes'],
+      factory,
+    );
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ConfigurationListResponseServerSizes'));
+    module.exports = factory(
+      require('../ApiClient'),
+      require('./ConfigurationListResponseServerSizes'),
+    );
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.ConfigurationListResponse = factory(root.upcloud.ApiClient, root.upcloud.ConfigurationListResponseServerSizes);
+    root.upcloud.ConfigurationListResponse = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.ConfigurationListResponseServerSizes,
+    );
   }
-}(this, function(ApiClient, ConfigurationListResponseServerSizes) {
+})(this, function(ApiClient, ConfigurationListResponseServerSizes) {
   'use strict';
-
-
-
 
   /**
    * The ConfigurationListResponse model module.
@@ -38,8 +44,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -54,20 +58,20 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('server_sizes')) {
-        obj['server_sizes'] = ConfigurationListResponseServerSizes.constructFromObject(data['server_sizes']);
+        obj[
+          'server_sizes'
+        ] = ConfigurationListResponseServerSizes.constructFromObject(
+          data['server_sizes'],
+        );
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {module:model/ConfigurationListResponseServerSizes} server_sizes
    */
   exports.prototype['server_sizes'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

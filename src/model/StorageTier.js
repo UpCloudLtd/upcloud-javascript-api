@@ -19,9 +19,8 @@
     }
     root.upcloud.StorageTier = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
 
   /**
    * Enum class StorageTier.
@@ -33,12 +32,13 @@
      * value: "hdd"
      * @const
      */
-    "hdd": "hdd",
+    hdd: 'hdd',
     /**
      * value: "maxiops"
      * @const
      */
-    "maxiops": "maxiops"  };
+    maxiops: 'maxiops',
+  };
 
   /**
    * Returns a <code>StorageTier</code> enum value from a Javascript object name.
@@ -47,9 +47,7 @@
    */
   exports.constructFromObject = function(object) {
     return object;
-  }
+  };
 
   return exports;
-}));
-
-
+});

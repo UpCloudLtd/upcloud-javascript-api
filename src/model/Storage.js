@@ -8,22 +8,58 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/BackupRule', 'model/StorageAccessType', 'model/StorageBackups', 'model/StorageServers', 'model/StorageState', 'model/StorageTier', 'model/StorageType'], factory);
+    define(
+      [
+        'ApiClient',
+        'model/BackupRule',
+        'model/StorageAccessType',
+        'model/StorageBackups',
+        'model/StorageServers',
+        'model/StorageState',
+        'model/StorageTier',
+        'model/StorageType',
+      ],
+      factory,
+    );
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./BackupRule'), require('./StorageAccessType'), require('./StorageBackups'), require('./StorageServers'), require('./StorageState'), require('./StorageTier'), require('./StorageType'));
+    module.exports = factory(
+      require('../ApiClient'),
+      require('./BackupRule'),
+      require('./StorageAccessType'),
+      require('./StorageBackups'),
+      require('./StorageServers'),
+      require('./StorageState'),
+      require('./StorageTier'),
+      require('./StorageType'),
+    );
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.Storage = factory(root.upcloud.ApiClient, root.upcloud.BackupRule, root.upcloud.StorageAccessType, root.upcloud.StorageBackups, root.upcloud.StorageServers, root.upcloud.StorageState, root.upcloud.StorageTier, root.upcloud.StorageType);
+    root.upcloud.Storage = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.BackupRule,
+      root.upcloud.StorageAccessType,
+      root.upcloud.StorageBackups,
+      root.upcloud.StorageServers,
+      root.upcloud.StorageState,
+      root.upcloud.StorageTier,
+      root.upcloud.StorageType,
+    );
   }
-}(this, function(ApiClient, BackupRule, StorageAccessType, StorageBackups, StorageServers, StorageState, StorageTier, StorageType) {
+})(this, function(
+  ApiClient,
+  BackupRule,
+  StorageAccessType,
+  StorageBackups,
+  StorageServers,
+  StorageState,
+  StorageTier,
+  StorageType,
+) {
   'use strict';
-
-
-
 
   /**
    * The Storage model module.
@@ -38,21 +74,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   };
 
   /**
@@ -70,7 +91,9 @@
         obj['access'] = StorageAccessType.constructFromObject(data['access']);
       }
       if (data.hasOwnProperty('backup_rule')) {
-        obj['backup_rule'] = BackupRule.constructFromObject(data['backup_rule']);
+        obj['backup_rule'] = BackupRule.constructFromObject(
+          data['backup_rule'],
+        );
       }
       if (data.hasOwnProperty('backups')) {
         obj['backups'] = StorageBackups.constructFromObject(data['backups']);
@@ -110,7 +133,7 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {module:model/StorageAccessType} access
@@ -169,9 +192,5 @@
    */
   exports.prototype['created'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

@@ -19,9 +19,8 @@
     }
     root.upcloud.ErrorStatus = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
 
   /**
    * Enum class ErrorStatus.
@@ -33,27 +32,28 @@
      * value: "400"
      * @const
      */
-    "400": "400",
+    '400': '400',
     /**
      * value: "402"
      * @const
      */
-    "402": "402",
+    '402': '402',
     /**
      * value: "403"
      * @const
      */
-    "403": "403",
+    '403': '403',
     /**
      * value: "404"
      * @const
      */
-    "404": "404",
+    '404': '404',
     /**
      * value: "409"
      * @const
      */
-    "409": "409"  };
+    '409': '409',
+  };
 
   /**
    * Returns a <code>ErrorStatus</code> enum value from a Javascript object name.
@@ -62,9 +62,7 @@
    */
   exports.constructFromObject = function(object) {
     return object;
-  }
+  };
 
   return exports;
-}));
-
-
+});

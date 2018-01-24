@@ -19,11 +19,8 @@
     }
     root.upcloud.StorageBackups = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
-
-
 
   /**
    * The StorageBackups model module.
@@ -38,8 +35,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -58,16 +53,12 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {Array.<String>} backup
    */
   exports.prototype['backup'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

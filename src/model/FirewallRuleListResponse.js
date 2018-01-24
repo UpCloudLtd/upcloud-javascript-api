@@ -8,22 +8,28 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/FirewallRuleListResponseFirewallRules'], factory);
+    define(
+      ['ApiClient', 'model/FirewallRuleListResponseFirewallRules'],
+      factory,
+    );
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./FirewallRuleListResponseFirewallRules'));
+    module.exports = factory(
+      require('../ApiClient'),
+      require('./FirewallRuleListResponseFirewallRules'),
+    );
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.FirewallRuleListResponse = factory(root.upcloud.ApiClient, root.upcloud.FirewallRuleListResponseFirewallRules);
+    root.upcloud.FirewallRuleListResponse = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.FirewallRuleListResponseFirewallRules,
+    );
   }
-}(this, function(ApiClient, FirewallRuleListResponseFirewallRules) {
+})(this, function(ApiClient, FirewallRuleListResponseFirewallRules) {
   'use strict';
-
-
-
 
   /**
    * The FirewallRuleListResponse model module.
@@ -38,8 +44,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -54,20 +58,20 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('firewall_rules')) {
-        obj['firewall_rules'] = FirewallRuleListResponseFirewallRules.constructFromObject(data['firewall_rules']);
+        obj[
+          'firewall_rules'
+        ] = FirewallRuleListResponseFirewallRules.constructFromObject(
+          data['firewall_rules'],
+        );
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {module:model/FirewallRuleListResponseFirewallRules} firewall_rules
    */
   exports.prototype['firewall_rules'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

@@ -17,13 +17,13 @@
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.ModifyTagRequest = factory(root.upcloud.ApiClient, root.upcloud.Tag);
+    root.upcloud.ModifyTagRequest = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.Tag,
+    );
   }
-}(this, function(ApiClient, Tag) {
+})(this, function(ApiClient, Tag) {
   'use strict';
-
-
-
 
   /**
    * The ModifyTagRequest model module.
@@ -38,8 +38,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -58,16 +56,12 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {module:model/Tag} tag
    */
   exports.prototype['tag'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

@@ -19,11 +19,8 @@
     }
     root.upcloud.IpAddress = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
-
-
 
   /**
    * The IpAddress model module.
@@ -39,13 +36,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
-
-
-
-
-
   };
 
   /**
@@ -69,17 +59,23 @@
         obj['family'] = ApiClient.convertToType(data['family'], 'String');
       }
       if (data.hasOwnProperty('ptr_record')) {
-        obj['ptr_record'] = ApiClient.convertToType(data['ptr_record'], 'String');
+        obj['ptr_record'] = ApiClient.convertToType(
+          data['ptr_record'],
+          'String',
+        );
       }
       if (data.hasOwnProperty('server')) {
         obj['server'] = ApiClient.convertToType(data['server'], 'String');
       }
       if (data.hasOwnProperty('part_of_plan')) {
-        obj['part_of_plan'] = ApiClient.convertToType(data['part_of_plan'], 'String');
+        obj['part_of_plan'] = ApiClient.convertToType(
+          data['part_of_plan'],
+          'String',
+        );
       }
     }
     return obj;
-  }
+  };
 
   /**
    * Is address for private or public network.
@@ -108,7 +104,6 @@
    */
   exports.prototype['part_of_plan'] = undefined;
 
-
   /**
    * Allowed values for the <code>access</code> property.
    * @enum {String}
@@ -119,12 +114,13 @@
      * value: "public"
      * @const
      */
-    "public": "public",
+    public: 'public',
     /**
      * value: "private"
      * @const
      */
-    "private": "private"  };
+    private: 'private',
+  };
 
   /**
    * Allowed values for the <code>family</code> property.
@@ -136,12 +132,13 @@
      * value: "IPv4"
      * @const
      */
-    "IPv4": "IPv4",
+    IPv4: 'IPv4',
     /**
      * value: "IPv6"
      * @const
      */
-    "IPv6": "IPv6"  };
+    IPv6: 'IPv6',
+  };
 
   /**
    * Allowed values for the <code>part_of_plan</code> property.
@@ -153,15 +150,13 @@
      * value: "yes"
      * @const
      */
-    "yes": "yes",
+    yes: 'yes',
     /**
      * value: "no"
      * @const
      */
-    "no": "no"  };
-
+    no: 'no',
+  };
 
   return exports;
-}));
-
-
+});

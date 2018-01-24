@@ -19,11 +19,8 @@
     }
     root.upcloud.StopServerRequest = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
-
-
 
   /**
    * The StopServerRequest model module.
@@ -39,9 +36,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
-
   };
 
   /**
@@ -63,7 +57,7 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * Type of stop operation performed on the server.
@@ -77,7 +71,6 @@
    */
   exports.prototype['timeout'] = undefined;
 
-
   /**
    * Allowed values for the <code>stop_type</code> property.
    * @enum {String}
@@ -88,15 +81,13 @@
      * value: "soft"
      * @const
      */
-    "soft": "soft",
+    soft: 'soft',
     /**
      * value: "hard"
      * @const
      */
-    "hard": "hard"  };
-
+    hard: 'hard',
+  };
 
   return exports;
-}));
-
-
+});
