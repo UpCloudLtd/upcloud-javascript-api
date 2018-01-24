@@ -19,11 +19,8 @@
     }
     root.upcloud.Plan = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
-
-
 
   /**
    * The Plan model module.
@@ -39,13 +36,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
-
-
-
-
-
   };
 
   /**
@@ -60,26 +50,41 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('core_number')) {
-        obj['core_number'] = ApiClient.convertToType(data['core_number'], 'Number');
+        obj['core_number'] = ApiClient.convertToType(
+          data['core_number'],
+          'Number',
+        );
       }
       if (data.hasOwnProperty('memory_amount')) {
-        obj['memory_amount'] = ApiClient.convertToType(data['memory_amount'], 'Number');
+        obj['memory_amount'] = ApiClient.convertToType(
+          data['memory_amount'],
+          'Number',
+        );
       }
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
       if (data.hasOwnProperty('public_traffic_out')) {
-        obj['public_traffic_out'] = ApiClient.convertToType(data['public_traffic_out'], 'String');
+        obj['public_traffic_out'] = ApiClient.convertToType(
+          data['public_traffic_out'],
+          'String',
+        );
       }
       if (data.hasOwnProperty('storage_size')) {
-        obj['storage_size'] = ApiClient.convertToType(data['storage_size'], 'String');
+        obj['storage_size'] = ApiClient.convertToType(
+          data['storage_size'],
+          'String',
+        );
       }
       if (data.hasOwnProperty('storage_tier')) {
-        obj['storage_tier'] = ApiClient.convertToType(data['storage_tier'], 'String');
+        obj['storage_tier'] = ApiClient.convertToType(
+          data['storage_tier'],
+          'String',
+        );
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {Number} core_number
@@ -106,9 +111,5 @@
    */
   exports.prototype['storage_tier'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

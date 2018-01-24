@@ -19,9 +19,8 @@
     }
     root.upcloud.StorageAccessType = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
 
   /**
    * Enum class StorageAccessType.
@@ -33,12 +32,13 @@
      * value: "public"
      * @const
      */
-    "public": "public",
+    public: 'public',
     /**
      * value: "private"
      * @const
      */
-    "private": "private"  };
+    private: 'private',
+  };
 
   /**
    * Returns a <code>StorageAccessType</code> enum value from a Javascript object name.
@@ -47,9 +47,7 @@
    */
   exports.constructFromObject = function(object) {
     return object;
-  }
+  };
 
   return exports;
-}));
-
-
+});

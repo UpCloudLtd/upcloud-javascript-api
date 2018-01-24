@@ -11,19 +11,22 @@
     define(['ApiClient', 'model/AvailablePlanListResponsePlans'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./AvailablePlanListResponsePlans'));
+    module.exports = factory(
+      require('../ApiClient'),
+      require('./AvailablePlanListResponsePlans'),
+    );
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.AvailablePlanListResponse = factory(root.upcloud.ApiClient, root.upcloud.AvailablePlanListResponsePlans);
+    root.upcloud.AvailablePlanListResponse = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.AvailablePlanListResponsePlans,
+    );
   }
-}(this, function(ApiClient, AvailablePlanListResponsePlans) {
+})(this, function(ApiClient, AvailablePlanListResponsePlans) {
   'use strict';
-
-
-
 
   /**
    * The AvailablePlanListResponse model module.
@@ -38,8 +41,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -54,20 +55,18 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('plans')) {
-        obj['plans'] = AvailablePlanListResponsePlans.constructFromObject(data['plans']);
+        obj['plans'] = AvailablePlanListResponsePlans.constructFromObject(
+          data['plans'],
+        );
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {module:model/AvailablePlanListResponsePlans} plans
    */
   exports.prototype['plans'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

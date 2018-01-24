@@ -19,11 +19,8 @@
     }
     root.upcloud.RestartServer = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
-
-
 
   /**
    * The RestartServer model module.
@@ -38,10 +35,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
-
-
   };
 
   /**
@@ -62,11 +55,14 @@
         obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
       }
       if (data.hasOwnProperty('timeout_action')) {
-        obj['timeout_action'] = ApiClient.convertToType(data['timeout_action'], 'String');
+        obj['timeout_action'] = ApiClient.convertToType(
+          data['timeout_action'],
+          'String',
+        );
       }
     }
     return obj;
-  }
+  };
 
   /**
    * Restart type
@@ -85,7 +81,6 @@
    */
   exports.prototype['timeout_action'] = undefined;
 
-
   /**
    * Allowed values for the <code>stop_type</code> property.
    * @enum {String}
@@ -96,12 +91,13 @@
      * value: "soft"
      * @const
      */
-    "soft": "soft",
+    soft: 'soft',
     /**
      * value: "hard"
      * @const
      */
-    "hard": "hard"  };
+    hard: 'hard',
+  };
 
   /**
    * Allowed values for the <code>timeout_action</code> property.
@@ -113,15 +109,13 @@
      * value: "destroy"
      * @const
      */
-    "destroy": "destroy",
+    destroy: 'destroy',
     /**
      * value: "ignore"
      * @const
      */
-    "ignore": "ignore"  };
-
+    ignore: 'ignore',
+  };
 
   return exports;
-}));
-
-
+});

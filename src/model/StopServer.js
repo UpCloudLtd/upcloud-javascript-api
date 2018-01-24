@@ -11,19 +11,22 @@
     define(['ApiClient', 'model/StopServerRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StopServerRequest'));
+    module.exports = factory(
+      require('../ApiClient'),
+      require('./StopServerRequest'),
+    );
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.StopServer = factory(root.upcloud.ApiClient, root.upcloud.StopServerRequest);
+    root.upcloud.StopServer = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.StopServerRequest,
+    );
   }
-}(this, function(ApiClient, StopServerRequest) {
+})(this, function(ApiClient, StopServerRequest) {
   'use strict';
-
-
-
 
   /**
    * The StopServer model module.
@@ -38,8 +41,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -54,20 +55,18 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('stop_server')) {
-        obj['stop_server'] = StopServerRequest.constructFromObject(data['stop_server']);
+        obj['stop_server'] = StopServerRequest.constructFromObject(
+          data['stop_server'],
+        );
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {module:model/StopServerRequest} stop_server
    */
   exports.prototype['stop_server'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

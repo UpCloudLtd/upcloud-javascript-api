@@ -19,9 +19,8 @@
     }
     root.upcloud.ServerState = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
 
   /**
    * Enum class ServerState.
@@ -33,22 +32,23 @@
      * value: "started"
      * @const
      */
-    "started": "started",
+    started: 'started',
     /**
      * value: "stopped"
      * @const
      */
-    "stopped": "stopped",
+    stopped: 'stopped',
     /**
      * value: "maintenance"
      * @const
      */
-    "maintenance": "maintenance",
+    maintenance: 'maintenance',
     /**
      * value: "error"
      * @const
      */
-    "error": "error"  };
+    error: 'error',
+  };
 
   /**
    * Returns a <code>ServerState</code> enum value from a Javascript object name.
@@ -57,9 +57,7 @@
    */
   exports.constructFromObject = function(object) {
     return object;
-  }
+  };
 
   return exports;
-}));
-
-
+});

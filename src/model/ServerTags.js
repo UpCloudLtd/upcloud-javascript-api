@@ -19,11 +19,8 @@
     }
     root.upcloud.ServerTags = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
-
-
 
   /**
    * The ServerTags model module.
@@ -38,8 +35,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -58,16 +53,12 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {Array.<String>} tag
    */
   exports.prototype['tag'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

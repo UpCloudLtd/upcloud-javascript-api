@@ -11,15 +11,21 @@
     define(['ApiClient', 'model/ZoneListResponse'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ZoneListResponse'));
+    module.exports = factory(
+      require('../ApiClient'),
+      require('../model/ZoneListResponse'),
+    );
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.ZoneApi = factory(root.upcloud.ApiClient, root.upcloud.ZoneListResponse);
+    root.upcloud.ZoneApi = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.ZoneListResponse,
+    );
   }
-}(this, function(ApiClient, ZoneListResponse) {
+})(this, function(ApiClient, ZoneListResponse) {
   'use strict';
 
   /**
@@ -29,7 +35,7 @@
    */
 
   /**
-   * Constructs a new ZoneApi. 
+   * Constructs a new ZoneApi.
    * @alias module:api/ZoneApi
    * @class
    * @param {module:ApiClient} apiClient Optional API client implementation to use,
@@ -37,8 +43,6 @@
    */
   var exports = function(apiClient) {
     this.apiClient = apiClient || ApiClient.instance;
-
-
 
     /**
      * List available zones
@@ -48,17 +52,11 @@
     this.listZonesWithHttpInfo = function() {
       var postBody = null;
 
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var pathParams = {};
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -66,11 +64,20 @@
       var returnType = ZoneListResponse;
 
       return this.apiClient.callApi(
-        '/zone', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/zone',
+        'GET',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * List available zones
@@ -78,12 +85,11 @@
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ZoneListResponse}
      */
     this.listZones = function() {
-      return this.listZonesWithHttpInfo()
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+      return this.listZonesWithHttpInfo().then(function(response_and_data) {
+        return response_and_data.data;
+      });
+    };
   };
 
   return exports;
-}));
+});

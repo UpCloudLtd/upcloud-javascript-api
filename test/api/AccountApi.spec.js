@@ -5,50 +5,51 @@
  * OpenAPI spec version: 1.2.0
  */
 
-;(function(root, factory) {
+(function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD.
-    define(['expect.js', '../../src/index'], factory)
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'))
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.upcloud)
+    factory(root.expect, root.upcloud);
   }
 })(this, function(expect, upcloud) {
-  'use strict'
+  'use strict';
 
-  var instance
+  var instance;
 
   beforeEach(function() {
-    instance = new upcloud.AccountApi()
+    instance = new upcloud.AccountApi();
     instance.apiClient.authentications.baseAuth.username =
-      process.env.UPCLOUD_API_TEST_USER
+      process.env.UPCLOUD_API_TEST_USER;
     instance.apiClient.authentications.baseAuth.password =
-      process.env.UPCLOUD_API_TEST_PASSWORD
-  })
+      process.env.UPCLOUD_API_TEST_PASSWORD;
+  });
 
   var getProperty = function(object, getter, property) {
     // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function') return object[getter]()
-    else return object[property]
-  }
+    if (typeof object[getter] === 'function') return object[getter]();
+    else return object[property];
+  };
 
   var setProperty = function(object, setter, property, value) {
     // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function') object[setter](value)
-    else object[property] = value
-  }
+    if (typeof object[setter] === 'function') object[setter](value);
+    else object[property] = value;
+  };
 
   describe('AccountApi', function() {
     describe('getAccount', function() {
       it('should call getAccount successfully', function(done) {
         instance.getAccount().then(function(result) {
-          expect(result.account).to.have.key(['credits', 'username'])
-          done()
-        })
-      })
-    })
-  })
-})
+          expect(result.account).to.have.key(['credits', 'username']);
+          expect(result.account.username).to.be('toughbyte');
+          done();
+        });
+      });
+    });
+  });
+});

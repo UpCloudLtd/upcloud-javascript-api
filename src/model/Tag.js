@@ -19,11 +19,8 @@
     }
     root.upcloud.Tag = factory(root.upcloud.ApiClient, root.upcloud.TagServers);
   }
-}(this, function(ApiClient, TagServers) {
+})(this, function(ApiClient, TagServers) {
   'use strict';
-
-
-
 
   /**
    * The Tag model module.
@@ -41,8 +38,6 @@
     var _this = this;
 
     _this['name'] = name;
-
-
   };
 
   /**
@@ -60,14 +55,17 @@
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
       if (data.hasOwnProperty('description')) {
-        obj['description'] = ApiClient.convertToType(data['description'], 'String');
+        obj['description'] = ApiClient.convertToType(
+          data['description'],
+          'String',
+        );
       }
       if (data.hasOwnProperty('servers')) {
         obj['servers'] = TagServers.constructFromObject(data['servers']);
       }
     }
     return obj;
-  }
+  };
 
   /**
    * The new tag
@@ -84,9 +82,5 @@
    */
   exports.prototype['servers'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

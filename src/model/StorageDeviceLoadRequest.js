@@ -19,11 +19,8 @@
     }
     root.upcloud.StorageDeviceLoadRequest = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
-
-
 
   /**
    * The StorageDeviceLoadRequest model module.
@@ -38,8 +35,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -58,7 +53,7 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * The UUID of the storage to be loaded in the CD-ROM device.
@@ -66,9 +61,5 @@
    */
   exports.prototype['storage'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

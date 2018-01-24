@@ -19,9 +19,8 @@
     }
     root.upcloud.StorageState = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
 
   /**
    * Enum class StorageState.
@@ -33,27 +32,28 @@
      * value: "online"
      * @const
      */
-    "online": "online",
+    online: 'online',
     /**
      * value: "maintenance"
      * @const
      */
-    "maintenance": "maintenance",
+    maintenance: 'maintenance',
     /**
      * value: "cloning"
      * @const
      */
-    "cloning": "cloning",
+    cloning: 'cloning',
     /**
      * value: "backuping"
      * @const
      */
-    "backuping": "backuping",
+    backuping: 'backuping',
     /**
      * value: "error"
      * @const
      */
-    "error": "error"  };
+    error: 'error',
+  };
 
   /**
    * Returns a <code>StorageState</code> enum value from a Javascript object name.
@@ -62,9 +62,7 @@
    */
   exports.constructFromObject = function(object) {
     return object;
-  }
+  };
 
   return exports;
-}));
-
-
+});

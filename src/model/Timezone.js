@@ -19,11 +19,8 @@
     }
     root.upcloud.Timezone = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
-
-
 
   /**
    * The Timezone model module.
@@ -39,7 +36,6 @@
    */
   var exports = function() {
     var _this = this;
-
   };
 
   /**
@@ -52,15 +48,9 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-
     }
     return obj;
-  }
-
-
-
+  };
 
   return exports;
-}));
-
-
+});

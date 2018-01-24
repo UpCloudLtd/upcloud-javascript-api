@@ -19,11 +19,8 @@
     }
     root.upcloud.StorageDevice = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
-
-
 
   /**
    * The StorageDevice model module.
@@ -38,17 +35,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
-
-
-
-
-
-
-
-
-
   };
 
   /**
@@ -78,23 +64,32 @@
         obj['address'] = ApiClient.convertToType(data['address'], 'String');
       }
       if (data.hasOwnProperty('part_of_plan')) {
-        obj['part_of_plan'] = ApiClient.convertToType(data['part_of_plan'], 'String');
+        obj['part_of_plan'] = ApiClient.convertToType(
+          data['part_of_plan'],
+          'String',
+        );
       }
       if (data.hasOwnProperty('storage')) {
         obj['storage'] = ApiClient.convertToType(data['storage'], 'String');
       }
       if (data.hasOwnProperty('storage_size')) {
-        obj['storage_size'] = ApiClient.convertToType(data['storage_size'], 'Number');
+        obj['storage_size'] = ApiClient.convertToType(
+          data['storage_size'],
+          'Number',
+        );
       }
       if (data.hasOwnProperty('storage_title')) {
-        obj['storage_title'] = ApiClient.convertToType(data['storage_title'], 'String');
+        obj['storage_title'] = ApiClient.convertToType(
+          data['storage_title'],
+          'String',
+        );
       }
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {String} title
@@ -137,7 +132,6 @@
    */
   exports.prototype['type'] = undefined;
 
-
   /**
    * Allowed values for the <code>part_of_plan</code> property.
    * @enum {String}
@@ -148,15 +142,13 @@
      * value: "yes"
      * @const
      */
-    "yes": "yes",
+    yes: 'yes',
     /**
      * value: "no"
      * @const
      */
-    "no": "no"  };
-
+    no: 'no',
+  };
 
   return exports;
-}));
-
-
+});

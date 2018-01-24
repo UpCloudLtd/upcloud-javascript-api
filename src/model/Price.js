@@ -19,11 +19,8 @@
     }
     root.upcloud.Price = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
-
-
 
   /**
    * The Price model module.
@@ -39,9 +36,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
-
   };
 
   /**
@@ -63,7 +57,7 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {Number} amount
@@ -74,9 +68,5 @@
    */
   exports.prototype['price'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

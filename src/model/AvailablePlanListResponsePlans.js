@@ -17,13 +17,13 @@
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.AvailablePlanListResponsePlans = factory(root.upcloud.ApiClient, root.upcloud.Plan);
+    root.upcloud.AvailablePlanListResponsePlans = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.Plan,
+    );
   }
-}(this, function(ApiClient, Plan) {
+})(this, function(ApiClient, Plan) {
   'use strict';
-
-
-
 
   /**
    * The AvailablePlanListResponsePlans model module.
@@ -38,8 +38,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -58,16 +56,12 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {Array.<module:model/Plan>} plan
    */
   exports.prototype['plan'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

@@ -17,13 +17,13 @@
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.ZoneListResponseZones = factory(root.upcloud.ApiClient, root.upcloud.Zone);
+    root.upcloud.ZoneListResponseZones = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.Zone,
+    );
   }
-}(this, function(ApiClient, Zone) {
+})(this, function(ApiClient, Zone) {
   'use strict';
-
-
-
 
   /**
    * The ZoneListResponseZones model module.
@@ -38,8 +38,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -58,16 +56,12 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {Array.<module:model/Zone>} zone
    */
   exports.prototype['zone'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

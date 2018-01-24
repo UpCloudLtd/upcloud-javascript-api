@@ -11,19 +11,22 @@
     define(['ApiClient', 'model/AddressFamily'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./AddressFamily'));
+    module.exports = factory(
+      require('../ApiClient'),
+      require('./AddressFamily'),
+    );
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.FirewallRule = factory(root.upcloud.ApiClient, root.upcloud.AddressFamily);
+    root.upcloud.FirewallRule = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.AddressFamily,
+    );
   }
-}(this, function(ApiClient, AddressFamily) {
+})(this, function(ApiClient, AddressFamily) {
   'use strict';
-
-
-
 
   /**
    * The FirewallRule model module.
@@ -46,17 +49,6 @@
     _this['action'] = action;
 
     _this['family'] = family;
-
-
-
-
-
-
-
-
-
-
-
   };
 
   /**
@@ -89,35 +81,59 @@
         obj['icmp_type'] = ApiClient.convertToType(data['icmp_type'], 'String');
       }
       if (data.hasOwnProperty('destination_address_start')) {
-        obj['destination_address_start'] = ApiClient.convertToType(data['destination_address_start'], 'String');
+        obj['destination_address_start'] = ApiClient.convertToType(
+          data['destination_address_start'],
+          'String',
+        );
       }
       if (data.hasOwnProperty('destination_address_end')) {
-        obj['destination_address_end'] = ApiClient.convertToType(data['destination_address_end'], 'String');
+        obj['destination_address_end'] = ApiClient.convertToType(
+          data['destination_address_end'],
+          'String',
+        );
       }
       if (data.hasOwnProperty('destination_port_start')) {
-        obj['destination_port_start'] = ApiClient.convertToType(data['destination_port_start'], 'Number');
+        obj['destination_port_start'] = ApiClient.convertToType(
+          data['destination_port_start'],
+          'Number',
+        );
       }
       if (data.hasOwnProperty('destination_port_end')) {
-        obj['destination_port_end'] = ApiClient.convertToType(data['destination_port_end'], 'Number');
+        obj['destination_port_end'] = ApiClient.convertToType(
+          data['destination_port_end'],
+          'Number',
+        );
       }
       if (data.hasOwnProperty('source_address_start')) {
-        obj['source_address_start'] = ApiClient.convertToType(data['source_address_start'], 'String');
+        obj['source_address_start'] = ApiClient.convertToType(
+          data['source_address_start'],
+          'String',
+        );
       }
       if (data.hasOwnProperty('source_address_end')) {
-        obj['source_address_end'] = ApiClient.convertToType(data['source_address_end'], 'String');
+        obj['source_address_end'] = ApiClient.convertToType(
+          data['source_address_end'],
+          'String',
+        );
       }
       if (data.hasOwnProperty('source_port_start')) {
-        obj['source_port_start'] = ApiClient.convertToType(data['source_port_start'], 'Number');
+        obj['source_port_start'] = ApiClient.convertToType(
+          data['source_port_start'],
+          'Number',
+        );
       }
       if (data.hasOwnProperty('source_port_end')) {
-        obj['source_port_end'] = ApiClient.convertToType(data['source_port_end'], 'Number');
+        obj['source_port_end'] = ApiClient.convertToType(
+          data['source_port_end'],
+          'Number',
+        );
       }
       if (data.hasOwnProperty('comment')) {
         obj['comment'] = ApiClient.convertToType(data['comment'], 'String');
       }
     }
     return obj;
-  }
+  };
 
   /**
    * The direction of network traffic this rule will be applied to.
@@ -195,7 +211,6 @@
    */
   exports.prototype['comment'] = undefined;
 
-
   /**
    * Allowed values for the <code>direction</code> property.
    * @enum {String}
@@ -206,12 +221,13 @@
      * value: "in"
      * @const
      */
-    "in": "in",
+    in: 'in',
     /**
      * value: "out"
      * @const
      */
-    "out": "out"  };
+    out: 'out',
+  };
 
   /**
    * Allowed values for the <code>action</code> property.
@@ -223,17 +239,18 @@
      * value: "accept"
      * @const
      */
-    "accept": "accept",
+    accept: 'accept',
     /**
      * value: "reject"
      * @const
      */
-    "reject": "reject",
+    reject: 'reject',
     /**
      * value: "drop"
      * @const
      */
-    "drop": "drop"  };
+    drop: 'drop',
+  };
 
   /**
    * Allowed values for the <code>protocol</code> property.
@@ -245,20 +262,18 @@
      * value: "tcp"
      * @const
      */
-    "tcp": "tcp",
+    tcp: 'tcp',
     /**
      * value: "udp"
      * @const
      */
-    "udp": "udp",
+    udp: 'udp',
     /**
      * value: "icmp"
      * @const
      */
-    "icmp": "icmp"  };
-
+    icmp: 'icmp',
+  };
 
   return exports;
-}));
-
-
+});

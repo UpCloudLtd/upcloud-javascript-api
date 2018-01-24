@@ -17,13 +17,13 @@
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.PriceListResponsePrices = factory(root.upcloud.ApiClient, root.upcloud.PriceZone);
+    root.upcloud.PriceListResponsePrices = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.PriceZone,
+    );
   }
-}(this, function(ApiClient, PriceZone) {
+})(this, function(ApiClient, PriceZone) {
   'use strict';
-
-
-
 
   /**
    * The PriceListResponsePrices model module.
@@ -38,8 +38,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -58,16 +56,12 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {Array.<module:model/PriceZone>} zone
    */
   exports.prototype['zone'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

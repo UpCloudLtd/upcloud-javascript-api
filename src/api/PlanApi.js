@@ -11,15 +11,21 @@
     define(['ApiClient', 'model/AvailablePlanListResponse'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AvailablePlanListResponse'));
+    module.exports = factory(
+      require('../ApiClient'),
+      require('../model/AvailablePlanListResponse'),
+    );
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.PlanApi = factory(root.upcloud.ApiClient, root.upcloud.AvailablePlanListResponse);
+    root.upcloud.PlanApi = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.AvailablePlanListResponse,
+    );
   }
-}(this, function(ApiClient, AvailablePlanListResponse) {
+})(this, function(ApiClient, AvailablePlanListResponse) {
   'use strict';
 
   /**
@@ -29,7 +35,7 @@
    */
 
   /**
-   * Constructs a new PlanApi. 
+   * Constructs a new PlanApi.
    * @alias module:api/PlanApi
    * @class
    * @param {module:ApiClient} apiClient Optional API client implementation to use,
@@ -37,8 +43,6 @@
    */
   var exports = function(apiClient) {
     this.apiClient = apiClient || ApiClient.instance;
-
-
 
     /**
      * List available plans
@@ -48,17 +52,11 @@
     this.listPlansWithHttpInfo = function() {
       var postBody = null;
 
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var pathParams = {};
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -66,11 +64,20 @@
       var returnType = AvailablePlanListResponse;
 
       return this.apiClient.callApi(
-        '/plan', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/plan',
+        'GET',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * List available plans
@@ -78,12 +85,11 @@
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AvailablePlanListResponse}
      */
     this.listPlans = function() {
-      return this.listPlansWithHttpInfo()
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+      return this.listPlansWithHttpInfo().then(function(response_and_data) {
+        return response_and_data.data;
+      });
+    };
   };
 
   return exports;
-}));
+});

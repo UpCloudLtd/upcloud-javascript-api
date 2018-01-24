@@ -19,11 +19,8 @@
     }
     root.upcloud.TemplitizeStorageRequest = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
-
-
 
   /**
    * The TemplitizeStorageRequest model module.
@@ -38,8 +35,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -58,7 +53,7 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * A short description.
@@ -66,9 +61,5 @@
    */
   exports.prototype['title'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

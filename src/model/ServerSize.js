@@ -19,11 +19,8 @@
     }
     root.upcloud.ServerSize = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
-
-
 
   /**
    * The ServerSize model module.
@@ -38,9 +35,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
-
   };
 
   /**
@@ -55,14 +49,20 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('core_number')) {
-        obj['core_number'] = ApiClient.convertToType(data['core_number'], 'Number');
+        obj['core_number'] = ApiClient.convertToType(
+          data['core_number'],
+          'Number',
+        );
       }
       if (data.hasOwnProperty('memory_amount')) {
-        obj['memory_amount'] = ApiClient.convertToType(data['memory_amount'], 'Number');
+        obj['memory_amount'] = ApiClient.convertToType(
+          data['memory_amount'],
+          'Number',
+        );
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {Number} core_number
@@ -73,9 +73,5 @@
    */
   exports.prototype['memory_amount'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

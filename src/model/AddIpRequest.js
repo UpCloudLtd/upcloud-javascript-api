@@ -17,13 +17,13 @@
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.AddIpRequest = factory(root.upcloud.ApiClient, root.upcloud.IpAddress);
+    root.upcloud.AddIpRequest = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.IpAddress,
+    );
   }
-}(this, function(ApiClient, IpAddress) {
+})(this, function(ApiClient, IpAddress) {
   'use strict';
-
-
-
 
   /**
    * The AddIpRequest model module.
@@ -38,8 +38,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -58,16 +56,12 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {module:model/IpAddress} ip_address
    */
   exports.prototype['ip_address'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

@@ -19,9 +19,8 @@
     }
     root.upcloud.StorageType = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
 
   /**
    * Enum class StorageType.
@@ -33,27 +32,28 @@
      * value: "disk"
      * @const
      */
-    "disk": "disk",
+    disk: 'disk',
     /**
      * value: "cdrom"
      * @const
      */
-    "cdrom": "cdrom",
+    cdrom: 'cdrom',
     /**
      * value: "template"
      * @const
      */
-    "template": "template",
+    template: 'template',
     /**
      * value: "backup"
      * @const
      */
-    "backup": "backup",
+    backup: 'backup',
     /**
      * value: "normal"
      * @const
      */
-    "normal": "normal"  };
+    normal: 'normal',
+  };
 
   /**
    * Returns a <code>StorageType</code> enum value from a Javascript object name.
@@ -62,9 +62,7 @@
    */
   exports.constructFromObject = function(object) {
     return object;
-  }
+  };
 
   return exports;
-}));
-
-
+});

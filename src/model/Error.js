@@ -17,13 +17,13 @@
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.Error = factory(root.upcloud.ApiClient, root.upcloud.ErrorError);
+    root.upcloud.Error = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.ErrorError,
+    );
   }
-}(this, function(ApiClient, ErrorError) {
+})(this, function(ApiClient, ErrorError) {
   'use strict';
-
-
-
 
   /**
    * The Error model module.
@@ -38,8 +38,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -58,16 +56,12 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {module:model/ErrorError} error
    */
   exports.prototype['error'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

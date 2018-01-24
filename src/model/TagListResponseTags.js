@@ -17,13 +17,13 @@
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.TagListResponseTags = factory(root.upcloud.ApiClient, root.upcloud.Tag);
+    root.upcloud.TagListResponseTags = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.Tag,
+    );
   }
-}(this, function(ApiClient, Tag) {
+})(this, function(ApiClient, Tag) {
   'use strict';
-
-
-
 
   /**
    * The TagListResponseTags model module.
@@ -38,8 +38,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -58,16 +56,12 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {Array.<module:model/Tag>} tag
    */
   exports.prototype['tag'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

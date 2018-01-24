@@ -19,11 +19,8 @@
     }
     root.upcloud.Zone = factory(root.upcloud.ApiClient);
   }
-}(this, function(ApiClient) {
+})(this, function(ApiClient) {
   'use strict';
-
-
-
 
   /**
    * The Zone model module.
@@ -39,9 +36,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
-
   };
 
   /**
@@ -59,11 +53,14 @@
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
       if (data.hasOwnProperty('description')) {
-        obj['description'] = ApiClient.convertToType(data['description'], 'String');
+        obj['description'] = ApiClient.convertToType(
+          data['description'],
+          'String',
+        );
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {String} name
@@ -74,9 +71,5 @@
    */
   exports.prototype['description'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

@@ -11,19 +11,22 @@
     define(['ApiClient', 'model/StorageDevice'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageDevice'));
+    module.exports = factory(
+      require('../ApiClient'),
+      require('./StorageDevice'),
+    );
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.AttachStorageDeviceRequest = factory(root.upcloud.ApiClient, root.upcloud.StorageDevice);
+    root.upcloud.AttachStorageDeviceRequest = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.StorageDevice,
+    );
   }
-}(this, function(ApiClient, StorageDevice) {
+})(this, function(ApiClient, StorageDevice) {
   'use strict';
-
-
-
 
   /**
    * The AttachStorageDeviceRequest model module.
@@ -38,8 +41,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -54,20 +55,18 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('storage_device')) {
-        obj['storage_device'] = StorageDevice.constructFromObject(data['storage_device']);
+        obj['storage_device'] = StorageDevice.constructFromObject(
+          data['storage_device'],
+        );
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {module:model/StorageDevice} storage_device
    */
   exports.prototype['storage_device'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

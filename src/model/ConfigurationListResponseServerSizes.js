@@ -17,13 +17,13 @@
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.ConfigurationListResponseServerSizes = factory(root.upcloud.ApiClient, root.upcloud.ServerSize);
+    root.upcloud.ConfigurationListResponseServerSizes = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.ServerSize,
+    );
   }
-}(this, function(ApiClient, ServerSize) {
+})(this, function(ApiClient, ServerSize) {
   'use strict';
-
-
-
 
   /**
    * The ConfigurationListResponseServerSizes model module.
@@ -38,8 +38,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -54,20 +52,18 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('server_size')) {
-        obj['server_size'] = ApiClient.convertToType(data['server_size'], [ServerSize]);
+        obj['server_size'] = ApiClient.convertToType(data['server_size'], [
+          ServerSize,
+        ]);
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {Array.<module:model/ServerSize>} server_size
    */
   exports.prototype['server_size'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

@@ -17,13 +17,13 @@
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.IpAddresses = factory(root.upcloud.ApiClient, root.upcloud.IpAddress);
+    root.upcloud.IpAddresses = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.IpAddress,
+    );
   }
-}(this, function(ApiClient, IpAddress) {
+})(this, function(ApiClient, IpAddress) {
   'use strict';
-
-
-
 
   /**
    * The IpAddresses model module.
@@ -38,8 +38,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -54,20 +52,18 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('ip_address')) {
-        obj['ip_address'] = ApiClient.convertToType(data['ip_address'], [IpAddress]);
+        obj['ip_address'] = ApiClient.convertToType(data['ip_address'], [
+          IpAddress,
+        ]);
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {Array.<module:model/IpAddress>} ip_address
    */
   exports.prototype['ip_address'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});

@@ -11,15 +11,21 @@
     define(['ApiClient', 'model/PriceListResponse'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/PriceListResponse'));
+    module.exports = factory(
+      require('../ApiClient'),
+      require('../model/PriceListResponse'),
+    );
   } else {
     // Browser globals (root is window)
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.PricesApi = factory(root.upcloud.ApiClient, root.upcloud.PriceListResponse);
+    root.upcloud.PricesApi = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.PriceListResponse,
+    );
   }
-}(this, function(ApiClient, PriceListResponse) {
+})(this, function(ApiClient, PriceListResponse) {
   'use strict';
 
   /**
@@ -29,7 +35,7 @@
    */
 
   /**
-   * Constructs a new PricesApi. 
+   * Constructs a new PricesApi.
    * @alias module:api/PricesApi
    * @class
    * @param {module:ApiClient} apiClient Optional API client implementation to use,
@@ -37,8 +43,6 @@
    */
   var exports = function(apiClient) {
     this.apiClient = apiClient || ApiClient.instance;
-
-
 
     /**
      * List prices
@@ -48,17 +52,11 @@
     this.listPricesWithHttpInfo = function() {
       var postBody = null;
 
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
+      var pathParams = {};
+      var queryParams = {};
+      var collectionQueryParams = {};
+      var headerParams = {};
+      var formParams = {};
 
       var authNames = ['baseAuth'];
       var contentTypes = ['application/json'];
@@ -66,11 +64,20 @@
       var returnType = PriceListResponse;
 
       return this.apiClient.callApi(
-        '/price', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        '/price',
+        'GET',
+        pathParams,
+        queryParams,
+        collectionQueryParams,
+        headerParams,
+        formParams,
+        postBody,
+        authNames,
+        contentTypes,
+        accepts,
+        returnType,
       );
-    }
+    };
 
     /**
      * List prices
@@ -78,12 +85,11 @@
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PriceListResponse}
      */
     this.listPrices = function() {
-      return this.listPricesWithHttpInfo()
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
+      return this.listPricesWithHttpInfo().then(function(response_and_data) {
+        return response_and_data.data;
+      });
+    };
   };
 
   return exports;
-}));
+});

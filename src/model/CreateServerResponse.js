@@ -17,13 +17,13 @@
     if (!root.upcloud) {
       root.upcloud = {};
     }
-    root.upcloud.CreateServerResponse = factory(root.upcloud.ApiClient, root.upcloud.Server);
+    root.upcloud.CreateServerResponse = factory(
+      root.upcloud.ApiClient,
+      root.upcloud.Server,
+    );
   }
-}(this, function(ApiClient, Server) {
+})(this, function(ApiClient, Server) {
   'use strict';
-
-
-
 
   /**
    * The CreateServerResponse model module.
@@ -38,8 +38,6 @@
    */
   var exports = function() {
     var _this = this;
-
-
   };
 
   /**
@@ -58,16 +56,12 @@
       }
     }
     return obj;
-  }
+  };
 
   /**
    * @member {module:model/Server} server
    */
   exports.prototype['server'] = undefined;
 
-
-
   return exports;
-}));
-
-
+});
