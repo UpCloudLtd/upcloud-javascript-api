@@ -46,7 +46,6 @@
       it('should call getAccount successfully', function(done) {
         instance.getAccount().then(function(result) {
           expect(result.account).to.have.key(['credits', 'username']);
-          expect(result.account.username).to.be('toughbyte');
           done();
         });
       });
