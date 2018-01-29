@@ -55,7 +55,6 @@ describe('FirewallApi', function() {
 
   describe('createFirewallRule', () => {
     it('should call createFirewallRule successfully', async () => {
-      console.log('Testing rule');
       const result = await instance.createFirewallRule(testServer.uuid, {
         firewall_rule: testFirewallRule,
       });

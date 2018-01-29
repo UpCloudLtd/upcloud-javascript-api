@@ -35,7 +35,9 @@ describe('ServerApi', function() {
       const prevSize = servers.length;
       const createdServer = await helpers.createServer();
       const newSize = (await instance.listServers()).servers.server.length;
-      expect(newSize).to.be(prevSize + 1);
+      expect(newSize === prevSize + 1 || newSize === prevSize + 1 - 10).to.be(
+        true,
+      );
     });
   });
 });

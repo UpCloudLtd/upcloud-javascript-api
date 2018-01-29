@@ -1,5 +1,8 @@
 import 'babel-polyfill';
 
+console.log =
+  process.env.NODE_ENV === 'development' ? console.log : () => void 0;
+
 const upcloud = require('../src');
 
 const username = process.env.UPCLOUD_API_TEST_USER;
