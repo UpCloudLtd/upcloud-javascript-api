@@ -1,7 +1,6 @@
 import 'babel-polyfill';
 
-console.log =
-  process.env.NODE_ENV === 'development' ? console.log : () => void 0;
+const log = process.env.NODE_ENV === 'development' ? console.log : () => void 0;
 
 const upcloud = require('../src');
 
@@ -41,10 +40,10 @@ const serverData = {
 };
 
 const waitForServerState = serverId => async (state, timeout = TIMEOUT) => {
-  console.log(`Waiting for a server ${state} with timeout ${timeout}...`);
+  log(`Waiting for a server ${state} with timeout ${timeout}...`);
   const server = (await serverApi.serverDetails(serverId)).server;
   if (server.state === state) {
-    console.log(`Server ${serverId} ${state}.`);
+    log(`Server ${serverId} ${state}.`);
     return server;
   } else {
     return await new Promise((resolve, reject) => {
@@ -61,7 +60,7 @@ let createdServers = [];
 const createServer = async (data = serverData) => {
   const serverList = (await serverApi.listServers()).servers.server;
   if (serverList.length >= 10) {
-    console.log('Cleanup servers...');
+    log('Cleanup servers...');
     await Promise.all(
       createdServers.map(server => server.uuid).map(deleteServer),
     );
@@ -77,7 +76,7 @@ const createServer = async (data = serverData) => {
 };
 
 const stopServer = serverId => {
-  console.log(`Stopping server ${serverId}`);
+  log(`Stopping server ${serverId}`);
   return serverApi
     .stopServer(serverId, {
       stop_server: {
