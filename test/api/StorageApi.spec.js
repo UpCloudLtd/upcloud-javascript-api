@@ -5,200 +5,154 @@
  * OpenAPI spec version: 1.2.0
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.upcloud);
-  }
-})(this, function(expect, upcloud) {
-  'use strict';
+import expect from 'expect.js';
+import helpers from '../helpers';
+import upcloud from '../../src/index';
 
-  var instance;
+var instance, testServer, testStorage;
 
-  beforeEach(function() {
-    instance = new upcloud.StorageApi();
-  });
-
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function') return object[getter]();
-    else return object[property];
-  };
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function') object[setter](value);
-    else object[property] = value;
-  };
-
-  describe('StorageApi', function() {
-    describe('attachStorage', function() {
-      it('should call attachStorage successfully', function() {
-        const serverId = testServer.uuid;
-        const storageDevice = { address: 'scsi:0:0', type: 'disk' };
-        return instance.attachStorage(serverId, { storageDevice }).then(res => {
-          let server = res.server;
-          expect(
-            server.storageDevices.storageDevice.some(
-              item => item.storageTitle === 'Test create storage storage',
-            ),
-          ).to.be(true);
-          server = instance.detachStorage(serverId, { address: 'scsi:0:0' })
-            .server;
-          expect(
-            server.storageDevices.storageDevice.every(
-              item => item.address !== 'scsi:0:0',
-            ),
-          ).to.be(true);
-        });
-      });
-    });
-    describe('backupStorage', function() {
-      it('should call backupStorage successfully', function() {
-        const storageId = testStorage.uuid;
-        return instance
-          .backupStorage(storageId, { title: 'Test backup' })
-          .then(res => {
-            const storage = res.storage;
-            expect(testStorage.access).to.be(storage.access);
-            expect(testStorage.license).to.be(storage.license);
-            expect(testStorage.uuid).to.be(storage.uuid);
-            expect('Test backup').to.be(storage.title);
-          });
-      });
-    });
-    describe('cancelOperation', function() {
-      it('should call cancelOperation successfully', function() {
-        const storageId = testStorage.uuid;
-        const clonedStorage = {
-          title: 'Cloned storage',
-          zone: 'fi-hel1',
-          tier: 'MAXIOPS',
-        };
-        return instance.clonedStorage(storageId, clonedStorage).then(res => {
-          const clonedStorage = res.storage;
-          instance.cancelOperation(clonedStorage.uuid);
-          const clonedStorageId = clonedStorage.uuid;
-          expect(
-            instance.getStorageDetails(clonedStorageId).storage.state,
-          ).to.be('maintenance');
-        });
-      });
-    });
-    describe('cloneStorage', function() {
-      it('should call cloneStorage successfully', function() {
-        const storageId = testStorage.uuid;
-        const clonedStorage = {
-          title: 'Cloned storage',
-          zone: 'fi-hel1',
-          tier: 'MAXIOPS',
-        };
-        return instance.cloneStorage(storageId, clonedStorage).then(res => {
-          const clonedStorage = res.storage;
-          expect(clonedStorage.origin).to.be(null);
-          expect(clonedStorage.title).to.be('Cloned storage');
-        });
-      });
-    });
-    describe('createStorage', function() {
-      it('should call createStorage successfully', function() {
-        const storage = {
-          tier: 'MAXIOPS',
-          size: 10,
+describe('StorageApi', function() {
+  beforeEach(async () => {
+    try {
+      instance = new upcloud.StorageApi();
+      testStorage = (await instance.createStorage({
+        storage: {
           title: 'Test create storage storage',
           zone: 'fi-hel1',
+          size: 10,
+          tier: 'maxiops',
           backup_rule: {
             interval: 'daily',
             time: '0430',
             retention: 365,
           },
-        };
-        return instance.createStorage(storage).then(res => {
-          const storage = res.storage;
-          expect(storage.access).to.be('private');
-          expect(storage.license).to.be('0');
-          expect(storage.size).to.be(10);
-          expect(storage.state).to.be('online');
-          expect(storage.tier).to.be('MAXIOPS');
-          expect(storage.title).to.be('Test create storage storage');
-        });
+        },
+      })).storage;
+    } catch (e) {
+      console.error('Error: ', e);
+    }
+  });
+
+  describe('attachStorage', function() {
+    it('should call attachStorage successfully', async () => {
+      testServer = await helpers.createServer();
+      await helpers.stopServer(testServer.uuid);
+      const serverId = testServer.uuid;
+      const storage_device = {
+        address: 'scsi:0:0',
+        type: 'disk',
+        storage: testStorage.uuid,
+      };
+      let { server } = await instance.attachStorage(serverId, {
+        storage_device,
       });
-    });
-    describe('deleteStorage', function() {
-      it('should call deleteStorage successfully', function() {
-        const storageId = testStorage.uuid;
-        return instance.deleteStorage(storageId).then(res => {
-          expect(() => {
-            instance.getStorageDetails(storageId);
-          }).to.throw();
-        });
-      });
-    });
-    describe('ejectCdrom', function() {
-      it('should call ejectCdrom successfully', function() {
-        const serverId = testServer.uuid;
-        const storageDevice = {
-          storage: testStorage.uuid,
+      const test1 = server.storage_devices.storage_device.some(
+        item => item.storage_title === 'Test create storage storage',
+      );
+      expect(test1).to.be(true);
+      server = (await instance.detachStorage(serverId, {
+        storage_device: {
           address: 'scsi:0:0',
-          type: 'cdrom',
-        };
-        instance.attachStorage(serverId, { storageDevice });
-        return instance.ejectCdrom(serverId).then(res => {
-          return instance.detachStorage(serverId, { storageDevice });
-        });
-      });
+        },
+      })).server;
+      const test2 = server.storage_devices.storage_device.every(
+        item => item.address !== 'scsi:0:0',
+      );
+      expect(test2).to.be(true);
     });
-    describe('favoriteStorage', function() {
-      it('should call favoriteStorage successfully', function() {
-        const storageId = testStorage.uuid;
-        return instance.listStorageTypes('favorite').then(res => {
-          let favoritedStorages = res.storages.storage;
-          const favoritesCount = favoritedStorages.length;
-          instance.favoriteStorage(storageId);
-          favoritedStorages = instance.listStorageTypes('favorite').storages
-            .storage;
-          expect(favoritesCount + 1).to.be(favoritedStorages.length);
-        });
+  });
+  describe('backupStorage', function() {
+    it('should call backupStorage successfully', async () => {
+      const storageId = testStorage.uuid;
+      const { storage } = await instance.backupStorage(storageId, {
+        storage: {
+          title: 'Test backup',
+        },
       });
+      expect(testStorage.access).to.be(storage.access);
+      expect(testStorage.license).to.be(storage.license);
+      expect('Test backup').to.be(storage.title);
     });
-    describe('getStorageDetails', function() {
-      it('should call getStorageDetails successfully', function() {
-        const storageId = testStorage.uuid;
-        return instance.getStorageDetails(storageId).then(res => {
-          const storage = res.storage;
-          expect(storage.title).to.be('Test create storage storage');
-        });
-      });
+  });
+  describe('cloneStorage', function() {
+    it('should call cloneStorage successfully', async () => {
+      const storageId = testStorage.uuid;
+      const storage = {
+        title: 'Cloned storage',
+        zone: 'fi-hel1',
+        tier: 'maxiops',
+      };
+      const { storage: clonedStorage } = await instance.cloneStorage(
+        storageId,
+        { storage },
+      );
+      expect(clonedStorage.origin).to.be(undefined);
+      expect(clonedStorage.title).to.be('Cloned storage');
     });
-    describe('listStorages', function() {
-      it('should call listStorages successfully', function() {
-        return instance.listStorages().then(res => {
-          const storageList = res.storages.storage;
-          expect(storageList.length).to.be.greaterThan(0);
-          expect(
-            storageList.some(
-              storage => storage.title === 'Test create storage storage',
-            ),
-          ).to.be(true);
-        });
+  });
+  describe('createStorage', function() {
+    it('should call createStorage successfully', async () => {
+      const storageData = {
+        tier: 'maxiops',
+        size: 10,
+        title: 'Test create storage storage',
+        zone: 'fi-hel1',
+        backup_rule: {
+          interval: 'daily',
+          time: '0430',
+          retention: 365,
+        },
+      };
+      const { storage } = await instance.createStorage({
+        storage: storageData,
       });
+      expect(storage.access).to.be('private');
+      expect(storage.license).to.be(0);
+      expect(storage.size).to.be(10);
+      expect(storage.state).to.be('online');
+      expect(storage.tier).to.be('maxiops');
+      expect(storage.title).to.be('Test create storage storage');
     });
-    describe('modifyStorage', function() {
-      it('should call modifyStorage successfully', function() {
-        const storageId = testStorage.uuid;
-        return instance
-          .modifyStorage(storageId, { title: 'Modified title' })
-          .then(res => {
-            const modifiedStorage = res.storage;
-            expect(modifiedStorage.title).to.be('Modified title');
-          });
-      });
+  });
+  describe('deleteStorage', function() {
+    it('should call deleteStorage successfully', async () => {
+      const storageId = testStorage.uuid;
+      await instance.deleteStorage(storageId);
+      try {
+        await instance.getStorageDetails(storageId);
+      } catch (e) {
+        expect(e.status).to.be(404);
+      }
+    });
+  });
+  describe('getStorageDetails', function() {
+    it('should call getStorageDetails successfully', async () => {
+      const storageId = testStorage.uuid;
+      const { storage } = await instance.getStorageDetails(storageId);
+      expect(storage.title).to.be('Test create storage storage');
+    });
+  });
+  describe('listStorages', function() {
+    it('should call listStorages successfully', async () => {
+      const {
+        storages: { storage: storageList },
+      } = await instance.listStorages();
+      expect(storageList.length).to.be.greaterThan(0);
+      expect(
+        storageList.some(
+          storage => storage.title === 'Test create storage storage',
+        ),
+      ).to.be(true);
+    });
+  });
+  describe('modifyStorage', function() {
+    it('should call modifyStorage successfully', async () => {
+      const storageId = testStorage.uuid;
+      const { storage: modifiedStorage } = await instance.modifyStorage(
+        storageId,
+        { storage: { title: 'Modified title' } },
+      );
+      expect(modifiedStorage.title).to.be('Modified title');
     });
   });
 });
