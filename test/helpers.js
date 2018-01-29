@@ -1,6 +1,8 @@
+import 'babel-polyfill';
+
 const upcloud = require('../src');
 
-const usename = process.env.UPCLOUD_API_TEST_USER;
+const username = process.env.UPCLOUD_API_TEST_USER;
 const password = process.env.UPCLOUD_API_TEST_PASSWORD;
 
 const serverApi = new upcloud.ServerApi();
@@ -8,17 +10,17 @@ serverApi.apiClient.authentications.baseAuth.username = username;
 serverApi.apiClient.authentications.baseAuth.password = password;
 
 const storageApi = new upcloud.StorageApi();
-storageApi.apiClient.authentications.baseAuth.username = usename;
+storageApi.apiClient.authentications.baseAuth.username = username;
 storageApi.apiClient.authentications.baseAuth.password = password;
 
-const TIMEOUT = process.env.UPCLOUD_API_TEST_TIMEOUT || 30000;
+const TIMEOUT = process.env.UPCLOUD_API_TEST_TIMEOUT || 15000;
 
 const servers = [];
 
 const serverData = {
   server: {
     zone: 'fi-hel1',
-    title: 'Firewall test server',
+    title: 'Test server',
     hostname: 'debian.example.com',
     plan: '2xCPU-2GB',
     storage_devices: {
@@ -35,29 +37,44 @@ const serverData = {
   },
 };
 
-const waitForServerState = serverId => state => {
-  console.log(`Waiting for a server ${state}...`);
-  return serverApi.serverDetails(serverId).then(({ server }) => {
-    if (server.state === state) {
-      console.log(`Server ${serverId} ${state}.`);
-      return server;
-    } else {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => resolve(waitForServerState(serverId)(state)), TIMEOUT);
-      });
-    }
-  });
+const waitForServerState = serverId => async (state, timeout = TIMEOUT) => {
+  console.log(`Waiting for a server ${state} with timeout ${timeout}...`);
+  const server = (await serverApi.serverDetails(serverId)).server;
+  if (server.state === state) {
+    console.log(`Server ${serverId} ${state}.`);
+    return server;
+  } else {
+    return await new Promise((resolve, reject) => {
+      setTimeout(
+        () => resolve(waitForServerState(serverId)(state, timeout)),
+        timeout,
+      );
+    });
+  }
 };
 
-const createServer = (data = serverData) => {
-  const server = serverApi
-    .createServer(data)
-    .then(({ server }) => waitForServerState(server.uuid)('started'))
-    .catch(console.error);
+let createdServers = [];
+
+const createServer = async (data = serverData) => {
+  const serverList = (await serverApi.listServers()).servers.server;
+  if (serverList.length >= 10) {
+    console.log('Cleanup servers...');
+    await Promise.all(
+      createdServers.map(server => server.uuid).map(deleteServer),
+    );
+    createdServers = [];
+  }
+
+  let { server } = await serverApi.createServer(data);
+
+  server = await waitForServerState(server.uuid)('started');
+  createdServers.push(server);
+
   return server;
 };
 
 const stopServer = serverId => {
+  console.log(`Stopping server ${serverId}`);
   return serverApi
     .stopServer(serverId, {
       stop_server: {
@@ -65,8 +82,8 @@ const stopServer = serverId => {
         timeout: '60',
       },
     })
-    .then(() => waitForServerState(serverId)('stopped'))
-    .catch(console.error);
+    .catch(() => serverId)
+    .then(() => waitForServerState(serverId)('stopped', TIMEOUT / 5));
 };
 
 const startServer = serverId => {
@@ -82,7 +99,13 @@ const deleteServer = serverId => {
     .catch(console.error);
 };
 
-const deleteAllServers = () => {
+const deleteCreatedServers = async () => {
+  return await Promise.all(
+    createdServers.map(server => server.uuid).map(deleteServer),
+  );
+};
+
+const deleteAllServers = async () => {
   return serverApi
     .listServers()
     .then(({ servers }) =>
@@ -90,8 +113,12 @@ const deleteAllServers = () => {
     );
 };
 
-const deleteStorage = storageId => {
-  return storageApi.deleteStorage(storageId).catch(console.error);
+const deleteStorage = async storageId => {
+  try {
+    return await storageApi.deleteStorage(storageId);
+  } catch (e) {
+    return await deleteStorage(storageId);
+  }
 };
 
 const deleteAllStorages = () => {
@@ -105,7 +132,9 @@ const deleteAllStorages = () => {
 };
 
 module.exports = {
+  serverData,
   createServer,
+  stopServer,
   deleteServer,
   deleteAllServers,
   deleteStorage,

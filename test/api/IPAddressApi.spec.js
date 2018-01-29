@@ -5,87 +5,88 @@
  * OpenAPI spec version: 1.2.0
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.upcloud);
-  }
-})(this, function(expect, upcloud) {
-  'use strict';
+import expect from 'expect.js';
+import helpers from '../helpers';
+import upcloud from '../../src/index';
 
-  var instance;
+var instance, testServer;
 
-  beforeEach(function() {
+describe('IPAddressApi', function() {
+  before(function() {
     instance = new upcloud.IPAddressApi();
+    instance.apiClient.authentications.baseAuth.username =
+      process.env.UPCLOUD_API_TEST_USER;
+    instance.apiClient.authentications.baseAuth.password =
+      process.env.UPCLOUD_API_TEST_PASSWORD;
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function') return object[getter]();
-    else return object[property];
-  };
+  beforeEach(async () => {
+    testServer = await helpers.createServer();
+    await helpers.stopServer(testServer.uuid);
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function') object[setter](value);
-    else object[property] = value;
-  };
+    return testServer;
+  });
 
-  describe('IPAddressApi', function() {
-    describe('addIp', function() {
-      it('should call addIp successfully', function() {
-        return instance
-          .addIp({ ip: { family: 'IPv4', server: uuid } })
-          .then(res => {
-            expect(res.access).to.be('public');
-            expect(res.family).to.be('IPV4');
-            expect(res.server).to.be(uuid);
-          });
+  describe('addIp', function() {
+    it('should call addIp successfully', async () => {
+      const { ip_address: { access, family, server } } = await instance.addIp({
+        ip_address: { family: 'IPv4', server: testServer.uuid },
       });
+      expect(access).to.be('public');
+      expect(family).to.be('IPv4');
+      expect(server).to.be(testServer.uuid);
     });
-    describe('deleteIp', function() {
-      it('should call deleteIp successfully', function() {
-        return instance.deleteIp(1).then(function(result) {
-          expect(result).to.be(null);
-        });
+  });
+  describe('deleteIp', function() {
+    it('should call deleteIp successfully', async () => {
+      const { ip_address: { address } } = await instance.addIp({
+        ip_address: { family: 'IPv4', server: testServer.uuid },
       });
+      const result = await instance.deleteIp(address);
+      expect(result).to.be(null);
     });
-    describe('getDetails', function() {
-      it('should call getDetails successfully', function() {
-        return instance.getDetails(function(result) {
-          console.log('Result', result);
-          expect(1).to.be(2);
-        });
+  });
+  describe('getDetails', function() {
+    it('should call getDetails successfully', async () => {
+      const { ip_address: { address } } = await instance.addIp({
+        ip_address: { family: 'IPv4', server: testServer.uuid },
       });
+      const {
+        ip_address: { access, family, server },
+        ip_address,
+      } = await instance.getDetails(address);
+      expect(ip_address).to.have.keys([
+        'access',
+        'server',
+        'address',
+        'family',
+        'ptr_record',
+      ]);
+      expect(access).to.be('public');
+      expect(family).to.be('IPv4');
+      expect(server).to.be(testServer.uuid);
     });
-    describe('listIps', function() {
-      it('should call listIps successfully', function() {
-        return instance.listIps().then(res => {
-          expect(
-            res.ipAddresses.some(
-              ipAddress => ipAddress.address === testIpAddress.address,
-            ),
-          ).to.be(true);
-        });
+  });
+  describe('listIps', function() {
+    it('should call listIps successfully', async () => {
+      const { ip_address: { address } } = await instance.addIp({
+        ip_address: { family: 'IPv4', server: testServer.uuid },
       });
+      const { ip_addresses: { ip_address: ips } } = await instance.listIps();
+      expect(ips.some(ipAddress => ipAddress.address === address));
     });
-    describe('modifyIp', function() {
-      it('should call modifyIp successfully', function() {
-        return instance
-          .modifyIp(testIpAddress.address, { ipAddress })
-          .then(res => {
-            expect(res.ptrRecord).to.be('hostname.example.com');
-            expect(res.access).to.be(testIpAddress.access);
-            expect(res.family).to.be(testIpAddress.family);
-            expect(res.server).to.be(testIpAddress.server);
-          });
+  });
+  describe('modifyIp', function() {
+    it('should call modifyIp successfully', async () => {
+      const { ip_address: { address } } = await instance.addIp({
+        ip_address: { family: 'IPv4', server: testServer.uuid },
       });
+      const { ip_address: { ptr_record } } = await instance.modifyIp(address, {
+        ip_address: {
+          ptr_record: 'hostname.example.com',
+        },
+      });
+      expect(ptr_record).to.be('hostname.example.com');
     });
   });
 });

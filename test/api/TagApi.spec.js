@@ -5,106 +5,105 @@
  * OpenAPI spec version: 1.2.0
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.upcloud);
-  }
-})(this, function(expect, upcloud) {
-  'use strict';
+import expect from 'expect.js';
+import helpers from '../helpers';
+import upcloud from '../../src/index';
 
-  var instance;
+var instance, testServer;
 
-  beforeEach(function() {
+const deleteAllTags = async () => {
+  const instance = new upcloud.TagApi();
+  const { tags: { tag: tags } } = await instance.listTags();
+  return Promise.all(
+    tags.map(tag => tag.name).map(instance.deleteTag.bind(instance)),
+  );
+};
+
+describe('TagApi', function() {
+  before(async () => {
     instance = new upcloud.TagApi();
+    await deleteAllTags();
+    await instance.createTag({
+      tag: { name: 'TESTTAG1', description: 'Test tag 1' },
+    });
+    await instance.createTag({
+      tag: { name: 'TESTTAG2', description: 'Test tag 2' },
+    });
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function') return object[getter]();
-    else return object[property];
-  };
+  after(async () => {
+    await deleteAllTags();
+  });
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function') object[setter](value);
-    else object[property] = value;
-  };
+  beforeEach(async () => {});
 
-  describe('TagApi', function() {
-    describe('assignTag', function() {
-      it('should call assignTag successfully', function() {
-        const serverId = testServer.uuid;
-        const tagList = 'DEV';
-        return instance.assignTag(serverId, tagList).then(res => {
-          let server = res.server;
-          expect(server.tags.tag.length).to.be(1);
-          const tagList = 'TAG2';
-          server = instance.assignTag(serverId, tagList).server;
-          expect(server.tags.tag.length).to.be(2);
-          expect(server.tags.tag.every(tag => tag === 'DEV' || tag === 'TAG2'));
-        });
-      });
+  describe('assignTag', function() {
+    it('should call assignTag successfully', async () => {
+      testServer = await helpers.createServer();
+      const serverId = testServer.uuid;
+      let tagList = 'TESTTAG1';
+      let { server } = await instance.assignTag(serverId, tagList);
+      expect(server.tags.tag.length).to.be(1);
+      tagList = 'TESTTAG2';
+      server = (await instance.assignTag(serverId, tagList)).server;
+      expect(server.tags.tag.length).to.be(2);
+      expect(
+        server.tags.tag.every(tag => tag === 'TESTTAG1' || tag === 'TESTTAG2'),
+      );
     });
-    describe('createTag', function() {
-      it('should call createTag successfully', function() {
-        return instance
-          .createTag({ name: 'TESTTAG', description: 'Test tag' })
-          .then(res => {
-            const tag = res.tag;
-            expect(tag.name).to.be('TESTTAG');
-            expect(tag.description).to.be('Test tag');
-            expect(tag.servers).not.to.be(null);
-            instance.deleteTag('TESTTAG');
-          });
+  });
+  describe('createTag', async () => {
+    it('should call createTag successfully', async () => {
+      const { tag } = await instance.createTag({
+        tag: {
+          name: 'TESTTAG',
+          description: 'Test tag',
+        },
       });
+      expect(tag.name).to.be('TESTTAG');
+      expect(tag.description).to.be('Test tag');
+      expect(tag.servers).not.to.be(null);
+      await instance.deleteTag('TESTTAG');
     });
-    describe('deleteTag', function() {
-      it('should call deleteTag successfully', function() {
-        // List<Tag> tagList = api.listTags().getTags().getTag();
-        // assertEquals(2, tagList.size());
-        // api.deleteTag("DEV");
-        // tagList = api.listTags().getTags().getTag();
-        // assertEquals(1, tagList.size());
-        // assertTrue(tagList.stream().noneMatch(tag -> tag.equals("DEV")));
-        // const tagList =
+  });
+  describe('deleteTag', function() {
+    it('should call deleteTag successfully', async () => {
+      const { tag } = await instance.createTag({
+        tag: {
+          name: 'TESTTAG',
+          description: 'Test tag',
+        },
       });
+      let { tags: { tag: tags } } = await instance.listTags();
+      const prevLength = tags.length;
+      await instance.deleteTag('TESTTAG');
+      tags = (await instance.listTags()).tags.tag;
+      expect(prevLength).to.be(tags.length + 1);
     });
-    describe('listTags', function() {
-      it('should call listTags successfully', function(done) {
-        //uncomment below and update the code to test listTags
-        //instance.listTags(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+  });
+  describe('listTags', function() {
+    it('should call listTags successfully', async () => {
+      const result = await instance.listTags();
+      expect(result).to.have.key('tags');
+      expect(result.tags).to.have.key('tag');
     });
-    describe('modifyTag', function() {
-      it('should call modifyTag successfully', function(done) {
-        //uncomment below and update the code to test modifyTag
-        //instance.modifyTag(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+  });
+  describe('modifyTag', function() {
+    it('should call modifyTag successfully', async () => {
+      const { tag } = await instance.createTag({
+        tag: {
+          name: 'MTAG1',
+          description: 'Modify tag',
+        },
       });
-    });
-    describe('untag', function() {
-      it('should call untag successfully', function(done) {
-        //uncomment below and update the code to test untag
-        //instance.untag(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      const { tag: modifiedTag } = await instance.modifyTag(tag.name, {
+        tag: {
+          name: 'MTAG2',
+          description: 'Modified tag',
+        },
       });
+      expect(modifiedTag.name).to.be('MTAG2');
+      expect(modifiedTag.description).to.be('Modified tag');
     });
   });
 });

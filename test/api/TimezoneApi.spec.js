@@ -5,48 +5,47 @@
  * OpenAPI spec version: 1.2.0
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.upcloud);
-  }
-})(this, function(expect, upcloud) {
-  'use strict';
+import expect from 'expect.js';
+import helpers from '../helpers';
+import upcloud from '../../src/index';
 
-  var instance;
+var instance;
 
+describe('TimezoneApi', function() {
   beforeEach(function() {
     instance = new upcloud.TimezoneApi();
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function') return object[getter]();
-    else return object[property];
-  };
+  describe('listTimezones', function() {
+    it('should call listTimezones successfully', async () => {
+      // TimezoneListResponse response = api.listTimezones();
+      //   List<String> continentals = Arrays.asList(new String[] { "Africa", "America", "Antarctica", "Arctic", "Asia",
+      //           "Atlantic", "Australia", "Europe", "Indian", "Pacific" });
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function') object[setter](value);
-    else object[property] = value;
-  };
-
-  describe('TimezoneApi', function() {
-    describe('listTimezones', function() {
-      it('should call listTimezones successfully', function(done) {
-        //uncomment below and update the code to test listTimezones
-        //instance.listTimezones(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+      //   List<String> timezones = response.getTimezones().getTimezone();
+      //   assertTrue(timezones.stream()
+      //           .allMatch(timezone -> continentals.contains(timezone.split("/")[0]) || timezone.equals("UTC")));
+      const continentals = [
+        'Africa',
+        'America',
+        'Antarctica',
+        'Arctic',
+        'Asia',
+        'Atlantic',
+        'Australia',
+        'Europe',
+        'Indian',
+        'Pacific',
+      ];
+      const {
+        timezones: { timezone: timezones },
+      } = await instance.listTimezones();
+      expect(
+        timezones.every(
+          timezone =>
+            continentals.includes(timezone.split('/')[0]) || timezone === 'UTC',
+        ),
+      ).to.be(true);
     });
   });
 });

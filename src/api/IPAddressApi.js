@@ -78,7 +78,7 @@
      */
     this.addIpWithHttpInfo = function(opts) {
       opts = opts || {};
-      var postBody = opts['ipAddress'];
+      var postBody = opts;
 
       var pathParams = {};
       var queryParams = {};
@@ -290,7 +290,7 @@
      */
     this.modifyIpWithHttpInfo = function(ip, opts) {
       opts = opts || {};
-      var postBody = opts['ipAddress'];
+      var postBody = opts;
 
       // verify the required parameter 'ip' is set
       if (ip === undefined || ip === null) {
