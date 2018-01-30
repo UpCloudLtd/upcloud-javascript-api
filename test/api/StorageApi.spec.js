@@ -79,7 +79,7 @@ describe('StorageApi', function() {
       const storageId = testStorage.uuid;
       const storage = {
         title: 'Cloned storage',
-        zone: 'fi-hel1',
+        zone: 'fi-hel2',
         tier: 'maxiops',
       };
       const { storage: clonedStorage } = await instance.cloneStorage(
@@ -96,7 +96,7 @@ describe('StorageApi', function() {
         tier: 'maxiops',
         size: 10,
         title: 'Test create storage storage',
-        zone: 'fi-hel1',
+        zone: 'fi-hel2',
         backup_rule: {
           interval: 'daily',
           time: '0430',
