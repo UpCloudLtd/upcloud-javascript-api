@@ -18,7 +18,7 @@ describe('StorageApi', function() {
       testStorage = (await instance.createStorage({
         storage: {
           title: 'Test create storage storage',
-          zone: 'fi-hel1',
+          zone: 'fi-hel2',
           size: 10,
           tier: 'maxiops',
           backup_rule: {
