@@ -65,3 +65,4 @@ typings/
 .swagger*
 .travis.yml
 test/
+docs/
