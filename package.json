@@ -11,19 +11,24 @@
   "bugs": {
     "url": "https://github.com/UpCloudLtd/upcloud-javascript-api/issues"
   },
-  "keywords": ["upcloud", "cloud", "wrapper", "api", "babel", "es6"],
+  "keywords": [
+    "upcloud",
+    "cloud",
+    "wrapper",
+    "api",
+    "babel",
+    "es6"
+  ],
   "main": "src/index.js",
   "scripts": {
-    "test":
-      "mocha --reguire babel-polyfill --require babel-register --recursive test",
-    "format":
-      "prettier --single-quote --trailing-comma all --write \"{src,test}/**/*.js\""
+    "test": "mocha --reguire babel-polyfill --require babel-register --recursive test",
+    "format": "prettier --single-quote --trailing-comma all --write \"{src,test}/**/*.js\""
   },
   "browser": {
     "fs": false
   },
   "dependencies": {
-    "superagent": "3.5.2"
+    "superagent": "3.7.0"
   },
   "devDependencies": {
     "babel-polyfill": "^6.26.0",
