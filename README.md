@@ -1,6 +1,6 @@
 # UpCloud JavaScript API client library
 
-[![Build Status](https://travis-ci.org/UpCloudLtd/upcloud-javascript-api.svg?branch=master)](https://travis-ci.org/UpCloudLtd/upcloud-javascript-api) [![npm version](https://badge.fury.io/js/%40upcloud%2Fupcloud.svg)](https://badge.fury.io/js/%40upcloud%2Fupcloud)
+[![Build Status](https://travis-ci.org/UpCloudLtd/upcloud-javascript-api.svg?branch=master)](https://travis-ci.org/UpCloudLtd/upcloud-javascript-api) [![npm version](https://badge.fury.io/js/%40upcloud%2Fupcloud.svg)](https://badge.fury.io/js/%40upcloud%2Fupcloud) [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/UpCloudLtd/upcloud-javascript-api/blob/master/LICENSE)
 
 This is a Javascript API client library that provides integration with the UpCloud API. It allows cloud resource management on UpCloud's IaaS with easy to use functions. The API client follows the RESTful web service principles wherever possible.
 
