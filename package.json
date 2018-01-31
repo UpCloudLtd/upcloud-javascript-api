@@ -1,8 +1,7 @@
 {
-  "name": "upcloud",
-  "version": "1.2.0",
+  "name": "@upcloud/upcloud",
+  "version": "1.0.0",
   "description": "The JavaScript SDK for UpCloud's API",
-  "author": "UpCloud",
   "homepage": "https://github.com/UpCloudLtd/upcloud-javascript-api",
   "license": "MIT",
   "repository": {
