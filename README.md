@@ -51,12 +51,10 @@ command above from.
 
 #### git
 #
-If the library is hosted at a git repository, e.g.
-https://github.com/GIT_USER_ID/GIT_REPO_ID
-then install it via:
+Install the library via git:
 
 ```shell
-    npm install GIT_USER_ID/GIT_REPO_ID --save
+    npm install UpCloudLtd/upcloud-javascript-api --save
 ```
 
 ### For browser
