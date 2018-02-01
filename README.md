@@ -22,7 +22,7 @@ The base URL for all API operations is  https://api.upcloud.com/ and require bas
 Install it via:
 
 ```shell
-npm install upcloud --save
+npm install @upcloud/upcloud --save
 ```
 
 ##### Local development
