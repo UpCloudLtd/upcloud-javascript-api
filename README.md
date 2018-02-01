@@ -90,7 +90,7 @@ module: {
 
 ## Usage
 
-Please follow the [installation](#installation) instruction and execute the following JS code:
+Please follow the [installation](#installation) instruction and execute the following JS code (**NOTE**: In real production applications you should use for example ENV variables instead of inserting credentials directly to code and to version control)::
 
 ```javascript
 var upcloud = require('upcloud');
