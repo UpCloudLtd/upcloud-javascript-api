@@ -34,10 +34,11 @@ describe('ServerApi', function() {
       const { servers: { server: servers } } = await instance.listServers();
       const prevSize = servers.length;
       const createdServer = await helpers.createServer();
-      const newSize = (await instance.listServers()).servers.server.length;
-      expect(newSize === prevSize + 1 || newSize === prevSize + 1 - 10).to.be(
-        true,
-      );
+      const serverList = (await instance.listServers()).servers.server;
+
+      expect(
+        serverList.some(server => server.uuid === createdServer.uuid),
+      ).to.be(true);
     });
   });
 });
