@@ -31,7 +31,6 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-3": "^6.24.1",
     "babel-register": "^6.26.0",
-    "blanket": "1.2.3",
     "coveralls": "3.0.0",
     "cross-env": "^5.1.3",
     "expect.js": "~0.3.1",
@@ -42,11 +41,6 @@
     "nyc": "^11.4.1",
     "prettier": "^1.10.2",
     "sinon": "4.2.0"
-  },
-  "config": {
-    "blanket": {
-      "pattern": "src"
-    }
   },
   "nyc": {
     "require": ["babel-register", "babel-polyfill"],
