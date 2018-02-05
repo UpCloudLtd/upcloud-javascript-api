@@ -17,7 +17,7 @@
     "test": "cross-env NODE_ENV=test nyc mocha --recursive test",
     "format":
       "prettier --single-quote --trailing-comma all --write \"{src,test}/**/*.js\"",
-    "coverage": "nyc npm test && nyc report | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "browser": {
     "fs": false
@@ -52,6 +52,7 @@
     "require": ["babel-register", "babel-polyfill"],
     "reporter": ["lcov", "text"],
     "sourceMap": false,
-    "instrument": false
+    "instrument": false,
+    "exclude": ["src/model/*.js"]
   }
 }
