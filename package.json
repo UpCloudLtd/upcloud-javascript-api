@@ -11,18 +11,14 @@
   "bugs": {
     "url": "https://github.com/UpCloudLtd/upcloud-javascript-api/issues"
   },
-  "keywords": [
-    "upcloud",
-    "cloud",
-    "wrapper",
-    "api",
-    "babel",
-    "es6"
-  ],
+  "keywords": ["upcloud", "cloud", "wrapper", "api", "babel", "es6"],
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha --reguire babel-polyfill --require babel-register --recursive test",
-    "format": "prettier --single-quote --trailing-comma all --write \"{src,test}/**/*.js\""
+    "test":
+      "mocha --require babel-polyfill --require babel-register --recursive test",
+    "format":
+      "prettier --single-quote --trailing-comma all --write \"{src,test}/**/*.js\"",
+    "coverage": "nyc npm test && nyc report | coveralls"
   },
   "browser": {
     "fs": false
@@ -31,22 +27,32 @@
     "superagent": "3.7.0"
   },
   "devDependencies": {
+    "babel-plugin-istanbul": "^4.1.5",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-3": "^6.24.1",
     "babel-register": "^6.26.0",
-    "expect.js": "~0.3.1",
-    "mocha": "~5.0.0",
-    "mocha-parallel-tests": "^1.2.10",
-    "prettier": "^1.10.2",
-    "sinon": "4.2.0",
+    "blanket": "1.2.3",
     "coveralls": "3.0.0",
+    "cross-env": "^5.1.3",
+    "expect.js": "~0.3.1",
+    "istanbul": "^0.4.5",
+    "mocha": "~5.0.0",
     "mocha-lcov-reporter": "1.3.0",
-    "blanket": "1.2.3"
+    "mocha-parallel-tests": "^1.2.10",
+    "nyc": "^11.4.1",
+    "prettier": "^1.10.2",
+    "sinon": "4.2.0"
   },
   "config": {
     "blanket": {
       "pattern": "src"
     }
+  },
+  "nyc": {
+    "require": ["babel-register"],
+    "reporter": ["text-lcov"],
+    "sourceMap": false,
+    "instrument": false
   }
 }
