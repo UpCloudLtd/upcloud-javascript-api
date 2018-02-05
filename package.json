@@ -53,6 +53,11 @@
     "reporter": ["lcov", "text"],
     "sourceMap": false,
     "instrument": false,
-    "exclude": ["src/model/*.js"]
+    "exclude": [
+      "src/model/*.js",
+      "src/api/ServerApi.js",
+      "src/ApiClient.js",
+      "src/index.js"
+    ]
   }
 }
