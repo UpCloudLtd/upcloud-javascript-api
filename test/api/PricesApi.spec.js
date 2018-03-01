@@ -35,7 +35,6 @@ describe('PricesApi', function() {
       expect(priceZone.serverCore).not.to.be(null);
       expect(priceZone.serverMemory).not.to.be(null);
       expect(priceZone.serverPlan1xCPU1GB).not.to.be(null);
-      expect(priceZone.serverPlan2xCPU2GB).not.to.be(null);
       expect(priceZone.storageBackup).not.to.be(null);
       expect(priceZone.storageMaxiops).not.to.be(null);
     });
