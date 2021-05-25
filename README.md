@@ -2,7 +2,7 @@
 
 > **DEPRECATION NOTICE**
 >
-> This repo is deprecated and won't receive more fix, feature or version updates. We suggest using our other SDK:s like [UpCloud Go API](https://github.com/UpCloudLtd/upcloud-go-api) or [UpCloud Python API](https://github.com/UpCloudLtd/upcloud-python-api). Or just use [UpCloud API](https://developers.upcloud.com/1.3/1-introduction/) directly.
+> This SDK has been deprecated and won't receive more fixes, features or version updates. We suggest using our other SDK:s like [UpCloud Go API](https://github.com/UpCloudLtd/upcloud-go-api), [UpCloud Python API](https://github.com/UpCloudLtd/upcloud-python-api) or just call [UpCloud API](https://developers.upcloud.com/1.3/1-introduction/) directly.
 
 [![Build Status](https://travis-ci.org/UpCloudLtd/upcloud-javascript-api.svg?branch=master)](https://travis-ci.org/UpCloudLtd/upcloud-javascript-api) [![npm version](https://badge.fury.io/js/%40upcloud%2Fupcloud.svg)](https://badge.fury.io/js/%40upcloud%2Fupcloud) [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/UpCloudLtd/upcloud-javascript-api/blob/master/LICENSE)
 [![Coverage Status](https://coveralls.io/repos/github/UpCloudLtd/upcloud-javascript-api/badge.svg?branch=master)](https://coveralls.io/github/UpCloudLtd/upcloud-javascript-api?branch=master)
@@ -269,7 +269,7 @@ Take care if storing usernames or passwords in files while developing API applic
 
 ## Issues
 
-This repo has been deprecated so no new issues can be opened.
+This SDK has been deprecated so no new issues can be opened.
 
 ## License
 
