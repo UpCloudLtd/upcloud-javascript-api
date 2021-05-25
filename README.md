@@ -1,11 +1,15 @@
 # UpCloud JavaScript API client library
 
+> **DEPRECATION NOTICE**
+>
+> This SDK has been deprecated and won't receive more fixes, features or version updates. We suggest using our other SDK:s like [UpCloud Go API](https://github.com/UpCloudLtd/upcloud-go-api), [UpCloud Python API](https://github.com/UpCloudLtd/upcloud-python-api) or just call [UpCloud API](https://developers.upcloud.com/1.3/1-introduction/) directly.
+
 [![Build Status](https://travis-ci.org/UpCloudLtd/upcloud-javascript-api.svg?branch=master)](https://travis-ci.org/UpCloudLtd/upcloud-javascript-api) [![npm version](https://badge.fury.io/js/%40upcloud%2Fupcloud.svg)](https://badge.fury.io/js/%40upcloud%2Fupcloud) [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/UpCloudLtd/upcloud-javascript-api/blob/master/LICENSE)
 [![Coverage Status](https://coveralls.io/repos/github/UpCloudLtd/upcloud-javascript-api/badge.svg?branch=master)](https://coveralls.io/github/UpCloudLtd/upcloud-javascript-api?branch=master)
 
 This is a Javascript API client library that provides integration with the UpCloud API. It allows cloud resource management on UpCloud's IaaS with easy to use functions. The API client follows the RESTful web service principles wherever possible.
 
-The base URL for all API operations is https://api.upcloud.com/ and require basic authentication using UpCloud username and password. We recommend [creating a subaccount](https://www.upcloud.com/support/server-tags-and-group-accounts/) dedicated for the API communication for security purposes. This allows you to restrict API access by servers, storages, and tags ensuring you will never accidentally affect critical systems.
+The base URL for all API operations is <https://api.upcloud.com/> and require basic authentication using UpCloud username and password. We recommend [creating a subaccount](https://www.upcloud.com/support/server-tags-and-group-accounts/) dedicated for the API communication for security purposes. This allows you to restrict API access by servers, storages, and tags ensuring you will never accidentally affect critical systems.
 
 ## Table of content
 
@@ -52,8 +56,6 @@ You should now be able to `require('upcloud')` in javascript files from the dire
 command above from.
 
 #### git
-
-#
 
 Install the library via git:
 
@@ -119,7 +121,7 @@ api.getAccount().then(
 
 ## Documentation
 
-All URIs are relative to _https://api.upcloud.com/1.2_
+All URIs are relative to _<https://api.upcloud.com/1.2>_
 
 | Class                  | Method                                                                                 | HTTP request                                                     | Description                   |
 | ---------------------- | -------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ----------------------------- |
@@ -267,7 +269,7 @@ Take care if storing usernames or passwords in files while developing API applic
 
 ## Issues
 
-Found a bug, have a problem using the client, or anything else about the library you would want to mention? [Open a new issue here](https://github.com/UpCloudLtd/upcloud-javascript-api/issues/new) to get in contact.
+This SDK has been deprecated so no new issues can be opened.
 
 ## License
 
